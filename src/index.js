@@ -13,6 +13,7 @@ const createWindow = () => {
 	const mainWindow = new BrowserWindow({
 		width: 1280,
 		height: 720,
+		alwaysOnTop: true,
 		transparent: true,
 		frame: false,
 		webPreferences: {
