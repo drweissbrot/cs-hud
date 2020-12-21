@@ -1,0 +1,42 @@
+.players-alive {
+	position absolute
+	top 2rem
+	right 4rem
+
+	display grid
+	grid-template-columns 1fr 1fr 1fr
+	grid-template-rows auto auto
+	grid-template-areas 'label label label' 'left vs right'
+
+	color #fff
+	transition opacity .3s ease
+
+	&:not(.--active) {
+		opacity 0
+	}
+
+	.label {
+		grid-area label
+		background rgba(#000, .5)
+		padding .5rem 1rem
+		text-transform uppercase
+		font-weight 600
+	}
+
+	.count,
+	.vs {
+		padding 1rem 1.5rem
+	}
+
+	.count {
+		teamColors()
+		flsize(3rem, 1)
+		background rgba(#000, .75)
+	}
+
+	.vs {
+		center()
+		flsize(2.5rem, 1)
+		background rgba(#000, .5)
+	}
+}

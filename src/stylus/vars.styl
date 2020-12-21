@@ -1,0 +1,51 @@
+$ct = #1ea6e2
+$t = #c18803
+$red = red
+
+flsize($s, $m) {
+	font-size $s
+	line-height $s * $m
+}
+
+leftRight($name) {
+	&.--left {
+		grid-area $name + '1'
+	}
+
+	&.--right {
+		grid-area $name + '2'
+	}
+}
+
+area($name) {
+	.{$name} {
+		leftRight($name)
+		{block}
+	}
+}
+
+center() {
+	display flex
+	align-items center
+	justify-content center
+}
+
+teamBackground() {
+	&.--ct {
+		background $ct
+	}
+
+	&.--t {
+		background $t
+	}
+}
+
+teamColors() {
+	&.--ct {
+		color $ct
+	}
+
+	&.--t {
+		color lighten($t, 25%)
+	}
+}

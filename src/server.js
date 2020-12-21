@@ -1,5 +1,6 @@
 const http = require('http')
 const fs = require('fs')
+const jsonBignum = require('json-bignum')
 
 const host = '127.0.0.1'
 const port = 31982
@@ -21,12 +22,11 @@ module.exports = class Server {
 			let body = ''
 			req.on('data', (data) => body += data)
 
-			body = JSON.parse(body)
-
-			if (body.auth.token !== '7ATvXUzTfBYyMLrA') res.end()
-
 			req.on('end', () => {
-				this.win.webContents.send('gsi', body)
+				body = jsonBignum.parse(body)
+
+				if (body.auth.token === '7ATvXUzTfBYyMLrA') this.win.webContents.send('gsi', body)
+
 				res.end()
 			})
 		})

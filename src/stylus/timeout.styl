@@ -1,0 +1,65 @@
+.timeout,
+.round-winner {
+	position absolute
+	top 24rem
+	left 37.5%
+	right 37.5%
+
+	display flex
+
+	background rgba(#000, .5)
+	color #fff
+	text-align left
+	transition opacity .5s ease
+
+	&:not(.--active) {
+		opacity 0
+	}
+
+	.text {
+		display flex
+		flex-direction column
+		justify-content space-around
+
+		padding 2rem 4rem
+		flex-grow 1
+	}
+
+	.icon {
+		grid-area icon
+		teamBackground()
+		center()
+		padding 1rem 2rem
+		height 16rem
+		width 16rem
+	}
+
+	.label {
+		flsize(3rem, 1)
+		font-weight 600
+	}
+
+	.info {
+		margin 1rem 0
+	}
+
+	.progress-bar {
+		height 1rem
+		background rgba(#fff, .5)
+
+		.fill {
+			teamBackground()
+			height 100%
+			transform-origin left
+		}
+	}
+}
+
+.timeout {
+	.icon {
+		img {
+			min-height 6rem
+			height 6rem
+		}
+	}
+}

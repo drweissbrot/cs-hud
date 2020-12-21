@@ -31,6 +31,11 @@ module.exports = {
 					{ loader: 'stylus-loader' },
 				],
 			},
+
+			{
+				test: /\.svg$/,
+				use: [ { loader: 'svg-url-loader' } ],
+			},
 		],
 	},
 	plugins: [
