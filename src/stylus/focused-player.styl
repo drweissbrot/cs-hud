@@ -10,6 +10,11 @@
 	grid-template-areas 'avatar 0 0' 'avatar name 1' 'life stats ammo'
 
 	color #fff
+	transition opacity .3s ease
+
+	&:not(.--active) {
+		opacity 0
+	}
 
 	.name {
 		grid-area name

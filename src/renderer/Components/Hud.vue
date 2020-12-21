@@ -1,5 +1,5 @@
 <template>
-	<div v-if="map" class="container">
+	<div v-if="map" class="container" :style="{ width }">
 		<TopBar :directionalSides="directionalSides" />
 		<RoundWinner />
 		<Timeout />
@@ -29,9 +29,31 @@ export default {
 		TopBar,
 	},
 
+	data() {
+		return {
+			width: null,
+		}
+	},
+
+	mounted() {
+		window.addEventListener('resize', this.onResize)
+		this.onResize()
+	},
+
+	beforeDestroy() {
+		window.removeEventListener('resize', this.onResize)
+	},
+
+	methods: {
+		onResize(e) {
+			this.width = (window.innerWidth / window.innerHeight > 16 / 9)
+				? `${16 / 9 * window.innerHeight}px`
+				: null
+		},
+	},
+
 	computed: {
 		...mapGetters([
-			'gameState',
 			'map',
 		]),
 

@@ -6,39 +6,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		gameState: {
-			// 	"map": {
-			// 		"mode": "competitive",
-			// 		"name": "de_cache",
-			// 		"phase": "live",
-			// 		"round": 14,
-			// 		"team_ct": {
-			// 			"score": 8,
-			// 			"consecutive_round_losses": 0,
-			// 			"timeouts_remaining": 1,
-			// 			"matches_won_this_series": 0
-			// 		},
-			// 		"team_t": {
-			// 			"score": 6,
-			// 			"consecutive_round_losses": 1,
-			// 			"timeouts_remaining": 1,
-			// 			"matches_won_this_series": 0
-			// 		},
-			// 		"num_matches_to_win_series": 0,
-			// 		"current_spectators": 34,
-			// 		"souvenirs_total": 0
-			// 	},
-			//
-			// 	phase_countdowns: {
-			// 		phase: 'timeout_ct',
-			// 		phase_ends_in: 24.2,
-			// 	},
-			//
-			// 	bomb: {
-			// 		state: 'defusing',
-			// 		countdown: 7.5,
-			// 	},
-		},
+		gameState: {},
 	},
 
 	getters: {

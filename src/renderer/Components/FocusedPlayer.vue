@@ -1,5 +1,5 @@
 <template>
-	<div class="focused-player">
+	<div :class="['focused-player', { '--active': player.steamid !== '1' }]">
 		<div :class="`name --${side}`">
 			<img :src="`https://flagcdn.com/h60/${team.flag}.png`">
 			<div class="label">{{ player.name }}</div>
@@ -38,7 +38,6 @@
 		<div class="ammo-utility">
 			<div class="bomb">
 				<img v-if="player.state.defusekit" src="../../img/weapons/defuser.svg">
-				<!-- TODO -->
 				<img v-else-if="carryingBomb" src="../../img/weapons/c4.svg">
 			</div>
 
@@ -50,7 +49,7 @@
 				>
 			</div>
 
-			<div v-if="! ['Grenade', 'Knife', 'C4'].includes(activeWeapon.type)" class="ammo">
+			<div v-if="activeWeapon && ! ['Grenade', 'Knife', 'C4'].includes(activeWeapon.type)" class="ammo">
 				<div class="ammo-current">{{ activeWeapon.ammo_clip }}</div>
 				<div :class="`ammo-reserve --${side}`">/{{ activeWeapon.ammo_reserve }}</div>
 			</div>
