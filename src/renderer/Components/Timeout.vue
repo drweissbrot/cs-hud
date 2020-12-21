@@ -1,7 +1,7 @@
 <template>
 	<div :class="['timeout', { '--active': active }]">
 		<div v-if="tactical" :class="`icon --${tactical}`">
-			<img src="../../img/votestarttimeout.svg">
+			<img src="../../img/timer.svg">
 		</div>
 
 		<div v-else class="icon">

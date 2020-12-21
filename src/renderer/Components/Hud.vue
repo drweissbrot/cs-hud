@@ -5,10 +5,13 @@
 		<Timeout />
 		<PlayersAlive :directionalSides="directionalSides" />
 		<!-- TODO <Series /> -->
+
+		<FocusedPlayer />
 	</div>
 </template>
 
 <script>
+import FocusedPlayer from './FocusedPlayer'
 import PlayersAlive from './PlayersAlive'
 import RoundWinner from './RoundWinner'
 import Series from './Series'
@@ -18,6 +21,7 @@ import { mapGetters } from 'vuex'
 
 export default {
 	components: {
+		FocusedPlayer,
 		PlayersAlive,
 		RoundWinner,
 		Series,
