@@ -1,0 +1,71 @@
+.config {
+	background #21
+	color #ae
+
+	min-width 100vw
+	min-height 100vh
+	padding 2rem 4rem
+	text-align left
+
+	h1 {
+		margin 0
+	}
+
+	.buttons,
+	.primary-team {
+		margin 2rem 0
+	}
+
+	.match {
+		display grid
+		grid-template-columns 1fr 4fr 2fr 2fr 2fr 2fr
+		margin-bottom 2rem
+
+		.number {
+			flsize(3rem, 1)
+		}
+
+		.centered {
+			center()
+		}
+	}
+
+	label {
+		&:not(.inline) {
+			display block
+		}
+	}
+
+	input {
+		&[type='checkbox'] {
+			margin-right 1rem
+		}
+
+		&[type='number'],
+		&[type='text'] {
+			background none
+			color inherit
+			border .1rem solid #ae
+			padding .8rem 1.5rem
+		}
+
+		&[type='number'] {
+			width calc(6ch + 3rem)
+		}
+	}
+
+	button {
+		padding 1rem 2rem
+		background none
+		color inherit
+		border .2rem solid #ae
+		cursor pointer
+		transition background .3s ease, color .3s ease
+
+		&:active,
+		&:hover {
+			background #ae
+			color #21
+		}
+	}
+}

@@ -1,11 +1,11 @@
 .focused-player {
 	position absolute
 	bottom 2rem
-	left 35%
-	right 35%
+	left 30.25%
+	right 30.25%
 
 	display grid
-	grid-template-columns 1fr 1.5fr 1fr
+	grid-template-columns 1fr 1.75fr 1.25fr
 	grid-template-rows auto max-content max-content
 	grid-template-areas 'avatar 0 0' 'avatar name 1' 'life stats ammo'
 
@@ -72,9 +72,9 @@
 		grid-area stats
 
 		display grid
-		grid-template-columns 1fr 1.5fr 1rem 1fr 1fr 1fr
+		grid-template-columns 1fr 1.5fr 1rem 1fr 1fr 1fr 1.25fr
 		grid-template-rows max-content max-content
-		grid-template-areas '0 round-damageL 1 killsL assistsL deathsL' 'round-kills round-damageN 1 killsN assistsN deathsN'
+		grid-template-areas '0 round-damageL 1 killsL assistsL deathsL adrL' 'round-kills round-damageN 1 killsN assistsN deathsN adrN'
 
 		background rgba(#000, .5)
 		padding .5rem 1rem
@@ -94,6 +94,7 @@
 			gridarea(kills)
 			gridarea(assists)
 			gridarea(deaths)
+			gridarea(adr)
 		}
 
 		.number {
@@ -107,6 +108,7 @@
 			gridarea(kills)
 			gridarea(assists)
 			gridarea(deaths)
+			gridarea(adr)
 		}
 
 		.round-kills {
@@ -164,6 +166,8 @@
 			display flex
 			align-items center
 			justify-content flex-start
+
+			padding-left 1rem
 		}
 
 		.ammo {

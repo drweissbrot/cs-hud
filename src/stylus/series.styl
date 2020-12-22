@@ -1,0 +1,74 @@
+.series {
+	position absolute
+	top 2rem
+	left calc(76.25% + 2rem)
+	right 4rem
+
+	color #fff
+	transition opacity .3s ease
+
+	&:not(.--active) {
+		opacity 0
+	}
+
+	.headings,
+	.match .wrapper {
+		display grid
+		grid-template-columns 1.75fr 1fr 1fr 1.25fr
+		grid-template-areas 'map picked winner score'
+	}
+
+	.headings {
+		background rgba(#000, .5)
+		padding .5rem 0
+		text-transform uppercase
+		font-weight 600
+	}
+
+	.match .wrapper {
+		height 6rem
+		background rgba(#000, .5)
+	}
+
+	.map,
+	.score,
+	.picked,
+	.winner,
+	.currently-playing {
+		center()
+	}
+
+	.map {
+		grid-area map
+	}
+
+	.picked {
+		grid-area picked
+	}
+
+	.winner {
+		grid-area winner
+	}
+
+	.score {
+		grid-area score
+	}
+
+	.match .score {
+		flsize(2.5rem, 1)
+	}
+
+	.currently-playing {
+		grid-area 1/3/1/5
+
+		padding .5rem 0
+		text-transform uppercase
+		font-weight 600
+	}
+
+	img {
+		max-width calc(100% - 2rem)
+		margin 1rem
+		filter drop-shadow(0 0 .5rem rgba(#fff, .5))
+	}
+}

@@ -1,5 +1,5 @@
 <template>
-	<div :class="['focused-player', { '--active': player.steamid !== '1' }]">
+	<div :class="['focused-player', { '--active': player.spectarget && player.spectarget !== 'free' }]">
 		<div :class="`name --${side}`">
 			<img :src="`https://flagcdn.com/h60/${team.flag}.png`">
 			<div class="label">{{ player.name }}</div>
@@ -24,15 +24,17 @@
 				<div class="number">{{ player.state.round_kills }}</div>
 			</div>
 
-			<div :class="`label --round-damage --${side}`">RND DMG</div>
+			<div :class="`label --round-damage --${side}`">RD DMG</div>
 			<div :class="`label --kills --${side}`">K</div>
 			<div :class="`label --assists --${side}`">A</div>
 			<div :class="`label --deaths --${side}`">D</div>
+			<div :class="`label --adr --${side}`">ADR</div>
 
 			<div class="number --round-damage">{{ player.state.round_totaldmg }}</div>
 			<div class="number --kills">{{ player.match_stats.kills }}</div>
 			<div class="number --assists">{{ player.match_stats.assists }}</div>
 			<div class="number --deaths">{{ player.match_stats.deaths }}</div>
+			<div class="number --adr">{{ Math.round((adr[player.steamid] || 0) * 10) / 10 }}</div>
 		</div>
 
 		<div class="ammo-utility">
@@ -61,6 +63,10 @@
 import { mapGetters } from 'vuex'
 
 export default {
+	props: [
+		'adr',
+	],
+
 	data() {
 		return {
 			//

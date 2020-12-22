@@ -1,12 +1,12 @@
 <template>
-	<div v-if="map" class="container" :style="{ width }">
+	<div v-if="applicable && map" class="container" :style="{ width }">
 		<TopBar :directionalSides="directionalSides" />
 		<RoundWinner />
 		<Timeout />
 		<PlayersAlive :directionalSides="directionalSides" />
-		<!-- TODO <Series /> -->
+		<Series :directionalSides="directionalSides" />
 
-		<FocusedPlayer />
+		<FocusedPlayer :adr="adr" />
 	</div>
 </template>
 
@@ -31,6 +31,8 @@ export default {
 
 	data() {
 		return {
+			adr: {},
+			roundDamage: {},
 			width: null,
 		}
 	},
@@ -50,22 +52,64 @@ export default {
 				? `${16 / 9 * window.innerHeight}px`
 				: null
 		},
+
+		calculateAdr() {
+			for (const player in this.roundDamage) {
+				let damage = 0
+				let rounds = 0
+
+				for (const round in this.roundDamage[player]) {
+					rounds++
+					damage += this.roundDamage[player][round]
+				}
+
+				this.adr[player] = damage / rounds
+			}
+		},
 	},
 
 	computed: {
 		...mapGetters([
+			'allplayers',
 			'map',
+			'primaryTeam',
+			'round',
 		]),
+
+		applicable() {
+			return window.location.hash === '#hud'
+		},
 
 		directionalSides() {
 			if (! this.map) return ['ct', 't']
 
-			if (this.map.team_ct.name === 'Das Deutsche Volk') return ['ct', 't']
-			if (this.map.team_t.name === 'Das Deutsche Volk') return ['t', 'ct']
+			if (this.map.team_ct.name === this.primaryTeam) return ['ct', 't']
+			if (this.map.team_t.name === this.primaryTeam) return ['t', 'ct']
 			if (this.map.team_ct.flag === 'de') return ['ct', 't']
 			if (this.map.team_t.flag === 'de') return ['t', 'ct']
 
 			return ['ct', 't']
+		},
+	},
+
+	watch: {
+		allplayers(allplayers) {
+			if (this.round.phase === 'freezetime') return
+
+			const round = (this.round.phase === 'over')
+				? this.map.round - 1
+				: this.map.round
+
+			for (const id in allplayers) {
+				if (! this.roundDamage.hasOwnProperty(id)) this.roundDamage[id] = {}
+				this.roundDamage[id][round] = allplayers[id].state.round_totaldmg
+			}
+		},
+
+		round(round, previous) {
+			if (! round || ! previous || round.phase === previous.phase) return
+
+			if (['over', 'freezetime'].includes(round.phase)) this.calculateAdr()
 		},
 	},
 }

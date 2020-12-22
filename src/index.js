@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 const Server = require('./server')
@@ -9,8 +9,12 @@ app.commandLine.appendSwitch('disable-gpu')
 // handle creating/removing shortcuts on Windows when installing/uninstalling
 if (require('electron-squirrel-startup')) app.quit()
 
+let mainWindow, seriesDataWindow, server
+
 const createWindow = () => {
-	const mainWindow = new BrowserWindow({
+	if (mainWindow || seriesDataWindow || server) return
+
+	mainWindow = new BrowserWindow({
 		width: 1280,
 		height: 720,
 		alwaysOnTop: true,
@@ -22,10 +26,27 @@ const createWindow = () => {
 		},
 	})
 
-	mainWindow.loadURL(MAIN_WEBPACK_ENTRY)
-	mainWindow.webContents.openDevTools({ mode:'undocked' })
+	mainWindow.on('closed', () => mainWindow = null)
 
-	new Server(mainWindow).run()
+	mainWindow.webContents.openDevTools({ mode:'undocked' })
+	mainWindow.loadURL(MAIN_WEBPACK_ENTRY + '#hud')
+
+	server = new Server(mainWindow).run()
+
+	seriesDataWindow = new BrowserWindow({
+		width: 1280,
+		height: 720,
+		autoHideMenuBar: true,
+		webPreferences: {
+			nodeIntegration: true,
+			preload: MAIN_PRELOAD_WEBPACK_ENTRY,
+		},
+	})
+
+	seriesDataWindow.on('closed', () => seriesDataWindow = null)
+	seriesDataWindow.loadURL(MAIN_WEBPACK_ENTRY + '#config')
+
+	ipcMain.on('seriesData', (event, message) => mainWindow.webContents.send('seriesData', message))
 }
 
 // creating the window after a delay is apparently required for transparent windows (due to an electron bug i guess?)
