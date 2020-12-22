@@ -10,8 +10,8 @@
 
 			<div :class="`map-wins --${direction} --${directionalSides[Number(direction === 'right')]}`">
 				<div
-					v-for="i in Math.max(map.num_matches_to_win_series, 1)"
-					:class="['pip', { '--filled': team.matches_won_this_series >= i }]"
+					v-for="i in Math.floor(seriesData.bestOf / 2 + 1)"
+					:class="['pip', { '--filled': seriesData.wins[direction] >= i }]"
 				/>
 			</div>
 		</template>
@@ -81,9 +81,9 @@
 
 		<div class="map-no">
 			Map
-			{{ left.matches_won_this_series + right.matches_won_this_series + 1 }}
+			{{ seriesData.wins.left + seriesData.wins.right + 1 }}
 			of
-			{{ Math.max(this.map.num_matches_to_win_series * 2 - 1, 1) }}
+			{{ seriesData.bestOf }}
 		</div>
 	</div>
 </template>
@@ -110,6 +110,7 @@ export default {
 			'bomb',
 			'map',
 			'timers',
+			'series',
 		]),
 
 		left() {
@@ -129,6 +130,26 @@ export default {
 			if (time < 60) return `0:${time}`
 			if (time < 70) return `1:0${time - 60}`
 			return `1:${time - 60}`
+		},
+
+		seriesData() {
+			if (this.series.length < 1) {
+				return {
+					bestOf: Math.max(this.map.num_matches_to_win_series * 2 - 1, 1),
+					wins: {
+						left: this.left.matches_won_this_series,
+						right: this.right.matches_won_this_series,
+					},
+				}
+			}
+
+			return {
+				bestOf: this.series.length,
+				wins: {
+					left: this.series.reduce((wins, match) => wins + (match.scoreLeft > match.scoreRight), 0),
+					right: this.series.reduce((wins, match) => wins + (match.scoreLeft < match.scoreRight), 0),
+				},
+			}
 		},
 	},
 
