@@ -1,5 +1,5 @@
 <template>
-	<div :class="['players-alive', { '--active': map.phase !== 'intermission' && ! ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(timers.phase) }]">
+	<div :class="['players-alive', { '--active': series.length < 1 || (map.phase !== 'intermission' && ! ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(timers.phase)) }]">
 		<div class="label">
 			Players Alive
 		</div>
@@ -30,6 +30,7 @@ export default {
 		...mapGetters([
 			'allplayers',
 			'map',
+			'series',
 			'timers',
 		]),
 
