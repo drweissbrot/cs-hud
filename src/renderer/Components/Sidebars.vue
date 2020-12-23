@@ -193,7 +193,7 @@ export default {
 				this.utilityActive = true
 
 				this.timeout = setTimeout(() => this.utilityActive = false, 7500)
-			} else if (timers.phase === 'freezetime') {
+			} else if (['freezetime', 'paused', 'timeout_ct', 'timeout_t'].includes(timers.phase)) {
 				clearTimeout(this.timeout)
 				this.statsActive = true
 				this.utilityActive = true
