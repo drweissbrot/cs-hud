@@ -7,7 +7,7 @@
 		<Series :directionalSides="directionalSides" />
 
 		<FocusedPlayer :adr="adr" />
-		<Sidebars :directionalSides="directionalSides" />
+		<Sidebars :adr="adr" :directionalSides="directionalSides" />
 	</div>
 </template>
 

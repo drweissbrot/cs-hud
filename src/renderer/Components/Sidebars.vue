@@ -72,6 +72,7 @@
 			<SidebarPlayer
 				v-for="player in players"
 				:key="player.observer_slot"
+				:adr="adr[player.steamid]"
 				:player="player"
 				:side="directionalSides[Number(direction === 'right')]"
 			/>
@@ -91,6 +92,7 @@ export default {
 	},
 
 	props: [
+		'adr',
 		'directionalSides',
 	],
 

@@ -30,7 +30,7 @@
 
 	.player {
 		display grid
-		grid-template-columns 2.5fr .5rem 1fr
+		grid-template-columns 2fr .5rem 1fr
 		grid-template-areas 'life focused stats'
 
 		color #fff
@@ -98,9 +98,9 @@
 
 			.inner {
 				display grid
-				grid-template-columns 1fr 1fr 1fr 2.75fr
+				grid-template-columns 1fr 1fr 1fr 1.5fr 2.75fr
 				grid-template-rows auto auto
-				grid-template-areas 'killsL assistsL deathsL purchases' 'killsN assistsN deathsN purchases'
+				grid-template-areas 'killsL assistsL deathsL adrL purchases' 'killsN assistsN deathsN adrN purchases'
 
 				background rgba(#000, .5)
 				transition transform 1s ease, opacity .75s ease
@@ -234,6 +234,7 @@
 			gridarea(kills)
 			gridarea(assists)
 			gridarea(deaths)
+			gridarea(adr)
 		}
 
 		.number {
@@ -246,12 +247,13 @@
 			gridarea(kills)
 			gridarea(assists)
 			gridarea(deaths)
+			gridarea(adr)
 		}
 	}
 
 	&.--right {
 		.player {
-			grid-template-columns 1fr .5rem 2.5fr
+			grid-template-columns 1fr .5rem 2fr
 			grid-template-areas 'stats 0 life'
 		}
 
@@ -273,9 +275,8 @@
 		}
 
 		.stats .inner {
-			grid-template-columns 1fr 1fr 1fr 2.75fr
-			grid-template-columns 2.75fr 1fr 1fr 1fr
-			grid-template-areas 'purchases killsL assistsL deathsL' 'purchases killsN assistsN deathsN'
+			grid-template-columns 2.75fr 1fr 1fr 1fr 1.5fr
+			grid-template-areas 'purchases killsL assistsL deathsL adrL' 'purchases killsN assistsN deathsN adrN'
 
 			transform-origin left center
 		}

@@ -60,12 +60,15 @@
 				<div class="label --kills">K</div>
 				<div class="label --assists">A</div>
 				<div class="label --deaths">D</div>
+				<div class="label --adr">ADR</div>
+				<!-- TODO -->
 			</div>
 
 			<div class="secondary">
 				<div class="number --kills">{{ player.match_stats.kills }}</div>
 				<div class="number --assists">{{ player.match_stats.assists }}</div>
 				<div class="number --deaths">{{ player.match_stats.deaths }}</div>
+				<div class="number --adr">{{ adr || 0 }}</div>
 			</div>
 		</div>
 
@@ -76,10 +79,12 @@
 				<div :class="`label --kills --${side}`">K</div>
 				<div :class="`label --assists --${side}`">A</div>
 				<div :class="`label --deaths --${side}`">D</div>
+				<div :class="`label --adr --${side}`">ADR</div>
 
 				<div class="number --kills">{{ player.match_stats.kills }}</div>
 				<div class="number --assists">{{ player.match_stats.assists }}</div>
 				<div class="number --deaths">{{ player.match_stats.deaths }}</div>
+				<div class="number --adr">{{ adr || 0 }}</div>
 
 				<div class="purchases">
 					-${{ moneyAtStartOfRound - player.state.money }}
@@ -99,6 +104,7 @@ export default {
 	},
 
 	props: [
+		'adr',
 		'player',
 		'side',
 	],
