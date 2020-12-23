@@ -102,6 +102,8 @@ const store = new Vuex.Store({
 	},
 })
 
+window.s = store
+
 new Vue({
 	el: '#app',
 	store,

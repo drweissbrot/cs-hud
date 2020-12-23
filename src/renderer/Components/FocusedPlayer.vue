@@ -92,6 +92,7 @@ export default {
 
 			for (const key in this.player.weapons) {
 				const { ammo_reserve, type, name, state } = this.player.weapons[key]
+
 				if (type === 'Grenade') {
 					for (let i = 0; i < ammo_reserve; i++) {
 						grenades.push([name.replace(/^weapon_/, ''), state === 'active'])

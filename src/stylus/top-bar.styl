@@ -111,7 +111,8 @@
 		&:not(.--active) {
 			.bomb-timer,
 			.defuse-timer {
-				transform translateY(-2rem) scaleY(0)
+				transform translateY(-100%)
+				opacity 0
 			}
 		}
 
@@ -136,7 +137,7 @@
 	.bomb-timer {
 		padding 1rem
 		background rgba(#000, .75)
-		transition transform .3s ease
+		transition transform .3s ease, opacity .3s ease
 		transform-origin top center
 		display flex
 		align-items center
