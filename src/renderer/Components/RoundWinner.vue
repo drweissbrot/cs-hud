@@ -1,5 +1,5 @@
 <template>
-	<div :class="['round-winner', { '--active': active }]">
+	<div :class="['round-winner', { '--active': active || true }]">
 		<div v-if="win_team" :class="`icon --${win_team}`">
 			<img class="flag" :src="`https://flagcdn.com/h60/${team.flag}.png`">
 		</div>
@@ -10,15 +10,8 @@
 			</div>
 
 			<div class="info">
-				wins the Round
-
-				<template v-if="bomb === 'defused'">
-					by Defusing the Bomb
-				</template>
-
-				<template v-else-if="bomb === 'exploded'">
-					by Detonating the Bomb
-				</template>
+				wins the Round<br>
+				{{ reason }}
 			</div>
 		</div>
 	</div>
@@ -31,14 +24,12 @@ export default {
 	data() {
 		return {
 			win_team: false,
-			bomb: null,
 		}
 	},
 
 	methods: {
 		sync() {
 			this.win_team = this.round.win_team ? this.round.win_team.toLowerCase() : this.round.win_team
-			this.bomb = this.round.bomb
 		},
 	},
 
@@ -55,13 +46,26 @@ export default {
 		team() {
 			return this.map[`team_${this.win_team}`]
 		},
+
+		reason() {
+			let latestRound = -1
+
+			for (const round in this.map.round_wins) {
+				const roundNum = Number(round)
+				if (roundNum > latestRound) latestRound = roundNum
+			}
+
+			if (latestRound === -1) return
+			if (this.map.round_wins[latestRound].endsWith('_elimination')) return 'by Eliminating the Enemy Team'
+			if (this.map.round_wins[latestRound].endsWith('_bomb')) return 'by Detonating the Bomb'
+			if (this.map.round_wins[latestRound].endsWith('_defuse')) return 'by Defusing the Bomb'
+			if (this.map.round_wins[latestRound].endsWith('_time')) return 'by Running down the Clock'
+		},
 	},
 
 	watch: {
 		round(now) {
-			if (now.phase === 'over') {
-				this.sync()
-			}
+			if (now.phase === 'over') this.sync()
 		},
 
 		active(now, previously) {
