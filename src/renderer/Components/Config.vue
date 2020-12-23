@@ -7,7 +7,7 @@
 				Add Match
 			</button>
 
-			<button v-if="matches.length > 0" @click.prevent="submit">
+			<button @click.prevent="submit">
 				Save
 			</button>
 		</div>
@@ -17,6 +17,20 @@
 				Name of Team that should be on the left
 			</label>
 			<input type="text" id="primary-team" v-model="primaryTeam">
+		</div>
+
+		<div class="input-group series-event-info">
+			<label for="series-name-left">
+				Series/Event Info (left side)
+			</label>
+			<textarea id="series-name-left" v-model="seriesNameLeft" />
+		</div>
+
+		<div class="input-group series-event-info">
+			<label for="series-name-right">
+				Series/Event Info (right side)
+			</label>
+			<textarea id="series-name-right" v-model="seriesNameRight" />
 		</div>
 
 		<div class="match" v-for="(match, i) in matches">
@@ -74,14 +88,20 @@ export default {
 		return {
 			matches: [{}],
 			primaryTeam: 'Das Deutsche Volk',
+			seriesNameLeft: null,
+			seriesNameRight: null,
 		}
 	},
 
 	methods: {
 		submit() {
 			ipcRenderer.send('seriesData', {
-				matches: this.matches,
+				matches: this.matches.filter(({ map }) => map),
 				primaryTeam: this.primaryTeam,
+				seriesName: {
+					left: this.seriesNameLeft ? (this.seriesNameLeft + '').trim() : null,
+					right: this.seriesNameRight ? (this.seriesNameRight + '').trim() : null,
+				},
 			})
 		},
 	},

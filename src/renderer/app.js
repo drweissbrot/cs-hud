@@ -10,6 +10,7 @@ const store = new Vuex.Store({
 	state: {
 		primaryTeam: 'Das Deutsche Volk',
 		series: [],
+		seriesName: {},
 		gameState: {
 			"map": {
 				"mode": "competitive",
@@ -49,6 +50,7 @@ const store = new Vuex.Store({
 
 	getters: {
 		primaryTeam: (state) => state.primaryTeam,
+		seriesName: (state) => state.seriesName,
 		series: (state) => state.series,
 		gameState: (state) => state.gameState,
 		allplayers: (state) => state.gameState.allplayers,
@@ -66,6 +68,10 @@ const store = new Vuex.Store({
 
 		setPrimaryTeam(state, team) {
 			state.primaryTeam = team
+		},
+
+		setSeriesName(state, seriesName) {
+			state.seriesName = seriesName
 		},
 
 		setKey(state, { key, value }) {
@@ -89,6 +95,10 @@ const store = new Vuex.Store({
 		setPrimaryTeam({ commit }, team) {
 			commit('setPrimaryTeam', team)
 		},
+
+		setSeriesName({ commit }, seriesName) {
+			commit('setSeriesName', seriesName)
+		},
 	},
 })
 
@@ -108,4 +118,5 @@ ipcRenderer.on('gsi', (event, message) => {
 ipcRenderer.on('seriesData', (event, message) => {
 	store.dispatch('setSeriesData', message.matches)
 	store.dispatch('setPrimaryTeam', message.primaryTeam)
+	store.dispatch('setSeriesName', message.seriesName)
 })

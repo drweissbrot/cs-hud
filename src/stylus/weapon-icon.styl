@@ -1,0 +1,12 @@
+.weapon-icon {
+	margin 0 .5rem
+
+	&.--grenade {
+		margin-bottom .5rem
+	}
+
+	&:not(.--active),
+	&.--active + .--active:not(.--force-active) {
+		opacity .6
+	}
+}

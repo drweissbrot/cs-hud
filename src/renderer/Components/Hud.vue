@@ -7,6 +7,7 @@
 		<Series :directionalSides="directionalSides" />
 
 		<FocusedPlayer :adr="adr" />
+		<Sidebars :directionalSides="directionalSides" />
 	</div>
 </template>
 
@@ -15,6 +16,7 @@ import FocusedPlayer from './FocusedPlayer'
 import PlayersAlive from './PlayersAlive'
 import RoundWinner from './RoundWinner'
 import Series from './Series'
+import Sidebars from './Sidebars'
 import Timeout from './Timeout'
 import TopBar from './TopBar'
 import { mapGetters } from 'vuex'
@@ -25,6 +27,7 @@ export default {
 		PlayersAlive,
 		RoundWinner,
 		Series,
+		Sidebars,
 		Timeout,
 		TopBar,
 	},
@@ -94,7 +97,7 @@ export default {
 
 	watch: {
 		allplayers(allplayers) {
-			if (this.round.phase === 'freezetime') return
+			if (! this.round || this.round.phase === 'freezetime') return
 
 			const round = (this.round.phase === 'over')
 				? this.map.round - 1

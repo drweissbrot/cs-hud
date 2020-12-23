@@ -1,0 +1,320 @@
+.sidebar {
+	&.--left {
+		.slot::after {
+			content '|'
+			padding-left .25ch
+		}
+
+		.dead-icon {
+			grid-area 1/1/3/3
+		}
+
+		.stats {
+			transform-origin left center
+		}
+	}
+
+	// right side: see below (because otherwise CSS would override these, and this way is easier)
+
+	&:not(.--stats-active) {
+		&.--left .stats .inner {
+			transform translateX(calc(-100% - .5rem))
+			opacity 0
+		}
+
+		&.--right .stats .inner {
+			transform translateX(calc(100% + .5rem))
+			opacity 0
+		}
+	}
+
+	.player {
+		display grid
+		grid-template-columns 2.5fr .5rem 1fr
+		grid-template-areas 'life focused stats'
+
+		color #fff
+		line-height 1.75em
+		text-shadow 0 0 .3rem #000
+
+		&:not(:last-child) {
+			margin-bottom .5rem
+		}
+
+		&.--focused {
+			.life,
+			.stats .inner {
+				background rgba(#666, .5)
+			}
+
+			.health-bar .fill {
+				filter brightness(1.1)
+			}
+		}
+
+		&:not(.--focused) {
+			.focused {
+				opacity 0
+			}
+		}
+
+		img {
+			max-height 1em
+		}
+
+		.life {
+			grid-area life
+
+			display grid
+			grid-template-columns 1.25fr .35fr 1fr 2.5fr 1.5fr 2fr
+			grid-template-rows auto auto
+			grid-template-areas 'hp slot name name round-kills primary' 'armor-bomb armor-bomb money grenades grenades secondary'
+
+			background rgba(#000, .5)
+
+			&.--dead {
+				.primary,
+				.secondary {
+					display grid
+					grid-template-columns 1fr 1fr 1fr
+					grid-template-areas 'killsL assistsL deathsL'
+				}
+
+				.secondary {
+					grid-template-areas 'killsN assistsN deathsN'
+				}
+			}
+		}
+
+		.focused {
+			opacity .75
+			transition opacity .3s ease
+			background #fff
+		}
+
+		.stats {
+			grid-area stats
+			overflow hidden
+
+			.inner {
+				display grid
+				grid-template-columns 1fr 1fr 1fr 2.75fr
+				grid-template-rows auto auto
+				grid-template-areas 'killsL assistsL deathsL purchases' 'killsN assistsN deathsN purchases'
+
+				background rgba(#000, .5)
+				// TODO apply this animation style to bomb/defuse timers
+				transition transform 1s ease, opacity .75s ease
+			}
+		}
+
+		.health-bar {
+			grid-area 1/1/1/7
+			background rgba(#000, .25)
+
+			.fill {
+				teamBackground()
+				height 100%
+				transform-origin left center
+			}
+		}
+
+		.hp,
+		.slot,
+		.name,
+		.round-kills,
+		.primary {
+			z-index 1
+		}
+
+		.hp {
+			grid-area hp
+
+			span {
+				display inline-block
+				width 3ch
+				text-align right
+			}
+		}
+
+		.dead-icon {
+			max-height 3rem
+			margin auto 2rem auto 0
+		}
+
+		.slot {
+			grid-area slot
+			flsize(1.25rem, 1)
+
+			display flex
+			align-items center
+		}
+
+		.primary,
+		.armor-bomb,
+		.grenades,
+		.secondary {
+			display flex
+			align-items center
+			justify-content flex-end
+			padding 0 1rem
+		}
+
+		.name {
+			grid-area name
+			text-align left
+		}
+
+		.primary {
+			grid-area primary
+
+			img {
+				filter drop-shadow(0 0 .3rem #000)
+			}
+		}
+
+		.round-kills {
+			grid-area round-kills
+			center()
+
+			img {
+				filter drop-shadow(0 0 .1rem #000)
+				padding-right .5rem
+			}
+		}
+
+		.purchases {
+			grid-area purchases
+
+			center()
+			justify-content flex-end
+
+			padding 0 1rem
+			color $red
+			text-align right
+		}
+
+		.armor-bomb {
+			grid-area armor-bomb
+			justify-content flex-start
+
+			img:not(.--armor) {
+				transform scale(1.2)
+			}
+		}
+
+		.money {
+			grid-area money
+
+			color $green
+			text-align left
+		}
+
+		.grenades {
+			grid-area grenades
+			justify-content flex-end
+
+			img {
+				transform scale(1.2)
+			}
+		}
+
+		.secondary {
+			grid-area secondary
+		}
+
+		.label {
+			teamColors()
+
+			gridarea($name) {
+				&.--{$name} {
+					grid-area $name + 'L'
+				}
+			}
+
+			gridarea(kills)
+			gridarea(assists)
+			gridarea(deaths)
+		}
+
+		.number {
+			gridarea($name) {
+				&.--{$name} {
+					grid-area $name + 'N'
+				}
+			}
+
+			gridarea(kills)
+			gridarea(assists)
+			gridarea(deaths)
+		}
+	}
+
+	&.--right {
+		.player {
+			grid-template-columns 1fr .5rem 2.5fr
+			grid-template-areas 'stats 0 life'
+		}
+
+		.life {
+			grid-template-columns 2fr 1.5fr 2.5fr 1fr .35fr 1.25fr
+			grid-template-areas 'primary round-kills name name slot hp' 'secondary grenades grenades money armor-bomb armor-bomb'
+
+			.weapon-icon {
+				transform rotateY(180deg)
+
+				&.--grenade {
+					transform rotateY(180deg) scale(1.2)
+				}
+			}
+
+			.fill {
+				transform-origin right center
+			}
+		}
+
+		.stats .inner {
+			grid-template-columns 1fr 1fr 1fr 2.75fr
+			grid-template-columns 2.75fr 1fr 1fr 1fr
+			grid-template-areas 'purchases killsL assistsL deathsL' 'purchases killsN assistsN deathsN'
+
+			transform-origin left center
+		}
+
+		.name,
+		.money,
+		.slot {
+			text-align right
+			justify-content flex-end
+		}
+
+		.slot::before {
+			content '|'
+			padding-right .25ch
+		}
+
+		.round-kills,
+		.primary,
+		.armor-bomb,
+		.grenades,
+		.secondary {
+			flex-direction row-reverse
+		}
+
+		.round-kills {
+			img {
+				padding 0 0 0 .5rem
+			}
+		}
+
+		.purchases {
+			justify-content flex-start
+			text-align right
+		}
+
+		.dead-icon {
+			grid-area 1/5/3/7
+			margin auto 0 auto 2rem
+		}
+	}
+}
