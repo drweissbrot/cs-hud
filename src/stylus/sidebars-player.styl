@@ -12,6 +12,11 @@
 		.stats {
 			transform-origin left center
 		}
+
+		.--dead .primary,
+		.--dead .secondary {
+			padding-left 0
+		}
 	}
 
 	// right side: see below (because otherwise CSS would override these, and this way is easier)
@@ -66,7 +71,7 @@
 			grid-area life
 
 			display grid
-			grid-template-columns 1.25fr .35fr 1fr 2.5fr 1.5fr 2fr
+			grid-template-columns 1.25fr .35fr 1fr 2.25fr 1fr 2.75fr
 			grid-template-rows auto auto
 			grid-template-areas 'hp slot name name round-kills primary' 'armor-bomb armor-bomb money grenades grenades secondary'
 
@@ -76,12 +81,12 @@
 				.primary,
 				.secondary {
 					display grid
-					grid-template-columns 1fr 1fr 1fr
-					grid-template-areas 'killsL assistsL deathsL'
+					grid-template-columns 1fr 1fr 1fr 1.5fr
+					grid-template-areas 'killsL assistsL deathsL adrL'
 				}
 
 				.secondary {
-					grid-template-areas 'killsN assistsN deathsN'
+					grid-template-areas 'killsN assistsN deathsN adrN'
 				}
 			}
 		}
@@ -258,7 +263,7 @@
 		}
 
 		.life {
-			grid-template-columns 2fr 1.5fr 2.5fr 1fr .35fr 1.25fr
+			grid-template-columns 2.75fr 1fr 2.25fr 1fr .35fr 1.25fr
 			grid-template-areas 'primary round-kills name name slot hp' 'secondary grenades grenades money armor-bomb armor-bomb'
 
 			.weapon-icon {
@@ -279,6 +284,11 @@
 			grid-template-areas 'purchases killsL assistsL deathsL adrL' 'purchases killsN assistsN deathsN adrN'
 
 			transform-origin left center
+		}
+
+		.--dead .primary,
+		.--dead .secondary {
+			padding-right 0
 		}
 
 		.name,
