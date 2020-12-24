@@ -1,10 +1,12 @@
 <template>
 	<div v-if="applicable && map" class="container" :style="{ width }">
 		<TopBar :directionalSides="directionalSides" />
-		<RoundWinner />
-		<Timeout />
 		<PlayersAlive :directionalSides="directionalSides" />
 		<Series :directionalSides="directionalSides" />
+
+		<RoundWinner />
+		<Timeout />
+		<RoundGraph />
 
 		<FocusedPlayer :adr="adr" />
 		<Sidebars :adr="adr" :directionalSides="directionalSides" />
@@ -14,6 +16,7 @@
 <script>
 import FocusedPlayer from './FocusedPlayer'
 import PlayersAlive from './PlayersAlive'
+import RoundGraph from './RoundGraph'
 import RoundWinner from './RoundWinner'
 import Series from './Series'
 import Sidebars from './Sidebars'
@@ -25,6 +28,7 @@ export default {
 	components: {
 		FocusedPlayer,
 		PlayersAlive,
+		RoundGraph,
 		RoundWinner,
 		Series,
 		Sidebars,

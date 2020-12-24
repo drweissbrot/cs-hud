@@ -1,0 +1,70 @@
+.round-graph {
+	position absolute
+	bottom 20.3rem
+	left 30.25%
+	right 30.25%
+
+	background rgba(#000, .5)
+	color #fff
+	transition opacity .5s ease
+
+	&:not(.--active) {
+		opacity 0
+	}
+
+	.heading {
+		flsize(2rem, 1.5)
+	}
+
+	.rounds {
+		display flex
+
+		&.--ot {
+			.round:nth-child(3) {
+				border-right .1rem solid rgba(#fff, .75)
+			}
+		}
+
+		.round {
+			teamColors()
+			flsize(2rem, 1)
+
+			padding .5rem 0 1rem
+			flex-grow 1
+
+			&.--null {
+				background rgba(#fff, .25)
+
+				+ .--null {
+					background none
+				}
+			}
+		}
+
+		.colored-bar {
+			teamBackground()
+			height .5rem
+			margin .5rem 0 1rem
+
+			&.--null {
+				background rgba(#fff, .75)
+			}
+		}
+
+		.image {
+			height 3.2rem
+
+			&.--t path {
+				fill $t
+			}
+
+			&.--ct path {
+				fill $ct
+			}
+
+			svg {
+				height 100%
+			}
+		}
+	}
+}
