@@ -22,6 +22,10 @@
 		.series-name {
 			text-align right
 		}
+
+		.economy {
+			flex-direction row-reverse
+		}
 	}
 
 	$economyHeight = 7.5rem
@@ -103,10 +107,23 @@
 		.grenades {
 			display flex
 
+			&.--t path {
+				fill $t
+			}
+
+			&.--ct path {
+				fill $ct
+			}
+
 			.grenade {
 				center()
 				flex-grow 1
 				flsize(2.5rem, 1)
+
+				.img {
+					margin 0 .5rem .5rem
+					transform scale(1.2)
+				}
 			}
 
 			.count {
@@ -118,9 +135,7 @@
 	}
 
 	.economy {
-		display grid
-		grid-template-columns max-content 1fr 1fr
-		grid-template-areas 'lbpips lb eq'
+		display flex
 
 		.loss-bonus-pips {
 			grid-area lbpips
@@ -138,8 +153,9 @@
 
 		.loss-bonus,
 		.equipment-value {
-			flex-direction column
 			center()
+			flex-direction column
+			flex-grow 1
 		}
 
 		.loss-bonus {

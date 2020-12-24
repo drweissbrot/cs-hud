@@ -21,24 +21,31 @@
 						Utility
 					</div>
 
-					<div class="grenades">
+					<div :class="`grenades --${directionalSides[Number(direction === 'right')]}`">
 						<div class="grenade">
-							<WeaponIcon :weapon="{ name: 'smokegrenade', type: 'Grenade' }" :active="true" />
+							<div class="img" v-html="image(require('../../img/weapons/smokegrenade.svg'))" />
 							<div class="count">{{ utility[direction].smoke }}</div>
 						</div>
 
 						<div class="grenade">
-							<WeaponIcon :weapon="{ name: directionalSides[Number(direction === 'right')] === 'ct' ? 'incgrenade' : 'molotov', type: 'Grenade' }" :active="true" />
+							<div
+								class="img"
+								v-html="image(require(`../../img/weapons/${
+									(directionalSides[Number(direction === 'right')] === 'ct')
+										? 'incgrenade'
+										: 'molotov'
+								}.svg`))"
+							/>
 							<div class="count">{{ utility[direction].molotov }}</div>
 						</div>
 
 						<div class="grenade">
-							<WeaponIcon :weapon="{ name: 'flashbang', type: 'Grenade' }" :active="true" />
+							<div class="img" v-html="image(require('../../img/weapons/flashbang.svg'))" />
 							<div class="count">{{ utility[direction].flash }}</div>
 						</div>
 
 						<div class="grenade">
-							<WeaponIcon :weapon="{ name: 'hegrenade', type: 'Grenade' }" :active="true" />
+							<div class="img" v-html="image(require('../../img/weapons/hegrenade.svg'))" />
 							<div class="count">{{ utility[direction].he }}</div>
 						</div>
 					</div>
@@ -48,7 +55,7 @@
 			<div class="wrapper">
 				<div class="economy">
 					<div class="loss-bonus-pips">
-						<div v-for="i in 4" :class="['pip', { '--filled': lossBonus[direction] >= i }]" />
+						<div v-for="i in 4" :class="[`pip --${directionalSides[Number(direction === 'right')]}`, { '--filled': lossBonus[direction] >= i }]" />
 					</div>
 
 					<div class="loss-bonus">
@@ -60,7 +67,7 @@
 
 					<div class="equipment-value">
 						<div :class="`label --${directionalSides[Number(direction === 'right')]}`">
-							Eqipment Value
+							Equipment Value
 						</div>
 						<div class="number">
 							${{ equipmentValue[direction] }}
@@ -103,6 +110,12 @@ export default {
 			statsActive: false, // TODO this line is right
 			utilityActive: false, // TODO this line is right
 		}
+	},
+
+	methods: {
+		image(str) {
+			return decodeURIComponent(str.replace(/^data:image\/svg\+xml,/, ''))
+		},
 	},
 
 	computed: {

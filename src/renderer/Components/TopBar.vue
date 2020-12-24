@@ -8,10 +8,10 @@
 				<img :src="`https://flagcdn.com/h60/${team.flag}.png`">
 			</div>
 
-			<div :class="`map-wins --${direction} --${directionalSides[Number(direction === 'right')]}`">
+			<div :class="`map-wins --${direction}`">
 				<div
 					v-for="i in Math.floor(seriesData.bestOf / 2 + 1)"
-					:class="['pip', { '--filled': seriesData.wins[direction] >= i }]"
+					:class="[`pip --${directionalSides[Number(direction === 'right')]}`, { '--filled': seriesData.wins[direction] >= i }]"
 				/>
 			</div>
 		</template>

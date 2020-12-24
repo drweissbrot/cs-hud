@@ -6,7 +6,25 @@
 	width 1rem
 
 	&.--filled {
-		border-color #fff
 		background #fff
+		border-color #fff
+	}
+
+	&.--ct {
+		border-color rgba($ct, .75)
+
+		&.--filled {
+			background $ct
+			border-color $ct
+		}
+	}
+
+	&.--t {
+		border-color rgba($t, .75)
+
+		&.--filled {
+			background $t
+			border-color $t
+		}
 	}
 }
