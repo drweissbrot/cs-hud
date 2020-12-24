@@ -14,7 +14,9 @@
 			<div v-for="round in rounds" :class="`round --${round.side}`">
 				<div class="number">{{ round.number }}</div>
 				<div :class="`colored-bar --${round.side}`" />
+
 				<div v-if="round.image" :class="`image --${round.side}`" v-html="image(require(`../../img/${round.image}.svg`))" />
+				<div v-else class="image" />
 			</div>
 		</div>
 	</div>
