@@ -6,9 +6,10 @@
 			<div
 				v-for="player in players"
 				:class="[`player-dot --${player.team}`, {
+					'--bomb': player.bomb,
+					'--dead': player.dead,
 					'--focused': focusedPlayer && focusedPlayer.observer_slot === player.slot,
 					'--lower': player.level === 'lower',
-					'--dead': player.dead,
 				}]"
 				:style="{ transform: `translate(${player.x}px, ${player.y}px)` }"
 			>
@@ -31,6 +32,13 @@
 				}]"
 				:style="{ transform: `translate(${grenade.x}px, ${grenade.y}px)` }"
 				v-html="grenade.smoke ? null : image(require(`../../img/weapons/${grenade.type}.svg`))"
+			/>
+
+			<div
+				v-if="bomb.state !== 'carried'"
+				:class="[`bomb --${bomb.state}`, { '--lower': bomb.level === 'lower' }]"
+				:style="{ transform: `translate(${bomb.x}px, ${bomb.y}px)` }"
+				v-html="image(require('../../img/weapons/c4.svg'))"
 			/>
 		</template>
 	</div>
@@ -93,6 +101,7 @@ export default {
 		...mapGetters({
 			allgrenades: 'grenades',
 			allplayers: 'allplayers',
+			bombRaw: 'bomb',
 			focusedPlayer: 'player',
 			map: 'map',
 		}),
@@ -112,6 +121,19 @@ export default {
 			const directory = (this.mapData.simpleradar) ? 'simpleradar' : 'ingame'
 
 			return require(`../../img/minimap/${directory}/${this.mapName}.png`).default
+		},
+
+		bomb() {
+			if (! this.bombRaw.state) return { state: 'carried' }
+
+			const [x, y, z] = this.bombRaw.position.split(', ')
+
+			return {
+				state: this.bombRaw.state,
+				x: this.offsetX(x),
+				y: this.offsetY(y),
+				level: this.level(z),
+			}
 		},
 
 		grenades() {
@@ -141,8 +163,10 @@ export default {
 			const players = []
 
 			for (const id in this.allplayers) {
-				const [x, y, z] = this.allplayers[id].position.split(', ')
-				let [ax, ay] = this.allplayers[id].forward.split(', ')
+				const player = this.allplayers[id]
+
+				const [x, y, z] = player.position.split(', ')
+				let [ax, ay] = player.forward.split(', ')
 
 				let angle = ay
 
@@ -155,9 +179,12 @@ export default {
 				if (ax < 0) angle = (angle - 360) * -1
 
 				players.push({
-					slot: this.allplayers[id].observer_slot,
-					dead: this.allplayers[id].state.health === 0,
-					team: this.allplayers[id].team.toLowerCase(),
+					slot: player.observer_slot,
+					team: player.team.toLowerCase(),
+
+					bomb: Object.values(player.weapons).some(({ type }) => type === 'C4'),
+					dead: player.state.health === 0,
+
 					x: this.offsetX(x),
 					y: this.offsetY(y),
 					level: this.level(z),

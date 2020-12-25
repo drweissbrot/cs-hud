@@ -1,4 +1,4 @@
-// z-index: 1 grenades, 2 dead player, 3 alive player, 4 focused player
+// z-index: 1 grenades, 2 bomb, 3 dead player, 4 alive player, 5 focused player
 .minimap {
 	position absolute
 	top 2rem
@@ -11,8 +11,9 @@
 
 	$diameter = 1.7rem
 
-	.player-dot,
-	.grenade {
+	.bomb,
+	.grenade,
+	.player-dot {
 		position absolute
 		top ($diameter / -2)
 		left ($diameter / -2)
@@ -44,16 +45,20 @@
 			teamBackground()
 
 			border-radius 50%
-			z-index 3
+			z-index 4
 
 			&.--focused {
 				box-shadow 0 0 1rem .5rem #fff
-				z-index 4
+				z-index 5
+			}
+
+			&.--bomb {
+				background $red
 			}
 		}
 
 		&.--dead {
-			z-index 2
+			z-index 3
 
 			path {
 				stroke #000
@@ -116,6 +121,29 @@
 
 		svg {
 			height 100%
+		}
+	}
+
+	.bomb {
+		z-index 2
+		center()
+
+		&.--dropped path,
+		&.--planting path {
+			fill $t
+		}
+
+		&.--planted path,
+		&.--defusing path {
+			fill $red
+		}
+
+		&.--defused path {
+			fill $ct
+		}
+
+		svg {
+			height 2.25rem
 		}
 	}
 }
