@@ -1,5 +1,6 @@
 <template>
 	<div v-if="applicable && map" class="container" :style="{ width }">
+		<Minimap />
 		<TopBar :directionalSides="directionalSides" />
 		<PlayersAlive :directionalSides="directionalSides" />
 		<Series :directionalSides="directionalSides" />
@@ -15,6 +16,7 @@
 
 <script>
 import FocusedPlayer from './FocusedPlayer'
+import Minimap from './Minimap'
 import PlayersAlive from './PlayersAlive'
 import RoundGraph from './RoundGraph'
 import RoundWinner from './RoundWinner'
@@ -27,6 +29,7 @@ import { mapGetters } from 'vuex'
 export default {
 	components: {
 		FocusedPlayer,
+		Minimap,
 		PlayersAlive,
 		RoundGraph,
 		RoundWinner,

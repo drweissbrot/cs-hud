@@ -1,0 +1,95 @@
+// z-index: 1 grenades, 2 dead player, 3 alive player, 4 focused player
+.minimap {
+	position absolute
+	top 2rem
+	left 4rem
+	right calc(76.25% + 2rem)
+
+	img {
+		max-width 100%
+	}
+
+	.player-dot {
+		$diameter = 1.7rem
+
+		position absolute
+		top ($diameter / -2)
+		left ($diameter / -2)
+
+		width $diameter
+		height $diameter
+
+		display grid
+		grid-template-columns $diameter
+		grid-template-rows $diameter
+
+		> * {
+			grid-area 1/1
+		}
+
+		color #fff
+		flsize(1.5rem, 1)
+		transition opacity .3s ease
+
+		&:not(.--dead) {
+			teamBackground()
+
+			border-radius 50%
+			z-index 3
+
+			&.--focused {
+				box-shadow 0 0 1rem .5rem #fff
+				z-index 4
+			}
+
+			&.--lower {
+				opacity .75
+			}
+		}
+
+		&.--dead {
+			z-index 2
+
+			path {
+				stroke #000
+				stroke-width .2rem
+			}
+
+			&.--t path {
+				fill $t
+			}
+
+			&.--ct path {
+				fill $ct
+			}
+
+			svg {
+				height 100%
+			}
+		}
+
+		.triangle-circle {
+			position absolute
+			top 0
+			left 0
+
+			center()
+			width $diameter
+			height $diameter
+
+			border .1rem solid #fff
+			border-radius 50%
+		}
+
+		.triangle {
+			transform translateY(($diameter * -1 + .5rem))
+
+			width 0
+			height 0
+
+			border-left ($diameter / 4) solid transparent
+			border-right ($diameter / 4) solid transparent
+			border-bottom ($diameter / 2) solid #fff
+		}
+	}
+}
