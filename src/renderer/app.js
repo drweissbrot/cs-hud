@@ -52,9 +52,11 @@ const store = new Vuex.Store({
 		primaryTeam: (state) => state.primaryTeam,
 		seriesName: (state) => state.seriesName,
 		series: (state) => state.series,
+
 		gameState: (state) => state.gameState,
 		allplayers: (state) => state.gameState.allplayers,
 		bomb: (state) => state.gameState.bomb,
+		grenades: (state) => state.gameState.grenades,
 		map: (state) => state.gameState.map,
 		player: (state) => state.gameState.player,
 		round: (state) => state.gameState.round,

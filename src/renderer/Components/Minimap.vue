@@ -22,6 +22,16 @@
 
 				<div v-else v-html="image(require('../../img/map-death.svg'))" />
 			</div>
+
+			<div
+				v-for="grenade in grenades" :key="grenade.id"
+				:class="[`grenade --${grenade.team}`, {
+					'--lower': grenade.level === 'lower',
+					'--smoke': grenade.smoke,
+				}]"
+				:style="{ transform: `translate(${grenade.x}px, ${grenade.y}px)` }"
+				v-html="grenade.smoke ? null : image(require(`../../img/weapons/${grenade.type}.svg`))"
+			/>
 		</template>
 	</div>
 </template>
@@ -29,6 +39,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import radars from '../radars.js'
+
+const grenadeTypes = {
+	frag: 'hegrenade',
+	smoke: 'smokegrenade',
+}
 
 export default {
 	data() {
@@ -76,6 +91,7 @@ export default {
 
 	computed: {
 		...mapGetters({
+			allgrenades: 'grenades',
 			allplayers: 'allplayers',
 			focusedPlayer: 'player',
 			map: 'map',
@@ -96,6 +112,29 @@ export default {
 			const directory = (this.mapData.simpleradar) ? 'simpleradar' : 'ingame'
 
 			return require(`../../img/minimap/${directory}/${this.mapName}.png`).default
+		},
+
+		grenades() {
+			const grenades = []
+
+			for (const id in this.allgrenades) {
+				const grenade = this.allgrenades[id]
+				if (! grenade || ! (grenade.position || grenade.flames)) continue
+
+				const [x, y, z] = (grenade.position || grenade.flames[Object.keys(grenade.flames).reduce((center, item) =>  center < item ? center : item)]).split(', ')
+
+				grenades.push({
+					id,
+					smoke: grenade.type === 'smoke' && (grenade.velocity === '0.00, 0.00, 0.00' || grenade.effecttime > 0),
+					team: this.allplayers[grenade.owner.numberStr].team.toLowerCase(),
+					type: grenadeTypes[grenade.type] || grenade.type,
+					x: this.offsetX(x),
+					y: this.offsetY(y),
+					level: this.level(z),
+				})
+			}
+
+			return grenades
 		},
 
 		players() {

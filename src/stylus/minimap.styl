@@ -9,9 +9,10 @@
 		max-width 100%
 	}
 
-	.player-dot {
-		$diameter = 1.7rem
+	$diameter = 1.7rem
 
+	.player-dot,
+	.grenade {
 		position absolute
 		top ($diameter / -2)
 		left ($diameter / -2)
@@ -27,6 +28,14 @@
 			grid-area 1/1
 		}
 
+		&:not(.--dead) {
+			&.--lower {
+				opacity .75
+			}
+		}
+	}
+
+	.player-dot {
 		color #fff
 		flsize(1.5rem, 1)
 		transition opacity .3s ease
@@ -40,10 +49,6 @@
 			&.--focused {
 				box-shadow 0 0 1rem .5rem #fff
 				z-index 4
-			}
-
-			&.--lower {
-				opacity .75
 			}
 		}
 
@@ -90,6 +95,27 @@
 			border-left ($diameter / 4) solid transparent
 			border-right ($diameter / 4) solid transparent
 			border-bottom ($diameter / 2) solid #fff
+		}
+	}
+
+	.grenade {
+		z-index 1
+
+		&.--smoke {
+			background rgba(#999, .75)
+			border-radius 50%
+		}
+
+		&.--t path {
+			fill $t
+		}
+
+		&.--ct path {
+			fill $ct
+		}
+
+		svg {
+			height 100%
 		}
 	}
 }
