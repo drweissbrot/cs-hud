@@ -1,5 +1,5 @@
 <template>
-	<div :class="['round-winner', { '--active': active || true }]">
+	<div :class="['round-winner', { '--active': active }]">
 		<div v-if="win_team" :class="`icon --${win_team}`">
 			<img class="flag" :src="`https://flagcdn.com/h60/${team.flag}.png`">
 		</div>

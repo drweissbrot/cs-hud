@@ -148,7 +148,7 @@ export default {
 				grenades.push({
 					id,
 					smoke: grenade.type === 'smoke' && (grenade.velocity === '0.00, 0.00, 0.00' || grenade.effecttime > 0),
-					team: this.allplayers[grenade.owner.numberStr].team.toLowerCase(),
+					team: (this.allplayers[grenade.owner.numberStr] || { team: 'ct' }).team.toLowerCase(),
 					type: grenadeTypes[grenade.type] || grenade.type,
 					x: this.offsetX(x),
 					y: this.offsetY(y),
