@@ -6,8 +6,9 @@ const host = '127.0.0.1'
 const port = 31982
 
 module.exports = class Server {
-	constructor(win) {
-		this.win = win
+	constructor(mainWindow, configWindow) {
+		this.mainWindow = mainWindow
+		this.configWindow = configWindow
 	}
 
 	run() {
@@ -25,7 +26,13 @@ module.exports = class Server {
 			req.on('end', () => {
 				body = jsonBignum.parse(body)
 
-				if (body.auth.token === '7ATvXUzTfBYyMLrA') this.win.webContents.send('gsi', body)
+				if (body.auth.token === '7ATvXUzTfBYyMLrA') {
+					this.mainWindow.webContents.send('gsi', body)
+
+					if (Object.keys(body).some((key) => ['allplayers', 'bomb', 'grenades', 'map', 'player'].includes(key))) {
+						this.configWindow.webContents.send('gsi', body)
+					}
+				}
 
 				res.end()
 			})

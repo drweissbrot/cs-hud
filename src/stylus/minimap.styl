@@ -1,15 +1,23 @@
 // z-index: 1 grenades, 2 bomb, 3 dead player, 4 alive player, 5 focused player
-.minimap {
+
+.container .minimap {
 	position absolute
 	top 2rem
 	left 4rem
 	right calc(76.25% + 2rem)
+}
+
+.config-window .minimap {
+	position relative
+}
+
+.minimap {
+	// $diameter = 1.7rem
+	$diameter = 1.574vh
 
 	img {
 		max-width 100%
 	}
-
-	$diameter = 1.7rem
 
 	.bomb,
 	.grenade,
@@ -38,7 +46,7 @@
 
 	.player-dot {
 		color #fff
-		flsize(1.5rem, 1)
+		flsize(($diameter - .1175 * $diameter), 1)
 		transition opacity .3s ease
 
 		&:not(.--dead) {

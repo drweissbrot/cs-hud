@@ -1,10 +1,30 @@
-.config {
-	background #21
-	color #ae
+.config-window {
+	display flex
+	justify-content space-between
 
 	min-width 100vw
 	min-height 100vh
 	padding 2rem 4rem
+
+	background #21
+	color #ae
+
+	.minimap-wrapper {
+		center()
+		flex-grow 1
+	}
+
+	.minimap {
+		height 100%
+
+		img {
+			height 100%
+			object-fit contain
+		}
+	}
+}
+
+.config {
 	text-align left
 
 	h1 {

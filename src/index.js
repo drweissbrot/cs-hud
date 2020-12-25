@@ -9,10 +9,10 @@ app.commandLine.appendSwitch('disable-gpu')
 // handle creating/removing shortcuts on Windows when installing/uninstalling
 if (require('electron-squirrel-startup')) app.quit()
 
-let mainWindow, seriesDataWindow, server
+let mainWindow, configWindow, server
 
 const createWindow = () => {
-	if (mainWindow || seriesDataWindow || server) return
+	if (mainWindow || configWindow || server) return
 
 	mainWindow = new BrowserWindow({
 		width: 1280,
@@ -31,9 +31,7 @@ const createWindow = () => {
 	mainWindow.webContents.openDevTools({ mode:'undocked' })
 	mainWindow.loadURL(MAIN_WEBPACK_ENTRY + '#hud')
 
-	server = new Server(mainWindow).run()
-
-	seriesDataWindow = new BrowserWindow({
+	configWindow = new BrowserWindow({
 		width: 1280,
 		height: 720,
 		autoHideMenuBar: true,
@@ -43,10 +41,12 @@ const createWindow = () => {
 		},
 	})
 
-	seriesDataWindow.on('closed', () => seriesDataWindow = null)
-	seriesDataWindow.loadURL(MAIN_WEBPACK_ENTRY + '#config')
+	configWindow.on('closed', () => configWindow = null)
+	configWindow.loadURL(MAIN_WEBPACK_ENTRY + '#config')
 
 	ipcMain.on('seriesData', (event, message) => mainWindow.webContents.send('seriesData', message))
+
+	server = new Server(mainWindow, configWindow).run()
 }
 
 // creating the window after a delay is apparently required for transparent windows (due to an electron bug i guess?)
