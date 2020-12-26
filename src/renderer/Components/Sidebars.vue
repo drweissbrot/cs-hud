@@ -55,7 +55,7 @@
 			<div class="wrapper">
 				<div class="economy">
 					<div class="loss-bonus-pips">
-						<div v-for="i in 4" :class="[`pip --${directionalSides[Number(direction === 'right')]}`, { '--filled': lossBonus[direction] >= i }]" />
+						<div v-for="i in 4" :class="[`pip --${directionalSides[Number(direction === 'right')]}`, { '--filled': lossBonus[direction] >= (5 - i) }]" />
 					</div>
 
 					<div class="loss-bonus">
