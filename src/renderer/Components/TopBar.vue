@@ -67,14 +67,14 @@
 
 			<div class="round-no">
 				<template v-if="map.round < 30">
-					Round {{ map.round + 1 }}/30
+					Round {{ map.round + 1 - Number(timers.phase === 'over') }}/30
 				</template>
 
 				<template v-else>
 					OT
 					{{ Math.ceil((map.round - 29) / 6) }}
 					Round
-					{{ (map.round - 29) % 6 }}/6
+					{{ (map.round - 29) % 6 - Number(timers.phase === 'over') }}/6
 				</template>
 			</div>
 		</div>
