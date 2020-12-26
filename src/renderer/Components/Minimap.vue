@@ -4,7 +4,7 @@
 
 		<template v-if="imageHeight !== null">
 			<div
-				v-for="player in players"
+				v-for="player in players" :key="player.id"
 				:class="[`player-dot --${player.team}`, {
 					'--bomb': player.bomb,
 					'--dead': player.dead,
@@ -124,7 +124,7 @@ export default {
 		},
 
 		bomb() {
-			if (! this.bombRaw.state) return { state: 'carried' }
+			if (! this.bombRaw || ! this.bombRaw.state) return { state: 'carried' }
 
 			const [x, y, z] = this.bombRaw.position.split(', ')
 
@@ -168,10 +168,10 @@ export default {
 				const [x, y, z] = player.position.split(', ')
 				let [ax, ay] = player.forward.split(', ')
 
-				let angle = ay
-
 				ax = Math.asin(ax) * 180 / Math.PI
 				ay = Math.acos(ay) * 180 / Math.PI
+
+				let angle = ay
 
 				if (ay < 45) angle = Math.abs(ax)
 				else if (ay > 135) angle = 180 - Math.abs(ax)
@@ -179,6 +179,7 @@ export default {
 				if (ax < 0) angle = (angle - 360) * -1
 
 				players.push({
+					id,
 					slot: player.observer_slot,
 					team: player.team.toLowerCase(),
 

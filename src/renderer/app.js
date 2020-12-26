@@ -6,46 +6,21 @@ import CsgoHud from './Components/Hud.vue'
 
 Vue.use(Vuex)
 
+const loggedKeys = []
+
 const store = new Vuex.Store({
 	state: {
 		primaryTeam: 'Das Deutsche Volk',
 		series: [],
 		seriesName: {},
-		gameState: {
-			"map": {
-				"mode": "competitive",
-				"name": "de_cache",
-				"phase": "live",
-				"round": 14,
-				"team_ct": {
-					"score": 8,
-					"consecutive_round_losses": 0,
-					"timeouts_remaining": 1,
-					name: 'ipsum',
-					"matches_won_this_series": 0
-				},
-				"team_t": {
-					"score": 6,
-					"consecutive_round_losses": 1,
-					"timeouts_remaining": 1,
-					name: "lorem",
-					"matches_won_this_series": 0
-				},
-				"num_matches_to_win_series": 0,
-				"current_spectators": 34,
-				"souvenirs_total": 0
-			},
 
-			phase_countdowns: {
-				phase: 'timeout_ct',
-				phase_ends_in: 24.2,
-			},
-
-			bomb: {
-				state: 'defusing',
-				countdown: 7.5,
-			},
-		},
+		allplayers: null,
+		bomb: null,
+		grenades: null,
+		map: null,
+		player: null,
+		round: null,
+		timers: null,
 	},
 
 	getters: {
@@ -53,14 +28,13 @@ const store = new Vuex.Store({
 		seriesName: (state) => state.seriesName,
 		series: (state) => state.series,
 
-		gameState: (state) => state.gameState,
-		allplayers: (state) => state.gameState.allplayers,
-		bomb: (state) => state.gameState.bomb,
-		grenades: (state) => state.gameState.grenades,
-		map: (state) => state.gameState.map,
-		player: (state) => state.gameState.player,
-		round: (state) => state.gameState.round,
-		timers: (state) => state.gameState.phase_countdowns,
+		allplayers: (state) => state.allplayers,
+		bomb: (state) => state.bomb,
+		grenades: (state) => state.grenades,
+		map: (state) => state.map,
+		player: (state) => state.player,
+		round: (state) => state.round,
+		timers: (state) => state.phase_countdowns,
 	},
 
 	mutations: {
@@ -76,18 +50,14 @@ const store = new Vuex.Store({
 			state.seriesName = seriesName
 		},
 
-		setKey(state, { key, value }) {
-			Vue.set(state.gameState, key, value)
+		setGameStateKey(state, { key, value }) {
+			Vue.set(state, key, value)
 		},
 	},
 
 	actions: {
-		mergeGameStateBurst({ commit }, burst) {
-			for (const key in burst) {
-				if (key === 'previously' || key === 'added') continue
-
-				commit('setKey', { key, value: burst[key] })
-			}
+		setGameStateKey({ commit }, message) {
+			commit('setGameStateKey', message)
 		},
 
 		setSeriesData({ commit }, data) {
@@ -116,11 +86,15 @@ new Vue({
 })
 
 ipcRenderer.on('gsi', (event, message) => {
-	store.dispatch('mergeGameStateBurst', message)
+	store.dispatch('setGameStateKey', message)
 })
 
 ipcRenderer.on('seriesData', (event, message) => {
 	store.dispatch('setSeriesData', message.matches)
 	store.dispatch('setPrimaryTeam', message.primaryTeam)
 	store.dispatch('setSeriesName', message.seriesName)
+})
+
+ipcRenderer.send('request-gsi', {
+	win: (window.location.hash === '#config') ? 'config' : 'main',
 })
