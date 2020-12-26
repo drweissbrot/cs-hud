@@ -1,9 +1,7 @@
 *, *::after, *::before {
+	box-sizing border-box
 	margin 0
 	padding 0
-
-	box-sizing border-box
-	// cursor none // TODO
 }
 
 html {
@@ -19,4 +17,9 @@ body {
 	position relative
 	height 100vh
 	margin auto
+
+	&,
+	* {
+		cursor none
+	}
 }

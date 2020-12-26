@@ -27,8 +27,6 @@ const createWindow = () => {
 	})
 
 	mainWindow.on('closed', () => mainWindow = null)
-
-	mainWindow.webContents.openDevTools({ mode:'undocked' })
 	mainWindow.loadURL(MAIN_WEBPACK_ENTRY + '#hud')
 
 	configWindow = new BrowserWindow({

@@ -107,7 +107,12 @@ export default {
 	methods: {
 		submit() {
 			ipcRenderer.send('seriesData', {
-				matches: this.matches.filter(({ map }) => map),
+				matches: this.matches.filter(({ map }) => map).map((match) => {
+					match.scoreLeft = Number(match.scoreLeft)
+					match.scoreRight = Number(match.scoreRight)
+
+					return match
+				}),
 				primaryTeam: this.primaryTeam,
 				seriesName: {
 					left: this.seriesNameLeft ? (this.seriesNameLeft + '').trim() : null,

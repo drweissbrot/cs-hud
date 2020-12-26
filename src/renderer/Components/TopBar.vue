@@ -122,7 +122,7 @@ export default {
 		},
 
 		formattedRoundTimer() {
-			if (! this.timers || ! this.timers.phase_ends_in) return
+			if (! this.timers.phase_ends_in) return
 
 			const time = Math.ceil(this.timers.phase_ends_in)
 

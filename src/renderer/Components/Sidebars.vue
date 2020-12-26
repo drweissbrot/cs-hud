@@ -105,10 +105,8 @@ export default {
 
 	data() {
 		return {
-			// statsActive: true,
-			// utilityActive: true,
-			statsActive: false, // TODO this line is right
-			utilityActive: false, // TODO this line is right
+			statsActive: false,
+			utilityActive: false,
 		}
 	},
 
