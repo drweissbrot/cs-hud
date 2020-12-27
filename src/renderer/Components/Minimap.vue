@@ -57,6 +57,7 @@ export default {
 	data() {
 		return {
 			imageHeight: null,
+			previousPositions: {},
 		}
 	},
 
@@ -71,11 +72,11 @@ export default {
 
 	methods: {
 		offsetX(x) {
-			return (Number(x) - this.mapData.pos_x) / this.mapData.scale * (this.imageHeight / 1024)
+			return Math.round((Number(x) - this.mapData.pos_x) / this.mapData.scale * (this.imageHeight / 1024))
 		},
 
 		offsetY(y) {
-			return (Number(y) - this.mapData.pos_y) / -this.mapData.scale * (this.imageHeight / 1024)
+			return Math.round((Number(y) - this.mapData.pos_y) / -this.mapData.scale * (this.imageHeight / 1024))
 		},
 
 		onResize() {
@@ -165,7 +166,22 @@ export default {
 			for (const id in this.allplayers) {
 				const player = this.allplayers[id]
 
-				const [x, y, z] = player.position.split(', ')
+				if (! this.previousPositions.hasOwnProperty(id)) this.previousPositions[id] = []
+
+				let [x, y, z] = player.position.split(', ')
+
+				x = this.offsetX(x)
+				y = this.offsetY(y)
+
+				const coordString = JSON.stringify([x, y])
+
+				if (this.previousPositions[id].includes(coordString)) {
+					[x, y] = JSON.parse(this.previousPositions[id][this.previousPositions[id].length - 1])
+				} else {
+					if (this.previousPositions[id].length > 15) this.previousPositions[id].shift()
+					this.previousPositions[id].push(coordString)
+				}
+
 				let [ax, ay] = player.forward.split(', ')
 
 				ax = Math.asin(ax) * 180 / Math.PI
@@ -186,8 +202,7 @@ export default {
 					bomb: Object.values(player.weapons).some(({ type }) => type === 'C4'),
 					dead: player.state.health === 0,
 
-					x: this.offsetX(x),
-					y: this.offsetY(y),
+					x, y,
 					level: this.level(z),
 					angle,
 				})
