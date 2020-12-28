@@ -57,6 +57,7 @@ export default {
 	data() {
 		return {
 			imageHeight: null,
+			previousAngles: {},
 			previousPositions: {},
 		}
 	},
@@ -173,26 +174,25 @@ export default {
 				x = this.offsetX(x)
 				y = this.offsetY(y)
 
-				const coordString = JSON.stringify([x, y])
+				const [ax, ay] = player.forward.split(', ')
+				let angle = (parseFloat(ax) > 0)
+					? 90 + parseFloat(ay) * -90
+					: 270 + parseFloat(ay) * 90
 
-				if (this.previousPositions[id].includes(coordString)) {
-					[x, y] = JSON.parse(this.previousPositions[id][this.previousPositions[id].length - 1])
-				} else {
-					if (this.previousPositions[id].length > 15) this.previousPositions[id].shift()
-					this.previousPositions[id].push(coordString)
+				if (angle > 270 && this.previousAngles[id] < 90) {
+					for (const pos of this.previousPositions[id]) pos[2] += 360
+				} else if (angle < 90 && this.previousAngles[id] > 270) {
+					for (const pos of this.previousPositions[id]) pos[2] -= 360
 				}
 
-				let [ax, ay] = player.forward.split(', ')
+				if (this.previousPositions[id].length > 7) this.previousPositions[id].shift()
+				this.previousPositions[id].push([x, y, angle])
 
-				ax = Math.asin(ax) * 180 / Math.PI
-				ay = Math.acos(ay) * 180 / Math.PI
+				;[x, y, angle] = this.previousPositions[id].reduce(([cx, cy, ca], [x, y, a]) => {
+					return [cx + x, cy + y, ca + a]
+				}, [0, 0, 0])
 
-				let angle = ay
-
-				if (ay < 45) angle = Math.abs(ax)
-				else if (ay > 135) angle = 180 - Math.abs(ax)
-
-				if (ax < 0) angle = (angle - 360) * -1
+				angle = this.previousAngles[id] = angle / this.previousPositions[id].length
 
 				players.push({
 					id,
@@ -202,7 +202,8 @@ export default {
 					bomb: Object.values(player.weapons).some(({ type }) => type === 'C4'),
 					dead: player.state.health === 0,
 
-					x, y,
+					x: x / this.previousPositions[id].length,
+					y: y / this.previousPositions[id].length,
 					level: this.level(z),
 					angle,
 				})
