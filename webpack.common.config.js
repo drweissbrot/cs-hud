@@ -11,6 +11,7 @@ module.exports = {
 			'~Components': path.resolve(__dirname, 'src/renderer/Components/')
 		},
 	},
+
 	module: {
 		rules: [
 			{
@@ -25,7 +26,9 @@ module.exports = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: '[name].css',
+							name: (process.env.npm_lifecycle_event === 'package')
+								? 'main/[name].css'
+								: '[name].css',
 						},
 					},
 					{ loader: 'stylus-loader' },
@@ -39,10 +42,18 @@ module.exports = {
 
 			{
 				test: /\.(png|jpe?g|gif)$/,
-				use: [ { loader: 'file-loader' } ],
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							publicPath: '..',
+						},
+					},
+				],
 			},
 		],
 	},
+
 	plugins: [
 		new VueLoaderPlugin(),
 	],
