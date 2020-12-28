@@ -20,13 +20,15 @@ const createWindow = () => {
 		alwaysOnTop: true,
 		transparent: true,
 		frame: false,
+		fullscreen: true,
 		webPreferences: {
 			nodeIntegration: true,
 			preload: MAIN_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
 
-	mainWindow.on('closed', () => mainWindow = null)
+	mainWindow.on('closed', (e) => e.preventDefault())
+	mainWindow.setIgnoreMouseEvents(true)
 	mainWindow.loadURL(MAIN_WEBPACK_ENTRY + '#hud')
 
 	configWindow = new BrowserWindow({
@@ -39,12 +41,14 @@ const createWindow = () => {
 		},
 	})
 
-	configWindow.on('closed', () => configWindow = null)
+	configWindow.on('closed', (e) => e.preventDefault())
 	configWindow.loadURL(MAIN_WEBPACK_ENTRY + '#config')
 
 	ipcMain.on('seriesData', (event, message) => mainWindow.webContents.send('seriesData', message))
 
 	server = new Server(mainWindow, configWindow).run()
+
+	setInterval(() => mainWindow.showInactive(), 250)
 }
 
 // creating the window after a delay is apparently required for transparent windows (due to an electron bug i guess?)
