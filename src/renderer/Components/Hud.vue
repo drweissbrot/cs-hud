@@ -7,7 +7,7 @@
 
 		<RoundWinner />
 		<Timeout />
-		<RoundGraph />
+		<RoundGraph :directionalSides="directionalSides" />
 
 		<FocusedPlayer :adr="adr" />
 		<Sidebars :adr="adr" :directionalSides="directionalSides" />

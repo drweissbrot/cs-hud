@@ -4,12 +4,29 @@
 	left 30.25%
 	right 30.25%
 
-	background rgba(#000, .5)
 	color #fff
 	transition opacity .5s ease
 
 	&:not(.--active) {
 		opacity 0
+	}
+
+	.match-point-wrapper {
+		display grid
+		grid-template-columns 1fr 1fr
+		grid-gap 1rem
+		margin-bottom .5rem
+
+		.match-point {
+			teamBackground()
+			flsize(2.5rem, 1)
+			padding 1.5rem
+		}
+	}
+
+	.heading,
+	.rounds {
+		background rgba(#000, .5)
 	}
 
 	.heading {

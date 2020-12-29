@@ -1,5 +1,15 @@
 <template>
 	<div :class="['round-graph', { '--active': active }]">
+		<div class="match-point-wrapper">
+			<div v-if="matchpoint.left" :class="`match-point --left --${directionalSides[0]}`">
+				Match Point
+			</div>
+
+			<div v-if="matchpoint.right" :class="`match-point --right --${directionalSides[1]}`">
+				Match Point
+			</div>
+		</div>
+
 		<div class="heading">
 			<template v-if="half === 1">1st Half</template>
 			<template v-else-if="half === 2">2nd Half</template>
@@ -26,6 +36,10 @@
 import { mapGetters } from 'vuex'
 
 export default {
+	props: [
+		'directionalSides',
+	],
+
 	methods: {
 		image(str) {
 			return decodeURIComponent(str.replace(/^data:image\/svg\+xml,/, ''))
@@ -37,6 +51,17 @@ export default {
 			'map',
 			'timers',
 		]),
+
+		matchpoint() {
+			const matchPointRounds = (this.half < 3)
+				? 15
+				: Math.floor((this.half - (this.half % 2 === 0 ? 1 : 0)) / 2) * 3 + 15
+
+			return {
+				left: this.map[`team_${this.directionalSides[0]}`].score === matchPointRounds,
+				right: this.map[`team_${this.directionalSides[1]}`].score === matchPointRounds,
+			}
+		},
 
 		half() {
 			if (this.map.round < 15) return 1
