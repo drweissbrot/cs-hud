@@ -20,7 +20,7 @@ const store = new Vuex.Store({
 		map: null,
 		player: null,
 		round: null,
-		timers: {},
+		phase_countdowns: {},
 	},
 
 	getters: {
