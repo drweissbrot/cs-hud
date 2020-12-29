@@ -11,6 +11,7 @@
 
 	.minimap-wrapper {
 		center()
+		justify-content flex-start
 		flex-grow 1
 	}
 
@@ -39,7 +40,7 @@
 	.match {
 		display grid
 		grid-template-columns 1fr 4fr 2fr 2fr 2fr 2fr
-		margin-bottom 2rem
+		margin-top 2rem
 
 		.number {
 			flsize(3rem, 1)
@@ -72,6 +73,17 @@
 		&[type='number'] {
 			width calc(6ch + 3rem)
 		}
+	}
+
+	textarea {
+		background none
+		color inherit
+		border .1rem solid #ae
+		padding .8rem 1.5rem
+
+		width 100%
+		min-height (3em * 1.5)
+		resize vertical
 	}
 
 	button {
