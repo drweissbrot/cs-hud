@@ -84,19 +84,27 @@ export default {
 		rounds() {
 			const rounds = []
 
-			for (let i = this.firstRound; i < this.firstRound + this.roundCount; i++) {
-				const number = (i > 30) ? i - 30 : i
+			for (let i = 0; i < this.roundCount; i++) {
+				const number = (i > 30) ? i + 1 : i + ((this.half === 2) ? 2 : 1)
 				const win = this.map.round_wins ? (this.map.round_wins[number] || '') : ''
 				const image = win.split('_')[2]
 
-				rounds.push({
-					number: i,
-					side: win.startsWith('ct_') ? 'ct' : (win.startsWith('t_') ? 't' : null),
-					image: (image === 'defuse')
-						? 'weapons/defuser'
-						: (image === 'time' ? 'timer' : image),
-					borderRight: i > 30 && (i - 30) % 3 === 0,
-				})
+				if (this.firstRound + i > this.map.round) {
+					rounds.push({
+						number: this.firstRound + i,
+						side: null,
+						borderRight: i > 30 && (i - 30) % 3 === 0,
+					})
+				} else {
+					rounds.push({
+						number: this.firstRound + i,
+						side: win.startsWith('ct_') ? 'ct' : (win.startsWith('t_') ? 't' : null),
+						image: (image === 'defuse')
+							? 'weapons/defuser'
+							: (image === 'time' ? 'timer' : image),
+						borderRight: i > 30 && (i - 30) % 3 === 0,
+					})
+				}
 			}
 
 			return rounds

@@ -192,7 +192,7 @@ export default {
 
 	watch: {
 		timers(timers, previously) {
-			if (timers.phase === previously.phase) return
+			if (timers.phase === previously.phase || previously.phase === 'defuse') return
 
 			if (timers.phase === 'live') {
 				this.timeout = setTimeout(() => {
@@ -208,8 +208,11 @@ export default {
 				this.timeout = setTimeout(() => this.utilityActive = false, 7500)
 			} else if (['freezetime', 'paused', 'timeout_ct', 'timeout_t'].includes(timers.phase)) {
 				clearTimeout(this.timeout)
+				this.statsActive = this.utilityActive = true
+			} else if (timers.phase === 'warmup') {
+				clearTimeout(this.timeout)
 				this.statsActive = true
-				this.utilityActive = true
+				this.utilityActive = false
 			}
 		},
 	},

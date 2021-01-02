@@ -10,6 +10,8 @@ const loggedKeys = []
 
 const store = new Vuex.Store({
 	state: {
+		cleardata: 0,
+
 		primaryTeam: 'Das Deutsche Volk',
 		series: [],
 		seriesName: {},
@@ -24,6 +26,8 @@ const store = new Vuex.Store({
 	},
 
 	getters: {
+		cleardata: (state) => state.cleardata,
+
 		primaryTeam: (state) => state.primaryTeam,
 		seriesName: (state) => state.seriesName,
 		series: (state) => state.series,
@@ -38,6 +42,16 @@ const store = new Vuex.Store({
 	},
 
 	mutations: {
+		resetGameState(state) {
+			state.allplayers = null
+			state.bomb = null
+			state.grenades = null
+			state.map = null
+			state.player = null
+			state.round = null
+			state.phase_countdowns = {}
+		},
+
 		setSeriesData(state, data) {
 			state.series = data
 		},
@@ -53,9 +67,18 @@ const store = new Vuex.Store({
 		setGameStateKey(state, { key, value }) {
 			Vue.set(state, key, value)
 		},
+
+		cleardata(state) {
+			state.cleardata++
+		},
 	},
 
 	actions: {
+		resetGameState({ commit }) {
+			commit('resetGameState')
+			commit('cleardata')
+		},
+
 		setGameStateKey({ commit }, message) {
 			commit('setGameStateKey', message)
 		},
@@ -84,7 +107,8 @@ new Vue({
 })
 
 ipcRenderer.on('gsi', (event, message) => {
-	store.dispatch('setGameStateKey', message)
+	if (message.key === 'player' && message.value.activity === 'menu') store.dispatch('resetGameState')
+	else store.dispatch('setGameStateKey', message)
 })
 
 ipcRenderer.on('seriesData', (event, message) => {

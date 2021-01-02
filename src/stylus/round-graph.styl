@@ -14,13 +14,16 @@
 	.match-point-wrapper {
 		display grid
 		grid-template-columns 1fr 1fr
-		grid-gap 1rem
 		margin-bottom .5rem
 
 		.match-point {
 			teamBackground()
 			flsize(2.5rem, 1)
 			padding 1.5rem
+
+			&.--right {
+				grid-area 1/2
+			}
 		}
 	}
 
@@ -47,7 +50,7 @@
 			flsize(2rem, 1)
 
 			padding .5rem 0 1rem
-			flex-grow 1
+			flex 1 1 0
 
 			&.--null {
 				background rgba(#fff, .25)

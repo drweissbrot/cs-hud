@@ -38,7 +38,10 @@
 		}]">
 			<div class="defuse-timer">
 				<div class="progress-bar">
-					<div class="fill" :style="{ transform: `scaleX(${bomb.countdown / (defuserHasKit ? 5 : 10)})` }" />
+					<div
+						class="fill"
+						:style="{ transform: `scaleX(${Math.min(bomb.countdown, defuseDuration) / defuseDuration})` }"
+					/>
 				</div>
 			</div>
 		</div>
@@ -74,7 +77,9 @@
 					OT
 					{{ Math.ceil((map.round - 29) / 6) }}
 					Round
-					{{ (map.round - 29) % 6 - Number(timers.phase === 'over') }}/6
+					{{
+						Math.max(1, map.round - 29 - ((Math.ceil((map.round - 29) / 6) - 1) * 6) - Number(timers.phase === 'over'))
+					}}/6
 				</template>
 			</div>
 		</div>
@@ -98,7 +103,7 @@ export default {
 
 	data() {
 		return {
-			defuserHasKit: false,
+			defuseDuration: 10,
 			bombTimerScale: 1,
 			bombTimerScaleInterval: null,
 		}
@@ -170,10 +175,9 @@ export default {
 				this.bombTimerScaleInterval = null
 			}
 
-			try {
-				const hasKit = this.allplayers[now.player.numberStr].state.defusekit
-				if (typeof hasKit === 'boolean') this.defuserHasKit = hasKit
-			} catch {}
+			if (now.state === 'defusing' && this.allplayers[now.player.numberStr].state) {
+				this.defuseDuration = (this.allplayers[now.player.numberStr].state.defusekit || false) ? 5 : 10
+			}
 		},
 
 		timers(now) {
