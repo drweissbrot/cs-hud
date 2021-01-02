@@ -10,6 +10,8 @@ const loggedKeys = []
 
 const store = new Vuex.Store({
 	state: {
+		cleardata: 0,
+
 		primaryTeam: 'Das Deutsche Volk',
 		series: [],
 		seriesName: {},
@@ -24,6 +26,8 @@ const store = new Vuex.Store({
 	},
 
 	getters: {
+		cleardata: (state) => state.cleardata,
+
 		primaryTeam: (state) => state.primaryTeam,
 		seriesName: (state) => state.seriesName,
 		series: (state) => state.series,
@@ -63,11 +67,16 @@ const store = new Vuex.Store({
 		setGameStateKey(state, { key, value }) {
 			Vue.set(state, key, value)
 		},
+
+		cleardata(state) {
+			state.cleardata++
+		},
 	},
 
 	actions: {
 		resetGameState({ commit }) {
 			commit('resetGameState')
+			commit('cleardata')
 		},
 
 		setGameStateKey({ commit }, message) {

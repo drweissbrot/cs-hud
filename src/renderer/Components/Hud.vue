@@ -81,6 +81,7 @@ export default {
 	computed: {
 		...mapGetters([
 			'allplayers',
+			'cleardata',
 			'map',
 			'primaryTeam',
 			'round',
@@ -117,6 +118,11 @@ export default {
 					this.roundDamage[id][round] = allplayers[id].state.round_totaldmg
 				}
 			}
+		},
+
+		cleardata() {
+			this.adr = {}
+			this.roundDamage = {}
 		},
 
 		round(round, previous) {
