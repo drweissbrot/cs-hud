@@ -41,6 +41,10 @@
 		transform translateY(calc(100% + .2rem))
 	}
 
+	&.--stats-active:not(.--utility-active) .wrapper.--series-name > * {
+		transform translateY($utilityHeight + .5rem)
+	}
+
 	&:not(.--stats-active) .wrapper.--series-name > * {
 		transform translateY($economyHeight + .5rem)
 	}
