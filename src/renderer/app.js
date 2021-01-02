@@ -38,6 +38,16 @@ const store = new Vuex.Store({
 	},
 
 	mutations: {
+		resetGameState(state) {
+			state.allplayers = null
+			state.bomb = null
+			state.grenades = null
+			state.map = null
+			state.player = null
+			state.round = null
+			state.phase_countdowns = {}
+		},
+
 		setSeriesData(state, data) {
 			state.series = data
 		},
@@ -56,6 +66,10 @@ const store = new Vuex.Store({
 	},
 
 	actions: {
+		resetGameState({ commit }) {
+			commit('resetGameState')
+		},
+
 		setGameStateKey({ commit }, message) {
 			commit('setGameStateKey', message)
 		},
@@ -84,7 +98,8 @@ new Vue({
 })
 
 ipcRenderer.on('gsi', (event, message) => {
-	store.dispatch('setGameStateKey', message)
+	if (message.key === 'player' && message.value.activity === 'menu') store.dispatch('resetGameState')
+	else store.dispatch('setGameStateKey', message)
 })
 
 ipcRenderer.on('seriesData', (event, message) => {
