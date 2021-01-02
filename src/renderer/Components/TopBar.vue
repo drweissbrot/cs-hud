@@ -74,7 +74,9 @@
 					OT
 					{{ Math.ceil((map.round - 29) / 6) }}
 					Round
-					{{ (map.round - 29) % 6 - Number(timers.phase === 'over') }}/6
+					{{
+						Math.max(1, map.round - 29 - ((Math.ceil((map.round - 29) / 6) - 1) * 6) - Number(timers.phase === 'over'))
+					}}/6
 				</template>
 			</div>
 		</div>
