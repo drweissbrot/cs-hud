@@ -192,7 +192,7 @@ export default {
 
 	watch: {
 		timers(timers, previously) {
-			if (timers.phase === previously.phase) return
+			if (timers.phase === previously.phase || previously.phase === 'defuse') return
 
 			if (timers.phase === 'live') {
 				this.timeout = setTimeout(() => {
