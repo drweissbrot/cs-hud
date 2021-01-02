@@ -112,7 +112,10 @@ export default {
 
 			for (const id in allplayers) {
 				if (! this.roundDamage.hasOwnProperty(id)) this.roundDamage[id] = {}
-				this.roundDamage[id][round] = allplayers[id].state.round_totaldmg
+
+				if ((this.roundDamage[id][round] || 0) < allplayers[id].state.round_totaldmg) {
+					this.roundDamage[id][round] = allplayers[id].state.round_totaldmg
+				}
 			}
 		},
 
