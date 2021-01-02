@@ -172,10 +172,9 @@ export default {
 				this.bombTimerScaleInterval = null
 			}
 
-			try {
-				const hasKit = this.allplayers[now.player.numberStr].state.defusekit
-				if (typeof hasKit === 'boolean') this.defuserHasKit = hasKit
-			} catch {}
+			if (now.state === 'defusing' && this.allplayers[now.player.numberStr].state) {
+				this.defuserHasKit = this.allplayers[now.player.numberStr].state.defusekit || false
+			}
 		},
 
 		timers(now) {
