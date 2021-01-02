@@ -208,8 +208,11 @@ export default {
 				this.timeout = setTimeout(() => this.utilityActive = false, 7500)
 			} else if (['freezetime', 'paused', 'timeout_ct', 'timeout_t'].includes(timers.phase)) {
 				clearTimeout(this.timeout)
+				this.statsActive = this.utilityActive = true
+			} else if (timers.phase === 'warmup') {
+				clearTimeout(this.timeout)
 				this.statsActive = true
-				this.utilityActive = true
+				this.utilityActive = false
 			}
 		},
 	},
