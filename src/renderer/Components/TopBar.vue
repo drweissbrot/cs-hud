@@ -38,7 +38,10 @@
 		}]">
 			<div class="defuse-timer">
 				<div class="progress-bar">
-					<div class="fill" :style="{ transform: `scaleX(${bomb.countdown / (defuserHasKit ? 5 : 10)})` }" />
+					<div
+						class="fill"
+						:style="{ transform: `scaleX(${Math.min(bomb.countdown, defuseDuration) / defuseDuration})` }"
+					/>
 				</div>
 			</div>
 		</div>
@@ -100,7 +103,7 @@ export default {
 
 	data() {
 		return {
-			defuserHasKit: false,
+			defuseDuration: 10,
 			bombTimerScale: 1,
 			bombTimerScaleInterval: null,
 		}
@@ -173,7 +176,7 @@ export default {
 			}
 
 			if (now.state === 'defusing' && this.allplayers[now.player.numberStr].state) {
-				this.defuserHasKit = this.allplayers[now.player.numberStr].state.defusekit || false
+				this.defuseDuration = (this.allplayers[now.player.numberStr].state.defusekit || false) ? 5 : 10
 			}
 		},
 
