@@ -2,11 +2,11 @@
 	<div :class="['round-graph', { '--active': active }]">
 		<div class="match-point-wrapper">
 			<div v-if="matchpoint.left" :class="`match-point --left --${directionalSides[0]}`">
-				Match Point
+				{{ matchPointText.left }}
 			</div>
 
 			<div v-if="matchpoint.right" :class="`match-point --right --${directionalSides[1]}`">
-				Match Point
+				{{ matchPointText.right }}
 			</div>
 		</div>
 
@@ -50,6 +50,7 @@ export default {
 		...mapGetters([
 			'map',
 			'timers',
+			'series',
 		]),
 
 		matchpoint() {
@@ -109,6 +110,17 @@ export default {
 
 		active() {
 			return ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(this.timers.phase)
+		},
+
+		matchPointText() {
+			if (this.series.length < 2 || this.series.length % 2 === 0) return { left: 'Match Point', right: 'Match Point' }
+
+			const matchWinsRequiredToWinSeries = Math.ceil(this.series.length / 2)
+
+			return {
+				left: this.series.reduce((wins, match) => wins + (match.scoreLeft > match.scoreRight), 0) + 1 >= matchWinsRequiredToWinSeries ? 'Series Point' : 'Match Point',
+				right: this.series.reduce((wins, match) => wins + (match.scoreLeft < match.scoreRight), 0) + 1 >= matchWinsRequiredToWinSeries ? 'Series Point' : 'Match Point',
+			}
 		},
 	},
 }
