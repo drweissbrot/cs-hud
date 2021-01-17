@@ -8,7 +8,7 @@
 				<img :src="`https://flagcdn.com/h60/${team.flag}.png`">
 			</div>
 
-			<div :class="`map-wins --${direction}`">
+			<div v-if="seriesData.bestOf !== 1" :class="`map-wins --${direction}`">
 				<div
 					v-for="i in Math.floor(seriesData.bestOf / 2 + 1)"
 					:class="[`pip --${directionalSides[Number(direction === 'right')]}`, { '--filled': seriesData.wins[direction] >= i }]"
@@ -84,7 +84,7 @@
 			</div>
 		</div>
 
-		<div class="map-no">
+		<div class="map-no" v-if="seriesData.bestOf !== 1">
 			Map
 			{{ seriesData.wins.left + seriesData.wins.right + 1 }}
 			of

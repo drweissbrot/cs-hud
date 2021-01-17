@@ -1,6 +1,6 @@
 <template>
 	<div
-		v-if="series.length > 0"
+		v-if="series.length > 1"
 		:class="['series', { '--active': map.phase === 'intermission' || ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(timers.phase) }]"
 	>
 		<div class="headings">
