@@ -29,7 +29,13 @@
 						</div>
 
 						<div class="score" v-if="match.scoreLeft || match.scoreRight">
-							{{ match.scoreLeft }} : {{ match.scoreRight }}
+							<template v-if="match.scoreRight > match.scoreLeft">
+								<span class="number">{{ match.scoreRight }}</span> : <span class="number">{{ match.scoreLeft }}</span>
+							</template>
+
+							<template v-else>
+								<span class="number">{{ match.scoreLeft }}</span> : <span class="number">{{ match.scoreRight }}</span>
+							</template>
 						</div>
 					</template>
 				</div>
