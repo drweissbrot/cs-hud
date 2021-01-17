@@ -34,7 +34,7 @@
 			<div class="number --kills">{{ player.match_stats.kills }}</div>
 			<div class="number --assists">{{ player.match_stats.assists }}</div>
 			<div class="number --deaths">{{ player.match_stats.deaths }}</div>
-			<div class="number --adr">{{ Math.round((adr[player.steamid] || 0) * 10) / 10 }}</div>
+			<div class="number --adr">{{ Math.round((adr[player.steamid] || 0)) }}</div>
 		</div>
 
 		<div class="ammo-utility">
