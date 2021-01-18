@@ -42,6 +42,7 @@ export default {
 	data() {
 		return {
 			adr: {},
+			damageAtBeginningOfRound: {},
 			roundDamage: {},
 			width: null,
 		}
@@ -105,7 +106,15 @@ export default {
 
 	watch: {
 		allplayers(allplayers) {
-			if (! this.round || this.round.phase === 'freezetime') return
+			if (! this.round) return
+
+			if (this.round.phase === 'freezetime') {
+				for (const id in allplayers) {
+					this.damageAtBeginningOfRound[id] = allplayers[id].state.round_totaldmg
+				}
+
+				return
+			}
 
 			const round = (this.round.phase === 'over')
 				? this.map.round - 1
@@ -114,9 +123,11 @@ export default {
 			for (const id in allplayers) {
 				if (! this.roundDamage.hasOwnProperty(id)) this.roundDamage[id] = {}
 
-				if ((this.roundDamage[id][round] || 0) < allplayers[id].state.round_totaldmg) {
-					this.roundDamage[id][round] = allplayers[id].state.round_totaldmg
-				}
+				if (! this.roundDamage[id].hasOwnProperty(round)) this.roundDamage[id][round] = 0
+
+				const roundDamage = allplayers[id].state.round_totaldmg - this.damageAtBeginningOfRound[id]
+
+				if (this.roundDamage[id][round] < roundDamage) this.roundDamage[id][round] = roundDamage
 			}
 		},
 
