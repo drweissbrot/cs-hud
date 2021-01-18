@@ -1,5 +1,5 @@
 <template>
-	<div :class="['focused-player', { '--active': player.spectarget && player.spectarget !== 'free' }]">
+	<div :class="['focused-player', { '--active': focusedPlayer.spectarget && focusedPlayer.spectarget !== 'free' }]">
 		<div :class="`name --${side}`">
 			<img :src="`https://flagcdn.com/h60/${team.flag}.png`">
 			<div class="label">{{ player.name }}</div>
@@ -69,17 +69,15 @@ export default {
 
 	data() {
 		return {
-			//
+			player: { match_stats: {}, state: {} },
 		}
 	},
 
-	// TODO not absolutely necessary, but this should clear the console of a ton of errors:
-	// all computed properties should be "cached" instead, i.e. move to data and just modify whenever we have new data (but don't change when the player is suddenly missing, because they're dead or observer switched to free-flying)
 	computed: {
-		...mapGetters([
-			'map',
-			'player',
-		]),
+		...mapGetters({
+			map: 'map',
+			focusedPlayer: 'player',
+		}),
 
 		activeWeapon() {
 			for (const key in this.player.weapons) {
@@ -117,6 +115,12 @@ export default {
 			}
 
 			return false
+		},
+	},
+
+	watch: {
+		focusedPlayer(focusedPlayer) {
+			if (focusedPlayer.spectarget && focusedPlayer.spectarget !== 'free') this.player = focusedPlayer
 		},
 	},
 }
