@@ -5,6 +5,14 @@
 	&.--left {
 		left 4rem
 		right calc(69.75% + 2rem)
+
+		.economy {
+			padding-right .5rem
+
+			.loss-bonus-pips {
+				padding-right 0
+			}
+		}
 	}
 
 	&.--right {
@@ -25,6 +33,11 @@
 
 		.economy {
 			flex-direction row-reverse
+			padding-left .5rem
+
+			.loss-bonus-pips {
+				padding-left 0
+			}
 		}
 	}
 
@@ -130,8 +143,7 @@
 		display flex
 
 		.loss-bonus-pips {
-			grid-area lbpips
-			padding .5rem 1rem
+			padding .5rem .75rem
 		}
 
 		.label {
@@ -144,18 +156,11 @@
 		}
 
 		.loss-bonus,
-		.equipment-value {
+		.equipment-value,
+		.team-money {
 			center()
 			flex-direction column
 			flex-grow 1
-		}
-
-		.loss-bonus {
-			grid-area lb
-		}
-
-		.equipment-value {
-			grid-area eq
 		}
 	}
 }

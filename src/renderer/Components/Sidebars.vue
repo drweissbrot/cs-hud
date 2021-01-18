@@ -67,10 +67,19 @@
 
 					<div class="equipment-value">
 						<div :class="`label --${directionalSides[Number(direction === 'right')]}`">
-							Equipment Value
+							Equip Value
 						</div>
 						<div class="number">
 							${{ equipmentValue[direction] }}
+						</div>
+					</div>
+
+					<div class="team-money">
+						<div :class="`label --${directionalSides[Number(direction === 'right')]}`">
+							Team Money
+						</div>
+						<div class="number">
+							${{ teamMoney[direction] }}
 						</div>
 					</div>
 				</div>
@@ -155,6 +164,13 @@ export default {
 			return {
 				left: this.left.reduce((sum, player) => sum + player.state.equip_value, 0),
 				right: this.right.reduce((sum, player) => sum + player.state.equip_value, 0),
+			}
+		},
+
+		teamMoney() {
+			return {
+				left: this.left.reduce((sum, player) => sum + player.state.money, 0),
+				right: this.right.reduce((sum, player) => sum + player.state.money, 0),
 			}
 		},
 
