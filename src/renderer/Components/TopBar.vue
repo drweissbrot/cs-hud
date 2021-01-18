@@ -54,9 +54,12 @@
 				<img v-if="timers.phase === 'paused'" src="../../img/pause.svg">
 
 				<template v-else-if="map.phase === 'live' || map.phase === 'intermission'">
-					<template v-if="['bomb', 'defuse'].includes(timers.phase)">
-						Planted
-					</template>
+					<div class="images" v-if="['bomb', 'defuse'].includes(timers.phase)">
+						<div class="img --c4" v-html="image(require('../../img/bomb_c4.svg'))" />
+
+						<div v-if="bombPlantedOnSite === 'a'" class="img" v-html="image(require('../../img/map_bombzone_a.svg'))" />
+						<div v-else-if="bombPlantedOnSite === 'b'" class="img" v-html="image(require('../../img/map_bombzone_b.svg'))" />
+					</div>
 
 					<template v-else>
 						{{ formattedRoundTimer }}
@@ -95,6 +98,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import bombsites from '../bombsites.js'
 
 export default {
 	props: [
@@ -109,6 +113,12 @@ export default {
 		}
 	},
 
+	methods: {
+		image(str) {
+			return decodeURIComponent(str.replace(/^data:image\/svg\+xml,/, ''))
+		},
+	},
+
 	computed: {
 		...mapGetters([
 			'allplayers',
@@ -117,6 +127,33 @@ export default {
 			'timers',
 			'series',
 		]),
+
+		bombPlantedOnSite() {
+			if (! this.bomb || ! this.bomb.position) return
+
+			const mapName = this.map.name.replace(/^.*\//, '')
+
+			if (! bombsites.hasOwnProperty(mapName)) return
+
+			let leastDistance = false
+			let leastDistanceTo = false
+
+			for (const site in bombsites[mapName]) {
+				const [center, min, max] = bombsites[mapName][site]
+				const [x, y, z] = this.bomb.position.split(', ')
+
+				if (x >= min.x && x <= max.x && y >= min.y && y <= max.y && z >= min.z && z <= max.z) return site
+
+				const distance = Math.sqrt(Math.pow(center.x - x, 2),Math.pow(center.y - y, 2),Math.pow(center.z - z, 2))
+
+				if (leastDistance === false || distance < leastDistance) {
+					leastDistance = distance
+					leastDistanceTo = site
+				}
+			}
+
+			if (leastDistanceTo !== false) return leastDistanceTo
+		},
 
 		left() {
 			return this.map[`team_${this.directionalSides[0]}`]
