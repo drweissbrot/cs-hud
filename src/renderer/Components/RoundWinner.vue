@@ -1,16 +1,19 @@
 <template>
 	<div :class="['round-winner', { '--active': active }]">
 		<div v-if="win_team" :class="`icon --${win_team}`">
-			<img class="flag" :src="`https://flagcdn.com/h60/${team.flag}.png`">
+			<img v-if="team.flag" :src="`https://flagcdn.com/h120/${team.flag}.png`" class="flag">
+			<img v-else-if="win_team === 'ct'" src="../../img/ct.svg" class="flag">
+			<img v-else src="../../img/t.svg" class="flag">
 		</div>
 
 		<div v-if="win_team" class="text">
 			<div :class="`label --${win_team}`">
-				{{ team.name }}
+				{{ team.name || (win_team === 'ct' ? 'Counter-Terrorists' : 'Terrorists') }}
 			</div>
 
 			<div class="info">
-				wins the Round<br>
+				{{ team.name ? 'wins' : 'win' }}
+				the Round<br>
 				{{ reason }}
 			</div>
 		</div>

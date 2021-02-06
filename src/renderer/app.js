@@ -97,6 +97,8 @@ const store = new Vuex.Store({
 	},
 })
 
+if (window.location.hash === '#hud') document.documentElement.classList.add('hud')
+
 new Vue({
 	el: '#app',
 	store,

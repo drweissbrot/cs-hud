@@ -15,7 +15,7 @@
 					<div class="map">{{ match.map }}</div>
 
 					<div class="picked" v-if="match.picked">
-						<img :src="`https://flagcdn.com/h60/${teams[match.picked].flag}.png`">
+						<img :src="`https://flagcdn.com/h120/${teams[match.picked].flag}.png`">
 					</div>
 
 					<div v-if="match.currentlyPlaying" class="currently-playing">
@@ -24,8 +24,8 @@
 
 					<template v-else>
 						<div class="winner">
-							<img v-if="match.scoreLeft > match.scoreRight" :src="`https://flagcdn.com/h60/${teams[0].flag}.png`">
-							<img v-else-if="match.scoreRight > match.scoreLeft" :src="`https://flagcdn.com/h60/${teams[1].flag}.png`">
+							<img v-if="match.scoreLeft > match.scoreRight" :src="`https://flagcdn.com/h120/${teams[0].flag}.png`">
+							<img v-else-if="match.scoreRight > match.scoreLeft" :src="`https://flagcdn.com/h120/${teams[1].flag}.png`">
 						</div>
 
 						<div class="score" v-if="match.scoreLeft || match.scoreRight">

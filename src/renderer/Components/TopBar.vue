@@ -1,11 +1,13 @@
 <template>
 	<div class="top-bar">
 		<template v-for="(team, direction) in { left, right }">
-			<div :class="`team-name --${direction} --${directionalSides[Number(direction === 'right')]}`">{{ team.name }}</div>
+			<div :class="`team-name --${direction} --${directionalSides[Number(direction === 'right')]}`">{{ team.name || (directionalSides[Number(direction === 'right')] === 'ct' ? 'Counter-Terrorists' : 'Terrorists') }}</div>
 			<div :class="`round-wins --${direction} --${directionalSides[Number(direction === 'right')]}`">{{ team.score }}</div>
 
 			<div :class="`flag --${direction}`">
-				<img :src="`https://flagcdn.com/h60/${team.flag}.png`">
+				<img v-if="team.flag" :src="`https://flagcdn.com/h120/${team.flag}.png`">
+				<img v-else-if="directionalSides[Number(direction === 'right')] === 'ct'" src="../../img/ct.svg">
+				<img v-else src="../../img/t.svg">
 			</div>
 
 			<div v-if="seriesData.bestOf !== 1" :class="`map-wins --${direction}`">
