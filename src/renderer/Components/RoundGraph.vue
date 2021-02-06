@@ -11,13 +11,19 @@
 		</div>
 
 		<div class="heading">
-			<template v-if="half === 1">1st Half</template>
-			<template v-else-if="half === 2">2nd Half</template>
-			<template v-else>
-				OT {{ Math.ceil((half - 2) / 2) }}
-				<template v-if="half % 2">1st Half</template>
-				<template v-else>2nd Half</template>
-			</template>
+			<div>
+				<template v-if="half === 1">1st Half</template>
+				<template v-else-if="half === 2">2nd Half</template>
+				<template v-else>
+					OT {{ Math.ceil((half - 2) / 2) }}
+					<template v-if="half % 2">1st Half</template>
+					<template v-else>2nd Half</template>
+				</template>
+			</div>
+
+			<div>
+				First to {{ roundsForMatchPoint + 1 }} Rounds
+			</div>
 		</div>
 
 		<div :class="['rounds', { '--ot': half >= 3 }]">
@@ -54,14 +60,16 @@ export default {
 		]),
 
 		matchpoint() {
-			const matchPointRounds = (this.half < 3)
+			return {
+				left: this.map[`team_${this.directionalSides[0]}`].score === this.roundsForMatchPoint,
+				right: this.map[`team_${this.directionalSides[1]}`].score === this.roundsForMatchPoint,
+			}
+		},
+
+		roundsForMatchPoint() {
+			return (this.half < 3)
 				? 15
 				: Math.floor((this.half - (this.half % 2 === 0 ? 1 : 0)) / 2) * 3 + 15
-
-			return {
-				left: this.map[`team_${this.directionalSides[0]}`].score === matchPointRounds,
-				right: this.map[`team_${this.directionalSides[1]}`].score === matchPointRounds,
-			}
 		},
 
 		half() {
