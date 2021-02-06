@@ -86,9 +86,10 @@
 			</div>
 
 			<SidebarPlayer
-				v-for="player in players"
-				:key="player.observer_slot"
+				v-for="(player, index) in players"
+				:key="player.steamid"
 				:adr="adr[player.steamid]"
+				:observerSlot="index + (direction === 'right' ? 6 : 1)"
 				:player="player"
 				:side="directionalSides[Number(direction === 'right')]"
 			/>
@@ -141,10 +142,7 @@ export default {
 				players.push(this.allplayers[id])
 			}
 
-			return players.sort(({ observer_slot: a }, { observer_slot: b }) => {
-				if (a === 0) a = 100
-				if (b === 0) b = 100
-
+			return players.sort(({ name: a }, { name: b }) => {
 				if (a === b) return 0
 				return (a > b) ? 1 : -1
 			})

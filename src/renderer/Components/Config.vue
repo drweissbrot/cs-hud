@@ -1,7 +1,32 @@
 <template>
 	<div v-if="applicable" class="config-window">
+		<div class="info-wrapper">
+			<div></div>
+
+			<div class="big">
+				<div v-for="player in playersAlphabetically.left" :class="`slot --${player.team.toLowerCase()}`">
+					{{ player.observer_slot }}
+				</div>
+			</div>
+		</div>
+
 		<div class="minimap-wrapper">
 			<Minimap />
+		</div>
+
+		<div class="info-wrapper">
+			<div>
+				<div v-for="player in observerSlots" :class="`slot --${player.team.toLowerCase()}`">
+					{{ player.observer_slot }}
+					{{ player.name }}
+				</div>
+			</div>
+
+			<div class="big">
+				<div v-for="player in playersAlphabetically.right" :class="`slot --${player.team.toLowerCase()}`">
+					{{ player.observer_slot }}
+				</div>
+			</div>
 		</div>
 
 		<div class="config">
@@ -88,6 +113,7 @@
 
 <script>
 import { ipcRenderer } from 'electron'
+import { mapGetters } from 'vuex'
 import Minimap from './Minimap'
 
 export default {
@@ -123,8 +149,66 @@ export default {
 	},
 
 	computed: {
+		...mapGetters([
+			'allplayers',
+			'map',
+		]),
+
 		applicable() {
 			return window.location.hash === '#config'
+		},
+
+		directionalSides() {
+			if (! this.map) return ['ct', 't']
+
+			if (this.map.team_ct.name === this.primaryTeam) return ['ct', 't']
+			if (this.map.team_t.name === this.primaryTeam) return ['t', 'ct']
+			if (this.map.team_ct.flag === 'de') return ['ct', 't']
+			if (this.map.team_t.flag === 'de') return ['t', 'ct']
+
+			return ['ct', 't']
+		},
+
+		observerSlots() {
+			const players = []
+
+			for (const id in this.allplayers) {
+				if (this.allplayers[id].observer_slot !== undefined) players.push(this.allplayers[id])
+			}
+
+			players.sort(({ observer_slot: a }, { observer_slot: b }) => {
+				if (a === 0) return 100
+				if (b === 0) return 100
+
+				if (a === b) return 0
+				return (a > b) ? 1 : -1
+			})
+
+			return players
+		},
+
+		playersAlphabetically() {
+			const left = []
+			const right = []
+
+			for (const id in this.allplayers) {
+				if (this.allplayers[id].observer_slot !== undefined) {
+					if (this.allplayers[id].team.toLowerCase() === this.directionalSides[0]) left.push(this.allplayers[id])
+					else right.push(this.allplayers[id])
+				}
+			}
+
+			left.sort(({ name: a }, { name: b }) => {
+				if (a === b) return 0
+				return (a > b) ? 1 : -1
+			})
+
+			right.sort(({ name: a }, { name: b }) => {
+				if (a === b) return 0
+				return (a > b) ? 1 : -1
+			})
+
+			return { left, right }
 		},
 	},
 }

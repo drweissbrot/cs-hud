@@ -9,7 +9,7 @@
 				<span>{{ player.state.health }}</span>
 			</div>
 
-			<div class="slot">{{ player.observer_slot }}</div>
+			<div class="slot">{{ observerSlot === 10 ? 0 : observerSlot }}</div>
 			<div class="name">{{ player.name }}</div>
 
 			<div v-if="player.state.round_kills > 0" class="round-kills">
@@ -46,7 +46,7 @@
 		<div v-else class="life --dead">
 			<img class="dead-icon" src="../../img/elimination.svg">
 
-			<div class="slot">{{ player.observer_slot }}</div>
+			<div class="slot">{{ observerSlot === 10 ? 0 : observerSlot }}</div>
 			<div class="name">{{ player.name }}</div>
 
 			<div v-if="player.state.round_kills > 0" class="round-kills">
@@ -104,6 +104,7 @@ export default {
 
 	props: [
 		'adr',
+		'observerSlot',
 		'player',
 		'side',
 	],

@@ -8,13 +8,23 @@
 				:class="[`player-dot --${player.team}`, {
 					'--bomb': player.bomb,
 					'--dead': player.dead,
-					'--focused': focusedPlayer && focusedPlayer.observer_slot === player.slot,
+					'--focused': focusedPlayer && focusedPlayer.steamid === player.id,
 					'--lower': player.level === 'lower',
 				}]"
 				:style="{ transform: `translate(${player.x}px, ${player.y}px)` }"
 			>
 				<template v-if="! player.dead">
-					{{ player.slot }}
+					<template v-if="! directionalSides">
+						{{ player.slot }}
+					</template>
+
+					<template v-else-if="directionalSides[0] === player.team">
+						{{ player.slot + 1 }}
+					</template>
+
+					<template v-else>
+						{{ player.slot + 6 === 10 ? 0 : player.slot + 6 }}
+					</template>
 
 					<div class="triangle-circle" :style="{ transform: `rotateZ(${player.angle}deg)` }">
 						<div class="triangle" />
@@ -54,6 +64,10 @@ const grenadeTypes = {
 }
 
 export default {
+	props: [
+		'directionalSides',
+	],
+
 	data() {
 		return {
 			imageHeight: null,
@@ -196,6 +210,7 @@ export default {
 
 				players.push({
 					id,
+					name: player.name,
 					slot: player.observer_slot,
 					team: player.team.toLowerCase(),
 
@@ -207,6 +222,21 @@ export default {
 					level: this.level(z),
 					angle,
 				})
+			}
+
+			if (this.directionalSides) {
+				players.sort(({ name: a }, { name: b }) => {
+					if (a === b) return 0
+					return (a > b) ? 1 : -1
+				})
+
+				let ct = 0
+				let t = 0
+
+				for (const player of players) {
+					if (player.team === 'ct') player.slot = ct++
+					else if (player.team === 't') player.slot = t++
+				}
 			}
 
 			return players

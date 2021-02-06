@@ -1,6 +1,6 @@
 <template>
 	<div v-if="applicable && map" class="container" :style="{ width }">
-		<Minimap />
+		<Minimap :directionalSides="directionalSides" />
 		<TopBar :directionalSides="directionalSides" />
 		<PlayersAlive :directionalSides="directionalSides" />
 		<Series :directionalSides="directionalSides" />
