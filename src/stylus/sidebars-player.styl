@@ -114,12 +114,23 @@
 
 		.health-bar {
 			grid-area 1/1/1/7
+
+			display grid
+			grid-template-columns 1fr
+			grid-template-rows 1fr
 			background rgba(#000, .25)
 
 			.fill {
+				grid-area 1/1
 				teamBackground()
+
 				height 100%
 				transform-origin left center
+
+				&.--red {
+					background darken($red, 25%)
+					transition transform .3s ease
+				}
 			}
 		}
 

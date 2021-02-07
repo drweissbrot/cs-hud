@@ -2,6 +2,7 @@
 	<div :class="['player', { '--focused': focusedPlayer && focusedPlayer.steamid === player.steamid }]">
 		<div v-if="player.state.health > 0" class="life">
 			<div class="health-bar">
+				<div class="fill --red" :style="{ transform: `scaleX(${delayedHealth / 100})` }"></div>
 				<div :class="`fill --${side}`" :style="{ transform: `scaleX(${player.state.health / 100})` }"></div>
 			</div>
 
@@ -110,8 +111,13 @@ export default {
 	],
 
 	data() {
+		let hp = 100
+		if (this.player && this.player.state) hp = this.player.state.health
+
 		return {
 			moneyAtStartOfRound: this.player.state.money,
+			delayedHealth: hp,
+			delayedHealthTimeout: null,
 		}
 	},
 
@@ -165,6 +171,16 @@ export default {
 	},
 
 	watch: {
+		player(player, previously) {
+			if (player.state.health === previously.state.health) return
+
+			if (this.delayedHealthTimeout) clearTimeout(this.delayedHealthTimeout)
+
+			this.delayedHealthTimeout = setTimeout(() => {
+				this.delayedHealth = player.state.health
+			}, 2500)
+		},
+
 		round(round, previously) {
 			if (round && previously && round.phase === previously.phase) return
 
