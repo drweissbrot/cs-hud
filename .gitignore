@@ -87,3 +87,6 @@ typings/
 
 # Electron-Forge
 out/
+
+# autohotkey integration
+player_slot_mapping.ahk

@@ -1,32 +1,7 @@
 <template>
 	<div v-if="applicable" class="config-window">
-		<div class="info-wrapper">
-			<div></div>
-
-			<div class="big">
-				<div v-for="player in playersAlphabetically.left" :class="`slot --${player.team.toLowerCase()}`">
-					{{ player.observer_slot }}
-				</div>
-			</div>
-		</div>
-
 		<div class="minimap-wrapper">
-			<Minimap />
-		</div>
-
-		<div class="info-wrapper">
-			<div>
-				<div v-for="player in observerSlots" :class="`slot --${player.team.toLowerCase()}`">
-					{{ player.observer_slot }}
-					{{ player.name }}
-				</div>
-			</div>
-
-			<div class="big">
-				<div v-for="player in playersAlphabetically.right" :class="`slot --${player.team.toLowerCase()}`">
-					{{ player.observer_slot }}
-				</div>
-			</div>
+			<Minimap :directionalSides="enableAutoHotKeyMapping ? directionalSides : null" />
 		</div>
 
 		<div class="config">
@@ -40,6 +15,13 @@
 				<button @click.prevent="submit">
 					Save
 				</button>
+			</div>
+
+			<div class="input-group">
+				<label>
+					<input type="checkbox" v-model="enableAutoHotKeyMapping">
+					Enable AutoHotKey observer slot remapping
+				</label>
 			</div>
 
 			<div class="input-group primary-team">
@@ -113,6 +95,8 @@
 
 <script>
 import { ipcRenderer } from 'electron'
+import * as fs from 'fs'
+import { execFile as run } from 'child_process'
 import { mapGetters } from 'vuex'
 import Minimap from './Minimap'
 
@@ -127,6 +111,10 @@ export default {
 			primaryTeam: 'Das Deutsche Volk',
 			seriesNameLeft: null,
 			seriesNameRight: null,
+
+			enableAutoHotKeyMapping: false,
+			autoHotKeyPlayerSlotMapping: null,
+			autoHotKeyProcess: null,
 		}
 	},
 
@@ -145,6 +133,53 @@ export default {
 					right: this.seriesNameRight ? (this.seriesNameRight + '').trim() : null,
 				},
 			})
+		},
+
+		restartAutoHotKeyIfRequired() {
+			if (! this.enableAutoHotKeyMapping || ! this.allplayers) return this.stopAutoHotKeyMapping()
+
+			const players = Object.values(this.allplayers).sort(({ name: a }, { name: b }) => {
+				a = a.toLowerCase()
+				b = b.toLowerCase()
+
+				if (a === b) return 0
+				return (a > b) ? 1 : -1
+			})
+
+			const ct = players.filter(({ team }) => team.toLowerCase() === 'ct')
+			const t = players.filter(({ team }) => team.toLowerCase() === 't')
+
+			const sides = (this.directionalSides[0] === 'ct')
+				? [ct, t]
+				: [t, ct]
+
+			const mapping = []
+
+			for (const side of sides) {
+				for (const player of side) {
+					mapping.push(player.observer_slot)
+				}
+			}
+
+			const json = JSON.stringify(mapping)
+
+			if (json === this.autoHotKeyPlayerSlotMapping) return
+
+			this.autoHotKeyPlayerSlotMapping = json
+
+			const remappedKeys = ['j', 'k', 'l', 'u', 'i', 'o', '7', '8', '9', '0']
+			fs.writeFileSync('player_slot_mapping.ahk', '#NoEnv\nSendMode Input\n' + mapping.map((slot) => `${remappedKeys.shift()}::${slot}`).join('\n'))
+
+			this.autoHotKeyProcess = run('C:\\Program Files\\AutoHotKey\\AutoHotKey.exe', ['/r', '/ErrorStdOut', 'player_slot_mapping.ahk'])
+		},
+
+		stopAutoHotKeyMapping() {
+			this.autoHotKeyPlayerSlotMapping = null
+
+			if (! this.autoHotKeyProcess) return
+
+			this.autoHotKeyProcess.kill()
+			this.autoHotKeyProcess = null
 		},
 	},
 
@@ -168,47 +203,17 @@ export default {
 
 			return ['ct', 't']
 		},
+	},
 
-		observerSlots() {
-			const players = []
-
-			for (const id in this.allplayers) {
-				if (this.allplayers[id].observer_slot !== undefined) players.push(this.allplayers[id])
-			}
-
-			players.sort(({ observer_slot: a }, { observer_slot: b }) => {
-				if (a === 0) return 100
-				if (b === 0) return 100
-
-				if (a === b) return 0
-				return (a > b) ? 1 : -1
-			})
-
-			return players
+	watch: {
+		allplayers(allplayers) {
+			if (this.enableAutoHotKeyMapping) this.restartAutoHotKeyIfRequired()
 		},
 
-		playersAlphabetically() {
-			const left = []
-			const right = []
-
-			for (const id in this.allplayers) {
-				if (this.allplayers[id].observer_slot !== undefined) {
-					if (this.allplayers[id].team.toLowerCase() === this.directionalSides[0]) left.push(this.allplayers[id])
-					else right.push(this.allplayers[id])
-				}
-			}
-
-			left.sort(({ name: a }, { name: b }) => {
-				if (a === b) return 0
-				return (a > b) ? 1 : -1
-			})
-
-			right.sort(({ name: a }, { name: b }) => {
-				if (a === b) return 0
-				return (a > b) ? 1 : -1
-			})
-
-			return { left, right }
+		enableAutoHotKeyMapping(enabled) {
+			(enabled)
+				? this.restartAutoHotKeyIfRequired()
+				: this.stopAutoHotKeyMapping()
 		},
 	},
 }
