@@ -226,6 +226,9 @@ export default {
 
 			if (this.directionalSides) {
 				players.sort(({ name: a }, { name: b }) => {
+					a = a.toLowerCase()
+					b = b.toLowerCase()
+
 					if (a === b) return 0
 					return (a > b) ? 1 : -1
 				})
