@@ -1,5 +1,5 @@
 <template>
-	<div :class="['focused-player', { '--active': focusedPlayer.spectarget && focusedPlayer.spectarget !== 'free' }]">
+	<div :class="['focused-player', { '--active': focusedPlayer && focusedPlayer.spectarget && focusedPlayer.spectarget !== 'free' }]">
 		<div :class="`name --${side}`">
 			<img v-if="team.flag" :src="`https://flagcdn.com/h120/${team.flag}.png`" class="flag">
 			<img v-else-if="side === 'ct'" src="../../img/ct.svg" class="flag">
