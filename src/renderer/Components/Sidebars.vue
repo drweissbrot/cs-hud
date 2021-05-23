@@ -18,7 +18,12 @@
 			<div class="wrapper --utility">
 				<div class="utility">
 					<div :class="`heading --${directionalSides[Number(direction === 'right')]}`">
-						Utility
+						<span>Utility</span>
+
+						<span class="total">
+							{{ (utility[direction].smoke || 0) + (utility[direction].molotov || 0) + (utility[direction].flash || 0) + (utility[direction].he || 0) }}
+							total
+						</span>
 					</div>
 
 					<div :class="`grenades --${directionalSides[Number(direction === 'right')]}`">
