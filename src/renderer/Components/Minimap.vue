@@ -71,8 +71,9 @@ export default {
 	data() {
 		return {
 			imageHeight: null,
-			previousAngles: {},
-			previousPositions: {},
+			previousPlayerAngles: {},
+			previousPlayerPositions: {},
+			previousGrenadePositions: {},
 		}
 	},
 
@@ -159,17 +160,35 @@ export default {
 				const grenade = this.allgrenades[id]
 				if (! grenade || ! (grenade.position || grenade.flames)) continue
 
-				const [x, y, z] = (grenade.position || grenade.flames[Object.keys(grenade.flames).reduce((center, item) =>  center < item ? center : item)]).split(', ')
+				if (! this.previousGrenadePositions.hasOwnProperty(id)) this.previousGrenadePositions[id] = []
+
+				let [x, y, z] = (grenade.position || grenade.flames[Object.keys(grenade.flames).reduce((center, item) =>  center < item ? center : item)]).split(', ')
+
+				x = this.offsetX(x)
+				y = this.offsetY(y)
+
+				if (this.previousGrenadePositions[id].length > 3) this.previousGrenadePositions[id].shift()
+				this.previousGrenadePositions[id].push([x, y])
+
+				;[x, y] = this.previousGrenadePositions[id].reduce(([cx, cy], [x, y]) => [cx + x, cy + y], [0, 0])
 
 				grenades.push({
 					id,
 					smoke: grenade.type === 'smoke' && (grenade.velocity === '0.00, 0.00, 0.00' || grenade.effecttime > 0),
 					team: (this.allplayers[grenade.owner.numberStr] || { team: 'ct' }).team.toLowerCase(),
 					type: grenadeTypes[grenade.type] || grenade.type,
-					x: this.offsetX(x),
-					y: this.offsetY(y),
+					x: x / this.previousGrenadePositions[id].length,
+					y: y / this.previousGrenadePositions[id].length,
 					level: this.level(z),
 				})
+			}
+
+			// the game reuses entity ids of grenades a lot -- clear our position data of any now unused grenades to
+			// prevent issues when averaging out positions
+			const existingIds = Object.keys(this.allgrenades)
+
+			for (const id in this.previousGrenadePositions) {
+				if (!existingIds.includes(id)) delete this.previousGrenadePositions[id]
 			}
 
 			return grenades
@@ -181,7 +200,7 @@ export default {
 			for (const id in this.allplayers) {
 				const player = this.allplayers[id]
 
-				if (! this.previousPositions.hasOwnProperty(id)) this.previousPositions[id] = []
+				if (! this.previousPlayerPositions.hasOwnProperty(id)) this.previousPlayerPositions[id] = []
 
 				let [x, y, z] = player.position.split(', ')
 
@@ -193,20 +212,20 @@ export default {
 					? 90 + parseFloat(ay) * -90
 					: 270 + parseFloat(ay) * 90
 
-				if (angle > 270 && this.previousAngles[id] < 90) {
-					for (const pos of this.previousPositions[id]) pos[2] += 360
-				} else if (angle < 90 && this.previousAngles[id] > 270) {
-					for (const pos of this.previousPositions[id]) pos[2] -= 360
+				if (angle > 270 && this.previousPlayerAngles[id] < 90) {
+					for (const pos of this.previousPlayerPositions[id]) pos[2] += 360
+				} else if (angle < 90 && this.previousPlayerAngles[id] > 270) {
+					for (const pos of this.previousPlayerPositions[id]) pos[2] -= 360
 				}
 
-				if (this.previousPositions[id].length > 7) this.previousPositions[id].shift()
-				this.previousPositions[id].push([x, y, angle])
+				if (this.previousPlayerPositions[id].length > 7) this.previousPlayerPositions[id].shift()
+				this.previousPlayerPositions[id].push([x, y, angle])
 
-				;[x, y, angle] = this.previousPositions[id].reduce(([cx, cy, ca], [x, y, a]) => {
+				;[x, y, angle] = this.previousPlayerPositions[id].reduce(([cx, cy, ca], [x, y, a]) => {
 					return [cx + x, cy + y, ca + a]
 				}, [0, 0, 0])
 
-				angle = this.previousAngles[id] = angle / this.previousPositions[id].length
+				angle = this.previousPlayerAngles[id] = angle / this.previousPlayerPositions[id].length
 
 				players.push({
 					id,
@@ -217,8 +236,8 @@ export default {
 					bomb: Object.values(player.weapons).some(({ type }) => type === 'C4'),
 					dead: player.state.health === 0,
 
-					x: x / this.previousPositions[id].length,
-					y: y / this.previousPositions[id].length,
+					x: x / this.previousPlayerPositions[id].length,
+					y: y / this.previousPlayerPositions[id].length,
 					level: this.level(z),
 					angle,
 				})
