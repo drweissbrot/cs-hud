@@ -1,5 +1,5 @@
 <template>
-	<div v-if="applicable" class="config-window">
+	<div v-if="applicable" :class="['config-window', { '--mirrored': mirrored }]">
 		<div class="minimap-wrapper">
 			<Minimap :directionalSides="enableAutoHotKeyMapping ? directionalSides : null" />
 		</div>
@@ -14,6 +14,10 @@
 
 				<button @click.prevent="submit">
 					Save
+				</button>
+
+				<button @click.prevent="mirrored = ! mirrored">
+					Mirror Config Window
 				</button>
 			</div>
 
@@ -115,6 +119,7 @@ export default {
 			enableAutoHotKeyMapping: false,
 			autoHotKeyPlayerSlotMapping: null,
 			autoHotKeyProcess: null,
+			mirrored: false,
 		}
 	},
 
