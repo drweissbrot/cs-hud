@@ -167,8 +167,10 @@ export default {
 
 			this.autoHotKeyPlayerSlotMapping = json
 
-			const remappedKeys = ['j', 'k', 'l', 'u', 'i', 'o', '7', '8', '9', '0']
-			fs.writeFileSync('player_slot_mapping.ahk', '#NoEnv\nSendMode Input\n' + mapping.map((slot) => `${remappedKeys.shift()}::${slot}`).join('\n'))
+			const remappedKeys = ['1yz', '2u', '3i', '4o', '5p', '6', '7', '8', '9', '0']
+			fs.writeFileSync('player_slot_mapping.ahk', '#NoEnv\nSendMode Input\n' + mapping.map((slot) => {
+				return remappedKeys.shift().split('').map((key) => `${key}::${slot}`).join('\n')
+			}).join('\n'))
 
 			this.autoHotKeyProcess = run('C:\\Program Files\\AutoHotKey\\AutoHotKey.exe', ['/r', '/ErrorStdOut', 'player_slot_mapping.ahk'])
 		},
