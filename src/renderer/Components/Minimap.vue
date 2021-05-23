@@ -121,6 +121,7 @@ export default {
 			bombRaw: 'bomb',
 			focusedPlayer: 'player',
 			map: 'map',
+			timers: 'timers',
 		}),
 
 		mapName() {
@@ -185,7 +186,7 @@ export default {
 
 			// the game reuses entity ids of grenades a lot -- clear our position data of any now unused grenades to
 			// prevent issues when averaging out positions
-			const existingIds = Object.keys(this.allgrenades)
+			const existingIds = Object.keys(this.allgrenades || {})
 
 			for (const id in this.previousGrenadePositions) {
 				if (!existingIds.includes(id)) delete this.previousGrenadePositions[id]
@@ -262,6 +263,16 @@ export default {
 			}
 
 			return players
+		},
+	},
+
+	watch: {
+		timers(now, previous) {
+			if (previous.phase === 'over' && now.phase === 'freezetime') {
+				this.previousPlayerAngles = {}
+				this.previousPlayerPositions = {}
+				this.previousGrenadePositions = {}
+			}
 		},
 	},
 }
