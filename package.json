@@ -5,6 +5,7 @@
 	"version": "1.0.0",
 	"description": "CS:GO HUD",
 	"main": "./.webpack/main",
+	"author": "drweissbrot",
 	"scripts": {
 		"start": "electron-forge start",
 		"package": "electron-forge package",

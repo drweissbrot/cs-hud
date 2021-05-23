@@ -5,7 +5,10 @@ module.exports = {
 	makers: [
 		{
 			name: '@electron-forge/maker-squirrel',
-			config: { name: 'csgo_hud' },
+			config: {
+				exe: 'csgo-hud.exe',
+				name: 'csgo_hud',
+			},
 		},
 		{
 			name: '@electron-forge/maker-deb',
