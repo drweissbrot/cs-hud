@@ -13,9 +13,16 @@
 			<div class="slot">{{ observerSlot === 10 ? 0 : observerSlot }}</div>
 			<div class="name">{{ player.name }}</div>
 
-			<div v-if="player.state.round_kills > 0" class="round-kills">
-				<img src="../../img/elimination.svg">
-				<div class="number">{{ player.state.round_kills }}</div>
+			<div class="kills-deaths">
+				<div :class="`label --kills --${side}`">K</div>
+				<div :class="`number --kills --${kdPositive}`">{{ player.match_stats.kills }}</div>
+
+				<div v-if="player.state.round_kills > 0" class="number --round-kills">
+					<div :class="`circle --${side}`">{{ player.state.round_kills }}</div>
+				</div>
+
+				<div :class="`label --deaths --${side}`">D</div>
+				<div :class="`number --deaths --${kdNegative}`">{{ player.match_stats.deaths }}</div>
 			</div>
 
 			<div class="primary">
@@ -36,7 +43,7 @@
 			<div class="money">${{ player.state.money }}</div>
 
 			<div class="grenades">
-				<WeaponIcon v-for="(grenade, index) in weapons.grenades" :key="index" :weapon="grenade" />
+				<WeaponIcon v-for="(grenade, index) in grenades" :key="index" :weapon="grenade" />
 			</div>
 
 			<div class="secondary">
@@ -50,9 +57,10 @@
 			<div class="slot">{{ observerSlot === 10 ? 0 : observerSlot }}</div>
 			<div class="name">{{ player.name }}</div>
 
-			<div v-if="player.state.round_kills > 0" class="round-kills">
-				<img src="../../img/elimination.svg">
-				<div class="number">{{ player.state.round_kills }}</div>
+			<div class="kills-deaths">
+				<div v-if="player.state.round_kills > 0" class="number --round-kills">
+					<div :class="`circle --${side}`">{{ player.state.round_kills }}</div>
+				</div>
 			</div>
 
 			<div class="money">${{ player.state.money }}</div>
@@ -65,9 +73,9 @@
 			</div>
 
 			<div class="secondary">
-				<div class="number --kills">{{ player.match_stats.kills }}</div>
+				<div :class="`number --kills --${kdPositive}`">{{ player.match_stats.kills }}</div>
 				<div class="number --assists">{{ player.match_stats.assists }}</div>
-				<div class="number --deaths">{{ player.match_stats.deaths }}</div>
+				<div :class="`number --deaths --${kdNegative}`">{{ player.match_stats.deaths }}</div>
 				<div class="number --adr">{{ Math.round(adr || 0) }}</div>
 			</div>
 		</div>
@@ -81,9 +89,9 @@
 				<div :class="`label --deaths --${side}`">D</div>
 				<div :class="`label --adr --${side}`">ADR</div>
 
-				<div class="number --kills">{{ player.match_stats.kills }}</div>
+				<div :class="`number --kills --${kdPositive}`">{{ player.match_stats.kills }}</div>
 				<div class="number --assists">{{ player.match_stats.assists }}</div>
-				<div class="number --deaths">{{ player.match_stats.deaths }}</div>
+				<div :class="`number --deaths --${kdNegative}`">{{ player.match_stats.deaths }}</div>
 				<div class="number --adr">{{ Math.round(adr || 0) }}</div>
 
 				<div class="purchases">
@@ -167,6 +175,21 @@ export default {
 			for (const key in this.player.weapons) {
 				if (! ['Knife', 'Pistol', 'Grenade', 'C4'].includes(this.player.weapons[key].type)) return this.player.weapons[key]
 			}
+		},
+
+		grenades() {
+			return Object.values(this.weapons.grenades).sort((a, b) => {
+				if (a.name !== b.name) return a.name > b.name ? 1 : -1
+				return 0
+			})
+		},
+
+		kdPositive() {
+			return this.player.match_stats.kills > this.player.match_stats.deaths ? 'positive' : ''
+		},
+
+		kdNegative() {
+			return this.player.match_stats.deaths > this.player.match_stats.kills ? 'negative' : ''
 		},
 	},
 
