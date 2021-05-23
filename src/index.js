@@ -23,6 +23,8 @@ const createWindow = () => {
 		fullscreen: true,
 		webPreferences: {
 			nodeIntegration: true,
+			contextIsolation: false,
+			enableRemoteModule: true,
 			preload: MAIN_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
@@ -37,6 +39,8 @@ const createWindow = () => {
 		autoHideMenuBar: true,
 		webPreferences: {
 			nodeIntegration: true,
+			contextIsolation: false,
+			enableRemoteModule: true,
 			preload: MAIN_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
