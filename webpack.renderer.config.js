@@ -6,4 +6,5 @@ module.exports = merge(common, {
 		'./src/renderer/app.js',
 		'./src/stylus/app.styl',
 	],
+	target: 'electron-renderer',
 })

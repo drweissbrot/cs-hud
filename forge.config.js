@@ -6,6 +6,7 @@ module.exports = {
 		{
 			name: '@electron-forge/maker-squirrel',
 			config: {
+				authors: ['drweissbrot'],
 				exe: 'csgo-hud.exe',
 				name: 'csgo_hud',
 			},
