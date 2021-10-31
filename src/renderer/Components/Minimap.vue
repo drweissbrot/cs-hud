@@ -1,5 +1,5 @@
 <template>
-	<div v-if="map && map.name" class="minimap">
+	<div v-if="map && map.name" :class="['minimap', { '--transparent': mapData.transparent }]">
 		<img ref="image" :src="mapImage" @load="onResize">
 
 		<template v-if="imageHeight !== null">
