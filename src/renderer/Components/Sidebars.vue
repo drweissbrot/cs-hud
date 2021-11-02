@@ -1,116 +1,25 @@
 <template>
 	<div class="sidebars">
-		<div
+		<Sidebar
 			v-for="(players, direction) in { left, right }"
-			:class="[`sidebar --${direction} --${directionalSides[Number(direction === 'right')]}`, {
-				'--stats-active': statsActive,
-				'--utility-active': utilityActive,
-			}]"
-		>
-			<div v-if="direction === 'left' && seriesName.left" class="wrapper --series-name">
-				<div class="series-name" v-text="seriesName.left" />
-			</div>
-
-			<div v-if="direction === 'right' && seriesName.right" class="wrapper --series-name">
-				<div class="series-name" v-text="seriesName.right" />
-			</div>
-
-			<div class="wrapper --utility">
-				<div class="utility">
-					<div :class="`heading --${directionalSides[Number(direction === 'right')]}`">
-						<span>Utility</span>
-
-						<span class="total">
-							{{ (utility[direction].smoke || 0) + (utility[direction].molotov || 0) + (utility[direction].flash || 0) + (utility[direction].he || 0) }}
-							total
-						</span>
-					</div>
-
-					<div :class="`grenades --${directionalSides[Number(direction === 'right')]}`">
-						<div class="grenade">
-							<div class="img" v-html="image(require('../../img/weapons/smokegrenade.svg'))" />
-							<div class="count">{{ utility[direction].smoke }}</div>
-						</div>
-
-						<div class="grenade">
-							<div
-								class="img"
-								v-html="image(require(`../../img/weapons/${
-									(directionalSides[Number(direction === 'right')] === 'ct')
-										? 'incgrenade'
-										: 'molotov'
-								}.svg`))"
-							/>
-							<div class="count">{{ utility[direction].molotov }}</div>
-						</div>
-
-						<div class="grenade">
-							<div class="img" v-html="image(require('../../img/weapons/flashbang.svg'))" />
-							<div class="count">{{ utility[direction].flash }}</div>
-						</div>
-
-						<div class="grenade">
-							<div class="img" v-html="image(require('../../img/weapons/hegrenade.svg'))" />
-							<div class="count">{{ utility[direction].he }}</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="wrapper">
-				<div class="economy">
-					<div class="loss-bonus-pips">
-						<div v-for="i in 4" :class="[`pip --${directionalSides[Number(direction === 'right')]}`, { '--filled': lossBonus[direction] >= (5 - i) }]" />
-					</div>
-
-					<div class="loss-bonus">
-						<div :class="`label --${directionalSides[Number(direction === 'right')]}`">Loss Bonus</div>
-						<div class="number">
-							${{ 1400 + lossBonus[direction] * 500 }}
-						</div>
-					</div>
-
-					<div class="equipment-value">
-						<div :class="`label --${directionalSides[Number(direction === 'right')]}`">
-							Equip Value
-						</div>
-						<div class="number">
-							${{ equipmentValue[direction] }}
-						</div>
-					</div>
-
-					<div class="team-money">
-						<div :class="`label --${directionalSides[Number(direction === 'right')]}`">
-							Team Money
-						</div>
-						<div class="number">
-							${{ teamMoney[direction] }}
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<SidebarPlayer
-				v-for="(player, index) in players"
-				:key="player.steamid"
-				:adr="adr[player.steamid]"
-				:observerSlot="index + (direction === 'right' ? 6 : 1)"
-				:player="player"
-				:side="directionalSides[Number(direction === 'right')]"
-			/>
-		</div>
+			:adr="adr"
+			:class="{ '--series-active': seriesActive }"
+			:direction="direction"
+			:freezetime="freezetime"
+			:key="direction"
+			:players="players"
+			:side="directionalSides[Number(direction === 'right')]"
+		/>
 	</div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import SidebarPlayer from './SidebarPlayer'
-import WeaponIcon from './WeaponIcon'
+import Sidebar from './Sidebar'
 
 export default {
 	components: {
-		SidebarPlayer,
-		WeaponIcon,
+		Sidebar,
 	},
 
 	props: [
@@ -118,25 +27,12 @@ export default {
 		'directionalSides',
 	],
 
-	data() {
-		return {
-			statsActive: false,
-			utilityActive: false,
-		}
-	},
-
-	methods: {
-		image(str) {
-			return decodeURIComponent(str.replace(/^data:image\/svg\+xml,/, ''))
-		},
-	},
-
 	computed: {
 		...mapGetters([
 			'allplayers',
 			'map',
+			'series',
 			'timers',
-			'seriesName',
 		]),
 
 		players() {
@@ -166,49 +62,13 @@ export default {
 			return this.players.filter((player) => player.team === team)
 		},
 
-		equipmentValue() {
-			return {
-				left: this.left.reduce((sum, player) => sum + player.state.equip_value, 0),
-				right: this.right.reduce((sum, player) => sum + player.state.equip_value, 0),
-			}
+		freezetime() {
+			return this.map.phase === 'intermission'
+				|| ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(this.timers.phase)
 		},
 
-		teamMoney() {
-			return {
-				left: this.left.reduce((sum, player) => sum + player.state.money, 0),
-				right: this.right.reduce((sum, player) => sum + player.state.money, 0),
-			}
-		},
-
-		lossBonus() {
-			return {
-				left: this.map[`team_${this.directionalSides[0]}`].consecutive_round_losses,
-				right: this.map[`team_${this.directionalSides[1]}`].consecutive_round_losses,
-			}
-		},
-
-		utility() {
-			const utility = {
-				left: { smoke: 0, molotov: 0, flash: 0, he: 0 },
-				right: { smoke: 0, molotov: 0, flash: 0, he: 0 },
-			}
-
-			for (const direction in utility) {
-				const grenades = utility[direction]
-
-				for (const player of this[direction]) {
-					for (const weapon in player.weapons) {
-						const { name } = player.weapons[weapon]
-
-						if (name === 'weapon_smokegrenade') grenades.smoke++
-						else if (name === 'weapon_molotov' || name === 'weapon_incgrenade') grenades.molotov++
-						else if (name === 'weapon_flashbang') grenades.flash++
-						else if (name === 'weapon_hegrenade') grenades.he++
-					}
-				}
-			}
-
-			return utility
+		seriesActive() {
+			return this.series.length > 1 && this.freezetime
 		},
 	},
 

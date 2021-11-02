@@ -96,7 +96,9 @@ export default {
 		},
 
 		onResize() {
-			setTimeout(() => this.imageHeight = this.$refs.image.clientHeight)
+			setTimeout(() => {
+				if (this.$refs.image) this.imageHeight = this.$refs.image.clientHeight
+			})
 		},
 
 		level(z) {
@@ -163,7 +165,7 @@ export default {
 
 				if (! this.previousGrenadePositions.hasOwnProperty(id)) this.previousGrenadePositions[id] = []
 
-				let [x, y, z] = (grenade.position || grenade.flames[Object.keys(grenade.flames).reduce((center, item) =>  center < item ? center : item)]).split(', ')
+				let [x, y, z] = (grenade.position || grenade.flames[Object.keys(grenade.flames).reduce((center, item) => center < item ? center : item)]).split(', ')
 
 				x = this.offsetX(x)
 				y = this.offsetY(y)

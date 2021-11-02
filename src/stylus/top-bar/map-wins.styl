@@ -1,0 +1,61 @@
+.map-wins {
+	leftRightArea(leftMeta, rightMeta)
+
+	display flex
+	justify-content flex-end
+
+	&.--left {
+		.pips {
+			flex-direction row-reverse
+		}
+
+		.pip:first-child {
+			margin-right 0
+		}
+
+		.diagonal {
+			transform translateX(.4rem) skewX(20deg)
+		}
+	}
+
+	&.--right {
+		flex-direction row-reverse
+
+		.pip:first-child {
+			margin-left 0
+		}
+
+		.diagonal {
+			transform translateX(-1.15rem) skewX(-20deg)
+		}
+	}
+
+	.pips {
+		$pipSize = .89rem
+		$pipMarginX = .3rem
+
+		display flex
+		justify-content center
+		width 3 * $pipSize + 5 * $pipMarginX
+		background rgba(#fff, .5)
+
+		.pip {
+			width $pipSize
+			height $pipSize
+			margin .5rem $pipMarginX
+		}
+	}
+
+	.diagonal-wrapper {
+		width .75rem
+		overflow hidden
+	}
+
+	.diagonal {
+		background rgba(#fff, .5)
+
+		width 1.5rem
+		height 100%
+		z-index 2
+	}
+}

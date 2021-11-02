@@ -1,31 +1,27 @@
 <template>
-	<div :class="['timeout', { '--active': active }]">
-		<div v-if="tactical" :class="`icon --${tactical}`">
-			<img src="../../img/timer.svg">
-		</div>
+	<div class="tactical-timeout-wrapper">
+		<div :class="[`tactical-timeout --${direction}`, { '--active': active }]">
+			<div class="diagonal-wrapper --outer">
+				<div :class="`diagonal --${direction}`"></div>
+			</div>
 
-		<div v-else class="icon">
-			<img src="../../img/pause.svg">
-		</div>
-
-		<div class="text">
-			<template v-if="tactical">
-				<div class="label">
+			<div :class="`inner --${direction} --${side}`">
+				<div class="heading">
 					Tactical Timeout
 				</div>
 
-				<div class="info">
-					{{ tacticalTeam.name }} called a Timeout<br>
-					{{ tacticalTeam.timeouts_remaining }} / 4 remaining
+				<div class="remaining">
+					{{ team.timeouts_remaining }} / 4 remaining
 				</div>
 
-				<div class="progress-bar">
-					<div :class="`fill --${tactical}`" :style="{ transform: `scaleX(${remainingTime})` }" />
+				<div :class="`progress-bar-wrapper --${direction}`">
+					<div :class="`progress-bar --${direction}`">
+						<div
+							:class="[`fill --${direction} --${side}`]"
+							:style="{ transform: `scaleX(${remainingTime})` }"
+						/>
+					</div>
 				</div>
-			</template>
-
-			<div v-else class="label">
-				Technical Pause
 			</div>
 		</div>
 	</div>
@@ -35,55 +31,36 @@
 import { mapGetters } from 'vuex'
 
 export default {
+	props: [
+		'direction',
+		'side',
+		'team',
+	],
+
 	data() {
 		return {
-			tactical: false,
-			tacticalTeam: null,
 			remainingTime: 1,
 		}
 	},
 
-	methods: {
-		syncTactical() {
-			if (this.timers.phase === 'timeout_ct') this.tactical = 'ct'
-			else if (this.timers.phase === 'timeout_t') this.tactical = 't'
-			else this.tactical = false
-
-			this.tacticalTeam = (this.tactical)
-				? this.map[`team_${this.tactical}`]
-				: null
-		},
-	},
-
 	computed: {
 		...mapGetters([
-			'map',
 			'timers',
 		]),
 
 		active() {
-			return ['paused', 'timeout_ct', 'timeout_t'].includes(this.timers.phase)
+			return this.timers.phase === 'timeout_' + this.side
 		},
 	},
 
 	watch: {
 		timers(now) {
-			if (! ['freezetime', 'live'].includes(now.phase)) {
-				this.syncTactical()
-				this.remainingTime = now.phase_ends_in / 30
-			}
+			if (! ['freezetime', 'live'].includes(now.phase)) this.remainingTime = now.phase_ends_in / 30
 		},
 
 		active(now, previously) {
-			if (now) {
-				this.syncTactical()
-				this.remainingTime = 1
-			} else {
-				setTimeout(() => {
-					this.syncTactical()
-					this.remainingTime = 1
-				}, 1000)
-			}
+			if (now) this.remainingTime = 1
+			else setTimeout(() => this.remainingTime = 1, 350)
 		},
 	},
 }

@@ -6,8 +6,6 @@
 		<Series :directionalSides="directionalSides" />
 
 		<RoundWinner />
-		<Timeout />
-		<RoundGraph :directionalSides="directionalSides" />
 
 		<FocusedPlayer :adr="adr" />
 		<Sidebars :adr="adr" :directionalSides="directionalSides" />

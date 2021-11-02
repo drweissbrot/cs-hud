@@ -1,10 +1,10 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, session } = require('electron')
 const path = require('path')
 
 const Server = require('./server')
 
-// apparently required for transparent windows
-app.commandLine.appendSwitch('disable-gpu')
+// used to be required for transparent windows, apparently not anymore, but keeping it for reference
+// app.commandLine.appendSwitch('disable-gpu')
 
 // handle creating/removing shortcuts on Windows when installing/uninstalling
 if (require('electron-squirrel-startup')) app.quit()
@@ -55,8 +55,19 @@ const createWindow = () => {
 	setInterval(() => mainWindow.showInactive(), 250)
 }
 
-// creating the window after a delay is apparently required for transparent windows (due to an electron bug i guess?)
-app.on('ready', () => setTimeout(createWindow, 100))
+app.on('ready', () => {
+	// creating the window after a delay is apparently required for transparent windows (due to an electron bug i guess?)
+	setTimeout(createWindow, 100)
+
+	session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+		callback({
+			responseHeaders: {
+				...details.responseHeaders,
+				'Content-Security-Policy': ['default-src data: https: \'unsafe-eval\' \'self\''],
+			},
+		})
+	})
+})
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') app.quit()

@@ -1,39 +1,11 @@
 <template>
-	<div :class="['round-graph', { '--active': active }]">
-		<div class="match-point-wrapper">
-			<div v-if="matchpoint.left" :class="`match-point --left --${directionalSides[0]}`">
-				{{ matchPointText.left }}
-			</div>
+	<div :class="['round-graph', { '--ot': half >= 3 }]">
+		<div v-for="round in rounds" :class="`round --${round.side}`">
+			<div class="number">{{ round.number }}</div>
+			<div :class="`colored-bar --${round.side}`" />
 
-			<div v-if="matchpoint.right" :class="`match-point --right --${directionalSides[1]}`">
-				{{ matchPointText.right }}
-			</div>
-		</div>
-
-		<div class="heading">
-			<div>
-				<template v-if="half === 1">1st Half</template>
-				<template v-else-if="half === 2">2nd Half</template>
-				<template v-else>
-					OT {{ Math.ceil((half - 2) / 2) }}
-					<template v-if="half % 2">1st Half</template>
-					<template v-else>2nd Half</template>
-				</template>
-			</div>
-
-			<div>
-				First to {{ roundsForMatchPoint + 1 }} Rounds
-			</div>
-		</div>
-
-		<div :class="['rounds', { '--ot': half >= 3 }]">
-			<div v-for="round in rounds" :class="`round --${round.side}`">
-				<div class="number">{{ round.number }}</div>
-				<div :class="`colored-bar --${round.side}`" />
-
-				<div v-if="round.image" :class="`image --${round.side}`" v-html="image(require(`../../img/${round.image}.svg`))" />
-				<div v-else class="image" />
-			</div>
+			<div v-if="round.image" :class="`image --${round.side}`" v-html="image(require(`../../img/${round.image}.svg`))" />
+			<div v-else class="image" />
 		</div>
 	</div>
 </template>
@@ -55,22 +27,7 @@ export default {
 	computed: {
 		...mapGetters([
 			'map',
-			'timers',
-			'series',
 		]),
-
-		matchpoint() {
-			return {
-				left: this.map[`team_${this.directionalSides[0]}`].score === this.roundsForMatchPoint,
-				right: this.map[`team_${this.directionalSides[1]}`].score === this.roundsForMatchPoint,
-			}
-		},
-
-		roundsForMatchPoint() {
-			return (this.half < 3)
-				? 15
-				: Math.floor((this.half - (this.half % 2 === 0 ? 1 : 0)) / 2) * 3 + 15
-		},
 
 		half() {
 			if (this.map.round < 15) return 1
@@ -114,21 +71,6 @@ export default {
 			}
 
 			return rounds
-		},
-
-		active() {
-			return ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(this.timers.phase)
-		},
-
-		matchPointText() {
-			if (this.series.length < 2 || this.series.length % 2 === 0) return { left: 'Match Point', right: 'Match Point' }
-
-			const matchWinsRequiredToWinSeries = Math.ceil(this.series.length / 2)
-
-			return {
-				left: this.series.reduce((wins, match) => wins + (match.scoreLeft > match.scoreRight), 0) + 1 >= matchWinsRequiredToWinSeries ? 'Series Point' : 'Match Point',
-				right: this.series.reduce((wins, match) => wins + (match.scoreLeft < match.scoreRight), 0) + 1 >= matchWinsRequiredToWinSeries ? 'Series Point' : 'Match Point',
-			}
 		},
 	},
 }

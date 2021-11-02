@@ -1,191 +1,29 @@
-.top-bar {
+.top-bar-wrapper {
 	position absolute
-	top 2rem
+	top $generalPaddingY
 	left 23.75%
 	right 23.75%
 
+	@require 'top-bar/series-name'
+}
+
+.top-bar {
 	display grid
-	grid-template-columns 1.5fr 5fr 1.25fr 2.25fr 1.25fr 5fr 1.5fr
-	grid-template-rows auto 2.9rem
-	grid-template-areas 'flag1 team-name1 round-wins1 clock round-wins2 team-name2 flag2' 'info1 info1 map-wins1 map-no map-wins2 info2 info2'
+	grid-template-columns 3.25fr .35fr 1fr .35fr 3.25fr
+	grid-template-areas 'left left clock right right' 'leftMeta leftMeta mapNo rightMeta rightMeta' 'leftSpecial firstToRounds firstToRounds firstToRounds rightSpecial' 'leftSpecial 0 0 0 rightSpecial'
 
 	color #fff
+	filter drop-shadow(0 0 .4rem rgba(#000, .5))
+	font-size 2.5rem
+	line-height 4rem
 
-	+area(flag) {
-		center()
-		padding 1rem
-		background rgba(#000, .75)
-
-		img {
-			max-width 100%
-			max-height 3.75rem
-			filter drop-shadow(0 0 .5rem rgba(#fff, .5))
-		}
-	}
-
-	+area(team-name) {
-		center()
-		teamColors()
-		padding 1rem 0
-
-		background rgba(#000, .5)
-		flsize(3rem, 1)
-	}
-
-	+area(round-wins) {
-		center()
-		teamBackground()
-
-		flsize(4rem, 1)
-		padding 1rem 0
-		font-weight 600
-
-		background rgba(#000, .75)
-	}
-
-	+area(map-wins) {
-		center()
-		background rgba(#000, .5)
-
-		&.--left {
-			flex-direction row-reverse
-		}
-
-		&.--ct .pip {
-			border-color $ct
-
-			&.--filled {
-				background $ct
-			}
-		}
-
-		&.--t .pip {
-			border-color $t
-
-			&.--filled {
-				background $t
-			}
-		}
-	}
-
-	.clock {
-		grid-area clock
-
-		display flex
-		flex-direction column
-		justify-content space-around
-
-		padding .5rem 0
-		background rgba(#000, .5)
-
-		.time {
-			flsize(3rem, 1)
-			font-weight 600
-			text-transform uppercase
-
-			&.--text {
-				font-size 2.5rem
-			}
-
-			&.--red {
-				color $red
-			}
-
-			img {
-				height 2.6rem
-				transform translateY(.25rem)
-			}
-
-			.images {
-				display flex
-				justify-content center
-
-				.img {
-					margin 0 .5rem
-
-					&:not(.--c4) {
-						transform scale(.9)
-					}
-
-					svg {
-						display block
-						height 3rem
-					}
-				}
-			}
-		}
-	}
-
-	.map-no {
-		grid-area map-no
-		center()
-		padding .25rem
-		background rgba(#000, .75)
-	}
-
-	.timer-wrapper {
-		display flex
-		overflow hidden
-
-		&:not(.--active) {
-			.bomb-timer,
-			.defuse-timer {
-				transform translateY(-100%)
-				opacity 0
-			}
-		}
-
-		&.--left {
-			grid-area info1
-
-			.fill {
-				transform-origin right
-			}
-		}
-
-		&.--right {
-			grid-area info2
-
-			.fill {
-				transform-origin left
-			}
-		}
-	}
-
-	.defuse-timer,
-	.bomb-timer {
-		padding 1rem
-		background rgba(#000, .75)
-		transition transform .3s ease, opacity .3s ease
-		transform-origin top center
-		display flex
-		align-items center
-
-		&,
-		.progress-bar {
-			width 100%
-		}
-
-		.progress-bar {
-			background rgba(#fff, .5)
-			height 100%
-
-			.fill {
-				height 100%
-			}
-		}
-	}
-
-	.bomb-timer .progress-bar .fill {
-		background $red
-		transition background .5s ease
-
-		&.--planting {
-			background $t
-		}
-	}
-
-	.defuse-timer .progress-bar .fill {
-		background $ct
-	}
+	@require 'top-bar/clock'
+	@require 'top-bar/first-to-rounds'
+	@require 'top-bar/flag-wrapper'
+	@require 'top-bar/map-no'
+	@require 'top-bar/map-wins'
+	@require 'top-bar/round-wins'
+	@require 'top-bar/special'
+	@require 'top-bar/team-color-patch'
+	@require 'top-bar/team-name'
 }

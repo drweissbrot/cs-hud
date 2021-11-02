@@ -36,17 +36,10 @@
 			</div>
 
 			<div class="input-group series-event-info">
-				<label for="series-name-left">
-					Series/Event Info (left side)
+				<label for="series-name">
+					Series/Event Info (either 1 or 3 lines)
 				</label>
-				<textarea id="series-name-left" v-model="seriesNameLeft" />
-			</div>
-
-			<div class="input-group series-event-info">
-				<label for="series-name-right">
-					Series/Event Info (right side)
-				</label>
-				<textarea id="series-name-right" v-model="seriesNameRight" />
+				<textarea id="series-name" v-model="seriesName" />
 			</div>
 
 			<div class="match" v-for="(match, i) in matches">
@@ -113,8 +106,7 @@ export default {
 		return {
 			matches: [{}],
 			primaryTeam: 'Das Deutsche Volk',
-			seriesNameLeft: null,
-			seriesNameRight: null,
+			seriesName: null,
 
 			enableAutoHotKeyMapping: false,
 			autoHotKeyPlayerSlotMapping: null,
@@ -133,10 +125,7 @@ export default {
 					return match
 				}),
 				primaryTeam: this.primaryTeam,
-				seriesName: {
-					left: this.seriesNameLeft ? (this.seriesNameLeft + '').trim() : null,
-					right: this.seriesNameRight ? (this.seriesNameRight + '').trim() : null,
-				},
+				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n') : null,
 			})
 		},
 

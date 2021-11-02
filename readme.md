@@ -18,6 +18,14 @@ You'll only see a window titled `CS:GO HUD Series Data`. You can enter some meta
 Just start CS:GO, and join a server as a spectator (or join a GOTV server), or play a demo. The HUD should automatically appear. You may also want to run `exec spec` in the in-game console, if you've copied it before.
 
 ## Caveats and some Troubleshooting
+
+### Fullscreen Windowed
 I've only ever tested this using the "Fullscreen Windowed" (aka "Borderless Fullscreen") option in the video settings, as that is how I usually play the game, but it's likely also the only way to get this HUD to show up.
 
 If you are using Fullscreen Windowed, but still can't see the HUD, try alt-tabbing out of CS:GO. Select the HUD if you can see it in the list. From my experience, what works best is to then press Windows+D twice. If you're seeing the taskbar now, double-press the Windows key.
+
+### Choppy Animations
+If the HUD animations aren't running smoothly, the best course of action is probably to limit the FPS of the game itself, e.g. by setting the `fps_max` command in the CS:GO console to a lower value. You'll need to play around with this a bit to find a value that works for your hardware and your settings.  
+Reducing GPU load in general can help too, e.g. closing or disabling hardware accelleration in Chrome, Discord, Steam, and any other apps that use your GPU.
+
+If that doesn't help, you could try switching to CPU rendering -- on my hardware at least, that actually made it worse though. If you still want to try it, you can do this with the `--disable-gpu` parameter, e.g. `npx electron-forge start -- --disable-gpu`.

@@ -164,6 +164,9 @@ export default {
 	},
 
 	de_ancient: {
+		simpleradar: true,
+		transparent: true,
+
 		pos_x: -2953,
 		pos_y: 2164,
 		scale: 5,

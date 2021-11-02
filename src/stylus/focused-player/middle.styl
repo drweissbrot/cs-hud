@@ -1,0 +1,164 @@
+.middle {
+	margin 0 3.5rem
+
+	.diagonal-wrapper {
+		position absolute
+		top 0
+		bottom 0
+		z-index 2
+
+		&.--left {
+			left -.75rem
+
+			.diagonal {
+				transform skewX(20deg)
+			}
+		}
+
+		&.--right {
+			right -.75rem
+
+			.diagonal {
+				transform skewX(-20deg)
+			}
+		}
+
+		.diagonal {
+			teamBackground()
+			width 1.5rem
+			height 100%
+		}
+	}
+
+	.first-row {
+		position relative
+		width calc(100% + 3.05rem)
+		transform translateX(-1.525rem)
+
+		> .inner {
+			display grid
+
+			> * {
+				grid-area 1/1
+			}
+
+			.flag-wrapper {
+				.flag {
+					teamBackground()
+					flag()
+					min-height 100%
+					opacity .35
+				}
+			}
+
+			.inner {
+				display flex
+				align-items center
+				justify-content space-evenly
+
+				padding 0 2.5rem
+				background rgba(#000, .5)
+				z-index 1
+
+				.flag-icon {
+					max-height 2.5rem
+					filter drop-shadow(0 0 .4rem rgba(#fff, .25))
+				}
+
+				.player-name {
+					flsize(2.5rem, 1)
+
+					padding .85rem 0 .85rem 2rem
+					flex 1
+
+					text-align left
+					text-shadow 0 0 1rem rgba(#000, .75)
+				}
+
+				.round-kills {
+					flsize(2rem, 1)
+					display flex
+					align-items center
+
+					.icon {
+						margin-right .75rem
+
+						svg {
+							height 1.6rem
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.second-row {
+		position relative
+
+		.inner {
+			display flex
+			justify-content space-around
+
+			padding 0 1.75rem 0 1rem
+			background rgba(#000, .5)
+
+			.stats,
+			.utility {
+				display flex
+			}
+
+			.stats {
+				margin-right 4rem
+
+				&.--ct .label {
+					color $ct
+				}
+
+				&.--t .label {
+					color $t
+				}
+
+				.stat {
+					padding .5rem 1rem
+
+					.label {
+						flsize(1.2rem, 1)
+					}
+
+					.number {
+						flsize(2rem, 1)
+						width 3ch
+					}
+				}
+			}
+
+			.utility {
+				img {
+					height 2.5rem
+				}
+
+				.bomb {
+					center()
+					width 3rem
+					opacity .6
+					margin-right 1rem
+				}
+
+				.grenades {
+					center()
+					width 12rem
+
+					img {
+						margin 0 .5rem .5rem
+						width 2rem
+
+						&:not(.--active),
+						&.--active + .--active {
+							opacity .6
+						}
+					}
+				}
+			}
+		}
+	}
+}
