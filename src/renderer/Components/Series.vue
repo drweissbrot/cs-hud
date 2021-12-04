@@ -18,13 +18,13 @@
 
 				<div
 					v-if="match.scoreLeft > match.scoreRight && teams[0].flag"
-					:class="`winner-flag-background ${flagOrientation(teams[0].flag)}`"
+					:class="`winner-flag-background ${flagStyle(teams[0].flag)}`"
 					:style="{ backgroundImage: `url(https://flagcdn.com/${teams[0].flag.toLowerCase()}.svg)` }"
 				></div>
 
 				<div
 					v-else-if="match.scoreRight > match.scoreLeft && teams[1].flag"
-					:class="`winner-flag-background ${flagOrientation(teams[1].flag)}`"
+					:class="`winner-flag-background ${flagStyle(teams[1].flag)}`"
 					:style="{ backgroundImage: `url(https://flagcdn.com/${teams[1].flag.toLowerCase()}.svg)` }"
 				></div>
 
@@ -40,7 +40,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import flagOrientation from '../flag-orientation'
+import flagStyle from '../flag-style'
 import RoundGraph from './RoundGraph'
 
 const mapNames = {
@@ -78,7 +78,7 @@ export default {
 	},
 
 	methods: {
-		flagOrientation,
+		flagStyle,
 
 		formatMapName(mapName) {
 			return (mapNames.hasOwnProperty(mapName))

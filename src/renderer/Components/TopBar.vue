@@ -5,9 +5,6 @@
 				<div class="inner">{{ seriesName[0] }}</div>
 			</div>
 
-			<!-- spacer to center the center element for length === 1 -->
-			<div v-else></div>
-
 			<div class="center">
 				<div class="inner">{{ seriesName.length === 1 ? seriesName[0] : seriesName[1] }}</div>
 			</div>
@@ -25,7 +22,7 @@
 
 				<div :class="`flag-wrapper --${direction}`">
 					<div
-						:class="`flag ${flagOrientation(team.flag)} --${directionalSides[Number(direction === 'right')]}`"
+						:class="`flag ${flagStyle(team.flag)} --${directionalSides[Number(direction === 'right')]}`"
 						:style="{ backgroundImage: team.flag && `url('https://flagcdn.com/${team.flag.toLowerCase()}.svg')` }"
 					></div>
 				</div>
@@ -90,7 +87,7 @@ import { mapGetters } from 'vuex'
 import bombsites from '../bombsites.js'
 import BombTimer from './BombTimer'
 import Clock from './Clock'
-import flagOrientation from '../flag-orientation'
+import flagStyle from '../flag-style'
 import MatchPoint from './MatchPoint'
 import Timeout from './Timeout'
 
@@ -107,7 +104,7 @@ export default {
 	],
 
 	methods: {
-		flagOrientation,
+		flagStyle,
 	},
 
 	computed: {

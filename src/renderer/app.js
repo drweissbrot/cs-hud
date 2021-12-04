@@ -14,7 +14,7 @@ const store = new Vuex.Store({
 
 		primaryTeam: 'Das Deutsche Volk',
 		series: [],
-		seriesName: {},
+		seriesName: [],
 
 		allplayers: null,
 		bomb: null,

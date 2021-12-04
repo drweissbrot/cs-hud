@@ -62,17 +62,21 @@ export default {
 				: null
 		},
 
-		calculateAdr() {
+		calculateAdr(addOneToCurrentRound) {
+			const currentRound = this.map.team_ct.score + this.map.team_t.score + (addOneToCurrentRound ? 1 : 0)
+
 			for (const player in this.roundDamage) {
 				let damage = 0
 				let rounds = 0
 
 				for (const round in this.roundDamage[player]) {
+					if (rounds >= currentRound) break
+
 					rounds++
 					damage += this.roundDamage[player][round]
 				}
 
-				this.adr[player] = damage / rounds
+				this.adr[player] = damage / (rounds || 1)
 			}
 		},
 	},
@@ -84,6 +88,7 @@ export default {
 			'map',
 			'primaryTeam',
 			'round',
+			'timers',
 		]),
 
 		applicable() {
@@ -137,7 +142,19 @@ export default {
 		round(round, previous) {
 			if (! round || ! previous || round.phase === previous.phase) return
 
-			if (['over', 'freezetime'].includes(round.phase)) this.calculateAdr()
+			this.calculateAdr(round.phase === 'over')
+		},
+
+		timers(timers, previous) {
+			// try and recalculate ADR in a couple more edge cases
+			if (
+				timers
+				&& previous
+				&& timers.phase === previous.phase
+				&& Number(timers.phase_ends_in) > Number(previous.phase_ends_in)
+			) {
+				this.calculateAdr(false)
+			}
 		},
 	},
 }

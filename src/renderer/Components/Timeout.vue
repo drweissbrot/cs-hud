@@ -55,7 +55,9 @@ export default {
 
 	watch: {
 		timers(now) {
-			if (! ['freezetime', 'live'].includes(now.phase)) this.remainingTime = now.phase_ends_in / 30
+			if (! ['freezetime', 'live'].includes(now.phase)) {
+				this.remainingTime = Math.max(0, Math.min(1, now.phase_ends_in / 30))
+			}
 		},
 
 		active(now, previously) {

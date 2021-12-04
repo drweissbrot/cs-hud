@@ -79,7 +79,6 @@ export default {
 
 			if (this.side === 'ct') {
 				if (now.state === 'defusing' && previous.state !== 'defusing') {
-
 					this.defuseDuration = (
 						this.allplayers[now.player.numberStr].state
 						&& this.allplayers[now.player.numberStr].state.defusekit || false
@@ -90,12 +89,11 @@ export default {
 
 						this.bombTimerScaleInterval = setInterval(() => {
 							this.bombTimerScale -= .1 / this.defuseDuration
-							console.log(this.bombTimerScale)
 
 							if (this.bombTimerScale < 0) this.clearBombTimerScaleInterval()
 						}, 100)
 					}
-				} else if (now.state !== 'defusing' && previous.state === 'defusing') {
+				} else if (now.state !== 'defusing' && (! previous || previous.state === 'defusing')) {
 					this.clearBombTimerScaleInterval()
 				}
 			}

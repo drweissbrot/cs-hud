@@ -7,7 +7,7 @@
 
 			<div class="inner-wrapper">
 				<div
-					:class="`flag ${flagOrientation(team.flag)} --${win_team}`"
+					:class="`flag ${flagStyle(team.flag)} --${win_team}`"
 					:style="{ backgroundImage: team.flag && `url('https://flagcdn.com/${team.flag.toLowerCase()}.svg')` }"
 				></div>
 
@@ -37,7 +37,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import flagOrientation from '../flag-orientation'
+import flagStyle from '../flag-style'
 
 export default {
 	data() {
@@ -47,7 +47,7 @@ export default {
 	},
 
 	methods: {
-		flagOrientation,
+		flagStyle,
 
 		sync() {
 			this.win_team = this.round.win_team ? this.round.win_team.toLowerCase() : this.round.win_team

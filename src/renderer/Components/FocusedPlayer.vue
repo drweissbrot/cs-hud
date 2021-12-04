@@ -25,7 +25,7 @@
 			</div>
 		</div>
 
-		<div class="middle">
+		<div class="center">
 			<div class="first-row">
 				<div class="diagonal-wrapper --left">
 					<div :class="`diagonal --${side}`"></div>
@@ -34,7 +34,7 @@
 				<div class="inner">
 					<div class="flag-wrapper">
 						<div
-							:class="`flag --${side} ${flagOrientation(team.flag)}`"
+							:class="`flag --${side} ${flagStyle(team.flag)}`"
 							:style="{ backgroundImage: team.flag && `url('https://flagcdn.com/${team.flag.toLowerCase()}.svg')` }"
 						></div>
 					</div>
@@ -143,7 +143,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import flagOrientation from '../flag-orientation'
+import flagStyle from '../flag-style'
 
 export default {
 	props: [
@@ -214,7 +214,7 @@ export default {
 	},
 
 	methods: {
-		flagOrientation,
+		flagStyle,
 
 		image(str) {
 			return decodeURIComponent(str.replace(/^data:image\/svg\+xml,/, ''))

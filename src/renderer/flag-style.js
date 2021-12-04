@@ -1,4 +1,4 @@
-const orientations = {
+const style = {
 	de: 'horizontal',
 	dk: 'vertical',
 	mx: 'vertical',
@@ -10,6 +10,6 @@ const orientations = {
 
 export default (countryCode) => {
 	return (countryCode)
-		? `--${orientations[countryCode.toLowerCase()] || 'horizontal'}-flag`
+		? `--${style[countryCode.toLowerCase()] || 'horizontal'}-flag`
 		: null
 }

@@ -1,5 +1,8 @@
 <template>
-	<div v-if="map && map.name" :class="['minimap', { '--transparent': mapData.transparent }]">
+	<div v-if="map && map.name" :class="['minimap', {
+			'--transparent': mapData.transparent,
+			'--series-name-active': seriesName && (seriesName.length === 1 || seriesName.length === 3),
+	}]">
 		<img ref="image" :src="mapImage" @load="onResize">
 
 		<template v-if="imageHeight !== null">
@@ -123,6 +126,7 @@ export default {
 			bombRaw: 'bomb',
 			focusedPlayer: 'player',
 			map: 'map',
+			seriesName: 'seriesName',
 			timers: 'timers',
 		}),
 
