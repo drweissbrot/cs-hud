@@ -1,5 +1,7 @@
 <template>
 	<div v-if="applicable && map" class="container" :style="{ width }">
+		<PreMatchIntro :directionalSides="directionalSides" />
+
 		<Minimap :directionalSides="directionalSides" />
 		<TopBar :directionalSides="directionalSides" />
 		<PlayersAlive :directionalSides="directionalSides" />
@@ -16,6 +18,7 @@
 import FocusedPlayer from './FocusedPlayer'
 import Minimap from './Minimap'
 import PlayersAlive from './PlayersAlive'
+import PreMatchIntro from './PreMatchIntro'
 import RoundGraph from './RoundGraph'
 import RoundWinner from './RoundWinner'
 import Series from './Series'
@@ -29,6 +32,7 @@ export default {
 		FocusedPlayer,
 		Minimap,
 		PlayersAlive,
+		PreMatchIntro,
 		RoundGraph,
 		RoundWinner,
 		Series,
@@ -62,8 +66,8 @@ export default {
 				: null
 		},
 
-		calculateAdr(addOneToCurrentRound) {
-			const currentRound = this.map.team_ct.score + this.map.team_t.score + (addOneToCurrentRound ? 1 : 0)
+		calculateAdr() {
+			const currentRound = this.map.team_ct.score + this.map.team_t.score + Number(this.round.phase === 'over')
 
 			for (const player in this.roundDamage) {
 				let damage = 0
@@ -85,6 +89,7 @@ export default {
 		...mapGetters([
 			'allplayers',
 			'cleardata',
+			'impulse',
 			'map',
 			'primaryTeam',
 			'round',
@@ -142,7 +147,7 @@ export default {
 		round(round, previous) {
 			if (! round || ! previous || round.phase === previous.phase) return
 
-			this.calculateAdr(round.phase === 'over')
+			this.calculateAdr()
 		},
 
 		timers(timers, previous) {
@@ -153,7 +158,13 @@ export default {
 				&& timers.phase === previous.phase
 				&& Number(timers.phase_ends_in) > Number(previous.phase_ends_in)
 			) {
-				this.calculateAdr(false)
+				this.calculateAdr()
+			}
+		},
+
+		impulse(impulse) {
+			switch (impulse) {
+				case 'recalculateAdr': return this.calculateAdr()
 			}
 		},
 	},

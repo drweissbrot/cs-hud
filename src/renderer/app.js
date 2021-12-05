@@ -27,7 +27,9 @@ const store = new Vuex.Store({
 
 	getters: {
 		cleardata: (state) => state.cleardata,
+		impulse: (state) => state.impulse,
 
+		seriesNumber: (state) => state.seriesNumber,
 		primaryTeam: (state) => state.primaryTeam,
 		seriesName: (state) => state.seriesName,
 		series: (state) => state.series,
@@ -64,12 +66,20 @@ const store = new Vuex.Store({
 			state.seriesName = seriesName
 		},
 
+		setSeriesNumber(state, seriesNumber) {
+			state.seriesNumber = seriesNumber
+		},
+
 		setGameStateKey(state, { key, value }) {
 			Vue.set(state, key, value)
 		},
 
 		cleardata(state) {
 			state.cleardata++
+		},
+
+		setImpulse(state, impulse) {
+			state.impulse = impulse
 		},
 	},
 
@@ -94,6 +104,15 @@ const store = new Vuex.Store({
 		setSeriesName({ commit }, seriesName) {
 			commit('setSeriesName', seriesName)
 		},
+
+		setSeriesNumber({ commit }, seriesNumber) {
+			commit('setSeriesNumber', seriesNumber)
+		},
+
+		sendImpulse: async ({ commit }, impulse) => {
+			await commit('setImpulse', impulse)
+			await commit('setImpulse', null)
+		},
 	},
 })
 
@@ -117,6 +136,11 @@ ipcRenderer.on('seriesData', (event, message) => {
 	store.dispatch('setSeriesData', message.matches)
 	store.dispatch('setPrimaryTeam', message.primaryTeam)
 	store.dispatch('setSeriesName', message.seriesName)
+	store.dispatch('setSeriesNumber', message.seriesNumber)
+})
+
+ipcRenderer.on('impulse', (event, impulse) => {
+	store.dispatch('sendImpulse', impulse)
 })
 
 ipcRenderer.send('request-gsi', {

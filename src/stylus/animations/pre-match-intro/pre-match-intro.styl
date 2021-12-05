@@ -1,0 +1,23 @@
+@keyframes preMatchIntro {
+	to {
+		opacity 0
+		transform scale(1.05)
+	}
+}
+
+.pre-match-intro {
+	position fixed
+	top 0
+	bottom 0
+	left 0
+	right 0
+
+	animation preMatchIntro 1s ease forwards 15s
+	z-index 10
+
+	@require 'generic-background'
+	@require 'logo'
+	@require 'marquee'
+	@require 'series'
+	@require 'skillgroups'
+}

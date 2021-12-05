@@ -1,0 +1,70 @@
+@keyframes skillgroupShrinkIn {
+	from {
+		opacity 0
+		transform scale(1.25)
+	}
+
+	20%,
+	25% {
+		opacity 1
+	}
+
+	30%,
+	to {
+		opacity 0
+	}
+}
+
+@keyframes skillgroupShrinkInOut {
+	from {
+		opacity 0
+		transform scale(1.25)
+	}
+
+	25% {
+		opacity 1
+	}
+
+	60% {
+		opacity 1
+		transform scale(1)
+	}
+
+	72.5%,
+	to {
+		opacity 0
+		transform scale(.75)
+	}
+}
+
+.skillgroups {
+	position absolute
+	top 0
+	bottom 0
+	left 0
+	right 0
+
+	display flex
+	align-items center
+	justify-content center
+
+	filter drop-shadow(0 0 1rem rgba(#000, .5))
+
+	img.skillgroup {
+		position absolute
+		height 20rem
+		animation skillgroupShrinkIn 1s ease .55s
+		opacity 0
+
+		for i in (2..18) {
+			&:nth-child({i}) {
+				animation-delay .25s + i * .25s
+			}
+		}
+
+		&:last-child {
+			animation-duration 2s
+			animation-name skillgroupShrinkInOut
+		}
+	}
+}

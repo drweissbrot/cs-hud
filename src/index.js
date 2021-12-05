@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, session } = require('electron')
+const { app, BrowserWindow, globalShortcut, ipcMain, session } = require('electron')
 const path = require('path')
 
 const Server = require('./server')
@@ -10,6 +10,15 @@ const Server = require('./server')
 if (require('electron-squirrel-startup')) app.quit()
 
 let mainWindow, configWindow, server
+
+const registerShortcutToImpulse = (keys, impulse) => {
+	globalShortcut.unregister(keys)
+
+	globalShortcut.register(keys, () => {
+		console.info('shortcut pressed', keys, 'sending impulse', impulse)
+		mainWindow.webContents.send('impulse', impulse)
+	})
+}
 
 const createWindow = () => {
 	if (mainWindow || configWindow || server) return
@@ -32,6 +41,10 @@ const createWindow = () => {
 	mainWindow.on('closed', (e) => e.preventDefault())
 	mainWindow.setIgnoreMouseEvents(true)
 	mainWindow.loadURL(MAIN_WEBPACK_ENTRY + '#hud')
+
+	registerShortcutToImpulse('F1', 'playPreMatchIntro')
+	registerShortcutToImpulse('Shift+F1', 'cancelPreMatchIntro')
+	registerShortcutToImpulse('F2', 'recalculateAdr')
 
 	configWindow = new BrowserWindow({
 		width: 1280,
@@ -75,4 +88,8 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
 	if (BrowserWindow.getAllWindows().length === 0) createWindow()
+})
+
+app.on('will-quit', () => {
+	globalShortcut.unregisterAll()
 })

@@ -42,6 +42,13 @@
 				<textarea id="series-name" v-model="seriesName" />
 			</div>
 
+			<div class="input-group">
+				<label for="series-number">
+					Series Number (for Pre Match Intro and Post Match Outro)
+				</label>
+				<input id="series-number" type="text" v-model="seriesNumber">
+			</div>
+
 			<div class="match" v-for="(match, i) in matches">
 				<div class="number centered">
 					#{{ i + 1 }}
@@ -107,6 +114,7 @@ export default {
 			matches: [{}],
 			primaryTeam: 'Das Deutsche Volk',
 			seriesName: null,
+			seriesNumber: null,
 
 			enableAutoHotKeyMapping: false,
 			autoHotKeyPlayerSlotMapping: null,
@@ -118,14 +126,16 @@ export default {
 	methods: {
 		submit() {
 			ipcRenderer.send('seriesData', {
+				primaryTeam: this.primaryTeam,
+				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n') : null,
+				seriesNumber: this.seriesNumber,
+
 				matches: this.matches.filter(({ map }) => map).map((match) => {
 					match.scoreLeft = Number(match.scoreLeft)
 					match.scoreRight = Number(match.scoreRight)
 
 					return match
 				}),
-				primaryTeam: this.primaryTeam,
-				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n') : null,
 			})
 		},
 

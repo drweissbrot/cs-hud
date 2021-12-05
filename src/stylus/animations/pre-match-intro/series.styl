@@ -1,0 +1,110 @@
+@keyframes series {
+	from {
+		opacity 0
+	}
+
+	to {
+		opacity 1
+	}
+}
+
+@keyframes seriesMatchNotCurrentlyPlaying {
+	to {
+		filter grayscale(1)
+		max-width 0
+		opacity 0
+	}
+}
+
+@keyframes seriesMatchCurrentlyPlaying {
+	to {
+		max-width 100vw
+	}
+}
+
+.series {
+	top 0
+	bottom 0
+	left 0
+	right 0
+
+	align-items stretch
+	animation series .25s ease forwards 8.25s
+	opacity 0
+
+	.match {
+		&.--currently-playing {
+			z-index 200
+			flex 1
+
+			&,
+			.inner {
+				animation seriesMatchCurrentlyPlaying .4s ease forwards 11s
+			}
+
+			.result {
+				text-transform uppercase
+				letter-spacing .35em
+			}
+
+			~ .match .map {
+				filter grayscale(.75) brightness(.6) // TODO should likely also use grayscale in normal series if we want to do it here
+			}
+		}
+
+		&:not(.--currently-playing) {
+			&,
+			.inner {
+				animation seriesMatchNotCurrentlyPlaying .4s ease forwards 11s
+			}
+		}
+
+		.inner {
+			height 100%
+
+			.map {
+				filter brightness(.6)
+				opacity 1
+			}
+
+			.winner-flag-background {
+				filter brightness(.75)
+				opacity .4
+
+				&.--horizontal-flag {
+					background-size cover
+				}
+			}
+
+			.text {
+				display flex
+				flex-direction column
+				justify-content center
+
+				.map-name {
+					font-size 6rem
+					line-height 1
+				}
+
+				.result {
+					margin 2rem -2rem 4rem
+					padding 2rem 0
+
+					box-shadow 0 0 .5rem rgba(#000, .5)
+					font-size 3rem
+					line-height 1
+				}
+
+				.pick-heading {
+					font-size 1.75rem
+					line-height 3rem
+				}
+
+				.pick-team {
+					font-size 2.5rem
+					line-height 3.75rem
+				}
+			}
+		}
+	}
+}

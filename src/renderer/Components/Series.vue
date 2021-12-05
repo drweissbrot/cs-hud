@@ -40,13 +40,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import flagStyle from '../flag-style'
 import RoundGraph from './RoundGraph'
-
-const mapNames = {
-	de_cbble: 'Cobblestone',
-	de_dust2: 'Dust 2',
-}
+import flagStyle from '../flag-style'
+import formatMapName from '../map-names'
 
 export default {
 	components: {
@@ -79,12 +75,7 @@ export default {
 
 	methods: {
 		flagStyle,
-
-		formatMapName(mapName) {
-			return (mapNames.hasOwnProperty(mapName))
-				? mapNames[mapName]
-				: mapName.split('/').pop().split('_', 2).pop()
-		},
+		formatMapName,
 	},
 }
 </script>
