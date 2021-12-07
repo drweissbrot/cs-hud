@@ -12,6 +12,13 @@
 		<FocusedPlayer :adr="adr" />
 		<Sidebars :adr="adr" :directionalSides="directionalSides" />
 	</div>
+
+	<div v-else-if="applicable" class="container" :style="{ width }">
+		<div class="corner --top --left"></div>
+		<div class="corner --top --right"></div>
+		<div class="corner --bottom --left"></div>
+		<div class="corner --bottom --right"></div>
+	</div>
 </template>
 
 <script>
