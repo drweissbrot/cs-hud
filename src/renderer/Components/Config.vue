@@ -1,53 +1,97 @@
 <template>
-	<div v-if="applicable" :class="['config-window', { '--mirrored': mirrored }]">
-		<div class="minimap-wrapper">
-			<Minimap :directionalSides="enableAutoHotKeyMapping ? directionalSides : null" />
-		</div>
+	<div v-if="applicable" class="config-window">
+		<header>
+			<h1>CS:GO HUD Config</h1>
 
-		<div class="config">
-			<h1>CS:GO HUD Series Data</h1>
+			<nav>
+				<ul>
+					<li>
+						<button
+							type="button"
+							:class="{ active: activeTab === 'preferences' }"
+							@click="activeTab = 'preferences'"
+							title="Preferences – Alt+1"
+						>
+							Preferences
+						</button>
+					</li>
 
-			<div class="buttons">
-				<button @click.prevent="matches.push({})">
-					Add Match
-				</button>
+					<li>
+						<button
+							type="button"
+							:class="{ active: activeTab === 'series' }"
+							@click="activeTab = 'series'"
+							title="Series – Alt+2"
+						>
+							Series
+						</button>
+					</li>
 
-				<button @click.prevent="submit">
-					Save
-				</button>
+					<li>
+						<button
+							type="button"
+							:class="{ active: activeTab === 'matches' }"
+							@click="activeTab = 'matches'"
+							title="Matches – Alt+3"
+						>
+							Matches
+						</button>
+					</li>
 
-				<button @click.prevent="mirrored = ! mirrored">
-					Mirror Config Window
-				</button>
-			</div>
+					<li>
+						<button
+							type="button"
+							:class="{ active: activeTab === 'minimap' }"
+							@click="activeTab = 'minimap'"
+							title="Minimap – Alt+4"
+						>
+							Minimap
+						</button>
+					</li>
+				</ul>
+			</nav>
 
+			<button @click.prevent="submit" title="Ctrl+S">
+				Save
+			</button>
+		</header>
+
+		<section v-if="activeTab === 'preferences'">
 			<div class="input-group">
 				<label>
 					<input type="checkbox" v-model="enableAutoHotKeyMapping">
 					Enable AutoHotKey observer slot remapping
 				</label>
 			</div>
+		</section>
 
+		<section v-else-if="activeTab === 'series'">
 			<div class="input-group primary-team">
 				<label for="primary-team">
-					Name of Team that should be on the left
+					Name of Team that should be on the left (otherwise, CT will be on the left)
 				</label>
 				<input type="text" id="primary-team" v-model="primaryTeam">
 			</div>
 
 			<div class="input-group series-event-info">
 				<label for="series-name">
-					Series/Event Info (either 1 or 3 lines)
+					Series/Event Info (either 1 or 3 lines; leave empty to hide)
 				</label>
 				<textarea id="series-name" v-model="seriesName" />
 			</div>
 
 			<div class="input-group">
 				<label for="series-number">
-					Series Number (for Pre Match Intro and Post Match Outro)
+					Series Number (only used for Pre Match Intro and Post Match Outro)
 				</label>
 				<input id="series-number" type="text" v-model="seriesNumber">
 			</div>
+		</section>
+
+		<section v-else-if="activeTab === 'matches'">
+			<button @click.prevent="matches.push({})">
+				Add Match
+			</button>
 
 			<div class="match" v-for="(match, i) in matches">
 				<div class="number centered">
@@ -93,7 +137,11 @@
 					</button>
 				</div>
 			</div>
-		</div>
+		</section>
+
+		<section v-else-if="activeTab === 'minimap'" class="minimap-wrapper">
+			<Minimap :directionalSides="enableAutoHotKeyMapping ? directionalSides : null" />
+		</section>
 	</div>
 </template>
 
@@ -111,6 +159,8 @@ export default {
 
 	data() {
 		return {
+			activeTab: 'preferences',
+
 			matches: (this.$store.getters.series?.length ? this.$store.getters.series : [{}]) || [{}],
 			primaryTeam: this.$store.getters.primaryTeam,
 			seriesName: this.$store.getters.seriesName.join('\n'),
@@ -119,8 +169,23 @@ export default {
 			enableAutoHotKeyMapping: false,
 			autoHotKeyPlayerSlotMapping: null,
 			autoHotKeyProcess: null,
-			mirrored: false,
 		}
+	},
+
+	mounted() {
+		document.addEventListener('keyup', (e) => {
+			if (e.key === 's' && e.ctrlKey && !e.shiftKey && !e.altKey) {
+				e.preventDefault()
+				return this.submit()
+			}
+
+			if (e.altKey && !e.ctrlKey && !e.shiftKey) {
+				if (e.key === '1') return this.activeTab = 'preferences'
+				if (e.key === '2') return this.activeTab = 'series'
+				if (e.key === '3') return this.activeTab = 'matches'
+				if (e.key === '4') return this.activeTab = 'minimap'
+			}
+		})
 	},
 
 	methods: {
