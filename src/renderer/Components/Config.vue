@@ -51,7 +51,7 @@
 				</ul>
 			</nav>
 
-			<button @click.prevent="submit" title="Ctrl+S">
+			<button @click.prevent="submit" :class="{ green: highlightSaveButton }" title="Ctrl+S">
 				Save
 			</button>
 		</header>
@@ -59,8 +59,22 @@
 		<section v-if="activeTab === 'preferences'">
 			<div class="input-group">
 				<label>
+					<input type="checkbox" v-model="observerSlotSortingEnabled">
+					Sort observer slots
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label>
 					<input type="checkbox" v-model="enableAutoHotKeyMapping">
-					Enable AutoHotKey observer slot remapping
+					Enable AutoHotKey observer slot remapping (this setting is not persisted across HUD restarts)
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label>
+					<input type="checkbox" v-model="prePostMatchAnimationsEnabled">
+					Enable Pre Match Intro and Post Match Outro
 				</label>
 			</div>
 		</section>
@@ -160,15 +174,18 @@ export default {
 	data() {
 		return {
 			activeTab: 'preferences',
+			highlightSaveButton: false,
 
 			matches: (this.$store.getters.series?.length ? this.$store.getters.series : [{}]) || [{}],
+			observerSlotSortingEnabled: this.$store.getters.observerSlotSortingEnabled,
+			prePostMatchAnimationsEnabled: this.$store.getters.prePostMatchAnimationsEnabled,
 			primaryTeam: this.$store.getters.primaryTeam,
 			seriesName: this.$store.getters.seriesName.join('\n'),
 			seriesNumber: this.$store.getters.seriesNumber,
 
-			enableAutoHotKeyMapping: false,
 			autoHotKeyPlayerSlotMapping: null,
 			autoHotKeyProcess: null,
+			enableAutoHotKeyMapping: false,
 		}
 	},
 
@@ -190,7 +207,9 @@ export default {
 
 	methods: {
 		submit() {
-			ipcRenderer.send('seriesData', {
+			ipcRenderer.send('config', {
+				observerSlotSortingEnabled: this.observerSlotSortingEnabled,
+				prePostMatchAnimationsEnabled: this.prePostMatchAnimationsEnabled,
 				primaryTeam: this.primaryTeam,
 				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n').filter((str) => str) : null,
 				seriesNumber: this.seriesNumber,
@@ -202,6 +221,9 @@ export default {
 					return match
 				}),
 			})
+
+			this.highlightSaveButton = true
+			setTimeout(() => this.highlightSaveButton = false, 500)
 		},
 
 		restartAutoHotKeyIfRequired() {

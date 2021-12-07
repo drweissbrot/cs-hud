@@ -13,6 +13,8 @@ const store = new Vuex.Store({
 		cleardata: 0,
 		impulse: null,
 
+		observerSlotSortingEnabled: true,
+		prePostMatchAnimationsEnabled: false,
 		primaryTeam: null,
 		series: [{}],
 		seriesName: [],
@@ -35,10 +37,12 @@ const store = new Vuex.Store({
 		cleardata: (state) => state.cleardata,
 		impulse: (state) => state.impulse,
 
-		seriesNumber: (state) => state.seriesNumber,
+		observerSlotSortingEnabled: (state) => state.observerSlotSortingEnabled,
+		prePostMatchAnimationsEnabled: (state) => state.prePostMatchAnimationsEnabled,
 		primaryTeam: (state) => state.primaryTeam,
-		seriesName: (state) => state.seriesName,
 		series: (state) => state.series,
+		seriesName: (state) => state.seriesName,
+		seriesNumber: (state) => state.seriesNumber,
 
 		allplayers: (state) => state.allplayers,
 		bomb: (state) => state.bomb,
@@ -76,6 +80,14 @@ const store = new Vuex.Store({
 			state.seriesNumber = seriesNumber
 		},
 
+		setPrePostMatchAnimationsEnabled(state, enabled) {
+			state.prePostMatchAnimationsEnabled = enabled
+		},
+
+		setObserverSlotSortingEnabled(state, enabled) {
+			state.observerSlotSortingEnabled = enabled
+		},
+
 		setGameStateKey(state, { key, value }) {
 			Vue.set(state, key, value)
 		},
@@ -99,20 +111,13 @@ const store = new Vuex.Store({
 			commit('setGameStateKey', message)
 		},
 
-		setSeriesData({ commit }, data) {
-			commit('setSeriesData', data)
-		},
-
-		setPrimaryTeam({ commit }, team) {
-			commit('setPrimaryTeam', team)
-		},
-
-		setSeriesName({ commit }, seriesName) {
-			commit('setSeriesName', seriesName)
-		},
-
-		setSeriesNumber({ commit }, seriesNumber) {
-			commit('setSeriesNumber', seriesNumber)
+		async config({ commit }, message) {
+			commit('setObserverSlotSortingEnabled', message.observerSlotSortingEnabled)
+			commit('setPrePostMatchAnimationsEnabled', message.prePostMatchAnimationsEnabled)
+			commit('setPrimaryTeam', message.primaryTeam)
+			commit('setSeriesData', message.matches)
+			commit('setSeriesName', message.seriesName)
+			commit('setSeriesNumber', message.seriesNumber)
 		},
 
 		sendImpulse: async ({ commit }, impulse) => {
@@ -160,11 +165,8 @@ ipcRenderer.on('gsi', (event, message) => {
 	else store.dispatch('setGameStateKey', message)
 })
 
-ipcRenderer.on('seriesData', (event, message) => {
-	store.dispatch('setSeriesData', message.matches)
-	store.dispatch('setPrimaryTeam', message.primaryTeam)
-	store.dispatch('setSeriesName', message.seriesName)
-	store.dispatch('setSeriesNumber', message.seriesNumber)
+ipcRenderer.on('config', (event, message) => {
+	store.dispatch('config', message)
 })
 
 ipcRenderer.on('impulse', (event, impulse) => {

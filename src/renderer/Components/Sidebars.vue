@@ -31,6 +31,7 @@ export default {
 		...mapGetters([
 			'allplayers',
 			'map',
+			'observerSlotSortingEnabled',
 			'series',
 			'timers',
 		]),
@@ -43,9 +44,16 @@ export default {
 				players.push(this.allplayers[id])
 			}
 
-			return players.sort(({ name: a }, { name: b }) => {
-				a = a.toLowerCase()
-				b = b.toLowerCase()
+			return players.sort((a, b) => {
+				if (! this.observerSlotSortingEnabled) {
+					a = a.observer_slot === 0 ? 10 : a.observer_slot
+					b = b.observer_slot === 0 ? 10 : b.observer_slot
+
+					return a - b
+				}
+
+				a = a.name.toLowerCase()
+				b = b.name.toLowerCase()
 
 				if (a === b) return 0
 				return (a > b) ? 1 : -1

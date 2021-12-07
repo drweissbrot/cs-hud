@@ -38,7 +38,7 @@ const createWindow = () => {
 		},
 	})
 
-	mainWindow.on('closed', (e) => e.preventDefault())
+	mainWindow.on('closed', () => app.quit())
 	mainWindow.setIgnoreMouseEvents(true)
 	mainWindow.loadURL(MAIN_WEBPACK_ENTRY + '#hud')
 
@@ -58,10 +58,10 @@ const createWindow = () => {
 		},
 	})
 
-	configWindow.on('closed', (e) => e.preventDefault())
+	configWindow.on('closed', () => app.quit())
 	configWindow.loadURL(MAIN_WEBPACK_ENTRY + '#config')
 
-	ipcMain.on('seriesData', (event, message) => mainWindow.webContents.send('seriesData', message))
+	ipcMain.on('config', (event, message) => mainWindow.webContents.send('config', message))
 
 	server = new Server(mainWindow, configWindow).run()
 

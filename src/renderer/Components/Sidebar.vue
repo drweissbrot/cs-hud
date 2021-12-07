@@ -77,7 +77,7 @@
 			:direction="direction"
 			:freezetime="freezetime"
 			:key="player.steamid"
-			:observerSlot="index + (direction === 'right' ? 6 : 1)"
+			:observerSlot="observerSlotSortingEnabled ? (index + (direction === 'right' ? 6 : 1)) : player.observer_slot"
 			:player="player"
 			:side="side"
 		/>
@@ -112,6 +112,7 @@ export default {
 	computed: {
 		...mapGetters([
 			'map',
+			'observerSlotSortingEnabled',
 		]),
 
 		equipmentValue() {

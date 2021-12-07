@@ -122,13 +122,19 @@
 		color inherit
 		border .2rem solid #ae
 		cursor pointer
-		transition background .3s ease, color .3s ease
+		transition background .3s ease, border-color .3s ease, color .3s ease
 
 		&:active,
 		&:hover,
 		&.active {
 			background #ae
 			color #21
+		}
+
+		&.green {
+			background green
+			border-color green
+			color #fff
 		}
 	}
 }

@@ -1,8 +1,8 @@
 <template>
 	<div v-if="applicable && map" class="container" :style="{ width }">
-		<PreMatchIntro :directionalSides="directionalSides" />
+		<PreMatchIntro v-if="prePostMatchAnimationsEnabled" :directionalSides="directionalSides" />
 
-		<Minimap :directionalSides="directionalSides" />
+		<Minimap :directionalSides="observerSlotSortingEnabled ? directionalSides : null" />
 		<TopBar :directionalSides="directionalSides" />
 		<PlayersAlive :directionalSides="directionalSides" />
 		<Series :directionalSides="directionalSides" />
@@ -91,6 +91,8 @@ export default {
 			'cleardata',
 			'impulse',
 			'map',
+			'observerSlotSortingEnabled',
+			'prePostMatchAnimationsEnabled',
 			'primaryTeam',
 			'round',
 			'timers',
