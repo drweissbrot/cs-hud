@@ -1,17 +1,22 @@
 @keyframes series {
-	from {
+	from,
+	{preMatchIntroSeconds(5.5)} {
 		opacity 0
+		transform scale(1.05)
 	}
 
+	{preMatchIntroSeconds(5.9)},
 	to {
 		opacity 1
+		transform none
 	}
 }
 
 @keyframes seriesMatchNotCurrentlyPlaying {
 	to {
-		filter grayscale(1)
 		max-width 0
+
+		filter grayscale(1)
 		opacity 0
 	}
 }
@@ -29,7 +34,7 @@
 	right 0
 
 	align-items stretch
-	animation series .25s ease forwards 8.25s
+	animation series 20s ease forwards
 	opacity 0
 
 	.match {
@@ -39,7 +44,7 @@
 
 			&,
 			.inner {
-				animation seriesMatchCurrentlyPlaying .4s ease forwards 11s
+				animation seriesMatchCurrentlyPlaying .4s ease forwards 8.1s
 			}
 
 			.result {
@@ -55,7 +60,7 @@
 		&:not(.--currently-playing) {
 			&,
 			.inner {
-				animation seriesMatchNotCurrentlyPlaying .4s ease forwards 11s
+				animation seriesMatchNotCurrentlyPlaying .4s ease forwards 8.1s
 			}
 		}
 

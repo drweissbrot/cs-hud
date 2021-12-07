@@ -111,10 +111,10 @@ export default {
 
 	data() {
 		return {
-			matches: [{}],
-			primaryTeam: 'Das Deutsche Volk',
-			seriesName: null,
-			seriesNumber: null,
+			matches: (this.$store.getters.series?.length ? this.$store.getters.series : [{}]) || [{}],
+			primaryTeam: this.$store.getters.primaryTeam,
+			seriesName: this.$store.getters.seriesName.join('\n'),
+			seriesNumber: this.$store.getters.seriesNumber,
 
 			enableAutoHotKeyMapping: false,
 			autoHotKeyPlayerSlotMapping: null,
@@ -127,7 +127,7 @@ export default {
 		submit() {
 			ipcRenderer.send('seriesData', {
 				primaryTeam: this.primaryTeam,
-				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n') : null,
+				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n').filter((str) => str) : null,
 				seriesNumber: this.seriesNumber,
 
 				matches: this.matches.filter(({ map }) => map).map((match) => {

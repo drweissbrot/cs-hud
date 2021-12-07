@@ -1,16 +1,17 @@
 @keyframes logoShrinkInOut {
-	from {
+	from,
+	{preMatchIntroSeconds(4)} {
 		opacity 0
 		transform scale(1.05)
 	}
 
-	10%,
-	55% {
+	{preMatchIntroSeconds(4.4)},
+	{preMatchIntroSeconds(5.5)} {
 		opacity 1
 		transform scale(1)
 	}
 
-	60%,
+	{preMatchIntroSeconds(5.9)},
 	to {
 		opacity 0
 		transform scale(.75)
@@ -28,7 +29,7 @@
 	align-items center
 	justify-content center
 
-	animation logoShrinkInOut 4s ease 6s
+	animation logoShrinkInOut 20s ease
 	opacity 0
 
 	.inner {

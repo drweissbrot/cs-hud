@@ -11,18 +11,24 @@ const loggedKeys = []
 const store = new Vuex.Store({
 	state: {
 		cleardata: 0,
+		impulse: null,
 
-		primaryTeam: 'Das Deutsche Volk',
-		series: [],
+		primaryTeam: null,
+		series: [{}],
 		seriesName: [],
+		seriesNumber: null,
 
 		allplayers: null,
 		bomb: null,
 		grenades: null,
 		map: null,
+		phase_countdowns: {},
 		player: null,
 		round: null,
-		phase_countdowns: {},
+
+		// ...require('./__state.js').default, // for debugging
+
+		...(JSON.parse(localStorage.getItem('state') || '{}')),
 	},
 
 	getters: {
@@ -114,6 +120,28 @@ const store = new Vuex.Store({
 			await commit('setImpulse', null)
 		},
 	},
+})
+
+// save the current config on every update
+store.subscribe((mutation, state) => {
+	if (['setGameStateKey', 'cleardata', 'setImpulse'].includes(mutation.type)) return
+
+	// shallow clone the object so we can clean it up
+	state = { ...state }
+
+	// discard everything we don't want to persist across restarts
+	delete state.allplayers
+	delete state.bomb
+	delete state.grenades
+	delete state.map
+	delete state.phase_countdowns
+	delete state.player
+	delete state.round
+
+	delete state.cleardata
+	delete state.impulse
+
+	localStorage.setItem('state', JSON.stringify(state))
 })
 
 if (window.location.hash === '#hud') document.documentElement.classList.add('hud')

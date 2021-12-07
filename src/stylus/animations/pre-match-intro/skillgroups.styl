@@ -1,36 +1,36 @@
-@keyframes skillgroupShrinkIn {
+@keyframes skillgroupFastSlideshow {
 	from {
 		opacity 0
 		transform scale(1.25)
 	}
 
-	20%,
-	25% {
+	{animationSeconds(.2)},
+	{animationSeconds(.25)} {
 		opacity 1
 	}
 
-	30%,
+	{animationSeconds(.2)},
 	to {
 		opacity 0
 	}
 }
 
-@keyframes skillgroupShrinkInOut {
+@keyframes skillgroupSilver1 {
 	from {
 		opacity 0
 		transform scale(1.25)
 	}
 
-	25% {
+	{animationSeconds(.5, 2)} {
 		opacity 1
 	}
 
-	60% {
+	{animationSeconds(1.2, 2)} {
 		opacity 1
 		transform scale(1)
 	}
 
-	72.5%,
+	{animationSeconds(1.45, 2)},
 	to {
 		opacity 0
 		transform scale(.75)
@@ -53,18 +53,19 @@
 	img.skillgroup {
 		position absolute
 		height 20rem
-		animation skillgroupShrinkIn 1s ease .55s
+		animation skillgroupFastSlideshow 1s ease .2s
 		opacity 0
 
 		for i in (2..18) {
 			&:nth-child({i}) {
-				animation-delay .25s + i * .25s
+				animation-delay .2s + (i - 1) * .15s
 			}
 		}
 
 		&:last-child {
+			// animation-delay for this is 2.75s, actual duration is 1.45s
 			animation-duration 2s
-			animation-name skillgroupShrinkInOut
+			animation-name skillgroupSilver1
 		}
 	}
 }

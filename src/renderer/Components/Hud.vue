@@ -67,7 +67,7 @@ export default {
 		},
 
 		calculateAdr() {
-			const currentRound = this.map.team_ct.score + this.map.team_t.score + Number(this.round.phase === 'over')
+			const currentRound = this.map.team_ct.score + this.map.team_t.score + Number(this.round && this.round.phase === 'over')
 
 			for (const player in this.roundDamage) {
 				let damage = 0

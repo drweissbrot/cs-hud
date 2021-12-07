@@ -1,7 +1,18 @@
+preMatchIntroSeconds(seconds) {
+	return animationSeconds(seconds, 20)
+}
+
 @keyframes preMatchIntro {
+	from,
+	{preMatchIntroSeconds(10.75)} {
+		opacity 1
+		transform none
+	}
+
+	{preMatchIntroSeconds(11.25)},
 	to {
 		opacity 0
-		transform scale(1.05)
+		transform scale(.95)
 	}
 }
 
@@ -12,7 +23,7 @@
 	left 0
 	right 0
 
-	animation preMatchIntro 1s ease forwards 15s
+	animation preMatchIntro 20s ease forwards
 	z-index 10
 
 	@require 'generic-background'
