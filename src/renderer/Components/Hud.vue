@@ -1,6 +1,11 @@
 <template>
 	<div v-if="applicable && map" class="container" :style="{ width }">
 		<PreMatchIntro v-if="prePostMatchAnimationsEnabled" :directionalSides="directionalSides" />
+	<div v-if="applicable && map" class="container" :style="{ width, background: 'green' }">
+		<template v-if="prePostMatchAnimationsEnabled">
+			<PreMatchIntro :directionalSides="directionalSides" />
+			<PostMatchOutro :directionalSides="directionalSides" />
+		</template>
 
 		<Minimap :directionalSides="observerSlotSortingEnabled ? directionalSides : null" />
 		<TopBar :directionalSides="directionalSides" />
@@ -26,6 +31,7 @@ import { mapGetters } from 'vuex'
 import FocusedPlayer from './FocusedPlayer'
 import Minimap from './Minimap'
 import PlayersAlive from './PlayersAlive'
+import PostMatchOutro from './Animations/PostMatchOutro'
 import PreMatchIntro from './Animations/PreMatchIntro'
 import RoundGraph from './RoundGraph'
 import RoundWinner from './RoundWinner'
@@ -39,6 +45,7 @@ export default {
 		FocusedPlayer,
 		Minimap,
 		PlayersAlive,
+		PostMatchOutro,
 		PreMatchIntro,
 		RoundGraph,
 		RoundWinner,

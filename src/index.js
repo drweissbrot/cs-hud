@@ -44,7 +44,11 @@ const createWindow = () => {
 
 	registerShortcutToImpulse('F1', 'playPreMatchIntro')
 	registerShortcutToImpulse('Shift+F1', 'cancelPreMatchIntro')
-	registerShortcutToImpulse('F2', 'recalculateAdr')
+
+	registerShortcutToImpulse('F2', 'playPostMatchOutro')
+	registerShortcutToImpulse('Shift+F2', 'cancelPostMatchOutro')
+
+	registerShortcutToImpulse('F3', 'recalculateAdr')
 
 	configWindow = new BrowserWindow({
 		width: 1280,

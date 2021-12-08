@@ -110,8 +110,7 @@ export default {
 				this.audio = new Audio(require('../../../img/pre-match-intro-music.mp3').default)
 				this.audio.play()
 
-				// TODO update to new duration of animation
-				this.unsetActiveTimeout = setTimeout(() => this.cancelPreMatchIntro(false), 16000)
+				this.unsetActiveTimeout = setTimeout(() => this.cancelPreMatchIntro(false), 12000)
 			})
 		},
 
