@@ -42,17 +42,20 @@ export default {
 
 	data() {
 		return {
-			audio: null,
 			active: false,
+			audio: null,
+			postMatchOutroAlreadyPlayed: false,
 			unsetActiveTimeout: null,
 		}
 	},
 
 	computed: {
 		...mapGetters([
+			'autoplayPostMatchAnimations',
 			'impulse',
 			'map',
 			'series',
+			'timers',
 		]),
 
 		teams() {
@@ -95,6 +98,19 @@ export default {
 			switch (impulse) {
 				case 'playPostMatchOutro': return this.playPostMatchOutro()
 				case 'cancelPostMatchOutro': return this.cancelPostMatchOutro()
+			}
+		},
+
+		timers(timers) {
+			if (! this.autoplayPostMatchAnimations) return
+
+			if (timers.phase === 'over' && timers.phase_ends_in < 0) {
+				if (! this.postMatchOutroAlreadyPlayed && ! this.active) {
+					this.playPostMatchOutro()
+					this.postMatchOutroAlreadyPlayed = true
+				}
+			} else {
+				this.postMatchOutroAlreadyPlayed = false
 			}
 		},
 	},

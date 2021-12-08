@@ -1,7 +1,5 @@
 <template>
 	<div v-if="applicable && map" class="container" :style="{ width }">
-		<PreMatchIntro v-if="prePostMatchAnimationsEnabled" :directionalSides="directionalSides" />
-	<div v-if="applicable && map" class="container" :style="{ width, background: 'green' }">
 		<template v-if="prePostMatchAnimationsEnabled">
 			<PreMatchIntro :directionalSides="directionalSides" />
 			<PostMatchOutro :directionalSides="directionalSides" />

@@ -8,7 +8,8 @@ const store = new Vuex.Store({
 		cleardata: 0,
 		impulse: null,
 
-		observerSlotSortingEnabled: true,
+		autoplayPostMatchAnimations: false,
+		observerSlotSortingEnabled: false,
 		prePostMatchAnimationsEnabled: false,
 		primaryTeam: null,
 		series: [{}],
@@ -32,6 +33,7 @@ const store = new Vuex.Store({
 		cleardata: (state) => state.cleardata,
 		impulse: (state) => state.impulse,
 
+		autoplayPostMatchAnimations: (state) => state.autoplayPostMatchAnimations,
 		observerSlotSortingEnabled: (state) => state.observerSlotSortingEnabled,
 		prePostMatchAnimationsEnabled: (state) => state.prePostMatchAnimationsEnabled,
 		primaryTeam: (state) => state.primaryTeam,
@@ -83,6 +85,10 @@ const store = new Vuex.Store({
 			state.observerSlotSortingEnabled = enabled
 		},
 
+		setAutoplayPostMatchAnimations(state, autoplay) {
+			state.autoplayPostMatchAnimations = autoplay
+		},
+
 		setGameStateKey(state, { key, value }) {
 			Vue.set(state, key, value)
 		},
@@ -107,6 +113,7 @@ const store = new Vuex.Store({
 		},
 
 		async config({ commit }, message) {
+			commit('setAutoplayPostMatchAnimations', message.autoplayPostMatchAnimations)
 			commit('setObserverSlotSortingEnabled', message.observerSlotSortingEnabled)
 			commit('setPrePostMatchAnimationsEnabled', message.prePostMatchAnimationsEnabled)
 			commit('setPrimaryTeam', message.primaryTeam)

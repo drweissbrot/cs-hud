@@ -42,13 +42,13 @@ const createWindow = () => {
 	mainWindow.setIgnoreMouseEvents(true)
 	mainWindow.loadURL(MAIN_WEBPACK_ENTRY + '#hud')
 
-	registerShortcutToImpulse('F1', 'playPreMatchIntro')
-	registerShortcutToImpulse('Shift+F1', 'cancelPreMatchIntro')
+	registerShortcutToImpulse('F5', 'playPreMatchIntro')
+	registerShortcutToImpulse('Shift+F5', 'cancelPreMatchIntro')
 
-	registerShortcutToImpulse('F2', 'playPostMatchOutro')
-	registerShortcutToImpulse('Shift+F2', 'cancelPostMatchOutro')
+	registerShortcutToImpulse('F6', 'playPostMatchOutro')
+	registerShortcutToImpulse('Shift+F6', 'cancelPostMatchOutro')
 
-	registerShortcutToImpulse('F3', 'recalculateAdr')
+	registerShortcutToImpulse('F8', 'recalculateAdr')
 
 	configWindow = new BrowserWindow({
 		width: 1280,

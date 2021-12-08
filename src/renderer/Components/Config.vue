@@ -74,7 +74,14 @@
 			<div class="input-group">
 				<label>
 					<input type="checkbox" v-model="prePostMatchAnimationsEnabled">
-					Enable Pre Match Intro and Post Match Outro
+					Enable Pre and Post Match Animations
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label>
+					<input type="checkbox" v-model="autoplayPostMatchAnimations">
+					Start Post Match Outro and Post Series Outro automatically on match end
 				</label>
 			</div>
 		</section>
@@ -176,6 +183,7 @@ export default {
 			activeTab: 'preferences',
 			highlightSaveButton: false,
 
+			autoplayPostMatchAnimations: this.$store.getters.autoplayPostMatchAnimations,
 			matches: (this.$store.getters.series?.length ? this.$store.getters.series : [{}]) || [{}],
 			observerSlotSortingEnabled: this.$store.getters.observerSlotSortingEnabled,
 			prePostMatchAnimationsEnabled: this.$store.getters.prePostMatchAnimationsEnabled,
@@ -208,6 +216,7 @@ export default {
 	methods: {
 		submit() {
 			ipcRenderer.send('config', {
+				autoplayPostMatchAnimations: this.autoplayPostMatchAnimations,
 				observerSlotSortingEnabled: this.observerSlotSortingEnabled,
 				prePostMatchAnimationsEnabled: this.prePostMatchAnimationsEnabled,
 				primaryTeam: this.primaryTeam,
