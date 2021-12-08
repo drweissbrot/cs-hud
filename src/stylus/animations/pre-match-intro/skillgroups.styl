@@ -1,4 +1,4 @@
-@keyframes skillgroupFastSlideshow {
+@keyframes animationsSkillgroupFastSlideshow {
 	from {
 		opacity 0
 		transform scale(1.25)
@@ -15,7 +15,7 @@
 	}
 }
 
-@keyframes skillgroupSilver1 {
+@keyframes animationsSillgroupSilver1 {
 	from {
 		opacity 0
 		transform scale(1.25)
@@ -53,7 +53,7 @@
 	img.skillgroup {
 		position absolute
 		height 20rem
-		animation skillgroupFastSlideshow 1s ease .2s
+		animation animationsSkillgroupFastSlideshow 1s ease .2s
 		opacity 0
 
 		for i in (2..18) {
@@ -63,9 +63,9 @@
 		}
 
 		&:last-child {
-			// animation-delay for this is 2.75s, actual duration is 1.45s
+			// animation-delay for this is 2.75s, actual duration is 1.45s = animation completely finished at 4.2s
 			animation-duration 2s
-			animation-name skillgroupSilver1
+			animation-name animationsSillgroupSilver1
 		}
 	}
 }

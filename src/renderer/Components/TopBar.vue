@@ -1,5 +1,6 @@
 <template>
 	<div class="top-bar-wrapper">
+		<!-- TODO angles for theses ones are a bit broken on 2560x1080px -->
 		<div v-if="seriesName && (seriesName.length === 1 || seriesName.length === 3)" class="series-name">
 			<div v-if="seriesName.length === 3" class="left">
 				<div class="inner">{{ seriesName[0] }}</div>

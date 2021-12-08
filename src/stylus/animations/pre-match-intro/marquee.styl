@@ -1,4 +1,4 @@
-@keyframes marqueeTop {
+@keyframes preMatchIntroMarqueeTop {
 	from,
 	{animationSeconds(4, 60)} {
 		opacity 0
@@ -14,7 +14,7 @@
 	}
 }
 
-@keyframes marqueeBottom {
+@keyframes preMatchIntroMarqueeBottom {
 	from,
 	{animationSeconds(4, 60)} {
 		opacity 0
@@ -41,13 +41,13 @@
 	&.--top {
 		top 0
 		left -3rem
-		animation-name marqueeTop
+		animation-name preMatchIntroMarqueeTop
 	}
 
 	&.--bottom {
 		bottom 0
 		right -3rem
-		animation-name marqueeBottom
+		animation-name preMatchIntroMarqueeBottom
 	}
 
 	img {

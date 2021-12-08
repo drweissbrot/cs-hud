@@ -22,17 +22,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import FocusedPlayer from './FocusedPlayer'
 import Minimap from './Minimap'
 import PlayersAlive from './PlayersAlive'
-import PreMatchIntro from './PreMatchIntro'
+import PreMatchIntro from './Animations/PreMatchIntro'
 import RoundGraph from './RoundGraph'
 import RoundWinner from './RoundWinner'
 import Series from './Series'
 import Sidebars from './Sidebars'
 import Timeout from './Timeout'
 import TopBar from './TopBar'
-import { mapGetters } from 'vuex'
 
 export default {
 	components: {

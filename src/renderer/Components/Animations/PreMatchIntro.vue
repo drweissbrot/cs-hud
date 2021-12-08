@@ -1,22 +1,7 @@
 <template>
 	<div v-if="active && series && series.length" class="pre-match-intro">
-		<div v-for="location in ['top', 'bottom']" :class="`marquee --${location}`">
-			<template v-for="i in 20">
-				<img src="../../img/skillgroups/wingman1.svg" alt="">
-				<img src="../../img/wheelchair-man/white.svg" alt="">
-				<img src="../../img/skillgroups/wingman1.svg" alt="">
-				<img class="large" :src="require('../../img/condom-man.png').default" alt="">
-				<img src="../../img/skillgroups/wingman1.svg" alt="">
-				<img class="large" :src="require('../../img/straight-outta-silver.png').default" alt="">
-			</template>
-		</div>
-
-		<video
-			class="generic-background"
-			:src="require('../../img/pre-match-intro-background.mp4').default"
-			autoplay
-		></video>
-		<div class="generic-background-blur"></div>
+		<Marquees />
+		<GenericBackground />
 
 		<div class="series --active">
 			<div
@@ -63,39 +48,28 @@
 			</div>
 		</div>
 
-		<div class="skillgroups">
-			<img v-for="i in 18" class="skillgroup" :src="require(`../../img/skillgroups/skillgroup${19 - i}.svg`)" alt="">
-		</div>
-
-		<div class="logo">
-			<div class="inner">
-				<div class="csgo">
-					Counter-Strike<br>
-					Global Offensive
-				</div>
-
-				<img class="wheelchair-man" :src="require('../../img/wheelchair-man/orange.svg')" alt="">
-
-				<div class="paralympics">
-					Paralympics
-				</div>
-
-				<div v-if="seriesName.length === 1 || seriesName.length === 3" class="meta">
-					<div>{{ seriesName[0] }}</div>
-					<div class="center">{{ seriesNumber || (seriesName.length === 1 ? seriesName[0] : seriesName[1]) }}</div>
-					<div>{{ seriesName[2] }}</div>
-				</div>
-			</div>
-		</div>
+		<Skillgroups />
+		<Logo />
 	</div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import flagStyle from '../flag-style'
-import formatMapName from '../map-names'
+import flagStyle from '../../flag-style'
+import formatMapName from '../../map-names'
+import GenericBackground from './GenericBackground'
+import Logo from './Logo'
+import Marquees from './Marquees'
+import Skillgroups from './Skillgroups'
 
 export default {
+	components: {
+		GenericBackground,
+		Logo,
+		Marquees,
+		Skillgroups,
+	},
+
 	props: [
 		'directionalSides',
 	],
@@ -113,8 +87,6 @@ export default {
 			'impulse',
 			'map',
 			'series',
-			'seriesName',
-			'seriesNumber',
 		]),
 
 		teams() {
@@ -135,9 +107,10 @@ export default {
 			this.$nextTick(() => {
 				this.active =  true
 
-				this.audio = new Audio(require('../../img/pre-match-intro-music.mp3').default)
+				this.audio = new Audio(require('../../../img/pre-match-intro-music.mp3').default)
 				this.audio.play()
 
+				// TODO update to new duration of animation
 				this.unsetActiveTimeout = setTimeout(() => this.cancelPreMatchIntro(false), 16000)
 			})
 		},
