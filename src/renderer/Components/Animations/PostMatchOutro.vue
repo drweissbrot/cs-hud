@@ -56,7 +56,7 @@ export default {
 	},
 
 	beforeDestroy() {
-		URL.removeObjectURL(this.musicBlobUrl)
+		URL.revokeObjectURL(this.musicBlobUrl)
 	},
 
 	computed: {

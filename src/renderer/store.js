@@ -18,6 +18,7 @@ const store = new Vuex.Store({
 		series: [{}],
 		seriesName: [],
 		seriesNumber: null,
+		tacticalTimeoutMusicPaths: [],
 
 		allplayers: null,
 		bomb: null,
@@ -46,6 +47,7 @@ const store = new Vuex.Store({
 		series: (state) => state.series,
 		seriesName: (state) => state.seriesName,
 		seriesNumber: (state) => state.seriesNumber,
+		tacticalTimeoutMusicPaths: (state) => state.tacticalTimeoutMusicPaths,
 
 		allplayers: (state) => state.allplayers,
 		bomb: (state) => state.bomb,
@@ -107,6 +109,10 @@ const store = new Vuex.Store({
 			state.preMatchIntroMusicPath = path
 		},
 
+		setTacticalTimeoutMusicPaths(state, paths) {
+			state.tacticalTimeoutMusicPaths = paths
+		},
+
 		setGameStateKey(state, { key, value }) {
 			Vue.set(state, key, value)
 		},
@@ -141,6 +147,7 @@ const store = new Vuex.Store({
 			commit('setSeriesData', message.matches)
 			commit('setSeriesName', message.seriesName)
 			commit('setSeriesNumber', message.seriesNumber)
+			commit('setTacticalTimeoutMusicPaths', message.tacticalTimeoutMusicPaths)
 		},
 
 		sendImpulse: async ({ commit }, impulse) => {

@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import * as fs from 'fs'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -39,17 +40,42 @@ export default {
 
 	data() {
 		return {
+			audio: null,
+			musicBlobUrls: [],
 			remainingTime: 1,
 		}
 	},
 
+	mounted() {
+		this.updateMusicBlobUrls()
+	},
+
+	beforeDestroy() {
+		for (const url of this.musicBlobUrls) URL.revokeObjectURL(url)
+	},
+
 	computed: {
 		...mapGetters([
+			'tacticalTimeoutMusicPaths',
 			'timers',
 		]),
 
 		active() {
 			return this.timers.phase === 'timeout_' + this.side
+		},
+	},
+
+	methods: {
+		updateMusicBlobUrls() {
+			for (const url of this.musicBlobUrls) URL.revokeObjectURL(url)
+
+			const urls = []
+
+			for (const path of this.tacticalTimeoutMusicPaths) {
+				urls.push(URL.createObjectURL(new Blob([fs.readFileSync(path)])))
+			}
+
+			this.musicBlobUrls = urls
 		},
 	},
 
@@ -61,8 +87,28 @@ export default {
 		},
 
 		active(now, previously) {
-			if (now) this.remainingTime = 1
-			else setTimeout(() => this.remainingTime = 1, 350)
+			if (! now) {
+				return setTimeout(() => this.remainingTime = 1, 350)
+			}
+
+			this.remainingTime = 1
+
+			if (! previously && ! this.audio) {
+				this.audio = true // try to prevent some edge cases where the music starts playing twice
+				this.audio = new Audio(this.musicBlobUrls[Math.floor(Math.random() * this.musicBlobUrls.length)])
+				this.audio.play()
+
+				this.audio.addEventListener('durationchange', () => {
+					setTimeout(() => {
+						this.audio.pause()
+						this.audio = null
+					}, (this.audio.duration - this.audio.currentTime) * 1000)
+				})
+			}
+		},
+
+		tacticalTimeoutMusicPaths() {
+			this.updateMusicBlobUrls()
 		},
 	},
 }

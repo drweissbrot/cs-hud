@@ -21,7 +21,7 @@ export default {
 	},
 
 	beforeDestory() {
-		URL.removeObjectURL(this.videoBlobUrl)
+		URL.revokeObjectURL(this.videoBlobUrl)
 	},
 
 	computed: {

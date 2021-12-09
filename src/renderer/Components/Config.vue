@@ -105,6 +105,18 @@
 				<button id="post-match-outro-music" class="choose-file" @click.prevent="selectPostMatchOutroMusic">Choose File...</button>
 				<label class="inline" for="post-match-outro-music">{{ postMatchOutroMusicPath || 'Not selected' }}</label>
 			</div>
+
+			<div class="input-group">
+				<label for="tactical-timeout-music">Tactical Timeout Music (one will be randomly selected and played for every tactical timeout; select no files to disable)</label>
+
+				<button id="tactical-timeout-music" class="choose-file" @click.prevent="selectTacticalTimeoutMusic">Choose Files...</button>
+
+				<template v-if="tacticalTimeoutMusicPaths && tacticalTimeoutMusicPaths.length">
+					<label v-for="path in tacticalTimeoutMusicPaths" for="tactical-timeout-music">{{ path }}</label>
+				</template>
+
+				<label v-else class="inline" for="tactical-timeout-music">None selected</label>
+			</div>
 		</section>
 
 		<section v-else-if="activeTab === 'series'">
@@ -204,16 +216,17 @@ export default {
 			activeTab: 'preferences',
 			highlightSaveButton: false,
 
-			animationsGenericBackgroundVideoPath: this.$store.getters.animationsGenericBackgroundVideoPath, // TODO add in vuex
+			animationsGenericBackgroundVideoPath: this.$store.getters.animationsGenericBackgroundVideoPath,
 			autoplayPostMatchAnimations: this.$store.getters.autoplayPostMatchAnimations,
 			matches: (this.$store.getters.series?.length ? this.$store.getters.series : [{}]) || [{}],
 			observerSlotSortingEnabled: this.$store.getters.observerSlotSortingEnabled,
-			postMatchOutroMusicPath: this.$store.getters.postMatchOutroMusicPath, // TODO add in vuex
-			preMatchIntroMusicPath: this.$store.getters.preMatchIntroMusicPath, // TODO add in vuex
+			postMatchOutroMusicPath: this.$store.getters.postMatchOutroMusicPath,
+			preMatchIntroMusicPath: this.$store.getters.preMatchIntroMusicPath,
 			prePostMatchAnimationsEnabled: this.$store.getters.prePostMatchAnimationsEnabled,
 			primaryTeam: this.$store.getters.primaryTeam,
 			seriesName: this.$store.getters.seriesName.join('\n'),
 			seriesNumber: this.$store.getters.seriesNumber,
+			tacticalTimeoutMusicPaths: this.$store.getters.tacticalTimeoutMusicPaths,
 
 			autoHotKeyPlayerSlotMapping: null,
 			autoHotKeyProcess: null,
@@ -249,6 +262,7 @@ export default {
 				primaryTeam: this.primaryTeam,
 				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n').filter((str) => str) : null,
 				seriesNumber: this.seriesNumber,
+				tacticalTimeoutMusicPaths: this.tacticalTimeoutMusicPaths,
 
 				matches: this.matches.filter(({ map }) => map).map((match) => {
 					match.scoreLeft = Number(match.scoreLeft)
@@ -311,7 +325,7 @@ export default {
 			this.autoHotKeyProcess = null
 		},
 
-		showOpenFileDialog(title, filters, callback) {
+		showOpenFileDialog(title, filters, callback, multiple = false) {
 			const id = Math.random()
 
 			ipcRenderer.send('showOpenFileDialog', {
@@ -319,7 +333,7 @@ export default {
 				options: {
 					filters,
 					title,
-					properties: ['dontAddToRecent', 'openFile'],
+					properties: ['dontAddToRecent', 'openFile', multiple ? 'multiSelections' : null],
 				},
 			})
 
@@ -357,6 +371,16 @@ export default {
 				this.postMatchOutroMusicPath = response.filePaths[0] || null
 				this.submit()
 			})
+		},
+
+		selectTacticalTimeoutMusic() {
+			this.showOpenFileDialog('Select Post Match Outro Music', [
+				{ name: 'Audio', extensions: ['flac', 'mp3', 'ogg', 'opus', 'vorbis', 'aac'] },
+				{ name: 'All Files', extensions: ['*'] },
+			], (response) => {
+				this.tacticalTimeoutMusicPaths = response.filePaths || []
+				this.submit()
+			}, true)
 		},
 	},
 
