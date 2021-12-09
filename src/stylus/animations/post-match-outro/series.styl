@@ -32,6 +32,10 @@
 +animationsSeries() {
 	animation postMatchOutroSeries $postMatchOutroSeconds ease forwards
 
+	&.--completed .match.--currently-playing ~ .match .map {
+		filter grayscale(.75) brightness(.6)
+	}
+
 	.match {
 		&.--currently-playing {
 			&,

@@ -21,6 +21,10 @@
 
 		&.--currently-playing {
 			flex 3
+
+			~ .match .map {
+				filter grayscale(.75) brightness(.75)
+			}
 		}
 	}
 

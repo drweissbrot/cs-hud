@@ -28,7 +28,7 @@ const store = new Vuex.Store({
 		player: null,
 		round: null,
 
-		...require('./__state.js').default, // for debugging
+		// ...require('./__state.js').default, // for debugging
 
 		...(JSON.parse(localStorage.getItem('state') || '{}')),
 	},

@@ -3,10 +3,10 @@
 		<Marquees />
 		<GenericBackground />
 
-		<div class="series --active">
+		<div :class="['series --active', { '--completed': seriesCompleted }]">
 			<PostMatchOutroSeriesMatch
 				v-for="(match, index) in series"
-				:isComingUpNext="series[index - 1] && series[index - 1].currentlyPlaying"
+				:isComingUpNext="! seriesCompleted && series[index - 1] && series[index - 1].currentlyPlaying"
 				:key="index"
 				:match="match"
 				:seriesLength="series.length"
@@ -68,6 +68,25 @@ export default {
 			'postMatchOutroMusicPath',
 			'series',
 		]),
+
+		seriesCompleted() {
+			const matchWinsRequiredToWinSeries = Math.ceil(this.series.length / 2)
+
+			let winsLeft = 0
+			let winsRight = 0
+
+			for (const { currentlyPlaying, scoreLeft, scoreRight } of this.series) {
+				if (currentlyPlaying) {
+					if (this.teams[0].score > this.teams[1].score) winsLeft++
+					else if (this.teams[1].score > this.teams[0].score) winsRight++
+				} else {
+					if (scoreLeft > scoreRight) winsLeft++
+					else if (scoreRight > scoreLeft) winsRight++
+				}
+			}
+
+			return winsLeft >= matchWinsRequiredToWinSeries || winsRight >= matchWinsRequiredToWinSeries
+		},
 
 		teams() {
 			return [
