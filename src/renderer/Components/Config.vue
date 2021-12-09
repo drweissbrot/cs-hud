@@ -87,29 +87,23 @@
 
 			<div class="input-group">
 				<label for="animations-generic-background-video">Pre/Post Match Animations Background Video</label>
-				<label for="animations-generic-background-video">{{ animationsGenericBackgroundVideoPath || 'Not selected' }}</label>
 
-				<button id="animations-generic-background-video" @click.prevent="selectAnimationsGenericBackgroundVideo">
-					Choose File
-				</button>
+				<button id="animations-generic-background-video" class="choose-file" @click.prevent="selectAnimationsGenericBackgroundVideo">Choose File...</button>
+				<label class="inline" for="animations-generic-background-video">{{ animationsGenericBackgroundVideoPath || 'Not selected' }}</label>
 			</div>
 
 			<div class="input-group">
 				<label for="pre-match-intro-music">Pre Match Intro Music</label>
-				<label for="pre-match-intro-music">{{ preMatchIntroMusicPath || 'Not selected' }}</label>
 
-				<button id="pre-match-intro-music" @click.prevent="selectPreMatchIntroMusic">
-					Choose File
-				</button>
+				<button id="pre-match-intro-music" class="choose-file" @click.prevent="selectPreMatchIntroMusic">Choose File...</button>
+				<label class="inline" for="pre-match-intro-music">{{ preMatchIntroMusicPath || 'Not selected' }}</label>
 			</div>
 
 			<div class="input-group">
 				<label for="post-match-outro-music">Post Match Outro Music</label>
-				<label for="post-match-outro-music">{{ postMatchOutroMusicPath || 'Not selected' }}</label>
 
-				<button id="post-match-outro-music" @click.prevent="selectPostMatchOutroMusic">
-					Choose File
-				</button>
+				<button id="post-match-outro-music" class="choose-file" @click.prevent="selectPostMatchOutroMusic">Choose File...</button>
+				<label class="inline" for="post-match-outro-music">{{ postMatchOutroMusicPath || 'Not selected' }}</label>
 			</div>
 		</section>
 
