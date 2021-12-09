@@ -8,8 +8,11 @@ const store = new Vuex.Store({
 		cleardata: 0,
 		impulse: null,
 
+		animationsGenericBackgroundVideoPath: null,
 		autoplayPostMatchAnimations: false,
 		observerSlotSortingEnabled: false,
+		postMatchOutroMusicPath: null,
+		preMatchIntroMusicPath: null,
 		prePostMatchAnimationsEnabled: false,
 		primaryTeam: null,
 		series: [{}],
@@ -33,8 +36,11 @@ const store = new Vuex.Store({
 		cleardata: (state) => state.cleardata,
 		impulse: (state) => state.impulse,
 
+		animationsGenericBackgroundVideoPath: (state) => state.animationsGenericBackgroundVideoPath,
 		autoplayPostMatchAnimations: (state) => state.autoplayPostMatchAnimations,
 		observerSlotSortingEnabled: (state) => state.observerSlotSortingEnabled,
+		postMatchOutroMusicPath: (state) => state.postMatchOutroMusicPath,
+		preMatchIntroMusicPath: (state) => state.preMatchIntroMusicPath,
 		prePostMatchAnimationsEnabled: (state) => state.prePostMatchAnimationsEnabled,
 		primaryTeam: (state) => state.primaryTeam,
 		series: (state) => state.series,
@@ -89,6 +95,18 @@ const store = new Vuex.Store({
 			state.autoplayPostMatchAnimations = autoplay
 		},
 
+		setAnimationsGenericBackgroundVideoPath(state, path) {
+			state.animationsGenericBackgroundVideoPath = path
+		},
+
+		setPostMatchOutroMusicPath(state, path) {
+			state.postMatchOutroMusicPath = path
+		},
+
+		setPreMatchIntroMusicPath(state, path) {
+			state.preMatchIntroMusicPath = path
+		},
+
 		setGameStateKey(state, { key, value }) {
 			Vue.set(state, key, value)
 		},
@@ -113,8 +131,11 @@ const store = new Vuex.Store({
 		},
 
 		async config({ commit }, message) {
+			commit('setAnimationsGenericBackgroundVideoPath', message.animationsGenericBackgroundVideoPath)
 			commit('setAutoplayPostMatchAnimations', message.autoplayPostMatchAnimations)
 			commit('setObserverSlotSortingEnabled', message.observerSlotSortingEnabled)
+			commit('setPostMatchOutroMusicPath', message.postMatchOutroMusicPath)
+			commit('setPreMatchIntroMusicPath', message.preMatchIntroMusicPath)
 			commit('setPrePostMatchAnimationsEnabled', message.prePostMatchAnimationsEnabled)
 			commit('setPrimaryTeam', message.primaryTeam)
 			commit('setSeriesData', message.matches)

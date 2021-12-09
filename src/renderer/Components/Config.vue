@@ -84,6 +84,33 @@
 					Start Post Match Outro and Post Series Outro automatically on match end
 				</label>
 			</div>
+
+			<div class="input-group">
+				<label for="animations-generic-background-video">Pre/Post Match Animations Background Video</label>
+				<label for="animations-generic-background-video">{{ animationsGenericBackgroundVideoPath || 'Not selected' }}</label>
+
+				<button id="animations-generic-background-video" @click.prevent="selectAnimationsGenericBackgroundVideo">
+					Choose File
+				</button>
+			</div>
+
+			<div class="input-group">
+				<label for="pre-match-intro-music">Pre Match Intro Music</label>
+				<label for="pre-match-intro-music">{{ preMatchIntroMusicPath || 'Not selected' }}</label>
+
+				<button id="pre-match-intro-music" @click.prevent="selectPreMatchIntroMusic">
+					Choose File
+				</button>
+			</div>
+
+			<div class="input-group">
+				<label for="post-match-outro-music">Post Match Outro Music</label>
+				<label for="post-match-outro-music">{{ postMatchOutroMusicPath || 'Not selected' }}</label>
+
+				<button id="post-match-outro-music" @click.prevent="selectPostMatchOutroMusic">
+					Choose File
+				</button>
+			</div>
 		</section>
 
 		<section v-else-if="activeTab === 'series'">
@@ -167,9 +194,9 @@
 </template>
 
 <script>
-import { ipcRenderer } from 'electron'
 import * as fs from 'fs'
 import { execFile as run } from 'child_process'
+import { ipcRenderer } from 'electron'
 import { mapGetters } from 'vuex'
 import Minimap from './Minimap'
 
@@ -183,9 +210,12 @@ export default {
 			activeTab: 'preferences',
 			highlightSaveButton: false,
 
+			animationsGenericBackgroundVideoPath: this.$store.getters.animationsGenericBackgroundVideoPath, // TODO add in vuex
 			autoplayPostMatchAnimations: this.$store.getters.autoplayPostMatchAnimations,
 			matches: (this.$store.getters.series?.length ? this.$store.getters.series : [{}]) || [{}],
 			observerSlotSortingEnabled: this.$store.getters.observerSlotSortingEnabled,
+			postMatchOutroMusicPath: this.$store.getters.postMatchOutroMusicPath, // TODO add in vuex
+			preMatchIntroMusicPath: this.$store.getters.preMatchIntroMusicPath, // TODO add in vuex
 			prePostMatchAnimationsEnabled: this.$store.getters.prePostMatchAnimationsEnabled,
 			primaryTeam: this.$store.getters.primaryTeam,
 			seriesName: this.$store.getters.seriesName.join('\n'),
@@ -216,8 +246,11 @@ export default {
 	methods: {
 		submit() {
 			ipcRenderer.send('config', {
+				animationsGenericBackgroundVideoPath: this.animationsGenericBackgroundVideoPath,
 				autoplayPostMatchAnimations: this.autoplayPostMatchAnimations,
 				observerSlotSortingEnabled: this.observerSlotSortingEnabled,
+				postMatchOutroMusicPath: this.postMatchOutroMusicPath,
+				preMatchIntroMusicPath: this.preMatchIntroMusicPath,
 				prePostMatchAnimationsEnabled: this.prePostMatchAnimationsEnabled,
 				primaryTeam: this.primaryTeam,
 				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n').filter((str) => str) : null,
@@ -282,6 +315,54 @@ export default {
 
 			this.autoHotKeyProcess.kill()
 			this.autoHotKeyProcess = null
+		},
+
+		showOpenFileDialog(title, filters, callback) {
+			const id = Math.random()
+
+			ipcRenderer.send('showOpenFileDialog', {
+				id,
+				options: {
+					filters,
+					title,
+					properties: ['dontAddToRecent', 'openFile'],
+				},
+			})
+
+			ipcRenderer.on('openFileDialogResponse', (event, message) => {
+				if (message.id !== id) return
+				callback(message.response)
+			})
+		},
+
+		selectAnimationsGenericBackgroundVideo() {
+			this.showOpenFileDialog('Select Background Video for Pre/Post Match Animations', [
+				{ name: 'Videos', extensions: ['mp4', 'ogg', 'webm', 'mov'] },
+				{ name: 'All Files', extensions: ['*'] },
+			], (response) => {
+				this.animationsGenericBackgroundVideoPath = response.filePaths[0] || null
+				this.submit()
+			})
+		},
+
+		selectPreMatchIntroMusic() {
+			this.showOpenFileDialog('Select Pre Match Intro Music', [
+				{ name: 'Audio', extensions: ['flac', 'mp3', 'ogg', 'opus', 'vorbis', 'aac'] },
+				{ name: 'All Files', extensions: ['*'] },
+			], (response) => {
+				this.preMatchIntroMusicPath = response.filePaths[0] || null
+				this.submit()
+			})
+		},
+
+		selectPostMatchOutroMusic() {
+			this.showOpenFileDialog('Select Post Match Outro Music', [
+				{ name: 'Audio', extensions: ['flac', 'mp3', 'ogg', 'opus', 'vorbis', 'aac'] },
+				{ name: 'All Files', extensions: ['*'] },
+			], (response) => {
+				this.postMatchOutroMusicPath = response.filePaths[0] || null
+				this.submit()
+			})
 		},
 	},
 

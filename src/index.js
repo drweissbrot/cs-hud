@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut, ipcMain, session } = require('electron')
+const { app, BrowserWindow, dialog, globalShortcut, ipcMain, session } = require('electron')
 const path = require('path')
 
 const Server = require('./server')
@@ -33,7 +33,6 @@ const createWindow = () => {
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
-			enableRemoteModule: true,
 			preload: MAIN_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
@@ -57,7 +56,6 @@ const createWindow = () => {
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
-			enableRemoteModule: true,
 			preload: MAIN_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
@@ -66,6 +64,14 @@ const createWindow = () => {
 	configWindow.loadURL(MAIN_WEBPACK_ENTRY + '#config')
 
 	ipcMain.on('config', (event, message) => mainWindow.webContents.send('config', message))
+	ipcMain.on('showOpenFileDialog', async (event, message) => {
+		const response = await dialog.showOpenDialog(configWindow, message.options)
+
+		configWindow.webContents.send('openFileDialogResponse', {
+			response,
+			id: message.id,
+		})
+	})
 
 	server = new Server(mainWindow, configWindow).run()
 
@@ -80,7 +86,7 @@ app.on('ready', () => {
 		callback({
 			responseHeaders: {
 				...details.responseHeaders,
-				'Content-Security-Policy': ['default-src data: https: \'unsafe-eval\' \'self\''],
+				'Content-Security-Policy': ['default-src blob: data: https: \'unsafe-eval\' \'self\''],
 			},
 		})
 	})

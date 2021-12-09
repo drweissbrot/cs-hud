@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import * as fs from 'fs'
 import { mapGetters } from 'vuex'
 import flagStyle from '../../flag-style'
 import formatMapName from '../../map-names'
@@ -76,16 +77,26 @@ export default {
 
 	data() {
 		return {
-			audio: null,
 			active: false,
+			audio: null,
+			musicBlobUrl: null,
 			unsetActiveTimeout: null,
 		}
+	},
+
+	mounted() {
+		this.updateMusicBlobUrl()
+	},
+
+	beforeDestroy() {
+		URL.removeObjectURL(this.musicBlobUrl)
 	},
 
 	computed: {
 		...mapGetters([
 			'impulse',
 			'map',
+			'preMatchIntroMusicPath',
 			'series',
 		]),
 
@@ -107,7 +118,7 @@ export default {
 			this.$nextTick(() => {
 				this.active =  true
 
-				this.audio = new Audio(require('../../../img/pre-match-intro-music.mp3').default)
+				this.audio = new Audio(this.musicBlobUrl)
 				this.audio.play()
 
 				this.unsetActiveTimeout = setTimeout(() => this.cancelPreMatchIntro(false), 12000)
@@ -125,6 +136,13 @@ export default {
 				this.audio = null
 			}
 		},
+
+		updateMusicBlobUrl() {
+			if (! this.preMatchIntroMusicPath) return
+
+			const blob = new Blob([fs.readFileSync(this.preMatchIntroMusicPath)])
+			this.musicBlobUrl = URL.createObjectURL(blob)
+		},
 	},
 
 	watch: {
@@ -133,6 +151,10 @@ export default {
 				case 'playPreMatchIntro': return this.playPreMatchIntro()
 				case 'cancelPreMatchIntro': return this.cancelPreMatchIntro()
 			}
+		},
+
+		preMatchIntroMusicPath() {
+			this.updateMusicBlobUrl()
 		},
 	},
 }

@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import * as fs from 'fs'
 import { mapGetters } from 'vuex'
 import GenericBackground from './GenericBackground'
 import Logo from './Logo'
@@ -44,9 +45,18 @@ export default {
 		return {
 			active: false,
 			audio: null,
+			musicBlobUrl: null,
 			postMatchOutroAlreadyPlayed: false,
 			unsetActiveTimeout: null,
 		}
+	},
+
+	mounted() {
+		this.updateMusicBlobUrl()
+	},
+
+	beforeDestroy() {
+		URL.removeObjectURL(this.musicBlobUrl)
 	},
 
 	computed: {
@@ -54,6 +64,7 @@ export default {
 			'autoplayPostMatchAnimations',
 			'impulse',
 			'map',
+			'postMatchOutroMusicPath',
 			'series',
 			'timers',
 		]),
@@ -73,7 +84,7 @@ export default {
 			this.$nextTick(() => {
 				this.active =  true
 
-				this.audio = new Audio(require('../../../img/post-match-outro-music.ogg').default)
+				this.audio = new Audio(this.musicBlobUrl)
 				this.audio.play()
 
 				this.unsetActiveTimeout = setTimeout(() => this.cancelPostMatchOutro(false), 20000)
@@ -90,6 +101,13 @@ export default {
 				this.audio.pause()
 				this.audio = null
 			}
+		},
+
+		updateMusicBlobUrl() {
+			if (! this.postMatchOutroMusicPath) return
+
+			const blob = new Blob([fs.readFileSync(this.postMatchOutroMusicPath)])
+			this.musicBlobUrl = URL.createObjectURL(blob)
 		},
 	},
 
@@ -112,6 +130,10 @@ export default {
 			} else {
 				this.postMatchOutroAlreadyPlayed = false
 			}
+		},
+
+		postMatchOutroMusicPath() {
+			this.updateMusicBlobUrl()
 		},
 	},
 }
