@@ -64,9 +64,9 @@ export default {
 			'autoplayPostMatchAnimations',
 			'impulse',
 			'map',
+			'map',
 			'postMatchOutroMusicPath',
 			'series',
-			'timers',
 		]),
 
 		teams() {
@@ -119,13 +119,13 @@ export default {
 			}
 		},
 
-		timers(timers) {
+		map(map, previously) {
 			if (! this.autoplayPostMatchAnimations) return
 
-			if (timers.phase === 'over' && timers.phase_ends_in < 0) {
-				if (! this.postMatchOutroAlreadyPlayed && ! this.active) {
-					this.playPostMatchOutro()
+			if (map.phase === 'gameover') {
+				if (previously.phase !== 'gameover' && ! this.postMatchOutroAlreadyPlayed && ! this.active) {
 					this.postMatchOutroAlreadyPlayed = true
+					setTimeout(() => this.playPostMatchOutro(), 2000)
 				}
 			} else {
 				this.postMatchOutroAlreadyPlayed = false
