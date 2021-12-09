@@ -47,6 +47,9 @@ const createWindow = () => {
 	registerShortcutToImpulse('F6', 'playPostMatchOutro')
 	registerShortcutToImpulse('Shift+F6', 'cancelPostMatchOutro')
 
+	registerShortcutToImpulse('F7', 'playTacticalTimeoutMusic')
+	registerShortcutToImpulse('Shift+F7', 'cancelTacticalTimeoutMusic')
+
 	registerShortcutToImpulse('F8', 'recalculateAdr')
 
 	configWindow = new BrowserWindow({

@@ -41,6 +41,7 @@ export default {
 	data() {
 		return {
 			audio: null,
+			cancelAudioTimeout: null,
 			musicBlobUrls: [],
 			remainingTime: 1,
 		}
@@ -56,6 +57,7 @@ export default {
 
 	computed: {
 		...mapGetters([
+			'impulse',
 			'tacticalTimeoutMusicPaths',
 			'timers',
 		]),
@@ -77,6 +79,30 @@ export default {
 
 			this.musicBlobUrls = urls
 		},
+
+		playAudio() {
+			if (this.audio) return
+
+			this.audio = true // try to prevent some edge cases where the music starts playing twice
+			this.audio = new Audio(this.musicBlobUrls[Math.floor(Math.random() * this.musicBlobUrls.length)])
+			this.audio.play()
+
+			this.audio.addEventListener('durationchange', () => {
+				if (this.cancelAudioTimeout) return
+
+				this.cancelAudioTimeout = setTimeout(() => this.cancelAudio(), (this.audio.duration - this.audio.currentTime) * 1000)
+			})
+		},
+
+		cancelAudio() {
+			clearTimeout(this.cancelAudioTimeout)
+			this.cancelAudioTimeout = null
+
+			if (! this.audio) return
+
+			this.audio.pause()
+			this.audio = null
+		},
 	},
 
 	watch: {
@@ -92,23 +118,19 @@ export default {
 			}
 
 			this.remainingTime = 1
-
-			if (! previously && ! this.audio) {
-				this.audio = true // try to prevent some edge cases where the music starts playing twice
-				this.audio = new Audio(this.musicBlobUrls[Math.floor(Math.random() * this.musicBlobUrls.length)])
-				this.audio.play()
-
-				this.audio.addEventListener('durationchange', () => {
-					setTimeout(() => {
-						this.audio.pause()
-						this.audio = null
-					}, (this.audio.duration - this.audio.currentTime) * 1000)
-				})
-			}
+			if (! previously) this.playAudio()
 		},
 
-		tacticalTimeoutMusicPaths() {
+		tacticalTimeoutMusicPaths(now, previously) {
 			this.updateMusicBlobUrls()
+		},
+
+		impulse(impulse) {
+			switch (impulse) {
+				// only play music on command for one of the two instances of this component
+				case 'playTacticalTimeoutMusic': return this.direction === 'left' && this.playAudio()
+				case 'cancelTacticalTimeoutMusic': return this.cancelAudio()
+			}
 		},
 	},
 }
