@@ -1,93 +1,54 @@
 .round-graph {
-	position absolute
-	bottom 20.3rem
-	left 30.25%
-	right 30.25%
+	flsize(2.6rem, 1)
 
-	color #fff
-	transition opacity .5s ease
+	display flex
+	background rgba(#000, .5)
 
-	&:not(.--active) {
-		opacity 0
+	&.--ot {
+		.round:nth-child(3) {
+			border-right .1rem solid rgba(#fff, .75)
+		}
 	}
 
-	.match-point-wrapper {
-		display grid
-		grid-template-columns 1fr 1fr
-		margin-bottom .5rem
+	.round {
+		teamColors()
+		flsize(1.25rem, 1)
 
-		.match-point {
-			teamBackground()
-			flsize(2.5rem, 1)
-			padding 1.5rem
+		padding .25rem 0 .7rem
+		flex 1 1 0
 
-			&.--right {
-				grid-area 1/2
+		&.--null {
+			background rgba(#fff, .25)
+
+			+ .--null {
+				background none
 			}
 		}
 	}
 
-	.heading,
-	.rounds {
-		background rgba(#000, .5)
+	.colored-bar {
+		teamBackground()
+		height .2rem
+		margin .25rem 0 .5rem
+
+		&.--null {
+			background rgba(#fff, .75)
+		}
 	}
 
-	.heading {
-		flsize(2rem, 1.5)
+	.image {
+		height 2.4rem
 
-		display grid
-		grid-template-columns 1fr 1fr
-	}
-
-	.rounds {
-		display flex
-
-		&.--ot {
-			.round:nth-child(3) {
-				border-right .1rem solid rgba(#fff, .75)
-			}
+		&.--t path {
+			fill $t
 		}
 
-		.round {
-			teamColors()
-			flsize(2rem, 1)
-
-			padding .1rem 0 1rem
-			flex 1 1 0
-
-			&.--null {
-				background rgba(#fff, .25)
-
-				+ .--null {
-					background none
-				}
-			}
+		&.--ct path {
+			fill $ct
 		}
 
-		.colored-bar {
-			teamBackground()
-			height .5rem
-			margin .5rem 0 1.25rem
-
-			&.--null {
-				background rgba(#fff, .75)
-			}
-		}
-
-		.image {
-			height 3.4rem
-
-			&.--t path {
-				fill $t
-			}
-
-			&.--ct path {
-				fill $ct
-			}
-
-			svg {
-				height 100%
-			}
+		svg {
+			height 100%
 		}
 	}
 }

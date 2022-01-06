@@ -1,44 +1,58 @@
 .config-window {
-	display flex
-	justify-content space-between
-
 	min-width 100vw
 	min-height 100vh
 	padding 2rem 4rem
 
 	background #21
 	color #ae
-
-	&.--mirrored {
-		flex-direction row-reverse
-
-		.minimap-wrapper {
-			margin-left 2rem
-			justify-content flex-end
-		}
-	}
+	text-align left
 
 	.minimap-wrapper {
 		center()
-		justify-content flex-start
-		flex-grow 1
+
+		height 100vh
+		position fixed
+		top 0
+		left 0
+		bottom 0
+		right 0
+		pointer-events none
 	}
 
 	.minimap {
 		height 100%
+		text-align center
 
 		img {
 			height 100%
 			object-fit contain
 		}
 	}
-}
 
-.config {
-	text-align left
+	header {
+		width 100%
 
-	h1 {
-		margin 0
+		display flex
+		flex-wrap wrap
+		justify-content space-between
+		align-items center
+
+		margin-bottom 2rem
+
+		h1 {
+			margin 0 2rem 0 0
+		}
+
+		nav ul {
+			list-style none
+			display flex
+
+			button {
+				border-top none
+				border-left none
+				border-right none
+			}
+		}
 	}
 
 	.buttons,
@@ -60,9 +74,16 @@
 		}
 	}
 
+	.input-group {
+		&:not(:last-child) {
+			margin-bottom 2rem
+		}
+	}
+
 	label {
 		&:not(.inline) {
 			display block
+			margin-bottom .5rem
 		}
 	}
 
@@ -101,12 +122,25 @@
 		color inherit
 		border .2rem solid #ae
 		cursor pointer
-		transition background .3s ease, color .3s ease
+		transition background .3s ease, border-color .3s ease, color .3s ease
 
 		&:active,
-		&:hover {
+		&:hover,
+		&.active {
 			background #ae
 			color #21
+		}
+
+		&.green {
+			background green
+			border-color green
+			color #fff
+		}
+
+		&.choose-file {
+			margin-right 1rem
+			padding .5rem 1.5rem
+			border-width 1px
 		}
 	}
 }

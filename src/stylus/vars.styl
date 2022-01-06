@@ -1,7 +1,10 @@
-$ct = #1ea6e2
+$ct = #1d9ede
 $t = #c18803
 $red = red
 $green = #9bae81
+
+$generalPaddingX = 2rem
+$generalPaddingY = 1.5rem
 
 flsize($s, $m) {
 	font-size $s
@@ -18,6 +21,16 @@ leftRight($name) {
 	}
 }
 
+leftRightArea($left = left, $right = right) {
+	&.--left {
+		grid-area $left
+	}
+
+	&.--right {
+		grid-area $right
+	}
+}
+
 area($name) {
 	.{$name} {
 		leftRight($name)
@@ -31,13 +44,13 @@ center() {
 	justify-content center
 }
 
-teamBackground() {
+teamBackground($alpha = 1) {
 	&.--ct {
-		background $ct
+		background rgba($ct, $alpha)
 	}
 
 	&.--t {
-		background $t
+		background rgba($t, $alpha)
 	}
 }
 
@@ -49,4 +62,8 @@ teamColors() {
 	&.--t {
 		color lighten($t, 25%)
 	}
+}
+
+animationSeconds(seconds, duration = 1) {
+	return seconds / duration * 100%
 }

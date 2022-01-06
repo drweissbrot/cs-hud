@@ -1,20 +1,164 @@
+@keyframes roundWinnerLeftDiagonal {
+	from {
+		opacity 0
+		transform translateX(20vw) skewX(20deg)
+	}
+
+	50% {
+		opacity 1
+	}
+}
+
+@keyframes roundWinnerRightDiagonal {
+	from {
+		opacity 0
+		transform translateX(-20vw) skewX(-20deg)
+	}
+
+	50% {
+		opacity 1
+	}
+}
+
+@keyframes roundWinnerBackgroundAndInner {
+	from,
+	15% {
+		clip-path polygon(42.25% 0, 49.99% 100%, 50.01% 100%, 57.75% 0)
+		opacity 0
+	}
+
+	to {
+		clip-path polygon(0 0, 7.75% 100%, 92.5% 100%, 100% 0)
+	}
+}
+
 .round-winner {
-	img.flag {
-		max-width 100%
-		filter drop-shadow(0 0 .5rem rgba(#fff, .5))
+	position absolute
+	top 18rem
+	left 0
+	right 0
+
+	width 30vw
+	margin 0 auto
+
+	color #fff
+	filter drop-shadow(0 0 .4rem rgba(#000, .5))
+	text-shadow 0 0 1rem rgba(#000, .75)
+
+	&.active-enter-active {
+		.background,
+		.flag,
+		.inner {
+			animation roundWinnerBackgroundAndInner .4s backwards ease
+		}
+
+		.diagonal-wrapper.--left .diagonal {
+			animation roundWinnerLeftDiagonal .4s backwards ease
+		}
+
+		.diagonal-wrapper.--right .diagonal {
+			animation roundWinnerRightDiagonal .4s backwards ease
+		}
 	}
 
-	.text {
-		justify-content center !important
+	&.active-leave-active {
+		.background,
+		.flag,
+		.inner {
+			animation roundWinnerBackgroundAndInner .4s forwards ease reverse
+		}
+
+		.diagonal-wrapper.--left .diagonal {
+			animation roundWinnerLeftDiagonal .4s forwards ease reverse
+		}
+
+		.diagonal-wrapper.--right .diagonal {
+			animation roundWinnerRightDiagonal .4s forwards ease reverse
+		}
 	}
 
-	.label {
+	.diagonal-wrapper {
+		position absolute
+		top 0
+		bottom 0
+		z-index 2
+
+		&.--left {
+			left 0
+
+			.diagonal {
+				transform skewX(20deg)
+			}
+		}
+
+		&.--right {
+			right 0
+
+			.diagonal {
+				transform skewX(-20deg)
+			}
+		}
+
+		.diagonal {
+			teamBackground()
+			width 1.5rem
+			height 100%
+		}
+	}
+
+	.inner-wrapper {
+		display grid
+
+		> * {
+			grid-area 1/1
+		}
+	}
+
+	.inner {
+		padding 2rem
+		z-index 1
+	}
+
+	.flag,
+	.background {
+		clip-path polygon(0 0, 7.75% 100%, 92.5% 100%, 100% 0)
+		min-height 100%
+		width 105%
+		transform translateX(5% / 105% / -.02)
+	}
+
+	.flag {
+		teamBackground()
+		opacity .6
+
+		&.--horizontal-flag {
+			background-position center
+			background-size contain
+		}
+
+		&.--vertical-flag,
+		&.--unusual-flag {
+			background-position center
+			background-repeat no-repeat
+			background-size cover
+		}
+	}
+
+	.background {
+		background rgba(#000, .5)
+	}
+
+	.team-name {
 		teamColors()
-		font-size 4rem !important
-		line-height 1
+		flsize(4rem, 1)
 	}
 
-	.info {
-		flsize(2.25rem, 1.25)
+	.phrase {
+		flsize(3rem, 1)
+		margin .775rem 0 1.2rem 0
+	}
+
+	.reason {
+		flsize(2rem, 1)
 	}
 }

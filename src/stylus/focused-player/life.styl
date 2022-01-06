@@ -1,0 +1,33 @@
+.life {
+	line-height 3rem
+	font-size 2.5rem
+
+	&,
+	.inner {
+		margin-left auto
+	}
+
+	.inner {
+		align-items center
+		padding 0 1rem
+		transform skewX(20deg)
+	}
+
+	.health,
+	.armor {
+		display flex
+		align-items center
+		padding .6rem 1rem
+		transform skewX(-20deg)
+
+		img {
+			height 2rem
+			margin-right .75rem
+		}
+
+		.number {
+			width 2.75ch
+			text-align right
+		}
+	}
+}

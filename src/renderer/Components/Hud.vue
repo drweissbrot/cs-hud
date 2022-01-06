@@ -1,36 +1,50 @@
 <template>
 	<div v-if="applicable && map" class="container" :style="{ width }">
-		<Minimap :directionalSides="directionalSides" />
+		<template v-if="prePostMatchAnimationsEnabled">
+			<PreMatchIntro :directionalSides="directionalSides" />
+			<PostMatchOutro :directionalSides="directionalSides" />
+		</template>
+
+		<Minimap :directionalSides="observerSlotSortingEnabled ? directionalSides : null" />
 		<TopBar :directionalSides="directionalSides" />
 		<PlayersAlive :directionalSides="directionalSides" />
 		<Series :directionalSides="directionalSides" />
 
 		<RoundWinner />
-		<Timeout />
-		<RoundGraph :directionalSides="directionalSides" />
 
 		<FocusedPlayer :adr="adr" />
 		<Sidebars :adr="adr" :directionalSides="directionalSides" />
 	</div>
+
+	<div v-else-if="applicable" class="container" :style="{ width }">
+		<div class="corner --top --left"></div>
+		<div class="corner --top --right"></div>
+		<div class="corner --bottom --left"></div>
+		<div class="corner --bottom --right"></div>
+	</div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import FocusedPlayer from './FocusedPlayer'
 import Minimap from './Minimap'
 import PlayersAlive from './PlayersAlive'
+import PostMatchOutro from './Animations/PostMatchOutro'
+import PreMatchIntro from './Animations/PreMatchIntro'
 import RoundGraph from './RoundGraph'
 import RoundWinner from './RoundWinner'
 import Series from './Series'
 import Sidebars from './Sidebars'
 import Timeout from './Timeout'
 import TopBar from './TopBar'
-import { mapGetters } from 'vuex'
 
 export default {
 	components: {
 		FocusedPlayer,
 		Minimap,
 		PlayersAlive,
+		PostMatchOutro,
+		PreMatchIntro,
 		RoundGraph,
 		RoundWinner,
 		Series,
@@ -65,16 +79,20 @@ export default {
 		},
 
 		calculateAdr() {
+			const currentRound = this.map.team_ct.score + this.map.team_t.score + Number(this.round && this.round.phase === 'over')
+
 			for (const player in this.roundDamage) {
 				let damage = 0
 				let rounds = 0
 
 				for (const round in this.roundDamage[player]) {
+					if (rounds >= currentRound) break
+
 					rounds++
 					damage += this.roundDamage[player][round]
 				}
 
-				this.adr[player] = damage / rounds
+				this.adr[player] = damage / (rounds || 1)
 			}
 		},
 	},
@@ -83,9 +101,13 @@ export default {
 		...mapGetters([
 			'allplayers',
 			'cleardata',
+			'impulse',
 			'map',
+			'observerSlotSortingEnabled',
+			'prePostMatchAnimationsEnabled',
 			'primaryTeam',
 			'round',
+			'timers',
 		]),
 
 		applicable() {
@@ -139,7 +161,25 @@ export default {
 		round(round, previous) {
 			if (! round || ! previous || round.phase === previous.phase) return
 
-			if (['over', 'freezetime'].includes(round.phase)) this.calculateAdr()
+			this.calculateAdr()
+		},
+
+		timers(timers, previous) {
+			// try and recalculate ADR in a couple more edge cases
+			if (
+				timers
+				&& previous
+				&& timers.phase === previous.phase
+				&& Number(timers.phase_ends_in) > Number(previous.phase_ends_in)
+			) {
+				this.calculateAdr()
+			}
+		},
+
+		impulse(impulse) {
+			switch (impulse) {
+				case 'recalculateAdr': return this.calculateAdr()
+			}
 		},
 	},
 }

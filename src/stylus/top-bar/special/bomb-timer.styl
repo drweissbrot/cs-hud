@@ -1,0 +1,54 @@
+.bomb-timer {
+	position absolute
+	top 0
+	width 78.2%
+
+	&.--left {
+		left 0
+		transform translateX(.65rem)
+	}
+
+	&.--right {
+		right 0
+		transform translateX(-.65rem)
+	}
+
+	.progress-bar-wrapper {
+		background rgba(#000, .5)
+
+		&.--left {
+			margin 0 1rem 0 .85rem
+		}
+
+		&.--right {
+			margin 0 .85rem 0 1rem
+		}
+	}
+
+	.diagonal {
+		transform skewX(20deg) translateX(-.325rem)
+
+		&.--right {
+			transform skewX(-20deg) translate(.325rem)
+		}
+	}
+
+	.diagonal-wrapper {
+		position absolute
+		top 0
+		bottom 0
+
+		&.--inner {
+			.diagonal {
+				width 1rem
+				background rgba(#000, .5)
+			}
+
+			&.--right {
+				.diagonal {
+					transform skewX(-20deg) translateX(.35rem)
+				}
+			}
+		}
+	}
+}

@@ -1,53 +1,151 @@
 <template>
-	<div v-if="applicable" :class="['config-window', { '--mirrored': mirrored }]">
-		<div class="minimap-wrapper">
-			<Minimap :directionalSides="enableAutoHotKeyMapping ? directionalSides : null" />
-		</div>
+	<div v-if="applicable" class="config-window">
+		<header>
+			<h1>CS:GO HUD Config</h1>
 
-		<div class="config">
-			<h1>CS:GO HUD Series Data</h1>
+			<nav>
+				<ul>
+					<li>
+						<button
+							type="button"
+							:class="{ active: activeTab === 'preferences' }"
+							@click="activeTab = 'preferences'"
+							title="Preferences – Alt+1"
+						>
+							Preferences
+						</button>
+					</li>
 
-			<div class="buttons">
-				<button @click.prevent="matches.push({})">
-					Add Match
-				</button>
+					<li>
+						<button
+							type="button"
+							:class="{ active: activeTab === 'series' }"
+							@click="activeTab = 'series'"
+							title="Series – Alt+2"
+						>
+							Series
+						</button>
+					</li>
 
-				<button @click.prevent="submit">
-					Save
-				</button>
+					<li>
+						<button
+							type="button"
+							:class="{ active: activeTab === 'matches' }"
+							@click="activeTab = 'matches'"
+							title="Matches – Alt+3"
+						>
+							Matches
+						</button>
+					</li>
 
-				<button @click.prevent="mirrored = ! mirrored">
-					Mirror Config Window
-				</button>
+					<li>
+						<button
+							type="button"
+							:class="{ active: activeTab === 'minimap' }"
+							@click="activeTab = 'minimap'"
+							title="Minimap – Alt+4"
+						>
+							Minimap
+						</button>
+					</li>
+				</ul>
+			</nav>
+
+			<button @click.prevent="submit" :class="{ green: highlightSaveButton }" title="Ctrl+S">
+				Save
+			</button>
+		</header>
+
+		<section v-if="activeTab === 'preferences'">
+			<div class="input-group">
+				<label>
+					<input type="checkbox" v-model="observerSlotSortingEnabled">
+					Sort observer slots
+				</label>
 			</div>
 
 			<div class="input-group">
 				<label>
 					<input type="checkbox" v-model="enableAutoHotKeyMapping">
-					Enable AutoHotKey observer slot remapping
+					Enable AutoHotKey observer slot remapping (this setting is not persisted across HUD restarts)
 				</label>
 			</div>
 
+			<div class="input-group">
+				<label>
+					<input type="checkbox" v-model="prePostMatchAnimationsEnabled">
+					Enable Pre and Post Match Animations
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label>
+					<input type="checkbox" v-model="autoplayPostMatchAnimations">
+					Start Post Match Outro and Post Series Outro automatically on match end
+				</label>
+			</div>
+
+			<div class="input-group">
+				<label for="animations-generic-background-video">Pre/Post Match Animations Background Video</label>
+
+				<button id="animations-generic-background-video" class="choose-file" @click.prevent="selectAnimationsGenericBackgroundVideo">Choose File...</button>
+				<label class="inline" for="animations-generic-background-video">{{ animationsGenericBackgroundVideoPath || 'Not selected' }}</label>
+			</div>
+
+			<div class="input-group">
+				<label for="pre-match-intro-music">Pre Match Intro Music</label>
+
+				<button id="pre-match-intro-music" class="choose-file" @click.prevent="selectPreMatchIntroMusic">Choose File...</button>
+				<label class="inline" for="pre-match-intro-music">{{ preMatchIntroMusicPath || 'Not selected' }}</label>
+			</div>
+
+			<div class="input-group">
+				<label for="post-match-outro-music">Post Match Outro Music</label>
+
+				<button id="post-match-outro-music" class="choose-file" @click.prevent="selectPostMatchOutroMusic">Choose File...</button>
+				<label class="inline" for="post-match-outro-music">{{ postMatchOutroMusicPath || 'Not selected' }}</label>
+			</div>
+
+			<div class="input-group">
+				<label for="tactical-timeout-music">Tactical Timeout Music (one will be randomly selected and played for every tactical timeout; select no files to disable)</label>
+
+				<button id="tactical-timeout-music" class="choose-file" @click.prevent="selectTacticalTimeoutMusic">Choose Files...</button>
+
+				<template v-if="tacticalTimeoutMusicPaths && tacticalTimeoutMusicPaths.length">
+					<label v-for="path in tacticalTimeoutMusicPaths" for="tactical-timeout-music">{{ path }}</label>
+				</template>
+
+				<label v-else class="inline" for="tactical-timeout-music">None selected</label>
+			</div>
+		</section>
+
+		<section v-else-if="activeTab === 'series'">
 			<div class="input-group primary-team">
 				<label for="primary-team">
-					Name of Team that should be on the left
+					Name of Team that should be on the left (otherwise, CT will be on the left)
 				</label>
 				<input type="text" id="primary-team" v-model="primaryTeam">
 			</div>
 
 			<div class="input-group series-event-info">
-				<label for="series-name-left">
-					Series/Event Info (left side)
+				<label for="series-name">
+					Series/Event Info (either 1 or 3 lines; leave empty to hide)
 				</label>
-				<textarea id="series-name-left" v-model="seriesNameLeft" />
+				<textarea id="series-name" v-model="seriesName" />
 			</div>
 
-			<div class="input-group series-event-info">
-				<label for="series-name-right">
-					Series/Event Info (right side)
+			<div class="input-group">
+				<label for="series-number">
+					Series Number (only used for Pre Match Intro and Post Match Outro)
 				</label>
-				<textarea id="series-name-right" v-model="seriesNameRight" />
+				<input id="series-number" type="text" v-model="seriesNumber">
 			</div>
+		</section>
+
+		<section v-else-if="activeTab === 'matches'">
+			<button @click.prevent="matches.push({})">
+				Add Match
+			</button>
 
 			<div class="match" v-for="(match, i) in matches">
 				<div class="number centered">
@@ -93,14 +191,18 @@
 					</button>
 				</div>
 			</div>
-		</div>
+		</section>
+
+		<section v-else-if="activeTab === 'minimap'" class="minimap-wrapper">
+			<Minimap :directionalSides="enableAutoHotKeyMapping ? directionalSides : null" />
+		</section>
 	</div>
 </template>
 
 <script>
-import { ipcRenderer } from 'electron'
 import * as fs from 'fs'
 import { execFile as run } from 'child_process'
+import { ipcRenderer } from 'electron'
 import { mapGetters } from 'vuex'
 import Minimap from './Minimap'
 
@@ -111,33 +213,67 @@ export default {
 
 	data() {
 		return {
-			matches: [{}],
-			primaryTeam: 'Das Deutsche Volk',
-			seriesNameLeft: null,
-			seriesNameRight: null,
+			activeTab: 'preferences',
+			highlightSaveButton: false,
 
-			enableAutoHotKeyMapping: false,
+			animationsGenericBackgroundVideoPath: this.$store.getters.animationsGenericBackgroundVideoPath,
+			autoplayPostMatchAnimations: this.$store.getters.autoplayPostMatchAnimations,
+			matches: (this.$store.getters.series?.length ? this.$store.getters.series : [{}]) || [{}],
+			observerSlotSortingEnabled: this.$store.getters.observerSlotSortingEnabled,
+			postMatchOutroMusicPath: this.$store.getters.postMatchOutroMusicPath,
+			preMatchIntroMusicPath: this.$store.getters.preMatchIntroMusicPath,
+			prePostMatchAnimationsEnabled: this.$store.getters.prePostMatchAnimationsEnabled,
+			primaryTeam: this.$store.getters.primaryTeam,
+			seriesName: this.$store.getters.seriesName.join('\n'),
+			seriesNumber: this.$store.getters.seriesNumber,
+			tacticalTimeoutMusicPaths: this.$store.getters.tacticalTimeoutMusicPaths,
+
 			autoHotKeyPlayerSlotMapping: null,
 			autoHotKeyProcess: null,
-			mirrored: false,
+			enableAutoHotKeyMapping: false,
 		}
+	},
+
+	mounted() {
+		document.addEventListener('keyup', (e) => {
+			if (e.key === 's' && e.ctrlKey && !e.shiftKey && !e.altKey) {
+				e.preventDefault()
+				return this.submit()
+			}
+
+			if (e.altKey && !e.ctrlKey && !e.shiftKey) {
+				if (e.key === '1') return this.activeTab = 'preferences'
+				if (e.key === '2') return this.activeTab = 'series'
+				if (e.key === '3') return this.activeTab = 'matches'
+				if (e.key === '4') return this.activeTab = 'minimap'
+			}
+		})
 	},
 
 	methods: {
 		submit() {
-			ipcRenderer.send('seriesData', {
+			ipcRenderer.send('config', {
+				animationsGenericBackgroundVideoPath: this.animationsGenericBackgroundVideoPath,
+				autoplayPostMatchAnimations: this.autoplayPostMatchAnimations,
+				observerSlotSortingEnabled: this.observerSlotSortingEnabled,
+				postMatchOutroMusicPath: this.postMatchOutroMusicPath,
+				preMatchIntroMusicPath: this.preMatchIntroMusicPath,
+				prePostMatchAnimationsEnabled: this.prePostMatchAnimationsEnabled,
+				primaryTeam: this.primaryTeam,
+				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n').filter((str) => str) : null,
+				seriesNumber: this.seriesNumber,
+				tacticalTimeoutMusicPaths: this.tacticalTimeoutMusicPaths,
+
 				matches: this.matches.filter(({ map }) => map).map((match) => {
 					match.scoreLeft = Number(match.scoreLeft)
 					match.scoreRight = Number(match.scoreRight)
 
 					return match
 				}),
-				primaryTeam: this.primaryTeam,
-				seriesName: {
-					left: this.seriesNameLeft ? (this.seriesNameLeft + '').trim() : null,
-					right: this.seriesNameRight ? (this.seriesNameRight + '').trim() : null,
-				},
 			})
+
+			this.highlightSaveButton = true
+			setTimeout(() => this.highlightSaveButton = false, 500)
 		},
 
 		restartAutoHotKeyIfRequired() {
@@ -187,6 +323,64 @@ export default {
 
 			this.autoHotKeyProcess.kill()
 			this.autoHotKeyProcess = null
+		},
+
+		showOpenFileDialog(title, filters, callback, multiple = false) {
+			const id = Math.random()
+
+			ipcRenderer.send('showOpenFileDialog', {
+				id,
+				options: {
+					filters,
+					title,
+					properties: ['dontAddToRecent', 'openFile', multiple ? 'multiSelections' : null],
+				},
+			})
+
+			ipcRenderer.on('openFileDialogResponse', (event, message) => {
+				if (message.id !== id) return
+				callback(message.response)
+			})
+		},
+
+		selectAnimationsGenericBackgroundVideo() {
+			this.showOpenFileDialog('Select Background Video for Pre/Post Match Animations', [
+				{ name: 'Videos', extensions: ['mp4', 'ogg', 'webm', 'mov'] },
+				{ name: 'All Files', extensions: ['*'] },
+			], (response) => {
+				this.animationsGenericBackgroundVideoPath = response.filePaths[0] || null
+				this.submit()
+			})
+		},
+
+		selectPreMatchIntroMusic() {
+			this.showOpenFileDialog('Select Pre Match Intro Music', [
+				{ name: 'Audio', extensions: ['flac', 'mp3', 'ogg', 'opus', 'vorbis', 'aac'] },
+				{ name: 'All Files', extensions: ['*'] },
+			], (response) => {
+				this.preMatchIntroMusicPath = response.filePaths[0] || null
+				this.submit()
+			})
+		},
+
+		selectPostMatchOutroMusic() {
+			this.showOpenFileDialog('Select Post Match Outro Music', [
+				{ name: 'Audio', extensions: ['flac', 'mp3', 'ogg', 'opus', 'vorbis', 'aac'] },
+				{ name: 'All Files', extensions: ['*'] },
+			], (response) => {
+				this.postMatchOutroMusicPath = response.filePaths[0] || null
+				this.submit()
+			})
+		},
+
+		selectTacticalTimeoutMusic() {
+			this.showOpenFileDialog('Select Post Match Outro Music', [
+				{ name: 'Audio', extensions: ['flac', 'mp3', 'ogg', 'opus', 'vorbis', 'aac'] },
+				{ name: 'All Files', extensions: ['*'] },
+			], (response) => {
+				this.tacticalTimeoutMusicPaths = response.filePaths || []
+				this.submit()
+			}, true)
 		},
 	},
 

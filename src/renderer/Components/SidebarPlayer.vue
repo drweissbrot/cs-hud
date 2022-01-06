@@ -1,101 +1,107 @@
 <template>
-	<div :class="['player', { '--focused': focusedPlayer && focusedPlayer.steamid === player.steamid }]">
-		<div v-if="player.state.health > 0" class="life">
-			<div class="health-bar">
-				<div class="fill --red" :style="{ transform: `scaleX(${delayedHealth / 100})` }"></div>
-				<div :class="`fill --${side}`" :style="{ transform: `scaleX(${player.state.health / 100})` }"></div>
+	<div :class="`player --${direction}`">
+		<div v-if="player.state.health" class="health-bar">
+			<div :class="`fill --red --${direction}`" :style="{ transform: `scaleX(${delayedHealth / 100})` }"></div>
+			<div :class="[`fill --${direction} --${side}`, { '--player-focused': focused }]" :style="{ transform: `scaleX(${player.state.health / 100})` }"></div>
+		</div>
+
+		<div :class="['background --top-row', { '--alive': player.state.health, '--player-focused': focused }]"></div>
+		<div :class="['background --bottom-row', { '--player-focused': focused }]"></div>
+
+		<div v-if="player.state.health" class="health">
+			<div v-for="digit in (player.state.health + '').padStart(3)" class="digit">{{ digit }}</div>
+		</div>
+
+		<div v-else class="dead-icon">
+			<img src="../../img/elimination.svg">
+		</div>
+
+		<div :class="`slot --${direction}`">
+			<div class="digit">{{ observerSlot === 10 ? 0 : observerSlot }}</div>
+		</div>
+
+		<div class="name">
+			{{ player.name }}
+		</div>
+
+		<div :class="['round-kills', { '--active': player.state.round_kills }]">
+			<img src="../../img/elimination.svg">
+			<div class="digit">{{ player.state.round_kills }}</div>
+		</div>
+
+		<div class="primary">
+			<WeaponIcon :weapon="weapons.primary" />
+		</div>
+
+		<div class="equipment">
+			<div class="armor">
+				<img v-if="armorIcon" :src="require(`../../img/${armorIcon}.svg`)" class="weapon-icon --active">
 			</div>
 
-			<div class="hp">
-				<span>{{ player.state.health }}</span>
-			</div>
-
-			<div class="slot">{{ observerSlot === 10 ? 0 : observerSlot }}</div>
-			<div class="name">{{ player.name }}</div>
-
-			<div class="kills-deaths">
-				<div :class="`label --kills --${side}`">K</div>
-				<div :class="`number --kills --${kdPositive}`">{{ player.match_stats.kills }}</div>
-
-				<div v-if="player.state.round_kills > 0" class="number --round-kills">
-					<div :class="`circle --${side}`">{{ player.state.round_kills }}</div>
-				</div>
-
-				<div :class="`label --deaths --${side}`">D</div>
-				<div :class="`number --deaths --${kdNegative}`">{{ player.match_stats.deaths }}</div>
-			</div>
-
-			<div class="primary">
-				<WeaponIcon :weapon="weapons.primary" />
-			</div>
-
-			<div class="armor-bomb">
-				<img
-					v-if="armorIcon"
-					:src="require(`../../img/${armorIcon}.svg`)"
-					class="weapon-icon --active --armor"
-				>
-
-				<WeaponIcon :weapon="weapons.c4" />
-				<WeaponIcon v-if="player.state.defusekit" :weapon="{ name: 'defuser' }" :active="true" />
-			</div>
-
-			<div class="money">${{ player.state.money }}</div>
-
-			<div class="grenades">
-				<WeaponIcon v-for="(grenade, index) in grenades" :key="index" :weapon="grenade" />
-			</div>
-
-			<div class="secondary">
-				<WeaponIcon :weapon="weapons.secondary" />
+			<div class="bomb">
+				<WeaponIcon v-if="player.state.defusekit" :weapon="{ name: 'defuser' }" :active="true" class="--bomb" />
+				<WeaponIcon v-else :weapon="weapons.c4" class="--bomb" />
 			</div>
 		</div>
 
-		<div v-else class="life --dead">
-			<img class="dead-icon" src="../../img/elimination.svg">
-
-			<div class="slot">{{ observerSlot === 10 ? 0 : observerSlot }}</div>
-			<div class="name">{{ player.name }}</div>
-
-			<div class="kills-deaths">
-				<div v-if="player.state.round_kills > 0" class="number --round-kills">
-					<div :class="`circle --${side}`">{{ player.state.round_kills }}</div>
-				</div>
-			</div>
-
-			<div class="money">${{ player.state.money }}</div>
-
-			<div class="primary">
-				<div class="label --kills">K</div>
-				<div class="label --assists">A</div>
-				<div class="label --deaths">D</div>
-				<div class="label --adr">ADR</div>
-			</div>
-
-			<div class="secondary">
-				<div :class="`number --kills --${kdPositive}`">{{ player.match_stats.kills }}</div>
-				<div class="number --assists">{{ player.match_stats.assists }}</div>
-				<div :class="`number --deaths --${kdNegative}`">{{ player.match_stats.deaths }}</div>
-				<div class="number --adr">{{ Math.round(adr || 0) }}</div>
-			</div>
+		<div class="money">
+			${{ player.state.money }}
 		</div>
 
-		<div class="focused" />
+		<div :class="['money-spent', { '--active': freezetime }]">
+			-${{ moneyAtStartOfRound - player.state.money }}
+		</div>
 
-		<div class="stats">
-			<div class="inner">
-				<div :class="`label --kills --${side}`">K</div>
-				<div :class="`label --assists --${side}`">A</div>
-				<div :class="`label --deaths --${side}`">D</div>
-				<div :class="`label --adr --${side}`">ADR</div>
+		<div :class="['kills', { '--active': !freezetime }]">
+			<div :class="`label --${side}`">K</div>
+			<div v-for="digit of (player.match_stats.kills + '').padStart(3)" class="digit">{{ digit }}</div>
+		</div>
 
-				<div :class="`number --kills --${kdPositive}`">{{ player.match_stats.kills }}</div>
-				<div class="number --assists">{{ player.match_stats.assists }}</div>
-				<div :class="`number --deaths --${kdNegative}`">{{ player.match_stats.deaths }}</div>
-				<div class="number --adr">{{ Math.round(adr || 0) }}</div>
+		<div :class="['deaths', { '--active': !freezetime }]">
+			<div :class="`label --${side}`">D</div>
+			<div v-for="digit of (player.match_stats.deaths + '').padStart(3)" class="digit">{{ digit }}</div>
+		</div>
 
-				<div class="purchases">
-					-${{ moneyAtStartOfRound - player.state.money }}
+		<div v-if="player.state.health" class="grenades">
+			<WeaponIcon v-for="(grenade, index) in grenades" :key="index" :weapon="grenade" />
+		</div>
+
+		<div v-else class="adr">
+			<div :class="`label --${side}`">ADR</div>
+			<div v-for="digit of (Math.round(adr || 0) + '').padStart(3)" class="digit">{{ digit }}</div>
+		</div>
+
+		<div class="secondary">
+			<WeaponIcon :weapon="weapons.secondary" />
+		</div>
+
+		<div :class="['focused', { '--active': focused }]" />
+
+		<div class="stats-wrapper">
+			<div :class="[`stats --${direction}`, { '--active': freezetime }]">
+				<div :class="`labels --${side}`">
+					<div>K</div>
+					<div>A</div>
+					<div>D</div>
+					<div>ADR</div>
+				</div>
+
+				<div class="values">
+					<div class="value">
+						<div v-for="digit of (player.match_stats.kills + '')" class="digit">{{ digit }}</div>
+					</div>
+
+					<div class="value">
+						<div v-for="digit of (player.match_stats.assists + '')" class="digit">{{ digit }}</div>
+					</div>
+
+					<div class="value">
+						<div v-for="digit of (player.match_stats.deaths + '')" class="digit">{{ digit }}</div>
+					</div>
+
+					<div class="value">
+						<div v-for="digit of (Math.round(adr || 0) + '')" class="digit">{{ digit }}</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -113,6 +119,8 @@ export default {
 
 	props: [
 		'adr',
+		'direction',
+		'freezetime',
 		'observerSlot',
 		'player',
 		'side',
@@ -184,12 +192,8 @@ export default {
 			})
 		},
 
-		kdPositive() {
-			return this.player.match_stats.kills > this.player.match_stats.deaths ? 'positive' : ''
-		},
-
-		kdNegative() {
-			return this.player.match_stats.deaths > this.player.match_stats.kills ? 'negative' : ''
+		focused() {
+			return this.focusedPlayer && this.focusedPlayer.steamid === this.player.steamid
 		},
 	},
 

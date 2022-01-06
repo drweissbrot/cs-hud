@@ -1,0 +1,90 @@
+$preMatchIntroDuration = 20
+$preMatchIntroSeconds = $preMatchIntroDuration * 1s
+
+preMatchIntroSeconds(seconds) {
+	return animationSeconds(seconds, $preMatchIntroDuration)
+}
+
+@keyframes preMatchIntro {
+	from,
+	{preMatchIntroSeconds(10.75)} {
+		opacity 1
+		transform none
+	}
+
+	{preMatchIntroSeconds(11.25)},
+	to {
+		opacity 0
+		transform scale(.95)
+	}
+}
+
+@keyframes preMatchIntroLogoShrinkInOut {
+	from,
+	{preMatchIntroSeconds(4)} {
+		opacity 0
+		transform scale(1.05)
+	}
+
+	{preMatchIntroSeconds(4.4)},
+	{preMatchIntroSeconds(5.5)} {
+		opacity 1
+		transform scale(1)
+	}
+
+	{preMatchIntroSeconds(5.9)},
+	to {
+		opacity 0
+		transform scale(.75)
+	}
+}
+
+@keyframes preMatchIntroMarqueeTop {
+	from,
+	{animationSeconds(4, 60)} {
+		opacity 0
+	}
+
+	{animationSeconds(4.3, 60)},
+	to {
+		opacity 1
+	}
+
+	to {
+		transform translateX(-200rem)
+	}
+}
+
+@keyframes preMatchIntroMarqueeBottom {
+	from,
+	{animationSeconds(4, 60)} {
+		opacity 0
+	}
+
+	{animationSeconds(4.3, 60)},
+	to {
+		opacity 1
+	}
+
+	to {
+		transform translateX(200rem)
+	}
+}
+
+.pre-match-intro {
+	position fixed
+	top 0
+	bottom 0
+	left 0
+	right 0
+
+	animation preMatchIntro $preMatchIntroSeconds ease forwards
+	z-index 10
+
+	animationsGenericBackground()
+	animationsLogo(preMatchIntroLogoShrinkInOut, $preMatchIntroSeconds)
+	animationsMarquee(preMatchIntroMarqueeTop, preMatchIntroMarqueeBottom)
+	animationsSkillgroups(.2s)
+
+	@require 'series'
+}

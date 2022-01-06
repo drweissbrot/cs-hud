@@ -1,0 +1,71 @@
+$postMatchOutroDuration = 20
+$postMatchOutroSeconds = $postMatchOutroDuration * 1s
+
+postMatchOutroSeconds(seconds) {
+	return animationSeconds(seconds, $postMatchOutroDuration)
+}
+
+@keyframes postMatchOutro {
+	from {
+		filter none
+		opacity 0
+		transform scale(1.05)
+	}
+
+	{postMatchOutroSeconds(1)},
+	{postMatchOutroSeconds(15)} {
+		filter none
+		opacity 1
+		transform none
+	}
+
+	{postMatchOutroSeconds(16)},
+	to {
+		filter brightness(0)
+		opacity 1
+	}
+}
+
+@keyframes postMatchOutroLogoShrinkIn {
+	from,
+	{postMatchOutroSeconds(10.8)} {
+		opacity 0
+		transform scale(1.05)
+	}
+
+	{postMatchOutroSeconds(11.2)},
+	{postMatchOutroSeconds(13)} {
+		opacity 1
+		transform scale(1)
+	}
+}
+
+@keyframes postMatchOutroMarqueeTop {
+	to {
+		transform translateX(-200rem)
+	}
+}
+
+@keyframes postMatchOutroMarqueeBottom {
+	to {
+		transform translateX(200rem)
+	}
+}
+
+.post-match-outro {
+	position fixed
+	top 0
+	bottom 0
+	left 0
+	right 0
+
+	animation postMatchOutro $postMatchOutroSeconds ease forwards
+	z-index 10
+
+	animationsGenericBackground()
+	animationsLogo(postMatchOutroLogoShrinkIn, $postMatchOutroSeconds)
+	animationsMarquee(postMatchOutroMarqueeTop, postMatchOutroMarqueeBottom)
+	animationsSkillgroups(7s)
+
+	@require 'series'
+}

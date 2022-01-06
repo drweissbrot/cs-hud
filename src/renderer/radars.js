@@ -164,6 +164,9 @@ export default {
 	},
 
 	de_ancient: {
+		simpleradar: true,
+		transparent: true,
+
 		pos_x: -2953,
 		pos_y: 2164,
 		scale: 5,
@@ -178,6 +181,8 @@ export default {
 	},
 
 	de_austria: {
+		transparent: true,
+
 		pos_x: -2877,
 		pos_y: 2930,
 		scale: 5.8,
@@ -230,6 +235,7 @@ export default {
 
 	de_cache: {
 		simpleradar: true,
+		transparent: true,
 
 		pos_x: -2000,
 		pos_y: 3250,
@@ -255,6 +261,8 @@ export default {
 	},
 
 	de_cbble: {
+		transparent: true,
+
 		pos_x: -3840,
 		pos_y: 3072,
 		scale: 6,
@@ -295,6 +303,7 @@ export default {
 
 	de_dust2: {
 		simpleradar: true,
+		transparent: true,
 
 		pos_x: -2476,
 		pos_y: 3239,
@@ -347,6 +356,7 @@ export default {
 
 	de_inferno: {
 		simpleradar: true,
+		transparent: true,
 
 		pos_x: -2087,
 		pos_y: 3870,
@@ -390,6 +400,7 @@ export default {
 
 	de_mirage: {
 		simpleradar: true,
+		transparent: true,
 
 		pos_x: -3230,
 		pos_y: 1713,
@@ -417,6 +428,7 @@ export default {
 
 	de_nuke: {
 		simpleradar: true,
+		transparent: true,
 
 		pos_x: -3453,
 		pos_y: 2887,
@@ -441,6 +453,7 @@ export default {
 
 	de_overpass: {
 		simpleradar: true,
+		transparent: true,
 
 		pos_x: -4831,
 		pos_y: 1781,
@@ -490,6 +503,8 @@ export default {
 	},
 
 	de_santorini: {
+		transparent: true,
+
 		pos_x: -2135,
 		pos_y: 1400,
 		scale: 4,
@@ -579,6 +594,7 @@ export default {
 
 	de_train: {
 		simpleradar: true,
+		transparent: true,
 
 		pos_x: -2477,
 		pos_y: 2392,
@@ -593,6 +609,7 @@ export default {
 
 	de_vertigo: {
 		simpleradar: true,
+		transparent: true,
 
 		pos_x: -3168,
 		pos_y: 1762,
@@ -648,6 +665,8 @@ export default {
 	},
 
 	gd_cbble: {
+		transparent: true,
+
 		pos_x: -3840,
 		pos_y: 3072,
 		scale: 6,

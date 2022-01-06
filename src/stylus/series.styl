@@ -1,86 +1,96 @@
 .series {
 	position absolute
-	top 2rem
-	left calc(76.25% + 2rem)
-	right 4rem
+	bottom $generalPaddingY
+	left $generalPaddingX
+	right $generalPaddingX
+
+	display flex
+	align-items flex-end
 
 	color #fff
-	transition opacity .3s ease
+	filter drop-shadow(0 0 .4rem rgba(#000, .5))
+	transition opacity .5s ease, transform .5s ease
 
 	&:not(.--active) {
 		opacity 0
+		transform translateY(5rem)
 	}
 
-	.headings,
-	.match .wrapper {
-		display grid
-		grid-template-columns 1.75fr 1fr 1fr 1.25fr
-		grid-template-areas 'map picked winner score'
-	}
+	.match {
+		flex 1
 
-	.headings {
-		background rgba(#000, .5)
-		padding .5rem 0
-		text-transform uppercase
-		font-weight 600
-	}
+		&.--currently-playing {
+			flex 3
 
-	.match .wrapper {
-		height 6rem
-		background rgba(#000, .5)
-	}
-
-	.map,
-	.score,
-	.picked,
-	.winner,
-	.currently-playing {
-		center()
-	}
-
-	.map {
-		grid-area map
-	}
-
-	.picked {
-		grid-area picked
-	}
-
-	.winner {
-		grid-area winner
-	}
-
-	.score {
-		grid-area score
-
-		.number {
-			width 2ch
-
-			&:first-child {
-				margin-right .5ch
-			}
-
-			&:last-child {
-				margin-left .5ch
+			~ .match .map {
+				filter grayscale(.75) brightness(.75)
 			}
 		}
 	}
 
-	.match .score {
-		flsize(2.5rem, 1)
+	.result {
+		flsize(2.6rem, 1)
+
+		display flex
+		justify-content space-evenly
+		align-items center
+
+		background rgba(#000, .5)
+		padding .5rem 1rem
+
+		img {
+			height 2.4rem
+		}
 	}
 
-	.currently-playing {
-		grid-area 1/3/1/5
+	.inner {
+		display grid
 
-		padding .5rem 0
-		text-transform uppercase
-		font-weight 600
+		background rgba(#000, .5)
+		text-shadow 0 0 1rem rgba(#000, .75)
+
+		> * {
+			grid-area 1/1
+		}
+
+		.text {
+			padding 2rem
+			z-index 1
+		}
+
+		.map-name {
+			flsize(3rem, 1)
+			margin-bottom 2rem
+			text-transform capitalize
+		}
+
+		.pick-heading {
+			flsize(1.2rem, 1.25)
+			text-transform uppercase
+			letter-spacing .4em
+		}
+
+		.pick-team {
+			flsize(1.5rem, 1.25)
+		}
 	}
 
-	img {
-		max-width calc(100% - 2rem)
-		margin 1rem
-		filter drop-shadow(0 0 .5rem rgba(#fff, .5))
+	.map {
+		opacity .6
+	}
+
+	.winner-flag-background {
+		opacity .25
+
+		&.--horizontal-flag {
+			background center
+			background-size contain
+		}
+
+		&.--vertical-flag,
+		&.--unusual-flag {
+			background center no-repeat
+			background-size cover
+		}
 	}
 }

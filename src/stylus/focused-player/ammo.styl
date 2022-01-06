@@ -1,0 +1,46 @@
+.ammo {
+	flsize(3rem, 1)
+
+	&,
+	.inner {
+		margin-right auto
+	}
+
+	.inner {
+		margin-right auto
+		padding 0 2rem 0 1rem
+
+		transform skewX(-20deg)
+		transition opacity .1s ease
+	}
+
+	&:not(.--active) {
+		opacity 0
+	}
+
+	.current,
+	.reserve-wrapper {
+		padding .6rem 0
+		transform skewX(20deg)
+
+		.number {
+			width 3ch
+			text-align right
+		}
+	}
+
+	.reserve-wrapper {
+		display flex
+		align-items flex-end
+	}
+
+	.reserve {
+		flsize(2rem, 1.2)
+
+		.number {
+			display inline-flex
+			justify-content flex-end
+			width 3.5ch
+		}
+	}
+}

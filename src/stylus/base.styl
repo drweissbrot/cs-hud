@@ -13,7 +13,7 @@ html {
 }
 
 body {
-	font 1.6rem/1.5em 'Source Sans Pro', sans-serif
+	font 1.6rem/1.5em 'Quantico', 'Source Sans Pro', sans-serif
 	text-align center
 }
 
@@ -21,9 +21,36 @@ body {
 	position relative
 	height 100vh
 	margin auto
+	overflow hidden
 
 	&,
 	* {
 		cursor none
+	}
+
+	.corner {
+		position absolute
+		width 4rem
+		height 4rem
+
+		&.--top {
+			top 0
+			border-top .5rem solid rgba(#000, .5)
+		}
+
+		&.--bottom {
+			bottom 0
+			border-bottom .5rem solid rgba(#000, .5)
+		}
+
+		&.--left {
+			left 0
+			border-left .5rem solid rgba(#000, .5)
+		}
+
+		&.--right {
+			right 0
+			border-right .5rem solid rgba(#000, .5)
+		}
 	}
 }

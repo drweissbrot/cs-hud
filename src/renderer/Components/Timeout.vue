@@ -1,88 +1,135 @@
 <template>
-	<div :class="['timeout', { '--active': active }]">
-		<div v-if="tactical" :class="`icon --${tactical}`">
-			<img src="../../img/timer.svg">
-		</div>
+	<div class="tactical-timeout-wrapper">
+		<div :class="[`tactical-timeout --${direction}`, { '--active': active }]">
+			<div class="diagonal-wrapper --outer">
+				<div :class="`diagonal --${direction}`"></div>
+			</div>
 
-		<div v-else class="icon">
-			<img src="../../img/pause.svg">
-		</div>
-
-		<div class="text">
-			<template v-if="tactical">
-				<div class="label">
+			<div :class="`inner --${direction} --${side}`">
+				<div class="heading">
 					Tactical Timeout
 				</div>
 
-				<div class="info">
-					{{ tacticalTeam.name }} called a Timeout<br>
-					{{ tacticalTeam.timeouts_remaining }} / 4 remaining
+				<div class="remaining">
+					{{ team.timeouts_remaining }} / 4 remaining
 				</div>
 
-				<div class="progress-bar">
-					<div :class="`fill --${tactical}`" :style="{ transform: `scaleX(${remainingTime})` }" />
+				<div :class="`progress-bar-wrapper --${direction}`">
+					<div :class="`progress-bar --${direction}`">
+						<div
+							:class="[`fill --${direction} --${side}`]"
+							:style="{ transform: `scaleX(${remainingTime})` }"
+						/>
+					</div>
 				</div>
-			</template>
-
-			<div v-else class="label">
-				Technical Pause
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import * as fs from 'fs'
 import { mapGetters } from 'vuex'
 
 export default {
+	props: [
+		'direction',
+		'side',
+		'team',
+	],
+
 	data() {
 		return {
-			tactical: false,
-			tacticalTeam: null,
+			audio: null,
+			cancelAudioTimeout: null,
+			musicBlobUrls: [],
 			remainingTime: 1,
 		}
 	},
 
-	methods: {
-		syncTactical() {
-			if (this.timers.phase === 'timeout_ct') this.tactical = 'ct'
-			else if (this.timers.phase === 'timeout_t') this.tactical = 't'
-			else this.tactical = false
+	mounted() {
+		this.updateMusicBlobUrls()
+	},
 
-			this.tacticalTeam = (this.tactical)
-				? this.map[`team_${this.tactical}`]
-				: null
-		},
+	beforeDestroy() {
+		for (const url of this.musicBlobUrls) URL.revokeObjectURL(url)
 	},
 
 	computed: {
 		...mapGetters([
-			'map',
+			'impulse',
+			'tacticalTimeoutMusicPaths',
 			'timers',
 		]),
 
 		active() {
-			return ['paused', 'timeout_ct', 'timeout_t'].includes(this.timers.phase)
+			return this.timers.phase === 'timeout_' + this.side
+		},
+	},
+
+	methods: {
+		updateMusicBlobUrls() {
+			for (const url of this.musicBlobUrls) URL.revokeObjectURL(url)
+
+			const urls = []
+
+			for (const path of this.tacticalTimeoutMusicPaths) {
+				urls.push(URL.createObjectURL(new Blob([fs.readFileSync(path)])))
+			}
+
+			this.musicBlobUrls = urls
+		},
+
+		playAudio() {
+			if (this.audio) return
+
+			this.audio = true // try to prevent some edge cases where the music starts playing twice
+			this.audio = new Audio(this.musicBlobUrls[Math.floor(Math.random() * this.musicBlobUrls.length)])
+			this.audio.play()
+
+			this.audio.addEventListener('durationchange', () => {
+				if (this.cancelAudioTimeout) return
+
+				this.cancelAudioTimeout = setTimeout(() => this.cancelAudio(), (this.audio.duration - this.audio.currentTime) * 1000)
+			})
+		},
+
+		cancelAudio() {
+			clearTimeout(this.cancelAudioTimeout)
+			this.cancelAudioTimeout = null
+
+			if (! this.audio) return
+
+			this.audio.pause()
+			this.audio = null
 		},
 	},
 
 	watch: {
 		timers(now) {
 			if (! ['freezetime', 'live'].includes(now.phase)) {
-				this.syncTactical()
-				this.remainingTime = now.phase_ends_in / 30
+				this.remainingTime = Math.max(0, Math.min(1, now.phase_ends_in / 30))
 			}
 		},
 
 		active(now, previously) {
-			if (now) {
-				this.syncTactical()
-				this.remainingTime = 1
-			} else {
-				setTimeout(() => {
-					this.syncTactical()
-					this.remainingTime = 1
-				}, 1000)
+			if (! now) {
+				return setTimeout(() => this.remainingTime = 1, 350)
+			}
+
+			this.remainingTime = 1
+			if (! previously) this.playAudio()
+		},
+
+		tacticalTimeoutMusicPaths(now, previously) {
+			this.updateMusicBlobUrls()
+		},
+
+		impulse(impulse) {
+			switch (impulse) {
+				// only play music on command for one of the two instances of this component
+				case 'playTacticalTimeoutMusic': return this.direction === 'left' && this.playAudio()
+				case 'cancelTacticalTimeoutMusic': return this.cancelAudio()
 			}
 		},
 	},

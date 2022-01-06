@@ -1,27 +1,43 @@
 <template>
-	<div :class="['round-winner', { '--active': active }]">
-		<div v-if="win_team" :class="`icon --${win_team}`">
-			<img v-if="team.flag" :src="`https://flagcdn.com/h120/${team.flag}.png`" class="flag">
-			<img v-else-if="win_team === 'ct'" src="../../img/ct.svg" class="flag">
-			<img v-else src="../../img/t.svg" class="flag">
-		</div>
-
-		<div v-if="win_team" class="text">
-			<div :class="`label --${win_team}`">
-				{{ team.name || (win_team === 'ct' ? 'Counter-Terrorists' : 'Terrorists') }}
+	<transition name="active" duration="400">
+		<div v-if="win_team" :class="['round-winner', { '--active': active }]">
+			<div class="diagonal-wrapper --left">
+				<div :class="`diagonal --${win_team}`"></div>
 			</div>
 
-			<div class="info">
-				{{ team.name ? 'wins' : 'win' }}
-				the Round<br>
-				{{ reason }}
+			<div class="inner-wrapper">
+				<div
+					:class="`flag ${flagStyle(team.flag)} --${win_team}`"
+					:style="{ backgroundImage: team.flag && `url('https://flagcdn.com/${team.flag.toLowerCase()}.svg')` }"
+				></div>
+
+				<div class="background"></div>
+
+				<div class="inner">
+					<div :class="`team-name --${win_team}`">
+						{{ team.name || (win_team === 'ct' ? 'Counter-Terrorists' : 'Terrorists') }}
+					</div>
+
+					<div class="phrase">
+						{{ team.name ? 'wins' : 'win' }} the Round
+					</div>
+
+					<div class="reason">
+						{{ reason || '&nbsp;' }}
+					</div>
+				</div>
+			</div>
+
+			<div class="diagonal-wrapper --right">
+				<div :class="`diagonal --${win_team}`"></div>
 			</div>
 		</div>
-	</div>
+	</transition>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import flagStyle from '../flag-style'
 
 export default {
 	data() {
@@ -31,6 +47,8 @@ export default {
 	},
 
 	methods: {
+		flagStyle,
+
 		sync() {
 			this.win_team = this.round.win_team ? this.round.win_team.toLowerCase() : this.round.win_team
 		},

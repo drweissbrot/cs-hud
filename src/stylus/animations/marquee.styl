@@ -1,0 +1,31 @@
+animationsMarquee($topAnimationName, $bottomAnimationName) {
+	.marquee {
+		position absolute
+
+		animation 60s infinite linear
+		filter drop-shadow(0 0 1rem rgba(#000, .5))
+		white-space nowrap
+		z-index 1
+
+		&.--top {
+			top 0
+			left -3rem
+			animation-name $topAnimationName
+		}
+
+		&.--bottom {
+			bottom 0
+			right -3rem
+			animation-name $bottomAnimationName
+		}
+
+		img {
+			height 2rem
+			margin 2rem 4rem
+
+			&.large {
+				transform scale(1.75)
+			}
+		}
+	}
+}

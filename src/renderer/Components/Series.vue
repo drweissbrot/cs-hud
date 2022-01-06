@@ -1,43 +1,37 @@
 <template>
-	<div
-		v-if="series.length > 1"
-		:class="['series', { '--active': map.phase === 'intermission' || ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(timers.phase) }]"
-	>
-		<div class="headings">
-			<div class="picked">Picked</div>
-			<div class="winner">Winner</div>
-			<div class="score">Score</div>
-		</div>
+	<div v-if="series.length > 1" :class="['series', { '--active': active }]">
+		<div v-for="match in series" :class="['match', { '--currently-playing': match.currentlyPlaying }]">
+			<RoundGraph v-if="match.currentlyPlaying" :directionalSides="directionalSides" />
 
-		<div class="matches">
-			<div v-for="match in series" :class="`match --${match.map}`">
-				<div class="wrapper">
-					<div class="map">{{ match.map }}</div>
+			<div v-else class="result">
+				<template v-if="match.scoreLeft || match.scoreRight">
+					<img v-if="teams[0].flag" :src="`https://flagcdn.com/${teams[0].flag.toLowerCase()}.svg`">
+					{{ match.scoreLeft }} : {{ match.scoreRight }}
+					<img v-if="teams[1].flag" :src="`https://flagcdn.com/${teams[1].flag.toLowerCase()}.svg`">
+				</template>
 
-					<div class="picked" v-if="match.picked">
-						<img :src="`https://flagcdn.com/h120/${teams[match.picked].flag}.png`">
-					</div>
+				<template v-else>&nbsp;</template>
+			</div>
 
-					<div v-if="match.currentlyPlaying" class="currently-playing">
-						<span>Currently Playing</span>
-					</div>
+			<div class="inner">
+				<div :class="`map --${match.map}`"></div>
 
-					<template v-else>
-						<div class="winner">
-							<img v-if="match.scoreLeft > match.scoreRight" :src="`https://flagcdn.com/h120/${teams[0].flag}.png`">
-							<img v-else-if="match.scoreRight > match.scoreLeft" :src="`https://flagcdn.com/h120/${teams[1].flag}.png`">
-						</div>
+				<div
+					v-if="match.scoreLeft > match.scoreRight && teams[0].flag"
+					:class="`winner-flag-background ${flagStyle(teams[0].flag)}`"
+					:style="{ backgroundImage: `url(https://flagcdn.com/${teams[0].flag.toLowerCase()}.svg)` }"
+				></div>
 
-						<div class="score" v-if="match.scoreLeft || match.scoreRight">
-							<template v-if="match.scoreRight > match.scoreLeft">
-								<span class="number">{{ match.scoreRight }}</span> : <span class="number">{{ match.scoreLeft }}</span>
-							</template>
+				<div
+					v-else-if="match.scoreRight > match.scoreLeft && teams[1].flag"
+					:class="`winner-flag-background ${flagStyle(teams[1].flag)}`"
+					:style="{ backgroundImage: `url(https://flagcdn.com/${teams[1].flag.toLowerCase()}.svg)` }"
+				></div>
 
-							<template v-else>
-								<span class="number">{{ match.scoreLeft }}</span> : <span class="number">{{ match.scoreRight }}</span>
-							</template>
-						</div>
-					</template>
+				<div class="text">
+					<div class="map-name">{{ formatMapName(match.map) }}</div>
+					<div class="pick-heading">{{ match.picked ? 'Pick' : 'Decider' }}</div>
+					<div class="pick-team">{{ match.picked ? teams[match.picked].name || '&nbsp;' : '&nbsp;' }}</div>
 				</div>
 			</div>
 		</div>
@@ -46,8 +40,15 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import RoundGraph from './RoundGraph'
+import flagStyle from '../flag-style'
+import formatMapName from '../map-names'
 
 export default {
+	components: {
+		RoundGraph,
+	},
+
 	props: [
 		'directionalSides',
 	],
@@ -59,12 +60,22 @@ export default {
 			'timers',
 		]),
 
+		active() {
+			return this.map.phase === 'intermission'
+				|| ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(this.timers.phase)
+		},
+
 		teams() {
 			return [
 				this.map[`team_${this.directionalSides[0]}`],
 				this.map[`team_${this.directionalSides[1]}`],
 			]
 		},
+	},
+
+	methods: {
+		flagStyle,
+		formatMapName,
 	},
 }
 </script>

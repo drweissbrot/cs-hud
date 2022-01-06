@@ -1,5 +1,8 @@
 <template>
-	<div v-if="map && map.name" class="minimap">
+	<div v-if="map && map.name" :class="['minimap', {
+		'--transparent': mapData.transparent,
+		'--series-name-active': seriesName && (seriesName.length === 1 || seriesName.length === 3),
+	}]">
 		<img ref="image" :src="mapImage" @load="onResize">
 
 		<template v-if="imageHeight !== null">
@@ -96,7 +99,9 @@ export default {
 		},
 
 		onResize() {
-			setTimeout(() => this.imageHeight = this.$refs.image.clientHeight)
+			setTimeout(() => {
+				if (this.$refs.image) this.imageHeight = this.$refs.image.clientHeight
+			})
 		},
 
 		level(z) {
@@ -121,6 +126,7 @@ export default {
 			bombRaw: 'bomb',
 			focusedPlayer: 'player',
 			map: 'map',
+			seriesName: 'seriesName',
 			timers: 'timers',
 		}),
 
@@ -163,7 +169,7 @@ export default {
 
 				if (! this.previousGrenadePositions.hasOwnProperty(id)) this.previousGrenadePositions[id] = []
 
-				let [x, y, z] = (grenade.position || grenade.flames[Object.keys(grenade.flames).reduce((center, item) =>  center < item ? center : item)]).split(', ')
+				let [x, y, z] = (grenade.position || grenade.flames[Object.keys(grenade.flames).reduce((center, item) => center < item ? center : item)]).split(', ')
 
 				x = this.offsetX(x)
 				y = this.offsetY(y)

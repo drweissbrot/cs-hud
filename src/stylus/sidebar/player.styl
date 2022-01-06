@@ -1,0 +1,319 @@
+.player {
+	$rowHeight = 1.9em
+
+	color #fff
+	line-height $rowHeight
+
+	display grid
+	grid-template-rows $rowHeight $rowHeight
+	grid-template-columns 1rem 3ch 2rem 1ch .5rem 6ch 2rem 5ch 5ch 2.5rem 3ch 2rem 2rem 6rem .5rem .5rem max-content
+	grid-template-areas: \
+		'paddingLeft health 0 slot 1 name name name name name roundKills 3 primary primary paddingRight focused stats' \
+		'paddingLeft equipment equipment equipment 1 money 5 kills deaths grenades grenades grenades grenades secondary paddingRight focused stats'
+
+	&:not(:last-child) {
+		margin-bottom 1rem
+	}
+
+	&.--right {
+		transform rotateY(180deg)
+
+		> *:not(.primary):not(.secondary) {
+			transform rotateY(-180deg)
+		}
+
+		.name,
+		.money,
+		.money-spent {
+			text-align right
+		}
+
+		.equipment {
+			grid-template-areas 'bomb armor'
+		}
+
+		.kills {
+			grid-area deaths
+		}
+
+		.deaths {
+			grid-area kills
+		}
+	}
+
+	> *:not(.background):not(.health-bar) {
+		z-index 1
+	}
+
+	.background {
+		background rgba(#000, .25)
+		transition background-color .3s ease
+
+		&.--top-row {
+			grid-area 1/paddingLeft/1/paddingRight
+
+			&.--alive {
+				background rgba(#000, .5)
+			}
+		}
+
+		&.--bottom-row {
+			grid-area 2/paddingLeft/2/paddingRight
+		}
+
+		&.--player-focused {
+			background rgba(#000, .5)
+		}
+	}
+
+	.health-bar {
+		grid-area 1/paddingLeft/1/paddingRight
+		display grid
+		z-index 1
+
+		> * {
+			grid-area 1/1
+		}
+
+		.fill {
+			teamBackground()
+			transition filter .3s ease
+
+			&.--left {
+				transform-origin left
+			}
+
+			&.--right {
+				transform-origin right
+			}
+
+			&.--player-focused {
+				filter brightness(1.125)
+			}
+
+			&.--red {
+				background darken($red, 25%)
+				transition transform .3s ease
+			}
+		}
+	}
+
+	.health {
+		grid-area health
+		display flex
+		font-weight bold
+	}
+
+	.dead-icon {
+		center()
+		grid-area 1/1/3/4
+		padding 1.5rem
+	}
+
+	.slot {
+		grid-area slot
+		font-size 1.25rem
+		margin-right 1rem
+
+		&.--left .digit::after,
+		&.--right .digit::before {
+			content '|'
+
+			display block
+			transform translateY(-.1em)
+		}
+
+		&.--left .digit::after {
+			padding-left .15em
+		}
+
+		&.--right .digit::before {
+			padding-right .15em
+		}
+
+		.digit {
+			center()
+		}
+	}
+
+	.name {
+		grid-area name
+		text-align left
+		font-weight bold
+	}
+
+	.round-kills {
+		grid-area roundKills
+
+		display flex
+		align-items center
+		justify-content space-between
+		transition opacity .1s ease
+
+		&:not(.--active) {
+			opacity 0
+		}
+
+		img {
+			height 1.5rem
+		}
+	}
+
+	.primary,
+	.secondary {
+		display flex
+		align-items center
+		justify-content flex-end
+
+		img {
+			max-height calc(100% - .5rem)
+		}
+	}
+
+	.primary {
+		grid-area primary
+	}
+
+	.secondary {
+		grid-area secondary
+	}
+
+	.equipment {
+		grid-area equipment
+
+		display grid
+		grid-template-columns 1fr 1fr
+		grid-template-areas 'armor bomb'
+
+		img {
+			height 1.75rem
+		}
+
+		.armor {
+			center()
+			grid-area armor
+		}
+
+		.bomb {
+			center()
+			grid-area bomb
+		}
+	}
+
+	.money {
+		grid-area money
+		color $green
+		text-align left
+	}
+
+	.money-spent,
+	.kills,
+	.deaths {
+		transition opacity .3s ease .3s
+
+		&:not(.--active) {
+			transition opacity .3s ease
+			opacity 0
+		}
+	}
+
+	.money-spent {
+		grid-area 2/kills/2/deaths
+		color $red
+		text-align left
+	}
+
+	.kills,
+	.deaths,
+	.adr {
+		display flex
+
+		.label {
+			teamColors()
+		}
+	}
+
+	.kills {
+		grid-area kills
+	}
+
+	.deaths {
+		grid-area deaths
+	}
+
+	.adr {
+		grid-area grenades
+		center()
+
+		.label {
+			margin-right .5ch
+		}
+	}
+
+	.grenades {
+		grid-area grenades
+
+		display flex
+		align-items center
+
+		img {
+			height 1.75rem
+			width 1.5rem
+		}
+	}
+
+	.focused {
+		grid-area focused
+		transition background-color .1s ease
+
+		&.--active {
+			background rgba(#fff, .5)
+		}
+	}
+
+	.stats-wrapper {
+		grid-area stats
+
+		display flex
+		overflow hidden
+
+		.stats {
+			center()
+
+			display grid
+			grid-template-rows $rowHeight $rowHeight
+			padding 0 1rem 0 .5rem
+			flex 1
+
+			background rgba(#000, .5)
+			transition opacity .5s ease, transform .5s ease
+
+			&:not(.--active) {
+				opacity 0
+
+				&.--left {
+					transform translateX(-100%)
+				}
+
+				&.--right {
+					transform translateX(100%)
+				}
+			}
+
+			.labels,
+			.values {
+				display grid
+				grid-gap 0 1rem
+				grid-template-columns 3ch 3ch 3ch 3ch
+			}
+
+			.labels {
+				teamColors()
+			}
+
+			.value {
+				center()
+			}
+		}
+	}
+}

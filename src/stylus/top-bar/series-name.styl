@@ -1,0 +1,55 @@
+.series-name {
+	flsize(1.25rem, 1)
+	grid-area seriesName
+
+	display grid
+	grid-template-columns 1fr 1.25fr 1fr
+
+	width 80%
+	margin 0 auto
+
+	.left,
+	.center,
+	.right {
+		padding .25rem 1rem
+	}
+
+	.left,
+	.right {
+		background rgba(#fff, .4)
+		color #000
+	}
+
+	.left {
+		transform skewX(20deg)
+
+		.inner {
+			transform skewX(-20deg)
+		}
+	}
+
+	.center {
+		grid-area 1/2
+
+		background rgba(#fff, .75)
+		box-shadow 0 0 .4rem rgba(#000, .5)
+		color #000
+		font-weight bold
+		letter-spacing .2em
+		text-transform uppercase
+		transform perspective(10px) rotateX(-.65deg)
+		z-index 1
+
+		.inner {
+			transform perspective(10px) rotateX(.65deg)
+		}
+	}
+
+	.right {
+		transform skewX(-20deg)
+
+		.inner {
+			transform skewX(20deg)
+		}
+	}
+}

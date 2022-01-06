@@ -2,9 +2,13 @@
 
 .container .minimap {
 	position absolute
-	top 2rem
-	left 4rem
+	top $generalPaddingY
+	left $generalPaddingX
 	right calc(76.25% + 2rem)
+
+	&.--series-name-active:not(.--transparent) {
+		top $generalPaddingY + 1.7rem
+	}
 }
 
 .config-window .minimap {
@@ -16,6 +20,10 @@
 	$diameter = 1.574vh
 
 	overflow hidden
+
+	&.--transparent img {
+		filter drop-shadow(0 0 .6rem #000)
+	}
 
 	img {
 		max-width 100%
@@ -48,7 +56,8 @@
 
 	.player-dot {
 		color #fff
-		flsize(($diameter - .1175 * $diameter), 1)
+		font-size ($diameter / 1.25)
+		line-height $diameter
 		transition opacity .3s ease
 
 		&:not(.--dead) {

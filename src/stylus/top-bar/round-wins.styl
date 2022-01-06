@@ -1,0 +1,45 @@
+.round-wins {
+	leftRightArea()
+
+	display flex
+	justify-content flex-end
+
+	&.--left {
+		.inner {
+			padding 0 1.15rem 0 .6rem
+		}
+
+		.diagonal {
+			transform translateX(.75rem) skewX(20deg)
+		}
+	}
+
+	&.--right {
+		flex-direction row-reverse
+
+		.inner {
+			padding 0 .6rem 0 1.15rem
+		}
+
+		.diagonal {
+			transform translateX(-.75rem) skewX(-20deg)
+		}
+	}
+
+	.inner {
+		center()
+		teamBackground()
+
+		width (1.115ch + 1.15rem + .6rem)
+		font-weight bold
+		z-index 3
+	}
+
+	.diagonal {
+		teamBackground()
+
+		width 1.5rem
+		height 100%
+		z-index 2
+	}
+}

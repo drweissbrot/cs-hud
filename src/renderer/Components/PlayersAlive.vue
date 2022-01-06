@@ -1,11 +1,11 @@
 <template>
-	<div :class="['players-alive', { '--active': series.length < 2 || (map.phase !== 'intermission' && ! ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(timers.phase)) }]">
+	<div :class="['players-alive', { '--active': active }]">
 		<div class="label">
 			Players Alive
 		</div>
 
 		<div :class="`count --${directionalSides[0]}`">
-			{{ counts[0] }}
+			<div class="digit">{{ counts[0] }}</div>
 		</div>
 
 		<div class="vs">
@@ -13,7 +13,7 @@
 		</div>
 
 		<div :class="`count --${directionalSides[1]}`">
-			{{ counts[1] }}
+			<div class="digit">{{ counts[1] }}</div>
 		</div>
 	</div>
 </template>
@@ -49,6 +49,11 @@ export default {
 			return (this.directionalSides[0] === 'ct')
 				? [ct, t]
 				: [t, ct]
+		},
+
+		active() {
+			return this.map.phase !== 'intermission'
+				&& ! ['paused', 'timeout_ct', 'timeout_t', 'freezetime'].includes(this.timers.phase)
 		},
 	},
 }
