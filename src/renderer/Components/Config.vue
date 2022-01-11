@@ -224,7 +224,7 @@ export default {
 			preMatchIntroMusicPath: this.$store.getters.preMatchIntroMusicPath,
 			prePostMatchAnimationsEnabled: this.$store.getters.prePostMatchAnimationsEnabled,
 			primaryTeam: this.$store.getters.primaryTeam,
-			seriesName: this.$store.getters.seriesName.join('\n'),
+			seriesName: (this.$store.getters.seriesName || []).join('\n'),
 			seriesNumber: this.$store.getters.seriesNumber,
 			tacticalTimeoutMusicPaths: this.$store.getters.tacticalTimeoutMusicPaths,
 
