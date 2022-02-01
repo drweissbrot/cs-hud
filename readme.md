@@ -9,6 +9,7 @@ No pre-built binaries or installers (yet), so you'll have to do everything yours
 1. Clone the repository.
 1. Install dependencies: `yarn install`.
 1. Copy `gamestate_integration_drweissbrot_hud.cfg` into your CS:GO `cfg` directory, normally `C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\csgo\cfg`.
+1. Install the font [Quantico](https://fonts.google.com/specimen/Quantico) on your system.
 1. Optional: Copy `spec.cfg` into that same directory – or copy the cvars you want to use into your own config.
 1. Run it: `cd` into the directory you cloned this project into, and run `yarn start`. This way, changes you make will be applied immediately.
 1. Start CS:GO, and join a match as Spectator, open a GOTV stream, or start playing back a demo. If you can't see the HUD, check [the troubleshooting tips below](#fullscreen-windowed). Also check the [Usage notes](#usage) below for some more guidance.
