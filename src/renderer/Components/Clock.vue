@@ -88,12 +88,12 @@ export default {
 		formattedRoundTimer() {
 			if (! this.timers.phase_ends_in) return
 
-			const time = Math.ceil(this.timers.phase_ends_in)
+			const time = Math.max(0, Math.ceil(this.timers.phase_ends_in))
 
-			if (time < 10) return `0:0${time}`
-			if (time < 60) return `0:${time}`
-			if (time < 70) return `1:0${time - 60}`
-			return `1:${time - 60}`
+			const minutes = Math.floor(time / 60)
+			const seconds = `${Math.floor(time % 60)}`.padStart(2, '0')
+
+			return `${minutes}:${seconds}`
 		},
 	},
 }
