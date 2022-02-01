@@ -117,10 +117,26 @@ export default {
 		directionalSides() {
 			if (! this.map) return ['ct', 't']
 
-			if (this.map.team_ct.name === this.primaryTeam) return ['ct', 't']
-			if (this.map.team_t.name === this.primaryTeam) return ['t', 'ct']
-			if (this.map.team_ct.flag === 'de') return ['ct', 't']
-			if (this.map.team_t.flag === 'de') return ['t', 'ct']
+			if (this.primaryTeam) {
+				switch (this.primaryTeam) {
+					case (this.map.team_ct.name): return ['ct', 't']
+					case (this.map.team_t.name): return ['t', 'ct']
+				}
+			}
+
+			try {
+				const player = Object.values(this.allplayers)[0]
+
+				if ([1, 2, 3, 4, 5].includes(player.observer_slot)) {
+					if (player.team === 'CT') return ['ct', 't']
+					return ['t', 'ct']
+				}
+
+				if ([6, 7, 8, 9, 0].includes(player.observer_slot)) {
+					if (player.team === 'CT') return ['t', 'ct']
+					return ['ct', 't']
+				}
+			} catch {}
 
 			return ['ct', 't']
 		},
