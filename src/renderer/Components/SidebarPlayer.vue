@@ -87,7 +87,7 @@
 				</div>
 
 				<div class="values">
-					<div class="value">
+					<div :class="['value', { '--green': player.match_stats.kills > player.match_stats.deaths }]">
 						<div v-for="digit of (player.match_stats.kills + '')" class="digit">{{ digit }}</div>
 					</div>
 
@@ -95,7 +95,7 @@
 						<div v-for="digit of (player.match_stats.assists + '')" class="digit">{{ digit }}</div>
 					</div>
 
-					<div class="value">
+					<div :class="['value', { '--red': player.match_stats.kills < player.match_stats.deaths }]">
 						<div v-for="digit of (player.match_stats.deaths + '')" class="digit">{{ digit }}</div>
 					</div>
 
