@@ -5,7 +5,7 @@
 				<div class="health">
 					<img src="../../img/health.svg">
 
-					<div class="number">
+					<div :class="['number',{'--red': player.state.health < 21 }]">
 						<div v-for="digit in ((player.state.health + '') || '').padStart(3)" class="digit">
 							{{ digit }}
 						</div>
