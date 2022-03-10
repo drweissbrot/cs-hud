@@ -15,7 +15,7 @@
 
 				<div class="inner">
 					<div :class="`team-name --${win_team}`">
-						{{ team.name || (win_team === 'ct' ? 'Counter-Terrorists' : 'Terrorists') }}
+						{{ team.name || (win_team === 'ct' ? leftTeamName : rightTeamName) }}
 					</div>
 
 					<div class="phrase">
@@ -58,6 +58,8 @@ export default {
 		...mapGetters([
 			'map',
 			'round',
+			'leftTeamName',
+			'rightTeamName',
 		]),
 
 		active() {
