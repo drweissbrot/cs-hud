@@ -126,7 +126,18 @@
 				</label>
 				<input type="text" id="primary-team" v-model="primaryTeam">
 			</div>
-
+			<div class="input-group primary-team">
+				<label for="primary-team">
+					Name of Team on the left
+				</label>
+				<input type="text" id="primary-team" v-model="leftTeamName">
+			</div>
+			<div class="input-group primary-team">
+				<label for="primary-team">
+					Name of Team on the right
+				</label>
+				<input type="text" id="primary-team" v-model="rightTeamName">
+			</div>
 			<div class="input-group series-event-info">
 				<label for="series-name">
 					Series/Event Info (either 1 or 3 lines; leave empty to hide)
@@ -224,6 +235,8 @@ export default {
 			preMatchIntroMusicPath: this.$store.getters.preMatchIntroMusicPath,
 			prePostMatchAnimationsEnabled: this.$store.getters.prePostMatchAnimationsEnabled,
 			primaryTeam: this.$store.getters.primaryTeam,
+			leftTeamName: this.$store.getters.leftTeamName,
+			rightTeamName: this.$store.getters.rightTeamName,
 			seriesName: (this.$store.getters.seriesName || []).join('\n'),
 			seriesNumber: this.$store.getters.seriesNumber,
 			tacticalTimeoutMusicPaths: this.$store.getters.tacticalTimeoutMusicPaths,
@@ -260,6 +273,8 @@ export default {
 				preMatchIntroMusicPath: this.preMatchIntroMusicPath,
 				prePostMatchAnimationsEnabled: this.prePostMatchAnimationsEnabled,
 				primaryTeam: this.primaryTeam,
+				leftTeamName: this.leftTeamName,
+				rightTeamName: this.rightTeamName,
 				seriesName: this.seriesName ? (this.seriesName + '').trim().split('\n').filter((str) => str) : null,
 				seriesNumber: this.seriesNumber,
 				tacticalTimeoutMusicPaths: this.tacticalTimeoutMusicPaths,

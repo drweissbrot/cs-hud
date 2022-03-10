@@ -29,7 +29,7 @@
 				</div>
 
 				<div :class="`team-name --${direction} --${directionalSides[Number(direction === 'right')]}`">
-					{{ team.name || (directionalSides[Number(direction === 'right')] === 'ct' ? 'Counter-Terrorists' : 'Terrorists') }}
+					{{ team.name || (directionalSides[Number(direction === 'right')] === 'ct' ?  leftTeamName  : rightTeamName) }}
 				</div>
 
 				<div :class="`round-wins --${direction}`">
@@ -114,6 +114,8 @@ export default {
 			'series',
 			'seriesName',
 			'timers',
+			'leftTeamName',
+			'rightTeamName'
 		]),
 
 		left() {

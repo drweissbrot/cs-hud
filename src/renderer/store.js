@@ -15,6 +15,8 @@ const store = new Vuex.Store({
 		preMatchIntroMusicPath: null,
 		prePostMatchAnimationsEnabled: false,
 		primaryTeam: null,
+		leftTeamName: null,
+		rightTeamName: null,
 		series: [{}],
 		seriesName: [],
 		seriesNumber: null,
@@ -44,6 +46,8 @@ const store = new Vuex.Store({
 		preMatchIntroMusicPath: (state) => state.preMatchIntroMusicPath,
 		prePostMatchAnimationsEnabled: (state) => state.prePostMatchAnimationsEnabled,
 		primaryTeam: (state) => state.primaryTeam,
+		leftTeamName: (state) => state.leftTeamName,
+		rightTeamName: (state) => state.rightTeamName,
 		series: (state) => state.series,
 		seriesName: (state) => state.seriesName,
 		seriesNumber: (state) => state.seriesNumber,
@@ -75,6 +79,12 @@ const store = new Vuex.Store({
 
 		setPrimaryTeam(state, team) {
 			state.primaryTeam = team
+		},
+		setLeftTeamName(state, leftTeamName) {
+			state.leftTeamName = leftTeamName
+		},
+		setRightTeamName(state, rightTeamName) {
+			state.rightTeamName = rightTeamName
 		},
 
 		setSeriesName(state, seriesName) {
@@ -144,6 +154,8 @@ const store = new Vuex.Store({
 			commit('setPreMatchIntroMusicPath', message.preMatchIntroMusicPath)
 			commit('setPrePostMatchAnimationsEnabled', message.prePostMatchAnimationsEnabled)
 			commit('setPrimaryTeam', message.primaryTeam)
+			commit('setLeftTeamName', message.leftTeamName)
+			commit('setRightTeamName', message.rightTeamName)
 			commit('setSeriesData', message.matches)
 			commit('setSeriesName', message.seriesName)
 			commit('setSeriesNumber', message.seriesNumber)
