@@ -26,9 +26,7 @@ module.exports = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: (process.env.npm_lifecycle_event === 'package')
-								? 'main/[name].css'
-								: '[name].css',
+							name: '[name].css',
 						},
 					},
 					{ loader: 'stylus-loader' },
