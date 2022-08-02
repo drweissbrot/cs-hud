@@ -109,4 +109,4 @@ If you are using Fullscreen Windowed, but still can't see the HUD, try this: Foc
 If the HUD animations aren't running smoothly, the best course of action is probably to limit the FPS of the game itself, e.g. by setting the `fps_max` command in the CS:GO console to a lower value. You'll need to play around with this a bit to find a value that works for your hardware and your settings.  
 Reducing GPU load in general can help too, e.g. closing or disabling hardware accelleration in Chrome, Discord, Steam, and any other apps that use your GPU.
 
-If that doesn't help, you could try switching to CPU rendering – this may only make it worse though. If you want to try it, you can do this with the `–disable-gpu` parameter, e.g. run `npx electron-forge start – –disable-gpu` in the project directory.
+If that doesn't help, you could try switching to CPU rendering – this may only make it worse though. If you want to try it, you can do this with the `--disable-gpu` parameter, e.g. run `npx electron-forge start -- --disable-gpu` in the project directory.
