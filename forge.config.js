@@ -17,16 +17,19 @@ module.exports = {
 		},
 	],
 	plugins: [
-		['@electron-forge/plugin-webpack', {
+	{
+		name: '@electron-forge/plugin-webpack', 
+		config: {
 			mainConfig: './webpack.main.config.js',
 			renderer: {
 				config: './webpack.renderer.config.js',
 				entryPoints: [{
 					html: './src/index.html',
 					js: './src/renderer/app.js',
-					name: 'main',
-				}],
-			},
-		}],
-	],
+					name: 'main'
+				}]
+			}
+		}
+	}
+	]
 }
