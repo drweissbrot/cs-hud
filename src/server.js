@@ -1,7 +1,6 @@
 const http = require('http')
 const fs = require('fs')
 const { ipcMain } = require('electron')
-const jsonBignum = require('json-bignum')
 
 const host = '127.0.0.1'
 const port = 31982
@@ -37,7 +36,7 @@ module.exports = class Server {
 			req.on('data', (data) => body += data)
 
 			req.on('end', () => {
-				body = jsonBignum.parse(body)
+				body = JSON.parse(body)
 
 				if (body.auth.token === '7ATvXUzTfBYyMLrA') {
 					for (const key in body) {

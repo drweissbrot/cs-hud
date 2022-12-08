@@ -80,8 +80,8 @@ export default {
 			if (this.side === 'ct') {
 				if (now.state === 'defusing' && previous.state !== 'defusing') {
 					this.defuseDuration = (
-						this.allplayers[now.player.numberStr].state
-						&& this.allplayers[now.player.numberStr].state.defusekit || false
+						this.allplayers[now.player].state
+						&& this.allplayers[now.player].state.defusekit || false
 					) ? 5 : 10
 
 					if (! this.bombTimerScaleInterval) {

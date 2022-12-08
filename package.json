@@ -21,7 +21,6 @@
 		"electron": "^22.0.0",
 		"electron-squirrel-startup": "^1.0.0",
 		"file-loader": "^6.2.0",
-		"json-bignum": "^0.0.3",
 		"postcss": "^8.4.19",
 		"stylus": "^0.59.0",
 		"stylus-loader": "^7.1.0",
