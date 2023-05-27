@@ -10,6 +10,7 @@ export const sfcLoaderOptions = {
 		if (!res.ok) throw Object.assign(new Error(res.statusText + ' ' + url), { res })
 
 		return {
+			type: url.endsWith('.js') ? '.mjs' : undefined, // this allows nested imports within modules
 			getContentData: (asBinary) => asBinary ? res.arrayBuffer() : res.text(),
 		}
 	},

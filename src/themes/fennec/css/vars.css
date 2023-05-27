@@ -1,0 +1,29 @@
+:root {
+	/*
+	 * Colors
+	 */
+	--background-color: green;
+	--text-color: #fff;
+
+	--counter-terrorists: #1d9ede;
+	--terrorists: #c18803;
+
+	/*
+	 * Spacing, Sizes
+	 */
+	--text-scale-factor: 0.926vh; /* approximately 10px on 1080p */
+
+	/* Viewport Margin  */
+	--viewport-margin-x: 2rem;
+	--viewport-margin-y: 1.5rem;
+
+	--viewport-margin-bottom: var(--viewport-margin-y);
+	--viewport-margin-left: var(--viewport-margin-x);
+	--viewport-margin-right: var(--viewport-margin-x);
+	--viewport-margin-top: var(--viewport-margin-y);
+
+	/*
+	 * Fonts
+	 */
+	--font-family: 'Quantico', sans-serif;
+}

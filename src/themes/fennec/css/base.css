@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: var(--text-scale-factor);
+	background: var(--background-color);
+	color: var(--text-color);
+}
+
+body {
+	font: 2rem/1 var(--font-family);
+}

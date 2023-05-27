@@ -1,0 +1,17 @@
+<div class="players-alive" :class="{ '--active': isActive }">
+	<div class="title">
+		Players Alive
+	</div>
+
+	<div :class="['team', '--left', leftTeamColorClass]">
+		{{ leftTeamAlive }}
+	</div>
+
+	<div class="vs">
+		vs
+	</div>
+
+	<div :class="['team', '--right', rightTeamColorClass]">
+		{{ rightTeamAlive }}
+	</div>
+</div>
