@@ -3,36 +3,49 @@ import http from 'http'
 import bodyParser from 'koa-bodyparser'
 import Koa from 'koa'
 import KoaRouter from 'koa-router'
+import KoaCompress from 'koa-compress'
 
+import { initSettings, getSettings } from './settings.js'
 import { registerConfigRoutes } from './config.js'
 import { registerDependencyRoutes } from './dependencies.js'
 import { registerGsiRoutes } from './gsi.js'
 import { registerHudRoutes } from './hud.js'
 import { Websocket } from './websocket.js'
 
-const host = process.env.HOST || '127.0.0.1'
-const port = process.env.PORT || 31982
+const run = async () => {
+	await initSettings()
+	const { settings } = await getSettings()
 
-const app = new Koa()
-const server = http.createServer(app.callback())
+	console.log('settings:', settings) // TODO remove
 
-app.use(bodyParser({
-	strict: true,
-	enableTypes: ['json'],
-}))
+	const host = process.env.HOST || settings.host || '127.0.0.1'
+	const port = process.env.PORT || settings.port || 31982
 
-const websocket = new Websocket(server)
+	const app = new Koa()
+	const server = http.createServer(app.callback())
 
-// register routes
-const router = new KoaRouter()
-registerConfigRoutes(router)
-registerDependencyRoutes(router)
-registerGsiRoutes(router, websocket)
-registerHudRoutes(router)
+	app.use(KoaCompress())
 
-// start server
-app.use(router.routes())
-app.use(router.allowedMethods())
+	app.use(bodyParser({
+		strict: true,
+		enableTypes: ['json'],
+	}))
 
-server.listen(port, host)
-console.info(`CS:GO HUD active at http://${host}:${port}. Press Ctrl+C to quit.`)
+	const websocket = new Websocket(server)
+
+	// register routes
+	const router = new KoaRouter()
+	registerConfigRoutes(router)
+	registerDependencyRoutes(router)
+	registerGsiRoutes(router, websocket)
+	registerHudRoutes(router)
+
+	// start server
+	app.use(router.routes())
+	app.use(router.allowedMethods())
+
+	server.listen(port, host)
+	console.info(`CS:GO HUD active at http://${host}:${port}. Press Ctrl+C to quit.`)
+}
+
+run().then(() => {})
