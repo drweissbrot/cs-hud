@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.21.2.tgz#dacafadfc6d7654c3051a66d6fe55b6cb2f2a0b3"
   integrity sha512-URpaIJQwEkEC2T9Kn+Ai6Xe/02iNaVCuT/PtoRz3GPVJVDpPd7mLo+VddTbhCRU9TXqW5mSrQfXZyi8kDKOVpQ==
 
+"@fontsource/quantico@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/quantico/-/quantico-5.0.1.tgz#a83935a353e6d32eb3236c7df193456e9a9beffa"
+  integrity sha512-Nd2hsZysPSZ0ffMUg0aeSzj9q0P/K/2tHcjqg6IdOdtVFXiMxNEq5qpwUtli1OiTvOu9EKcknQ2JzVkHDOMwtA==
+
 "@vue/compiler-core@3.2.47":
   version "3.2.47"
   resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.2.47.tgz#3e07c684d74897ac9aa5922c520741f3029267f8"

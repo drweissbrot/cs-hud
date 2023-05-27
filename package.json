@@ -3,6 +3,7 @@
 	"type": "module",
 	"main": "src/server/index.js",
 	"dependencies": {
+		"@fontsource/quantico": "^5.0.1",
 		"koa": "^2.14.1",
 		"koa-bodyparser": "^4.3.0",
 		"koa-compress": "^5.1.1",
