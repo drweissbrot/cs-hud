@@ -18,7 +18,14 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 		paintkit: weapon.paintkit,
 		state: weapon.state,
 		type: weapon.type,
-	}))
+	})).sort((a, b) => {
+		if (a.name > b.name) return 1
+		if (a.name < b.name) return -1
+
+		if (a.isActive !== b.isActive) return b.isActive - a.isActive
+
+		return 0
+	})
 
 	return {
 		steam64Id,
@@ -34,8 +41,8 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 		grenades: weapons.filter((weapon) => weapon.isGrenade),
 		hasArmor: player.state?.armor > 0,
 		hasBomb: weapons.some((weapon) => weapon.isBomb),
-		hasDefuser: player.state?.defusekit,
-		hasHelmet: player.state?.helmet,
+		hasDefuser: !!player.state?.defusekit,
+		hasHelmet: !!player.state?.helmet,
 		hasTaser: weapons.some((weapon) => weapon.isTaser),
 		health: player.state?.health,
 		isAlive: player.state?.health > 0,

@@ -21,6 +21,7 @@ export const parseTeams = () => {
 			side,
 
 			consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
+			flag: gsiTeamObject.flag,
 			matchesWonThisSeries: gsiTeamObject.matches_won_this_series,
 			name: gsiTeamObject.name || fallbackName,
 			players: teamMembers,
