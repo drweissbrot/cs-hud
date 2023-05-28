@@ -35,7 +35,19 @@ export const registerHudRoutes = (router) => {
 }
 
 const concatStaticFileFromThemeTreeRecursively = async (path, concatTree, themeTree) => {
-	if (! themeTree.length) return
+	if (! themeTree.length) {
+		if (concatTree.length) return concatTree
+
+		const { dir, ext, name } = parse(path)
+		if (ext !== '.vue' || ! `/${path}`.endsWith(`/${name}/${name}.vue`)) return
+
+		return [`
+			<!-- generated dynamically -->
+			<script src="/hud/${dir}/${name}.js"></script>
+			<style src="/hud/${dir}/${name}.css" scoped></style>
+			<template src="/hud/${dir}/${name}.html"></template>
+		`]
+	}
 
 	themeTree = themeTree.slice()
 	const theme = themeTree.shift()
