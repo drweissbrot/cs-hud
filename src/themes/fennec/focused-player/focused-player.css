@@ -5,7 +5,7 @@
 	right: calc((100% - var(--focused-player-width)) / 2);
 
 	display: grid;
-	grid-template-columns: 8fr 17fr 8fr;
+	grid-template-columns: 16fr 35fr 16fr;
 
 	filter: var(--filter-drop-shadow);
 }

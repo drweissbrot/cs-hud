@@ -17,6 +17,8 @@
 
 	display: flex;
 	align-items: flex-end;
+
+	transition: background-color var(--fade-fast-duration) ease;
 }
 
 .reserve {
@@ -29,6 +31,8 @@
 .ammo::after {
 	content: '';
 	width: 2rem;
+
+	transition: background-color var(--fade-fast-duration) ease;
 	z-index: -1;
 }
 

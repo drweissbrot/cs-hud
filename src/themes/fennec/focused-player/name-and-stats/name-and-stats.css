@@ -12,6 +12,8 @@
 	content: '';
 	display: block;
 	width: 1.5rem;
+
+	transition: background-color var(--fade-fast-duration) ease;
 }
 
 .name-and-stats::before {
@@ -24,13 +26,11 @@
 	transform: skewX(-20deg);
 }
 
-.inner.--ct,
 .name-and-stats.--ct::before,
 .name-and-stats.--ct::after {
 	background: var(--counter-terrorists);
 }
 
-.inner.--t,
 .name-and-stats.--t::before,
 .name-and-stats.--t::after {
 	background: var(--terrorists);

@@ -11,6 +11,7 @@
 	clip-path: var(--polygon-bordered-by-diagonals);
 	font-size: 2.5rem;
 	font-weight: 700;
+	transition: background-color var(--fade-fast-duration) ease;
 }
 
 .name-row.--ct {
