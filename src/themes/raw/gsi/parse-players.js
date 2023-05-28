@@ -3,22 +3,28 @@ import { parsePosition } from '/hud/gsi/parse-position.js'
 
 // TODO if we want an `isBot` or similar: bots appear to use steam ids, starting at 76561197960265729 and counting up from there (these are real steam64Ids though, belonging to real Steam users)
 export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([steam64Id, player]) => {
-	const weapons = Object.values(player.weapons).map((weapon) => ({
-		ammoClip: weapon.ammo_clip,
-		ammoClipMax: weapon.ammo_clip_max,
-		ammoReserve: weapon.ammo_reserve,
-		isActive: weapon.state === 'active',
-		isBomb: weapon.type === 'C4',
-		isGrenade: weapon.type === 'Grenade',
-		isMelee: weapon.type === 'Knife',
-		isPistol: weapon.type === 'Pistol',
-		isPrimary: ['Machine Gun', 'Rifle', 'Shotgun', 'SniperRifle', 'Submachine Gun'].includes(weapon.type),
-		isTaser: weapon.name === 'weapon_taser', // weapon.type is undefined for taser
-		name: weapon.name,
-		paintkit: weapon.paintkit,
-		state: weapon.state,
-		type: weapon.type,
-	})).sort((a, b) => {
+	const weapons = Object.values(player.weapons).flatMap((weapon) => {
+		const parsed = {
+			ammoClip: weapon.ammo_clip,
+			ammoClipMax: weapon.ammo_clip_max,
+			ammoReserve: weapon.ammo_reserve,
+			isActive: weapon.state === 'active',
+			isBomb: weapon.type === 'C4',
+			isGrenade: weapon.type === 'Grenade',
+			isMelee: weapon.type === 'Knife',
+			isPistol: weapon.type === 'Pistol',
+			isPrimary: ['Machine Gun', 'Rifle', 'Shotgun', 'SniperRifle', 'Submachine Gun'].includes(weapon.type),
+			isTaser: weapon.name === 'weapon_taser', // weapon.type is undefined for taser
+			name: weapon.name,
+			paintkit: weapon.paintkit,
+			state: weapon.state,
+			type: weapon.type,
+		}
+
+		if (parsed.name === 'weapon_flashbang' && parsed.ammoReserve >= 2) return [parsed, { ...parsed, isActive: false }]
+
+		return [parsed]
+	}).sort((a, b) => {
 		if (a.name > b.name) return 1
 		if (a.name < b.name) return -1
 

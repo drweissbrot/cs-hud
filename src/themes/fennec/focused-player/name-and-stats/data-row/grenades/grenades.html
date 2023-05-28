@@ -1,7 +1,7 @@
 <div class="grenades">
-	<Transition name="fast" mode="out-in">
-		<div v-for="grenade of grenades" class="grenade">
+	<TransitionGroup name="fast">
+		<div v-for="grenade of grenades" :key="grenade.key" class="grenade">
 			<img :src="grenade.iconUrl" alt="" :class="{ '--active': grenade.isActive }">
 		</div>
-	</Transition>
+	</TransitionGroup>
 </div>
