@@ -1,0 +1,11 @@
+.focused-player {
+	position: fixed;
+	bottom: var(--viewport-margin-bottom);
+	left: calc((100% - var(--focused-player-width)) / 2);
+	right: calc((100% - var(--focused-player-width)) / 2);
+
+	display: grid;
+	grid-template-columns: 8fr 17fr 8fr;
+
+	filter: var(--filter-drop-shadow);
+}

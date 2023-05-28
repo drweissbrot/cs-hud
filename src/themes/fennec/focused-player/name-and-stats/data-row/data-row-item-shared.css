@@ -1,0 +1,25 @@
+.taser img,
+.bomb-or-defuser img,
+.grenades .grenade img {
+	height: 2.5rem;
+	transition: opacity var(--fade-fast-duration) ease;
+}
+
+.taser img:not(.--active),
+.bomb-or-defuser img:not(.--active),
+.grenades .grenade img:not(.--active) {
+	opacity: 0.5;
+}
+
+.taser,
+.bomb-or-defuser,
+.grenades .grenade {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.taser,
+.bomb-or-defuser {
+	margin: 0 1rem;
+}

@@ -7,9 +7,9 @@
 }
 
 html {
-	font-size: var(--text-scale-factor);
 	background: var(--background-color);
 	color: var(--text-color);
+	font-size: var(--text-scale-factor);
 }
 
 body {

@@ -1,6 +1,6 @@
 .v-enter-active,
 .v-leave-active {
-	transition: opacity 0.3s ease;
+	transition: opacity var(--fade-default-duration) ease;
 }
 
 .v-enter-from,

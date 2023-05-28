@@ -26,6 +26,7 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 
 		adr: 0, // TODO
 		armor: player.state?.armor,
+		assists: player.match_stats?.assists,
 		clanTag: player.clan,
 		deaths: player.match_stats?.deaths,
 		equipmentValue: player.state?.equip_value,

@@ -8,10 +8,16 @@
 	--counter-terrorists: #1d9ede;
 	--terrorists: #c18803;
 
+	--counter-terrorists-rgb: 29, 158, 222;
+	--terrorists-rgb: 193, 136, 3;
+
 	/*
 	 * Spacing, Sizes
 	 */
-	--text-scale-factor: 0.926vh; /* approximately 10px on 1080p */
+	--text-scale-factor: 0.925925926vh; /* approximately 10px on 1080p */
+
+	--focused-player-width: 50%;
+	--focused-player-icon-height: 2rem;
 
 	/* Viewport Margin  */
 	--viewport-margin-x: 2rem;
@@ -21,6 +27,26 @@
 	--viewport-margin-left: var(--viewport-margin-x);
 	--viewport-margin-right: var(--viewport-margin-x);
 	--viewport-margin-top: var(--viewport-margin-y);
+
+	/*
+	 * Polygons
+	 */
+	--polygon-left: polygon(0 0, 100% 0, 100% 100%);
+	--polygon-right: polygon(0 0, 0 100%, 100% 100%);
+	--polygon-left-inversed: polygon(100% 0, 100% 100%, 0 100%);
+	--polygon-right-inversed: polygon(0 0, 0 100%, 100% 0);
+	--polygon-bordered-by-diagonals: polygon(0 0, 100% 0, calc(100% - 1.5rem) 100%, 1.5rem 100%);
+
+	/*
+	 * Durations
+	 */
+	--fade-fast-duration: 0.1s;
+	--fade-default-duration: 0.3s;
+
+	/*
+	 * Filters
+	 */
+	--filter-drop-shadow: drop-shadow(0 0 0.6rem rgba(0, 0, 0, 0.4));
 
 	/*
 	 * Fonts

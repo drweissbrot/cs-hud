@@ -1,0 +1,22 @@
+.name-row {
+	grid-area: name-row;
+
+	margin: 0 -1.75rem;
+	padding: 0 2.5rem;
+
+	display: flex;
+	align-items: center;
+
+	background: rgba(0, 0, 0, 0.5);
+	clip-path: var(--polygon-bordered-by-diagonals);
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+
+.name-row.--ct {
+	background: rgba(var(--counter-terrorists-rgb), 0.5);
+}
+
+.name-row.--t {
+	background: rgba(var(--terrorists-rgb), 0.5);
+}

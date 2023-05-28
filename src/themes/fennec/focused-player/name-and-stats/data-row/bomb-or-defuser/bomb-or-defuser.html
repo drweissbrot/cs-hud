@@ -1,0 +1,4 @@
+<div class="bomb-or-defuser">
+	<img v-if="player.hasDefuser" src="/hud/img/weapons/defuser.svg" alt="">
+	<img v-else-if="player.hasBomb" src="/hud/img/weapons/c4.svg" alt="" :class="{ '--active': isBombActive }">
+</div>

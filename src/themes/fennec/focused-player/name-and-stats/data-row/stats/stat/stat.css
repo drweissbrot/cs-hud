@@ -1,0 +1,24 @@
+.stat {
+	margin-right: 0.5rem;
+}
+
+.label,
+.value {
+	text-align: center;
+}
+
+.label {
+	font-size: 1.5rem;
+}
+
+.label.--ct {
+	color: var(--counter-terrorists);
+}
+
+.label.--t {
+	color: var(--terrorists);
+}
+
+.value {
+	min-width: 3ch;
+}
