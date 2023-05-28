@@ -1,6 +1,7 @@
 import { WebSocketServer, WebSocket } from 'ws'
 
 import { additionalState, gsiState } from './state.js'
+import { getSettings } from './settings.js'
 
 export class Websocket {
 	constructor(server) {
@@ -10,10 +11,16 @@ export class Websocket {
 			this.sendState(client)
 		})
 
-		// TODO
+		this.optionsCache = {}
+
 		setInterval(() => {
-			this.broadcastState()
-		}, 1000)
+			this.broadcastState() // TODO just completely remove this (probably)
+
+			// TODO run this when a value is changed on the config page instead (and maybe on a rare interval or something)
+			getSettings().then(({ settings }) => {
+				this.optionsCache = Object.fromEntries(Object.entries(settings.options).map(([key, { value }]) => [key, value]))
+			})
+		}, 5000)
 	}
 
 	getState() {
@@ -21,6 +28,7 @@ export class Websocket {
 			additionalState,
 			gsiState,
 
+			options: this.optionsCache,
 			timestamp: new Date(),
 		}
 	}

@@ -3,7 +3,11 @@ import { teamColorClass } from '/hud/helpers/team-color-class.js'
 export default {
 	computed: {
 		isActive() {
-			return !this.$round.isFreezetime
+			if (this.$opts['preferences.playersAlive.hideDuringFreezetime']) {
+				return !this.$round.isFreezetime
+			}
+
+			return true
 		},
 
 		leftTeamAlive() {

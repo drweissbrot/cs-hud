@@ -1,3 +1,12 @@
 {
-	"parent": "raw"
+	"parent": "raw",
+
+	"options": {
+		"preferences.playersAlive.hideDuringFreezetime": {
+			"type": "boolean",
+			"value": true,
+			"section": "Preferences",
+			"label": "Hide \"Players Alive\" during freezetime"
+		}
+	}
 }
