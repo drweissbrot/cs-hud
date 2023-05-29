@@ -1,0 +1,209 @@
+.center {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-rows: 2fr 1fr 1fr;
+	grid-template-areas:
+		'score-left current-round score-right'
+		'maps-left current-map maps-right'
+		'match-point-rounds match-point-rounds match-point-rounds';
+}
+
+.score {
+	display: flex;
+
+	font-size: var(--top-bar-score-font-size);
+	font-weight: 700;
+
+	&.--left::before,
+	&.--right::after {
+		content: '';
+		display: block;
+		width: 2rem;
+		height: 100%;
+	}
+
+	.inner {
+		padding: var(--top-bar-padding-x) 0;
+		min-width: 2ch;
+
+		isolation: isolate;
+		text-align: center;
+		z-index: 1;
+	}
+
+	&.--ct {
+		&.--left::before,
+		&.--right::after,
+		.inner {
+			background: var(--counter-terrorists);
+		}
+	}
+
+	&.--t {
+		&.--left::before,
+		&.--right::after,
+		.inner {
+			background: var(--terrorists);
+		}
+	}
+
+	&.--left {
+		grid-area: score-left;
+
+		&::before {
+			transform: skewX(20deg) translateX(-0.825rem);
+		}
+
+		.inner {
+			padding-left: 0.5rem;
+			padding-right: 1rem;
+			margin-left: -1.75rem;
+		}
+	}
+
+	&.--right {
+		grid-area: score-right;
+
+		&::after {
+			transform: skewX(-20deg) translateX(0.825rem);
+		}
+
+		.inner {
+			padding-right: 0.5rem;
+			padding-left: 1rem;
+			margin-right: -1.75rem;
+		}
+	}
+}
+
+.maps {
+	background: rgba(255, 255, 255, 0.75);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&.--left {
+		grid-area: maps-left;
+		padding-left: 0.5rem;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0.85rem 100%);
+	}
+
+	&.--right {
+		grid-area: maps-right;
+		padding-right: 0.5rem;
+		clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0 100%);
+	}
+
+	.pip {
+		width: 0.6rem;
+		aspect-ratio: 1;
+		border: 0.2rem solid;
+		margin: 0.3rem;
+	}
+
+	&.--ct .pip {
+		border-color: var(--counter-terrorists);
+
+		&.--filled {
+			background: var(--counter-terrorists);
+		}
+	}
+
+	&.--t .pip {
+		border-color: var(--terrorists);
+
+		&.--filled {
+			background: var(--terrorists);
+		}
+	}
+}
+
+.current-round {
+	grid-area: current-round;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	padding: 0.25rem;
+	background: rgba(0, 0, 0, 0.5);
+
+	&.--warmup {
+		font-size: 1.5rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+	}
+
+	.clock {
+		font-size: 2.25rem;
+	}
+
+	.bomb {
+		height: 2.25rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.round-number {
+		font-size: 1.3rem;
+	}
+}
+
+/* apparently CSS nesting doesn't support element selectors within class selectors or something (yet) */
+.current-round img {
+	&.paused-icon,
+	&.planted-bomb-icon {
+		height: 2rem;
+	}
+
+	&.bombsite-icon {
+		height: 1.75rem;
+		margin-left: 0.75rem;
+	}
+}
+
+.current-map {
+	grid-area: current-map;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: rgba(255, 255, 255, 0.75);
+	color: #000;
+	font-size: 1.35rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
+.match-point-rounds-overflow-container {
+	grid-area: match-point-rounds;
+	overflow: hidden;
+}
+
+.match-point-rounds {
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: rgba(0, 0, 0, 0.5);
+	clip-path: polygon(0.85rem 0, calc(100% - 0.85rem) 0, calc(100% - 1.7rem) 100%, 1.7rem 100%);
+	font-size: 1.35rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	transition:
+		clip-path var(--fade-default-duration) ease,
+		transform var(--fade-default-duration) ease;
+
+	&:not(.--active) {
+		clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0.85rem 100%);
+		transform: translateY(-100%);
+	}
+}

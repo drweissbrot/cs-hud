@@ -1,12 +1,13 @@
 export default {
 	props: [
-		'value',
 		'digits',
+		'pad',
+		'value',
 	],
 
 	computed: {
 		elements() {
-			return `${this.value}`.padStart(this.digits, ' ').split('')
+			return `${this.value}`.padStart(this.digits, this.pad ?? ' ').split('')
 		},
 	},
 }

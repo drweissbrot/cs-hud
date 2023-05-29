@@ -13,6 +13,7 @@ const getPlainReason = (reason) => {
 }
 
 export const parseRounds = () => {
+	// TODO this resets every 30 rounds
 	return Object.entries(gsiState.map.round_wins || {}).map(([roundNumber, reason]) => {
 		const winningSide = reason.startsWith('ct_win') ? 3 : 2
 

@@ -1,0 +1,51 @@
+<div :class="['team', positionClass]">
+	<div :class="['name-wrapper', positionClass, colorClass]">
+		<div :class="['name', positionClass, colorClass]">
+			<div class="inner">
+				{{ team.name }}
+			</div>
+		</div>
+	</div>
+
+	<TransitionGroup name="slide">
+		<div v-if="isBombTimerPanelActive" :class="['bomb-timer-wrapper', positionClass, colorClass]" pad="2">
+			<div :class="['bomb-timer', positionClass]">
+				<div class="inner">
+					<ProgressBar :colorClass="bombTimerColorClass" :direction="position" :max="bombTimerMaxValue" :value="bombTimerValue" />
+				</div>
+			</div>
+		</div>
+
+		<div v-if="isRoundWinnerPanelActive" :class="['round-winner-wrapper', positionClass, colorClass]" pad="2">
+			<div :class="['round-winner', positionClass, colorClass]">
+				<div class="inner">
+					wins the round
+				</div>
+			</div>
+		</div>
+
+		<div v-if="isMatchPointPanelActive" :class="['match-point-wrapper', positionClass, colorClass]" pad="2">
+			<div :class="['match-point', positionClass, colorClass]">
+				<div class="inner">
+					Match Point
+				</div>
+			</div>
+		</div>
+
+		<div v-if="isTimeoutPanelActive" :class="['timeout-wrapper', positionClass, colorClass]" pad="2">
+			<div :class="['timeout', positionClass]">
+				<div class="inner">
+					<div class="label">
+						Tactical Timeout
+					</div>
+
+					<div class="remaining">
+						{{ team.timeoutsRemaining }} / {{ $opts['cvars.mp_team_timeout_max'] }} remaining
+					</div>
+
+					<ProgressBar :colorClass="colorClass" :direction="position" :max="$opts['cvars.mp_team_timeout_time']" :value="$round.phaseEndsInSec" />
+				</div>
+			</div>
+		</div>
+	</TransitionGroup>
+</div>

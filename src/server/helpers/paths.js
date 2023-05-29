@@ -9,4 +9,6 @@ export const themesDirectory = `${rootDirectory}/src/themes`
 export const userspaceDirectory = `${themesDirectory}/userspace`
 
 // files
+export const userspaceBombsitesPath = `${userspaceDirectory}/bombsites.json`
+export const userspaceRadarsPath = `${userspaceDirectory}/radars.json`
 export const userspaceSettingsPath = `${userspaceDirectory}/theme.json`

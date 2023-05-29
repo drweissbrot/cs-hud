@@ -29,7 +29,23 @@ const updateGsiState = (body) => {
 }
 
 const updateAdditionalState = (body) => {
+	updateLastKnownBombPlantedCountdown(body)
 	updateRoundDamages(body)
+}
+
+const updateLastKnownBombPlantedCountdown = (body) => {
+	const bomb = body.bomb
+	if (bomb?.state === 'defusing') return
+
+	if (! bomb || bomb.state !== 'planted') {
+		additionalState.lastKnownBombPlantedCountdown = {}
+		return
+	}
+
+	additionalState.lastKnownBombPlantedCountdown = {
+		unixTimestamp: +new Date(),
+		value: bomb.countdown,
+	}
 }
 
 const updateRoundDamages = (body) => {

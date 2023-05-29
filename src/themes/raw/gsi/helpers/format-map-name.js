@@ -1,5 +1,5 @@
 export const formatMapName = (name) => {
-	name = name.replace(/^._/, '')
+	name = name.replace(/^.*_/, '')
 	name = name.substring(0, 1).toUpperCase() + name.substring(1)
 
 	switch (name) {
