@@ -1,35 +1,17 @@
+import CurrentMap from '/hud/top-bar/center/current-map/current-map.vue'
+import CurrentRound from '/hud/top-bar/center/current-round/current-round.vue'
 import Digits from '/hud/digits/digits.vue'
-import { teamColorClass } from '/hud/helpers/team-color-class.js'
+import MapWins from '/hud/top-bar/center/map-wins/map-wins.vue'
+import MatchPointRounds from '/hud/top-bar/center/match-point-rounds/match-point-rounds.vue'
+import Score from '/hud/top-bar/center/score/score.vue'
 
 export default {
 	components: {
+		CurrentMap,
+		CurrentRound,
 		Digits,
-	},
-
-	computed: {
-		clockMinutes() {
-			return Math.floor(this.$round.phaseEndsInSec / 60)
-		},
-
-		clockSeconds() {
-			return Math.ceil(this.$round.phaseEndsInSec % 60)
-		},
-
-		isMatchPointRoundsActive() {
-			// TODO configurable: only show in freezetime
-			return this.$round.isFreezetime && this.$round.isOvertime
-		},
-
-		leftTeamColorClass() {
-			return this.teamColorClass(this.$teams[0])
-		},
-
-		rightTeamColorClass() {
-			return this.teamColorClass(this.$teams[1])
-		},
-	},
-
-	methods: {
-		teamColorClass,
+		MapWins,
+		MatchPointRounds,
+		Score,
 	},
 }

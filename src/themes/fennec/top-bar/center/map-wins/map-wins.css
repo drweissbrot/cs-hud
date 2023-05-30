@@ -1,0 +1,42 @@
+.map-wins {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: rgba(255, 255, 255, 0.75);
+}
+
+.map-wins.--left {
+	grid-area: map-wins-left;
+	padding-left: 0.5rem;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0.85rem 100%);
+}
+
+.map-wins.--right {
+	grid-area: map-wins-right;
+	padding-right: 0.5rem;
+	clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0 100%);
+}
+
+.map-wins .pip {
+	width: 0.6rem;
+	aspect-ratio: 1;
+	border: 0.2rem solid;
+	margin: 0.3rem;
+}
+
+.map-wins.--ct .pip {
+	border-color: var(--counter-terrorists);
+}
+
+.map-wins.--ct .pip.--filled {
+	background: var(--counter-terrorists);
+}
+
+.map-wins.--t .pip {
+	border-color: var(--terrorists);
+}
+
+.map-wins.--t .pip.--filled {
+	background: var(--terrorists);
+}

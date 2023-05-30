@@ -1,70 +1,11 @@
 <div class="center">
-	<div :class="['score', '--left', leftTeamColorClass]">
-		<div class="inner">
-			{{ $teams[0].score }}
-		</div>
-	</div>
+	<Score :team="$teams[0]" position="left" />
+	<MapWins :team="$teams[0]" position="left" />
 
-	<div :class="['maps', '--left', leftTeamColorClass]">
-		<!-- TODO dynamic -->
-		<div class="pip"></div>
-		<div class="pip --filled"></div>
-		<div class="pip --filled"></div>
-	</div>
+	<CurrentRound />
+	<CurrentMap />
+	<MatchPointRounds />
 
-	<div :class="['score', '--right', rightTeamColorClass]">
-		<div class="inner">
-			{{ $teams[1].score }}
-		</div>
-	</div>
-
-	<div :class="['maps', '--right', rightTeamColorClass]">
-		<!-- TODO dynamic -->
-		<div class="pip --filled"></div>
-		<div class="pip"></div>
-		<div class="pip"></div>
-	</div>
-
-	<div v-if="$map.phase === 'warmup'" class="current-round --warmup">
-		Warmup
-	</div>
-
-	<div v-else class="current-round">
-		<img v-if="$round.phase === 'paused'" class="paused-icon" src="/hud/img/icons/pause.svg" alt="">
-
-		<div v-else-if="$bomb.isPlanted" class="bomb">
-			<img class="planted-bomb-icon" src="/hud/img/icons/planted-bomb.svg" alt="">
-
-			<img v-if="$bomb.bombsite === 'a'" class="bombsite-icon --a" src="/hud/img/icons/bombsite-a.svg" alt="">
-			<img v-else-if="$bomb.bombsite === 'b'" class="bombsite-icon --b" src="/hud/img/icons/bombsite-b.svg" alt="">
-		</div>
-
-		<!-- TODO 10 seconds in red -->
-		<div v-else class="clock">
-			<Digits :value="clockMinutes" digits="1"></Digits>:<Digits :value="clockSeconds" digits="2" pad="0"></Digits>
-		</div>
-
-		<div class="round-number">
-			<template v-if="$round.isOvertime">
-				OT {{ $round.overtimeNumber }}
-				Round {{ $round.roundNumberInCurrentOvertime }}/{{ $opts['cvars.mp_overtime_maxrounds'] }}
-			</template>
-
-			<template v-else>
-				Round {{ $round.roundNumber }}/{{ $opts['cvars.mp_maxrounds'] }}
-			</template>
-		</div>
-	</div>
-
-	<div class="current-map">
-		Map 3 of 5
-	</div>
-
-	<div class="match-point-rounds-overflow-container">
-		<div :class="['match-point-rounds', { '--active': isMatchPointRoundsActive }]">
-			First to
-			{{ $round.matchPointAtScore + 1 }}
-			Rounds
-		</div>
-	</div>
+	<Score :team="$teams[1]" position="right" />
+	<MapWins :team="$teams[1]" position="right" />
 </div>

@@ -1,0 +1,10 @@
+<div class="round-number">
+	<template v-if="$round.isOvertime">
+		OT {{ $round.overtimeNumber }}
+		Round {{ $round.roundNumberInCurrentOvertime }}/{{ $opts['cvars.mp_overtime_maxrounds'] }}
+	</template>
+
+	<template v-else>
+		Round {{ $round.roundNumber }}/{{ $opts['cvars.mp_maxrounds'] }}
+	</template>
+</div>

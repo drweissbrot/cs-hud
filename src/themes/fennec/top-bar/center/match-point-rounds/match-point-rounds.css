@@ -1,0 +1,27 @@
+.match-point-rounds-overflow-container {
+	grid-area: match-point-rounds;
+	overflow: hidden;
+}
+
+.match-point-rounds {
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: rgba(0, 0, 0, 0.5);
+	clip-path: polygon(0.85rem 0, calc(100% - 0.85rem) 0, calc(100% - 1.7rem) 100%, 1.7rem 100%);
+	font-size: 1.35rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	transition:
+		clip-path var(--fade-default-duration) ease,
+		transform var(--fade-default-duration) ease;
+}
+
+.match-point-rounds:not(.--active) {
+	clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0.85rem 100%);
+	transform: translateY(-100%);
+}
