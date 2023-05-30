@@ -4,6 +4,7 @@ export default {
 		'direction',
 		'max',
 		'min',
+		'skew',
 		'value',
 	],
 
@@ -15,6 +16,14 @@ export default {
 			const percent = (this.value - min) / (max - min)
 
 			return `transform: scaleX(${percent})`
+		},
+
+		skewedClass() {
+			switch (this.skew) {
+				case 'left': return '--skewed-left'
+				case 'right': return '--skewed-right'
+				default: return ''
+			}
 		},
 	},
 }

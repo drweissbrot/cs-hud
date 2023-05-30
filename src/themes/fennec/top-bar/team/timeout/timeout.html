@@ -10,7 +10,13 @@
 					{{ team.timeoutsRemaining }} / {{ $opts['cvars.mp_team_timeout_max'] }} remaining
 				</div>
 
-				<ProgressBar :colorClass="colorClass" :direction="position" :max="$opts['cvars.mp_team_timeout_time']" :value="$round.phaseEndsInSec" />
+				<ProgressBar
+					:colorClass="colorClass"
+					:direction="position"
+					:max="$opts['cvars.mp_team_timeout_time']"
+					:skew="position"
+					:value="$round.phaseEndsInSec"
+				/>
 			</div>
 		</div>
 	</div>

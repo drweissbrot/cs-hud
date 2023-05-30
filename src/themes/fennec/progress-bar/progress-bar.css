@@ -5,6 +5,14 @@
 	overflow: hidden;
 }
 
+.progress-bar-background.--skewed-left {
+	transform: skewX(20deg);
+}
+
+.progress-bar-background.--skewed-right {
+	transform: skewX(-20deg);
+}
+
 .progress-bar-fill {
 	height: 100%;
 }
