@@ -1,0 +1,19 @@
+@import '/hud/top-bar/team/panel-shared.css';
+
+.round-winner-wrapper {
+	max-height: var(--top-bar-row-height);
+}
+
+.round-winner {
+	height: var(--top-bar-row-height);
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+.round-winner.--ct {
+	background: rgba(var(--counter-terrorists-rgb), 0.7);
+}
+
+.round-winner.--t {
+	background: rgba(var(--terrorists-rgb), 0.7);
+}

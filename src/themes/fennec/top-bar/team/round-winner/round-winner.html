@@ -1,0 +1,9 @@
+<Transition name="top-bar-team-panel-slide">
+	<div v-if="isRoundWinnerPanelActive" :class="['top-bar-team-panel-wrapper', 'round-winner-wrapper', positionClass, colorClass]" pad="2">
+		<div :class="['top-bar-team-panel', 'round-winner', positionClass, colorClass]">
+			<div class="inner">
+				wins the round
+			</div>
+		</div>
+	</div>
+</Transition>

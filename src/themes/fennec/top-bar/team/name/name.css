@@ -1,0 +1,18 @@
+@import '/hud/top-bar/team/panel-shared.css';
+
+.name-wrapper {
+	font-size: 2.5rem;
+	max-height: var(--top-bar-row-height);
+}
+
+.name {
+	height: var(--top-bar-row-height);
+}
+
+.name.--ct {
+	background: rgba(var(--counter-terrorists-rgb), 0.5);
+}
+
+.name.--t {
+	background: rgba(var(--terrorists-rgb), 0.5);
+}

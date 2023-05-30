@@ -17,7 +17,7 @@ export const parseRound = () => {
 
 	const roundsInOvertimes = isOvertime ? roundNumber - maxrounds : 0
 	const overtimeNumber = isOvertime ? Math.floor((roundsInOvertimes - 1) / overtimeMaxrounds) + 1 : 0
-	const matchPointAtScore = isOvertime ? (maxrounds / 2) + (overtimeMaxrounds / 2) + (overtimeNumber - 1) * overtimeMaxrounds : Math.floor(maxrounds / 2)
+	const matchPointAtScore = isOvertime ? (maxrounds / 2) + (overtimeMaxrounds / 2) + (overtimeNumber - 1) * (overtimeMaxrounds / 2) : Math.floor(maxrounds / 2)
 
 	return {
 		isOvertime,

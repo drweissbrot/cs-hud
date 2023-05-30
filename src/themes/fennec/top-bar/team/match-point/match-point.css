@@ -1,0 +1,22 @@
+@import '/hud/top-bar/team/panel-shared.css';
+
+.match-point-wrapper {
+	max-height: var(--top-bar-row-height);
+}
+
+.match-point {
+	height: var(--top-bar-row-height);
+
+	font-weight: 700;
+	letter-spacing: 0.5em;
+	text-transform: uppercase;
+	font-size: 2.25rem;
+}
+
+.match-point.--ct {
+	background: rgba(var(--counter-terrorists-rgb), 0.85);
+}
+
+.match-point.--t {
+	background: rgba(var(--terrorists-rgb), 0.85);
+}
