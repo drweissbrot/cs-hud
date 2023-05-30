@@ -7,26 +7,26 @@
 
 .progress-bar-fill {
 	height: 100%;
+}
 
-	&.--to-left,
-	&.--left {
-		transform-origin: left;
-	}
+.progress-bar-fill.--to-left,
+.progress-bar-fill.--left {
+	transform-origin: left;
+}
 
-	&.--to-right,
-	&.--right {
-		transform-origin: right;
-	}
+.progress-bar-fill.--to-right,
+.progress-bar-fill.--right {
+	transform-origin: right;
+}
 
-	&.--ct {
-		background: var(--counter-terrorists);
-	}
+.progress-bar-fill.--ct {
+	background: var(--counter-terrorists);
+}
 
-	&.--t {
-		background: var(--terrorists);
-	}
+.progress-bar-fill.--t {
+	background: var(--terrorists);
+}
 
-	&.--bomb {
-		background: var(--progress-bar-fill-color-bomb);
-	}
+.progress-bar-fill.--bomb {
+	background: var(--progress-bar-fill-color-bomb);
 }

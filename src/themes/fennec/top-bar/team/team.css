@@ -1,14 +1,15 @@
 .team {
 	transform-origin: top;
+}
 
-	/* TODO the 1.65rem magic number breaks at aspect ratios >= ca. 2.2:1 */
-	&.--left {
-		transform: skewX(20deg) translateX(-1.65rem);
-	}
+/* TODO the 1.65rem magic number breaks at aspect ratios >= ca. 2.2:1 */
+.team.--left {
+	transform: skewX(20deg) translateX(-1.65rem);
+}
 
-	&.--right {
-		transform: skewX(-20deg) translateX(1.65rem);
-	}
+/* TODO the 1.65rem magic number breaks at aspect ratios >= ca. 2.2:1 */
+.team.--right {
+	transform: skewX(-20deg) translateX(1.65rem);
 }
 
 .name-wrapper,
@@ -23,38 +24,67 @@
 	transition:
 		max-height var(--fade-default-duration) ease,
 		transform var(--fade-default-duration) ease;
+}
 
-	&::before {
-		content: '';
-		display: block;
-	}
+.name-wrapper::before,
+.bomb-timer-wrapper::before,
+.round-winner-wrapper::before,
+.match-point-wrapper::before,
+.timeout-wrapper::before {
+	content: '';
+	display: block;
+}
 
-	&.--ct::before {
-		background: var(--counter-terrorists);
-	}
+.name-wrapper.--ct::before,
+.bomb-timer-wrapper.--ct::before,
+.round-winner-wrapper.--ct::before,
+.match-point-wrapper.--ct::before,
+.timeout-wrapper.--ct::before {
+	background: var(--counter-terrorists);
+}
 
-	&.--t::before {
-		background: var(--terrorists);
-	}
+.name-wrapper.--t::before,
+.bomb-timer-wrapper.--t::before,
+.round-winner-wrapper.--t::before,
+.match-point-wrapper.--t::before,
+.timeout-wrapper.--t::before {
+	background: var(--terrorists);
+}
 
-	&.--left {
-		grid-template-columns: 2rem 1fr;
-	}
+.name-wrapper.--left,
+.bomb-timer-wrapper.--left,
+.round-winner-wrapper.--left,
+.match-point-wrapper.--left,
+.timeout-wrapper.--left {
+	grid-template-columns: 2rem 1fr;
+}
 
-	&.--right {
-		grid-template-columns: 1fr 2rem;
+.name-wrapper.--right,
+.bomb-timer-wrapper.--right,
+.round-winner-wrapper.--right,
+.match-point-wrapper.--right,
+.timeout-wrapper.--right {
+	grid-template-columns: 1fr 2rem;
+}
 
-		&::before {
-			grid-area: 1/2;
-		}
-	}
+.name-wrapper.--right::before,
+.bomb-timer-wrapper.--right::before,
+.round-winner-wrapper.--right::before,
+.match-point-wrapper.--right::before,
+.timeout-wrapper.--right::before {
+	grid-area: 1/2;
+}
 
-	.inner {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+
+.name-wrapper .inner,
+.bomb-timer-wrapper .inner,
+.round-winner-wrapper .inner,
+.match-point-wrapper .inner,
+.timeout-wrapper .inner {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .name,
@@ -65,18 +95,22 @@
 	display: flex;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.5);
+}
 
-	&.--left {
-		.inner {
-			transform: skewX(-20deg);
-		}
-	}
+.name.--left .inner,
+.bomb-timer.--left .inner,
+.round-winner.--left .inner,
+.match-point.--left .inner,
+.timeout.--left .inner {
+	transform: skewX(-20deg);
+}
 
-	&.--right {
-		.inner {
-			transform: skewX(20deg);
-		}
-	}
+.name.--right .inner,
+.bomb-timer.--right .inner,
+.round-winner.--right .inner,
+.match-point.--right .inner,
+.timeout.--right .inner {
+	transform: skewX(20deg);
 }
 
 .name-wrapper {
@@ -86,14 +120,14 @@
 
 .name {
 	height: var(--top-bar-row-height);
+}
 
-	&.--ct {
-		background: rgba(var(--counter-terrorists-rgb), 0.5);
-	}
+.name.--ct {
+	background: rgba(var(--counter-terrorists-rgb), 0.5);
+}
 
-	&.--t {
-		background: rgba(var(--terrorists-rgb), 0.5);
-	}
+.name.--t {
+	background: rgba(var(--terrorists-rgb), 0.5);
 }
 
 .bomb-timer-wrapper {
@@ -113,14 +147,14 @@
 	height: var(--top-bar-row-height);
 	letter-spacing: 0.25em;
 	text-transform: uppercase;
+}
 
-	&.--ct {
-		background: rgba(var(--counter-terrorists-rgb), 0.7);
-	}
+.round-winner.--ct {
+	background: rgba(var(--counter-terrorists-rgb), 0.7);
+}
 
-	&.--t {
-		background: rgba(var(--terrorists-rgb), 0.7);
-	}
+.round-winner.--t {
+	background: rgba(var(--terrorists-rgb), 0.7);
 }
 
 .match-point-wrapper {
@@ -134,14 +168,14 @@
 	letter-spacing: 0.5em;
 	text-transform: uppercase;
 	font-size: 2.25rem;
+}
 
-	&.--ct {
-		background: rgba(var(--counter-terrorists-rgb), 0.85);
-	}
+.match-point.--ct {
+	background: rgba(var(--counter-terrorists-rgb), 0.85);
+}
 
-	&.--t {
-		background: rgba(var(--terrorists-rgb), 0.85);
-	}
+.match-point.--t {
+	background: rgba(var(--terrorists-rgb), 0.85);
 }
 
 .timeout-wrapper {
@@ -150,55 +184,62 @@
 
 .timeout {
 	height: calc(2 * var(--top-bar-row-height));
-
-	.inner {
-		flex-direction: column;
-		justify-content: space-evenly;
-	}
-
-	.label {
-		font-size: 2.25rem;
-		font-weight: 700;
-	}
-
-	.remaining {
-		font-size: 1.75rem;
-	}
-
-	.progress-bar-background {
-		margin-top: 0.5rem;
-	}
-
-	&.--left .inner {
-		padding: 0.5rem 1rem 0.5rem 2.5rem;
-	}
-
-	&.--right .inner {
-		padding: 0.5rem 2.5rem 0.5rem 1rem;
-	}
 }
 
-.slide-enter-active,
-.slide-leave-active {
-	.name,
-	.bomb-timer,
-	.round-winner,
-	.match-point,
-	.timeout {
-		transform-origin: top;
-		transition: transform var(--fade-default-duration) ease;
-	}
+.timeout .inner {
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.timeout .label {
+	font-size: 2.25rem;
+	font-weight: 700;
+}
+
+.timeout .remaining {
+	font-size: 1.75rem;
+}
+
+.timeout .progress-bar-background {
+	margin-top: 0.5rem;
+}
+
+.timeout.--left .inner {
+	padding: 0.5rem 1rem 0.5rem 2.5rem;
+}
+
+.timeout.--right .inner {
+	padding: 0.5rem 2.5rem 0.5rem 1rem;
+}
+
+.slide-enter-active .name,
+.slide-enter-active .bomb-timer,
+.slide-enter-active .round-winner,
+.slide-enter-active .match-point,
+.slide-enter-active .timeout,
+.slide-leave-active .name,
+.slide-leave-active .bomb-timer,
+.slide-leave-active .round-winner,
+.slide-leave-active .match-point,
+.slide-leave-active .timeout {
+	transform-origin: top;
+	transition: transform var(--fade-default-duration) ease;
 }
 
 .slide-enter-from,
 .slide-leave-to {
 	max-height: 0;
+}
 
-	.name,
-	.bomb-timer,
-	.round-winner,
-	.match-point,
-	.timeout {
-		transform: translateY(-100%);
-	}
+.slide-enter-from .name,
+.slide-enter-from .bomb-timer,
+.slide-enter-from .round-winner,
+.slide-enter-from .match-point,
+.slide-enter-from .timeout,
+.slide-leave-to .name,
+.slide-leave-to .bomb-timer,
+.slide-leave-to .round-winner,
+.slide-leave-to .match-point,
+.slide-leave-to .timeout {
+	transform: translateY(-100%);
 }
