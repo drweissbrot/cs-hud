@@ -7,11 +7,13 @@
 	--red: #f00;
 
 	--counter-terrorists-rgb: 29, 158, 222;
-	--counter-terrorists: #1d9ede;
+	--counter-terrorists: rgb(var(--counter-terrorists-rgb));
 	--terrorists-rgb: 193, 136, 3;
-	--terrorists: #c18803;
+	--terrorists: rgba(var(--terrorists-rgb));
 
 	--progress-bar-fill-color-bomb: var(--red);
+
+	--top-bar-maps-color: rgba(255, 255, 255, 0.5);
 
 	/*
 	 * Spacing, Sizes

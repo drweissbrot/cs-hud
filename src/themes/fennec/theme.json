@@ -42,6 +42,27 @@
 			"value": true,
 			"section": "Preferences",
 			"label": "Hide \"Players Alive\" during freezetime"
+		},
+
+		"series.name.left": {
+			"type": "string",
+			"value": "",
+			"section": "Series",
+			"label": "Series Name (left)"
+		},
+
+		"series.name.center": {
+			"type": "string",
+			"value": "",
+			"section": "Series",
+			"label": "Series Name (center)"
+		},
+
+		"series.name.right": {
+			"type": "string",
+			"value": "",
+			"section": "Series",
+			"label": "Series Name (right)"
 		}
 	}
 }

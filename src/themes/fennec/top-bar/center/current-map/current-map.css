@@ -5,7 +5,7 @@
 	align-items: center;
 	justify-content: center;
 
-	background: rgba(255, 255, 255, 0.75);
+	background: var(--top-bar-maps-color);
 	color: #000;
 	font-size: 1.35rem;
 	font-weight: 700;

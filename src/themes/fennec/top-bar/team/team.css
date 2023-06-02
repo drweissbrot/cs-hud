@@ -4,10 +4,12 @@
 
 /* TODO the 1.65rem magic number breaks at aspect ratios >= ca. 2.2:1 */
 .team.--left {
+	grid-area: team-left;
 	transform: skewX(20deg) translateX(-1.65rem);
 }
 
 /* TODO the 1.65rem magic number breaks at aspect ratios >= ca. 2.2:1 */
 .team.--right {
+	grid-area: team-right;
 	transform: skewX(-20deg) translateX(1.65rem);
 }
