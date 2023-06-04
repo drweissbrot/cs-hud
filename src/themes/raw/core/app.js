@@ -2,7 +2,7 @@ import * as Vue from '/dependencies/vue.js'
 import { bomb, bombsites, grenades, gsiState, map, misc, options, players, radars, round, rounds, teams } from '/hud/core/state.js'
 import { connectToWebsocket } from '/hud/core/websocket.js'
 import { loadModule } from '/dependencies/vue3-sfc-loader.js'
-import { sfcLoaderOptions } from '/hud/core/sfc-loader-options.js'
+import { sfcLoaderOptions } from '/dependencies/vue3-sfc-loader-options.js'
 
 connectToWebsocket()
 
