@@ -4,63 +4,60 @@
 	"options": {
 		"cvars.mp_c4timer": {
 			"type": "number",
-			"value": 40,
+			"fallback": 40,
 			"section": "Cvars",
 			"label": "Value of mp_c4timer, i.e. the number of seconds from when the bomb is planted until it explodes"
 		},
 
 		"cvars.mp_maxrounds": {
 			"type": "number",
-			"value": 30,
+			"fallback": 30,
 			"section": "Cvars",
 			"label": "Value of mp_maxrounds, i.e. the maximum number of rounds played in regulation"
 		},
 
 		"cvars.mp_overtime_maxrounds": {
 			"type": "number",
-			"value": 6,
+			"fallback": 6,
 			"section": "Cvars",
 			"label": "Value of mp_overtime_maxrounds, i.e. the maximum number of rounds played per overtime"
 		},
 
 		"cvars.mp_team_timeout_max": {
 			"type": "number",
-			"value": 4,
+			"fallback": 4,
 			"section": "Cvars",
 			"label": "Value of mp_team_timeout_max, i.e. the number of tactical timeouts available per team"
 		},
 
 		"cvars.mp_team_timeout_time": {
 			"type": "number",
-			"value": 30,
+			"fallback": 30,
 			"section": "Cvars",
 			"label": "Value of mp_team_timeout_time, i.e. the duration in seconds of each tactical timeout"
 		},
 
 		"preferences.playersAlive.hideDuringFreezetime": {
 			"type": "boolean",
-			"value": true,
+			"fallback": true,
 			"section": "Preferences",
 			"label": "Hide \"Players Alive\" during freezetime"
 		},
 
 		"series.name.left": {
 			"type": "string",
-			"value": "",
 			"section": "Series",
 			"label": "Series Name (left)"
 		},
 
 		"series.name.center": {
 			"type": "string",
-			"value": "",
 			"section": "Series",
 			"label": "Series Name (center)"
 		},
 
 		"series.name.right": {
 			"type": "string",
-			"value": "",
 			"section": "Series",
 			"label": "Series Name (right)"
 		}

@@ -1,0 +1,30 @@
+<div class="save-buttons">
+	<button class="save" @click.prevent="save">
+		Save
+	</button>
+
+	<button class="force-hud-refresh" @click.prevent="forceHudRefresh">
+		Force HUD Refresh
+	</button>
+</div>
+
+<section v-for="section of sections" :id="section.name">
+	<h2>{{ section.name }}</h2>
+
+	<div v-for="option of section.options" class="input-group">
+		<label :for="option.key">{{ option.key }}</label>
+
+		<!-- TODO different types -->
+		<input type="text" :id="option.key" v-model="optionValues[option.key]" :placeholder="option.fallback">
+
+		<div class="default-and-label">
+			<p v-if="option.fallback" class="default">
+				Default: <code>{{ option.fallback }}</code>
+			</p>
+
+			<p v-if="option.label" class="label">
+				{{ option.label }}
+			</p>
+		</div>
+	</div>
+</section>

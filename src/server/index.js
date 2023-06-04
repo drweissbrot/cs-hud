@@ -35,7 +35,7 @@ const run = async () => {
 
 	// register routes
 	const router = new KoaRouter()
-	registerConfigRoutes(router)
+	registerConfigRoutes(router, websocket)
 	registerDependencyRoutes(router)
 	registerGsiRoutes(router, websocket)
 	registerHudRoutes(router)

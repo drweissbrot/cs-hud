@@ -1,0 +1,98 @@
+section {
+	margin-bottom: 6rem;
+}
+
+h2 {
+	margin: 0 0 2rem 4rem;
+}
+
+.save-buttons {
+	position: fixed;
+	top: 1rem;
+	right: 2rem;
+}
+
+.save-buttons button {
+	margin: 0.5rem;
+	padding: 0.5rem 1rem;
+
+	background: #212121;
+	border: 1px solid;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease,
+		transform 0.3s ease;
+}
+
+.save-buttons button:active {
+	transform: scale(0.95);
+}
+
+.save-buttons button.save {
+	border-color: green;
+}
+
+.save-buttons button.save:hover {
+	background: green;
+	color: #fff;
+}
+
+.save-buttons button.force-hud-refresh {
+	border-color: yellow;
+}
+
+.save-buttons button.force-hud-refresh:hover {
+	background: yellow;
+	color: #212121;
+}
+
+.input-group {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 4fr);
+	grid-template-rows: max-content auto;
+	grid-gap: 0 1rem;
+	grid-template-areas: 'key input default-and-label 0' '1 1 default-and-label 2';
+	align-items: start;
+	margin-bottom: 1.5rem;
+}
+
+.input-group label {
+	grid-area: key;
+	text-align: right;
+	align-self: center;
+}
+
+.input-group > input,
+.input-group .input {
+	grid-area: input;
+}
+
+.input-group .default-and-label {
+	grid-area: default-and-label;
+	align-self: center;
+}
+
+.input-group .default-and-label p {
+	margin: 0 0 0.25rem;
+}
+
+.input-group .default-and-label .default code {
+	background: #000;
+	padding: 0.25rem 0.5rem;
+}
+
+input[type='text'] {
+	padding: 0.4rem 1rem;
+
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid #aeaeae;
+	color: #dedede;
+	font: inherit;
+}
+
+input[type='text']::placeholder {
+	color: #939393;
+}

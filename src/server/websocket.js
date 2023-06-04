@@ -15,16 +15,22 @@ export class Websocket {
 		this.optionsCache = {}
 		this.radarsCache = {}
 
-		setInterval(() => {
-			// TODO run this when a value is changed on the config page instead (and maybe on a rare interval or something)
-			getSettings().then(({ bombsites, radars, settings }) => {
-				this.bombsitesCache = bombsites
-				this.optionsCache = Object.fromEntries(Object.entries(settings.options).map(([key, { value }]) => [key, value]))
-				this.radarsCache = radars
-			})
+		this.updateCaches()
 
-			this.broadcastState() // TODO just completely remove this (probably)
+		// TODO just completely remove this (probably)
+		setInterval(() => {
+			this.broadcastState()
 		}, 5000)
+	}
+
+	async updateCaches() {
+		const { bombsites, radars, settings } = await getSettings()
+
+		this.bombsitesCache = bombsites
+		this.optionsCache = Object.fromEntries(Object.entries(settings.options).map(([key, { fallback, value }]) => [key, value ?? fallback]))
+		this.radarsCache = radars
+
+		this.broadcastState()
 	}
 
 	getState() {
@@ -39,20 +45,27 @@ export class Websocket {
 		}
 	}
 
-	broadcastToWebsockets(body) {
+	broadcastToWebsockets(event, body) {
+		const message = body !== undefined
+			? JSON.stringify({ event, body })
+			: JSON.stringify({ event })
+
 		for (const client of this.websocket.clients) {
 			if (client.readyState !== WebSocket.OPEN) continue
-			client.send(JSON.stringify(body))
+			client.send(message)
 		}
 	}
 
 	sendState(client) {
-		const state = this.getState()
-		client.send(JSON.stringify(state))
+		client.send(JSON.stringify({ event: 'state', body: this.getState() }))
 	}
 
 	broadcastState() {
 		const state = this.getState()
-		this.broadcastToWebsockets(state)
+		this.broadcastToWebsockets('state', state)
+	}
+
+	broadcastRefresh() {
+		this.broadcastToWebsockets('refresh', {})
 	}
 }
