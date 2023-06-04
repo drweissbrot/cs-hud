@@ -27,13 +27,22 @@ export default {
 			for (const option of json) {
 				if (! sections[option.section]) {
 					sections[option.section] = {
+						description: option.sectionDescription,
 						name: option.section,
 						options: [],
 					}
 				}
 
 				optionValues[option.key] = option.value
-				sections[option.section].options.push(option)
+				sections[option.section].options.push({
+					...option,
+					keySegments: option.key.split('.'),
+				})
+
+
+				if (sections[option.section].description) {
+					sections[option.section].description = option.sectionDescription
+				}
 			}
 
 			this.initialTheme = optionValues.theme

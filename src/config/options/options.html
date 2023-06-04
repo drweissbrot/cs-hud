@@ -9,10 +9,20 @@
 </div>
 
 <section v-for="section of sections" :id="section.name">
-	<h2>{{ section.name }}</h2>
+	<header>
+		<h2>{{ section.name }}</h2>
+
+		<p v-if="section.description">
+			{{ section.description }}
+		</p>
+	</header>
 
 	<div v-for="option of section.options" class="input-group">
-		<label :for="option.key">{{ option.key }}</label>
+		<label :for="option.key">
+			<template v-for="(segment, i) of option.keySegments">
+				{{ segment }}{{ i === option.keySegments.length - 1 ? '' : '.' }}<wbr>
+			</template>
+		</label>
 
 		<!-- TODO different types -->
 		<input type="text" :id="option.key" v-model="optionValues[option.key]" :placeholder="option.fallback">

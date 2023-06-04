@@ -21,7 +21,11 @@ export const registerConfigRoutes = (router, websocket) => {
 				value: settings.parent,
 			},
 
-			...Object.entries(settings.options).map(([key, data]) => ({ ...data, key })),
+			...Object.entries(settings.options).map(([key, data]) => ({
+				...data,
+				key,
+				sectionDescription: settings.optionSectionDescriptions?.[data.section],
+			})),
 		]
 	})
 
