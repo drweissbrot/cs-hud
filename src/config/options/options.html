@@ -1,0 +1,47 @@
+<div class="save-buttons">
+	<button class="save" @click.prevent="save">
+		Save
+	</button>
+
+	<button class="force-hud-refresh" @click.prevent="forceHudRefresh">
+		Force HUD Refresh
+	</button>
+</div>
+
+<section v-for="section of sections" :id="section.name">
+	<header>
+		<h2>{{ section.name }}</h2>
+
+		<p v-if="section.description">
+			{{ section.description }}
+		</p>
+	</header>
+
+	<div v-for="option of section.options" class="input-group">
+		<label :for="option.key">
+			<template v-for="(segment, i) of option.keySegments">
+				{{ segment }}{{ i === option.keySegments.length - 1 ? '' : '.' }}<wbr>
+			</template>
+		</label>
+
+		<div class="input">
+			<input :type="option.inputType" :id="option.key" v-model="optionValues[option.key]" :placeholder="option.fallback">
+
+			<button v-if="option.type === 'color'" class="reset" @click.prevent="resetValue(option.key)">
+				Reset to default
+			</button>
+		</div>
+
+		<div class="default-and-label">
+			<p v-if="option.fallback" class="default">
+				Default:
+				<code v-if="option.type === 'boolean'">{{ option.fallback ? 'yes' : 'no' }}</code>
+				<code v-else>{{ option.fallback }}</code>
+			</p>
+
+			<p v-if="option.label" class="label">
+				{{ option.label }}
+			</p>
+		</div>
+	</div>
+</section>

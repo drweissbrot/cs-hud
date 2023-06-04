@@ -1,9 +1,10 @@
-import { mkdir, readFile, writeFile } from 'fs/promises'
+import { mkdir } from 'fs/promises'
 
 import { merge } from 'lodash-es'
 
 import { themesDirectory, userspaceBombsitesPath, userspaceDirectory, userspaceRadarsPath, userspaceSettingsPath } from './helpers/paths.js'
 import { fileExists } from './helpers/file-exists.js'
+import { readJson, readJsonIfExists, writeJson } from './helpers/json-file.js'
 
 export const initSettings = async () => {
 	if (await fileExists(userspaceSettingsPath)) return
@@ -44,21 +45,5 @@ export const getSettings = async () => {
 		bombsites: merge({}, ...bombsiteObjects.reverse()),
 		radars: merge({}, ...radarObjects.reverse()),
 		settings: merge({}, ...settingsObjects.reverse()),
-	}
-}
-
-const writeJson = (path, obj) => writeFile(path, JSON.stringify(obj, null, '\t'))
-
-const readJson = async (path) => {
-	const str = await readFile(path, 'utf-8')
-	return JSON.parse(str)
-}
-
-const readJsonIfExists = async (path) => {
-	try {
-		return await readJson(path)
-	} catch (err) {
-		if (err.code === 'ENOENT') return {}
-		throw err
 	}
 }

@@ -14,9 +14,18 @@ import { Websocket } from './websocket.js'
 
 const run = async () => {
 	await initSettings()
-	const { settings } = await getSettings()
+	const {
+		bombsites,
+		radars,
+		settings,
+		themeTree,
+	} = await getSettings()
 
-	console.log('settings:', settings) // TODO remove
+	// TODO remove
+	console.log('settings:', settings)
+	console.log('themeTree:', themeTree)
+	console.log('bombsites:', bombsites)
+	console.log('radars:', radars)
 
 	const host = process.env.HOST || settings.host || '127.0.0.1'
 	const port = process.env.PORT || settings.port || 31982
@@ -35,7 +44,7 @@ const run = async () => {
 
 	// register routes
 	const router = new KoaRouter()
-	registerConfigRoutes(router)
+	registerConfigRoutes(router, websocket)
 	registerDependencyRoutes(router)
 	registerGsiRoutes(router, websocket)
 	registerHudRoutes(router)
