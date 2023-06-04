@@ -119,6 +119,24 @@ section header p {
 	grid-area: input;
 }
 
+.input-group .input {
+	display: flex;
+	align-items: center;
+}
+
+.input-group .input button.reset {
+	margin-left: 2rem;
+	background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font-family: inherit;
+}
+
+.input-group .input button.reset:not(:active):not(:hover) {
+	text-decoration: underline;
+}
+
 .input-group .default-and-label {
 	grid-area: default-and-label;
 	align-self: center;
@@ -133,6 +151,7 @@ section header p {
 	padding: 0.25rem 0.5rem;
 }
 
+input[type='number'],
 input[type='text'] {
 	padding: 0.4rem 1rem;
 
@@ -142,6 +161,12 @@ input[type='text'] {
 	font: inherit;
 }
 
+input[type='number']::placeholder,
 input[type='text']::placeholder {
 	color: #939393;
+}
+
+input[type='checkbox'] {
+	width: fit-content;
+	align-self: center;
 }

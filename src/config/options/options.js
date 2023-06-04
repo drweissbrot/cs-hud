@@ -36,6 +36,7 @@ export default {
 				optionValues[option.key] = option.value
 				sections[option.section].options.push({
 					...option,
+					inputType: this.getInputType(option.type),
 					keySegments: option.key.split('.'),
 				})
 
@@ -48,6 +49,15 @@ export default {
 			this.initialTheme = optionValues.theme
 			this.optionValues = optionValues
 			this.sections = Object.values(sections)
+		},
+
+		getInputType(type) {
+			switch (type) {
+				case 'boolean': return 'checkbox'
+				case 'color': return 'color'
+				case 'number': return 'number'
+				default: return 'text'
+			}
 		},
 
 		onKeydown(e) {
@@ -79,6 +89,10 @@ export default {
 
 		async forceHudRefresh() {
 			await fetch('/config/force-hud-refresh', { method: 'POST' })
+		},
+
+		resetValue(key) {
+			this.optionValues[key] = null
 		},
 	},
 }

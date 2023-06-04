@@ -24,12 +24,19 @@
 			</template>
 		</label>
 
-		<!-- TODO different types -->
-		<input type="text" :id="option.key" v-model="optionValues[option.key]" :placeholder="option.fallback">
+		<div class="input">
+			<input :type="option.inputType" :id="option.key" v-model="optionValues[option.key]" :placeholder="option.fallback">
+
+			<button v-if="option.type === 'color'" class="reset" @click.prevent="resetValue(option.key)">
+				Reset to default
+			</button>
+		</div>
 
 		<div class="default-and-label">
 			<p v-if="option.fallback" class="default">
-				Default: <code>{{ option.fallback }}</code>
+				Default:
+				<code v-if="option.type === 'boolean'">{{ option.fallback ? 'yes' : 'no' }}</code>
+				<code v-else>{{ option.fallback }}</code>
 			</p>
 
 			<p v-if="option.label" class="label">

@@ -18,7 +18,7 @@
 	/*
 	 * Spacing, Sizes
 	 */
-	--text-scale-factor: 0.925925926vh; /* approximately 10px on 1080p */
+	--scale-factor: 0.925925926vh; /* approximately 10px on 1080p */
 
 	--focused-player-width: 50%;
 	--focused-player-icon-height: 2rem;
@@ -61,5 +61,7 @@
 	/*
 	 * Fonts
 	 */
-	--font-family: 'Quantico', sans-serif;
+	--primary-font-family: 'Quantico';
+	--fallback-font-family: 'Noto Sans';
+	--font-family: var(--primary-font-family), var(--fallback-font-family), sans-serif;
 }

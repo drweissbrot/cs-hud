@@ -2,6 +2,24 @@
 	"parent": "raw",
 
 	"options": {
+		"series.name.left": {
+			"type": "string",
+			"section": "Series",
+			"label": "Series Name (left)"
+		},
+
+		"series.name.center": {
+			"type": "string",
+			"section": "Series",
+			"label": "Series Name (center)"
+		},
+
+		"series.name.right": {
+			"type": "string",
+			"section": "Series",
+			"label": "Series Name (right)"
+		},
+
 		"cvars.mp_c4timer": {
 			"type": "number",
 			"fallback": 40,
@@ -44,22 +62,32 @@
 			"label": "Hide \"Players Alive\" during freezetime"
 		},
 
-		"series.name.left": {
-			"type": "string",
-			"section": "Series",
-			"label": "Series Name (left)"
+		"css.scale-factor": {
+			"type": "text",
+			"section": "Style Overrides",
+			"label": "Base size that everything is sized relative to; e.g. `10px`"
 		},
 
-		"series.name.center": {
-			"type": "string",
-			"section": "Series",
-			"label": "Series Name (center)"
+		"css.counter-terrorists-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "CT color"
 		},
 
-		"series.name.right": {
+		"css.terrorists-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "T color"
+		},
+
+		"css.primary-font-family": {
 			"type": "string",
-			"section": "Series",
-			"label": "Series Name (right)"
+			"section": "Style Overrides",
+			"label": "Font"
 		}
+	},
+
+	"optionSectionDescriptions": {
+		"Style Overrides": "NB: To apply changes, click Save, then Force HUD Refresh."
 	}
 }
