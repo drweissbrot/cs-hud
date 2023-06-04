@@ -4,7 +4,7 @@ import { merge } from 'lodash-es'
 
 import { themesDirectory, userspaceBombsitesPath, userspaceDirectory, userspaceRadarsPath, userspaceSettingsPath } from './helpers/paths.js'
 import { fileExists } from './helpers/file-exists.js'
-import { readJson, writeJson } from './helpers/json-file.js'
+import { readJson, readJsonIfExists, writeJson } from './helpers/json-file.js'
 
 export const initSettings = async () => {
 	if (await fileExists(userspaceSettingsPath)) return
@@ -45,14 +45,5 @@ export const getSettings = async () => {
 		bombsites: merge({}, ...bombsiteObjects.reverse()),
 		radars: merge({}, ...radarObjects.reverse()),
 		settings: merge({}, ...settingsObjects.reverse()),
-	}
-}
-
-const readJsonIfExists = async (path) => {
-	try {
-		return await readJson(path)
-	} catch (err) {
-		if (err.code === 'ENOENT') return {}
-		throw err
 	}
 }
