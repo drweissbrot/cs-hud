@@ -2,6 +2,9 @@
 	"private": true,
 	"type": "module",
 	"main": "src/server/index.js",
+	"scripts": {
+		"watch": "nodemon ."
+	},
 	"dependencies": {
 		"@fontsource/quantico": "^5.0.1",
 		"koa": "^2.14.1",
@@ -15,5 +18,16 @@
 		"vue": "^3.2.47",
 		"vue3-sfc-loader": "^0.8.4",
 		"ws": "^8.12.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.22"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"src/themes/userspace/**"
+		],
+		"events": {
+			"start": "cls || clear"
+		}
 	}
 }
