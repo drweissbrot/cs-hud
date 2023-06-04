@@ -7,6 +7,7 @@ export const registerDependencyRoutes = (router) => {
 
 	router.get('/dependencies/normalize.css', sendStaticFile('node_modules/normalize.css/normalize.css'))
 
+	serveFontsourceFont(router, 'noto-sans')
 	serveFontsourceFont(router, 'quantico')
 
 	router.get('/dependencies/vue3-sfc-loader-options.js', sendStaticFile('src/assets/vue3-sfc-loader-options.js'))

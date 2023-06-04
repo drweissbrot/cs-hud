@@ -6,6 +6,7 @@
 		"watch": "nodemon ."
 	},
 	"dependencies": {
+		"@fontsource/noto-sans": "^5.0.2",
 		"@fontsource/quantico": "^5.0.1",
 		"koa": "^2.14.1",
 		"koa-bodyparser": "^4.3.0",

@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.21.2.tgz#dacafadfc6d7654c3051a66d6fe55b6cb2f2a0b3"
   integrity sha512-URpaIJQwEkEC2T9Kn+Ai6Xe/02iNaVCuT/PtoRz3GPVJVDpPd7mLo+VddTbhCRU9TXqW5mSrQfXZyi8kDKOVpQ==
 
+"@fontsource/noto-sans@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/noto-sans/-/noto-sans-5.0.2.tgz#81f5c7e17511b8c739b8a459d2d25da31cfefdb8"
+  integrity sha512-CnZP/PtiAPO34cXzvyIXwvyd1327zKjDBTsSL8H0HcAsWV7TBGLYXqEYqL/ewBSa+feAPOj3em1cFcPhJ8D/UQ==
+
 "@fontsource/quantico@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@fontsource/quantico/-/quantico-5.0.1.tgz#a83935a353e6d32eb3236c7df193456e9a9beffa"
