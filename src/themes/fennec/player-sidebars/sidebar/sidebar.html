@@ -1,4 +1,7 @@
-<div :class="['sidebar', positionClass, { '--moved-upwards-by-series-graph': $round.isFreezetime }]">
+<div :class="['sidebar', positionClass, {
+	'--moved-upwards-by-series-graph': hasSeriesGraph && $round.isFreezetime,
+	'--moved-upwards-by-round-graph': ! hasSeriesGraph && $round.isFreezetime,
+}]">
 	<TeamEquipment :team="team" :position="position" />
 	<TeamGrenades :team="team" :position="position" />
 

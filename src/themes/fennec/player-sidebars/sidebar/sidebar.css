@@ -17,3 +17,7 @@
 .sidebar.--moved-upwards-by-series-graph {
 	transform: translateY(calc(-1 * var(--series-graph-height) - var(--series-graph-margin-to-sidebars)));
 }
+
+.sidebar.--moved-upwards-by-round-graph {
+	transform: translateY(calc(-1 * var(--round-graph-height) - var(--round-graph-margin-to-sidebars)));
+}

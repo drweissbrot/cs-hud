@@ -20,6 +20,156 @@
 			"label": "Series Name (right)"
 		},
 
+		"series.maps.1.name": {
+			"type": "string",
+			"section": "Series: Map 1",
+			"label": "Map 1 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.1.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 1",
+			"label": "Team that picked Map 1"
+		},
+
+		"series.maps.1.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 1",
+			"label": "If Map 1 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.1.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 1",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.1.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 1",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"series.maps.2.name": {
+			"type": "string",
+			"section": "Series: Map 2",
+			"label": "Map 2 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.2.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 2",
+			"label": "Team that picked Map 2"
+		},
+
+		"series.maps.2.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 2",
+			"label": "If Map 2 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.2.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 2",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.2.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 2",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"series.maps.3.name": {
+			"type": "string",
+			"section": "Series: Map 3",
+			"label": "Map 3 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.3.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 3",
+			"label": "Team that picked Map 3"
+		},
+
+		"series.maps.3.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 3",
+			"label": "If Map 3 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.3.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 3",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.3.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 3",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"series.maps.4.name": {
+			"type": "string",
+			"section": "Series: Map 4",
+			"label": "Map 4 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.4.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 4",
+			"label": "Team that picked Map 4"
+		},
+
+		"series.maps.4.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 4",
+			"label": "If Map 4 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.4.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 4",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.4.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 4",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"series.maps.5.name": {
+			"type": "string",
+			"section": "Series: Map 5",
+			"label": "Map 5 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.5.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 5",
+			"label": "Team that picked Map 5"
+		},
+
+		"series.maps.5.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 5",
+			"label": "If Map 5 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.5.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 5",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.5.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 5",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
 		"cvars.cash_team_loser_bonus": {
 			"type": "number",
 			"fallback": 1400,
@@ -88,6 +238,13 @@
 			"fallback": 5,
 			"section": "Preferences",
 			"label": "Number of seconds into the round the Team Money and Equipment panel should be visible (0 to disable)"
+		},
+
+		"preferences.seriesGraph.showMapForOnlyMatch": {
+			"type": "boolean",
+			"fallback": false,
+			"section": "Preferences",
+			"label": "Show map name and screenshot in the Series Graph, even if there is only a single match in the series"
 		},
 
 		"css.scale-factor": {
