@@ -22,7 +22,7 @@ export const parseTeams = () => {
 
 			consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
 			flag: gsiTeamObject.flag,
-			matchesWonThisSeries: gsiTeamObject.matches_won_this_series,
+			matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO get this from options
 			name: gsiTeamObject.name || fallbackName,
 			players: teamMembers,
 			score: gsiTeamObject.score,

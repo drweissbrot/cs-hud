@@ -9,12 +9,15 @@
 .map-wins.--left {
 	grid-area: map-wins-left;
 	padding-left: 0.5rem;
+
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0.85rem 100%);
+	flex-direction: row-reverse;
 }
 
 .map-wins.--right {
 	grid-area: map-wins-right;
 	padding-right: 0.5rem;
+
 	clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0 100%);
 }
 
