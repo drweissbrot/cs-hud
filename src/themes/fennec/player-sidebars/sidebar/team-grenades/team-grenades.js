@@ -15,6 +15,17 @@ export default {
 			return `--${this.position}`
 		},
 
+		isActive() {
+			return ! this.$opts['preferences.sidebar.teamGrenades.hideDuringRound']
+				|| this.$round.isFreezetime
+				|| (this.$round.phase === 'live' && this.$round.phaseEndsInSec >= (this.$opts['cvars.mp_roundtime'] * 60 - this.$opts['preferences.sidebar.teamGrenades.activeIntoRoundSec']))
+		},
+
+		isTotalLabelActive() {
+			return this.$opts['preferences.sidebar.teamGrenades.hideDuringRound']
+				|| this.$round.isFreezetime
+		},
+
 		molotovIconUrl() {
 			switch (this.team.side) {
 				case 2: return '/hud/img/weapons/molotov.svg'

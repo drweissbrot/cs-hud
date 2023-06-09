@@ -83,11 +83,25 @@
 			"label": "Hide \"Players Alive\" during freezetime"
 		},
 
+		"preferences.sidebar.teamGrenades.hideDuringRound": {
+			"type": "boolean",
+			"fallback": false,
+			"section": "Preferences",
+			"label": "Hode Team Grenades panels in sidebars during the round (if no, will only show during freezetimes, and the first few seconds of the round (defined in preferences.sidebar.teamGrenades.activeIntoRoundSec))"
+		},
+
+		"preferences.sidebar.teamGrenades.activeIntoRoundSec": {
+			"type": "number",
+			"fallback": 5,
+			"section": "Preferences",
+			"label": "Number of seconds into the round the Team Grenades panel should be visible (0 to disable; ignored when preferences.sidebar.teamGrenades.hideDuringRound is set to no)"
+		},
+
 		"preferences.sidebar.teamEquipment.activeIntoRoundSec": {
 			"type": "number",
 			"fallback": 5,
 			"section": "Preferences",
-			"label": "Number of seconds into the round the \"Team Money and Equipment\" panel should be visible (0 to disable)"
+			"label": "Number of seconds into the round the Team Money and Equipment panel should be visible (0 to disable)"
 		},
 
 		"css.scale-factor": {

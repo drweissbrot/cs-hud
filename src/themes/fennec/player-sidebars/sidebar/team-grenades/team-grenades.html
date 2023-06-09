@@ -1,33 +1,33 @@
-<!-- TODO configurable: only show during freezetime -->
+<div :class="['team-grenades-wrapper', positionClass, { '--active': isActive }]">
+	<div :class="['team-grenades', colorClass, positionClass, { '--active': isActive }]">
+		<div :class="['total', colorClass, { '--label-active': isTotalLabelActive }]">
+			<div class="value">{{ grenades.total }}</div>
 
-<div :class="['team-grenades', colorClass, positionClass]">
-	<div :class="['total', colorClass, { '--label-active': $round.isFreezetime }]">
-		<div class="value">{{ grenades.total }}</div>
-
-		<div class="label-wrapper">
-			<div class="label">total</div>
-		</div>
-	</div>
-
-	<div class="types">
-		<div class="smokegrenade">
-			<img src="/hud/img/weapons/smokegrenade.svg" alt="" class="label">
-			<div class="value">{{ grenades.smokegrenade }}</div>
+			<div class="label-wrapper">
+				<div class="label">total</div>
+			</div>
 		</div>
 
-		<div class="molotov">
-			<img :src="molotovIconUrl" alt="" class="label">
-			<div class="value">{{ grenades.molotov }}</div>
-		</div>
+		<div class="types">
+			<div class="smokegrenade">
+				<img src="/hud/img/weapons/smokegrenade.svg" alt="" class="label">
+				<div class="value">{{ grenades.smokegrenade }}</div>
+			</div>
 
-		<div class="flashbang">
-			<img src="/hud/img/weapons/flashbang.svg" alt="" class="label">
-			<div class="value">{{ grenades.flashbang }}</div>
-		</div>
+			<div class="molotov">
+				<img :src="molotovIconUrl" alt="" class="label">
+				<div class="value">{{ grenades.molotov }}</div>
+			</div>
 
-		<div class="hegrenade">
-			<img src="/hud/img/weapons/hegrenade.svg" alt="" class="label">
-			<div class="value">{{ grenades.hegrenade }}</div>
+			<div class="flashbang">
+				<img src="/hud/img/weapons/flashbang.svg" alt="" class="label">
+				<div class="value">{{ grenades.flashbang }}</div>
+			</div>
+
+			<div class="hegrenade">
+				<img src="/hud/img/weapons/hegrenade.svg" alt="" class="label">
+				<div class="value">{{ grenades.hegrenade }}</div>
+			</div>
 		</div>
 	</div>
 </div>

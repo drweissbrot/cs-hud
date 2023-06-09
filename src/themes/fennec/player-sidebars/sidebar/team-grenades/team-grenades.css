@@ -1,16 +1,34 @@
+.team-grenades-wrapper {
+	width: var(--sidebar-team-grenades-width);
+	max-height: calc(2.8rem + 0.5rem);
+
+	filter: var(--filter-drop-shadow);
+	overflow: hidden;
+	transition: max-height var(--fade-slow-duration) ease;
+}
+
+.team-grenades-wrapper:not(.--active) {
+	max-height: 0;
+}
+
+.team-grenades-wrapper.--right {
+	margin-left: auto;
+}
+
 .team-grenades {
 	display: flex;
-
-	width: var(--sidebar-team-grenades-width);
 	margin-bottom: 0.5rem;
 
 	background: rgba(0, 0, 0, 0.4);
-	filter: var(--filter-drop-shadow);
+	transition: transform var(--fade-slow-duration) ease;
 }
 
 .team-grenades.--right {
-	margin-left: auto;
 	flex-direction: row-reverse;
+}
+
+.team-grenades:not(.--active) {
+	transform: translateY(101%);
 }
 
 .types {
@@ -44,7 +62,7 @@
 .total {
 	display: grid;
 	grid-template-columns: max-content 0fr;
-	transition: grid-template-columns var(--fade-default-duration) ease;
+	transition: grid-template-columns var(--fade-slow-duration) ease;
 }
 
 .total.--label-active {

@@ -1,9 +1,14 @@
 .team-equipment-wrapper {
 	width: var(--sidebar-team-equipment-width);
-	margin-bottom: 0.5rem;
+	max-height: calc(4.4rem + 0.5rem);
 
 	filter: var(--filter-drop-shadow);
 	overflow: hidden;
+	transition: max-height var(--fade-slow-duration) ease;
+}
+
+.team-equipment-wrapper:not(.--active) {
+	max-height: 0;
 }
 
 .team-equipment-wrapper.--right {
@@ -16,10 +21,15 @@
 	align-items: center;
 	justify-content: space-between;
 
+	margin-bottom: 0.5rem;
 	padding: 0.5rem 1rem;
 
 	text-align: center;
 	transition: transform var(--fade-slow-duration) ease;
+}
+
+.team-equipment:not(.--active) {
+	transform: translateY(101%);
 }
 
 .team-equipment.--ct {
@@ -68,8 +78,4 @@
 
 .loss-bonus .pips .pip.--filled {
 	background: #fff;
-}
-
-.team-equipment:not(.--active) {
-	transform: translateY(101%);
 }
