@@ -15,6 +15,10 @@ export default {
 		colorClass() {
 			return this.teamColorClass(this.player.team)
 		},
+
+		positionClass() {
+			return `--${this.position}`
+		},
 	},
 
 	methods: {

@@ -1,12 +1,18 @@
 .adr {
-	grid-area: 2/8;
-
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
 
 	padding: 0.5rem;
 	font-size: 1.5rem;
+}
+
+.adr.--left {
+	grid-area: 2/7/2/9;
+	justify-content: flex-end;
+}
+
+.adr.--right {
+	grid-area: 2/4/2/6;
 }
 
 .label {

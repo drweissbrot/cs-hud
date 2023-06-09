@@ -3,4 +3,10 @@ export default {
 		'position',
 		'player',
 	],
+
+	computed: {
+		positionClass() {
+			return `--${this.position}`
+		},
+	},
 }
