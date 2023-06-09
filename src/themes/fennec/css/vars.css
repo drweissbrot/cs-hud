@@ -17,8 +17,8 @@
 
 	--top-bar-maps-color: rgba(255, 255, 255, 0.5);
 
-	--player-sidebar-good-kd-ratio-color: green;
-	--player-sidebar-bad-kd-ratio-color: var(--red);
+	--sidebar-good-kd-ratio-color: green;
+	--sidebar-bad-kd-ratio-color: var(--red);
 
 	/*
 	 * Spacing, Sizes
@@ -34,12 +34,37 @@
 	--top-bar-row-height: calc(2 * var(--top-bar-padding-x) + var(--top-bar-score-font-size));
 	--top-bar-half-row-height: calc(var(--top-bar-row-height) / 2);
 
-	--player-sidebar-margin: var(--viewport-margin-x);
-	--player-sidebar-focused-player-highlight-width: 0.5rem;
-	--player-sidebar-additional-stats-width: 14rem;
-	--player-sidebar-width: calc((100% - var(--focused-player-width)) / 2 - var(--player-sidebar-margin) * 2 - 6rem + var(--player-sidebar-focused-player-highlight-width) + var(--player-sidebar-additional-stats-width));
-	--player-sidebar-row-height: 3rem;
-	--player-sidebar-weapon-padding: 0.5rem;
+	--sidebar-margin-to-focused-player: var(--viewport-margin-x);
+	--sidebar-width: calc(var(--sidebar-player-width) + var(--sidebar-player-focused-player-highlight-width) + var(--sidebar-player-additional-stats-width));
+
+	--sidebar-player-width: calc(
+		var(--sidebar-deaths-width)
+		+ var(--sidebar-grenades-half-width)
+		+ var(--sidebar-health-width)
+		+ var(--sidebar-kills-width)
+		+ var(--sidebar-money-width)
+		+ var(--sidebar-observer-slot-width)
+		+ var(--sidebar-primary-and-secondary-width)
+		+ var(--sidebar-round-kills-width)
+		+ var(--sidebar-start-and-end-width) * 2
+		+ var(--sidebar-taser-width)
+	);
+
+	--sidebar-player-focused-player-highlight-width: 0.5rem;
+	--sidebar-player-additional-stats-width: 14rem;
+	--sidebar-player-row-height: 3rem;
+	--sidebar-player-weapon-padding: 0.5rem;
+
+	--sidebar-start-and-end-width: 0.5rem;
+	--sidebar-health-width: 5rem;
+	--sidebar-observer-slot-width: 1.5rem;
+	--sidebar-money-width: 7rem;
+	--sidebar-kills-width: 4.5rem;
+	--sidebar-deaths-width: var(--sidebar-kills-width);
+	--sidebar-taser-width: 3rem;
+	--sidebar-grenades-half-width: 6rem;
+	--sidebar-round-kills-width: 3rem;
+	--sidebar-primary-and-secondary-width: 8rem;
 
 	/* Viewport Margin  */
 	--viewport-margin-x: 2rem;

@@ -1,7 +1,7 @@
 .sidebar {
 	position: absolute;
 	bottom: var(--viewport-margin-bottom);
-	width: var(--player-sidebar-width);
+	width: var(--sidebar-width);
 }
 
 .sidebar.--left {

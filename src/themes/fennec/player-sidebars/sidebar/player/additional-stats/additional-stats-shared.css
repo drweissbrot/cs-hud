@@ -6,7 +6,7 @@
 .sidebar .player-wrapper .additional-stats .assists .value,
 .sidebar .player-wrapper .additional-stats .deaths .value,
 .sidebar .player-wrapper .additional-stats .adr .value {
-	height: var(--player-sidebar-row-height);
+	height: var(--sidebar-player-row-height);
 	display: flex;
 	align-items: center;
 	justify-content: center;
