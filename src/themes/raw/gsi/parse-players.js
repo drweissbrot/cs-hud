@@ -26,8 +26,12 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 
 		return [parsed]
 	}).sort((a, b) => {
-		if (a.isGrenade && b.isGrenade) return grenadeOrderIndices[b.name] - grenadeOrderIndices[a.name]
-		if (a.isGrenade !== b.isGrenade) return a.isGrenade - b.isGrenade
+		if (a.isGrenade && b.isGrenade) {
+			return grenadeOrderIndices[a.name] - grenadeOrderIndices[b.name]
+		}
+
+		if (a.isGrenade) return 1
+		if (b.isGrenade) return -1
 
 		if (a.name > b.name) return 1
 		if (a.name < b.name) return -1
