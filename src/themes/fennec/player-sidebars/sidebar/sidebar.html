@@ -1,6 +1,7 @@
 <div :class="['sidebar', positionClass]">
-	<!-- TODO grenades -->
 	<!-- TODO eq value etc -->
+
+	<TeamGrenades :team="team" :position="position" />
 
 	<Player
 		v-for="player of team.players"

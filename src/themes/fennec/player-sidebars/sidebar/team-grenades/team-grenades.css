@@ -1,0 +1,68 @@
+.team-grenades {
+	display: flex;
+
+	width: var(--sidebar-team-grenades-width);
+	margin-bottom: 0.5rem;
+
+	background: rgba(0, 0, 0, 0.4);
+	filter: var(--filter-drop-shadow);
+}
+
+.team-grenades.--right {
+	margin-left: auto;
+	flex-direction: row-reverse;
+}
+
+.types {
+	flex: 1;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.total,
+.smokegrenade,
+.molotov,
+.flashbang,
+.hegrenade {
+	display: flex;
+	align-items: center;
+
+	padding: 0.65rem 1rem;
+	font-size: 1.5rem;
+}
+
+.total.--ct {
+	background: var(--counter-terrorists);
+}
+
+.total.--t {
+	background: var(--terrorists);
+}
+
+.total {
+	display: grid;
+	grid-template-columns: max-content 0fr;
+	transition: grid-template-columns var(--fade-default-duration) ease;
+}
+
+.total.--label-active {
+	grid-template-columns: max-content 1fr;
+}
+
+.total .label-wrapper {
+	overflow: hidden;
+}
+
+.total .label {
+	padding-left: 0.25em;
+}
+
+.smokegrenade img.label,
+.molotov img.label,
+.flashbang img.label,
+.hegrenade img.label {
+	height: 1.5rem;
+	margin-right: 0.75rem;
+}
