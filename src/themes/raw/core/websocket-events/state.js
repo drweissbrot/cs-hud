@@ -7,8 +7,13 @@ export const handleState = (body) => {
 	Object.assign(additionalState, body.additionalState, { unixTimestamp: body.unixTimestamp })
 	Object.assign(bombsites, body.bombsites)
 	Object.assign(gsiState, body.gsiState)
-	Object.assign(options, body.options)
 	Object.assign(radars, body.radars)
+
+	Object.assign(options, body.options)
+
+	for (const key of Object.keys(options)) {
+		if (! body.options.hasOwnProperty(key)) delete options[key]
+	}
 
 	parseGsiState()
 }
