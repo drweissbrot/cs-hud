@@ -1,9 +1,3 @@
-import FocusedPlayer from '/hud/focused-player/focused-player.vue'
-import PlayersAlive from '/hud/players-alive/players-alive.vue'
-import PlayerSidebars from '/hud/player-sidebars/player-sidebars.vue'
-import SeriesGraph from '/hud/series-graph/series-graph.vue'
-import TopBar from '/hud/top-bar/top-bar.vue'
-
 export default {
 	data() {
 		return {

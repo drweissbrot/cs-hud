@@ -1,5 +1,0 @@
-@import '/hud/player-sidebars/sidebar/player/additional-stats/additional-stats-shared.css';
-
-.value.--bad {
-	color: var(--sidebar-bad-kd-ratio-color);
-}
