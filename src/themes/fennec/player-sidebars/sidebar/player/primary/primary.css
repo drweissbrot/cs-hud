@@ -16,12 +16,12 @@
 
 .primary.--left {
 	justify-content: flex-end;
-	padding-right: 1rem;
+	padding-right: var(--player-sidebar-weapon-padding);
 }
 
 .primary.--right {
 	justify-content: flex-start;
-	padding-left: 1rem;
+	padding-left: var(--player-sidebar-weapon-padding);
 }
 
 .primary.--right img {

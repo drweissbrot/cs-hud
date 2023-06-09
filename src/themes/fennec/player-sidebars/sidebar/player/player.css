@@ -22,17 +22,50 @@
 	filter: var(--filter-drop-shadow);
 	font-size: 1.8rem;
 	isolation: isolate;
+
+	--start-and-end-width: 0.5rem;
+	--health-width: 5rem;
+	--observer-slot-width: 1.5rem;
+	--money-width: 7rem;
+	--kills-width: 4.5rem;
+	--deaths-width: var(--kills-width);
+	--taser-width: 4rem;
+	--grenades-half-width: 1fr;
+	--round-kills-width: 1fr;
+	--primary-and-secondary-width: 1fr;
 }
 
 .player.--left {
-	grid-template-columns: 0.5rem 5rem 1.5rem 7rem 4.5rem 4.5rem 4rem 1fr 0.5fr 1fr 0.5rem;
+	grid-template-columns:
+		var(--start-and-end-width)
+		var(--health-width)
+		var(--observer-slot-width)
+		var(--money-width)
+		var(--kills-width)
+		var(--deaths-width)
+		var(--taser-width)
+		var(--grenades-half-width)
+		var(--round-kills-width)
+		var(--primary-and-secondary-width)
+		var(--start-and-end-width);
 	grid-template-areas:
 		'start    health       observer-slot    name     name     name      name     name        round-kills    primary      end'
 		'start    equipment    equipment        money    kills    deaths    taser    grenades    grenades       secondary    end';
 }
 
 .player.--right {
-	grid-template-columns: 0.5rem 1fr 0.5fr 1fr 4rem 4.5rem 4.5rem 7rem 1.5rem 5rem 0.5rem;
+	grid-template-columns:
+		var(--start-and-end-width)
+		var(--primary-and-secondary-width)
+		var(--round-kills-width)
+		var(--grenades-half-width)
+		var(--taser-width)
+		var(--kills-width)
+		var(--deaths-width)
+		var(--money-width)
+		var(--observer-slot-width)
+		var(--health-width)
+		var(--start-and-end-width);
 	grid-template-areas:
 		'start primary round-kills name name name name name observer-slot health end'
 		'start secondary grenades grenades taser kills deaths money equipment equipment end';

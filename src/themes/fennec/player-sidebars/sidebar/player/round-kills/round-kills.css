@@ -5,6 +5,10 @@
 	align-items: center;
 }
 
+.round-kills.--right {
+	justify-content: flex-end;
+}
+
 img.label {
 	height: 1.5rem;
 	margin-right: 0.5rem;

@@ -37,8 +37,9 @@
 	--player-sidebar-margin: var(--viewport-margin-x);
 	--player-sidebar-focused-player-highlight-width: 0.5rem;
 	--player-sidebar-additional-stats-width: 14rem;
-	--player-sidebar-width: calc((100% - var(--focused-player-width)) / 2 - var(--player-sidebar-margin) * 2 + var(--player-sidebar-focused-player-highlight-width) + var(--player-sidebar-additional-stats-width));
+	--player-sidebar-width: calc((100% - var(--focused-player-width)) / 2 - var(--player-sidebar-margin) * 2 - 6rem + var(--player-sidebar-focused-player-highlight-width) + var(--player-sidebar-additional-stats-width));
 	--player-sidebar-row-height: 3rem;
+	--player-sidebar-weapon-padding: 0.5rem;
 
 	/* Viewport Margin  */
 	--viewport-margin-x: 2rem;
