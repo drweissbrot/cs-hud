@@ -69,6 +69,9 @@
 	--sidebar-round-kills-width: 3rem;
 	--sidebar-primary-and-secondary-width: 8rem;
 
+	--series-graph-height: 17.3rem; /* NB! This value is purely descriptive, and does not change the height of the series graph */
+	--series-graph-margin-to-sidebars: var(--viewport-margin-y);
+
 	/* Viewport Margin  */
 	--viewport-margin-x: 2rem;
 	--viewport-margin-y: 1.5rem;

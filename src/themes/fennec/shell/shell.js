@@ -1,6 +1,8 @@
 import FocusedPlayer from '/hud/focused-player/focused-player.vue'
 import PlayersAlive from '/hud/players-alive/players-alive.vue'
 import PlayerSidebars from '/hud/player-sidebars/player-sidebars.vue'
+import SeriesGraph from '/hud/series-graph/series-graph.vue'
+import SvgFilters from '/hud/svg-filters/svg-filters.vue'
 import TopBar from '/hud/top-bar/top-bar.vue'
 
 export default {
@@ -8,6 +10,8 @@ export default {
 		FocusedPlayer,
 		PlayersAlive,
 		PlayerSidebars,
+		SeriesGraph,
+		SvgFilters,
 		TopBar,
 	},
 

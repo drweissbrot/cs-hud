@@ -2,6 +2,8 @@
 	position: absolute;
 	bottom: var(--viewport-margin-bottom);
 	width: var(--sidebar-width);
+
+	transition: transform var(--fade-slow-duration) ease;
 }
 
 .sidebar.--left {
@@ -10,4 +12,8 @@
 
 .sidebar.--right {
 	right: var(--viewport-margin-right);
+}
+
+.sidebar.--moved-upwards-by-series-graph {
+	transform: translateY(calc(-1 * var(--series-graph-height) - var(--series-graph-margin-to-sidebars)));
 }

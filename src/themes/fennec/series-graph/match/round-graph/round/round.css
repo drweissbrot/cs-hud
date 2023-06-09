@@ -1,0 +1,41 @@
+.round {
+	flex: 1;
+}
+
+.round.--current {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.round.--last-of-half {
+	border-right: 0.1rem solid #fff;
+}
+
+.round-number {
+	padding: 0.2rem 0;
+	border-bottom: 0.2rem solid #fff;
+	font-size: 1.5rem;
+}
+
+.round-number.--ct {
+	border-bottom-color: var(--counter-terrorists);
+	color: var(--counter-terrorists);
+}
+
+.round-number.--t {
+	border-bottom-color: var(--terrorists);
+	color: var(--terrorists);
+}
+
+.reason img {
+	display: block;
+	height: 2rem;
+	margin: 0.75rem auto;
+}
+
+.reason.--ct {
+	filter: url(#counter-terrorists-from-white-filter);
+}
+
+.reason.--t {
+	filter: url(#terrorists-from-white-filter);
+}

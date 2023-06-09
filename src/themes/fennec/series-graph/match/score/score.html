@@ -1,0 +1,10 @@
+<div class="score">
+	<template v-if="match.scores">
+		<!-- TODO team logos -->
+		{{ match.scores[0] }}
+		:
+		{{ match.scores[1] }}
+	</template>
+
+	<template v-else>&nbsp;</template>
+</div>

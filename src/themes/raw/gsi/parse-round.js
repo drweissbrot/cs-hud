@@ -28,7 +28,7 @@ export const parseRound = () => {
 		isFreezetime: gsiState.round.phase === 'freezetime',
 		phase: gsiState.phase_countdowns.phase,
 		phaseEndsInSec: Number(gsiState.phase_countdowns.phase_ends_in),
-		roundNumberInCurrentOvertime: isOvertime ? Math.max(1, roundNumber - maxrounds - 1 - ((Math.ceil((roundNumber - maxrounds - 1) / overtimeMaxrounds) - 1) * overtimeMaxrounds) - Number(gsiState.phase_countdowns.phase === 'over')) : 0,
+		roundNumberInCurrentOvertime: isOvertime ? roundNumber - maxrounds - (overtimeNumber - 1) * overtimeMaxrounds - Number(gsiState.phase_countdowns.phase === 'over') : 0,
 		winningSide: getWinningSide(),
 	}
 }

@@ -41,20 +41,6 @@
 			"label": "Value of mp_c4timer, i.e. the number of seconds from when the bomb is planted until it explodes"
 		},
 
-		"cvars.mp_maxrounds": {
-			"type": "number",
-			"fallback": 30,
-			"section": "Cvars",
-			"label": "Value of mp_maxrounds, i.e. the maximum number of rounds played in regulation"
-		},
-
-		"cvars.mp_overtime_maxrounds": {
-			"type": "number",
-			"fallback": 6,
-			"section": "Cvars",
-			"label": "Value of mp_overtime_maxrounds, i.e. the maximum number of rounds played per overtime"
-		},
-
 		"cvars.mp_roundtime": {
 			"type": "number",
 			"fallback": 1.92,

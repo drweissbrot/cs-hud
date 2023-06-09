@@ -1,0 +1,7 @@
+.match {
+	flex: 1;
+}
+
+.match.--is-current {
+	flex: 3;
+}
