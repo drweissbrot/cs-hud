@@ -7,6 +7,19 @@ import { fileExists } from './helpers/file-exists.js'
 import { getSettings } from './settings.js'
 import { themesDirectory } from './helpers/paths.js'
 
+const textFormats = [
+	'.css',
+	'.htm',
+	'.html',
+	'.js',
+	'.json',
+	'.jsx',
+	'.svg',
+	'.ts',
+	'.vue',
+	'.xml',
+]
+
 export const registerHudRoutes = (router) => {
 	router.get('/hud/:path*', async (context) => {
 		const { settings, themeTree } = await getSettings()
@@ -30,7 +43,10 @@ export const registerHudRoutes = (router) => {
 		if (! body) return context.status = 404
 
 		context.type = isIndexHtml ? '.html' : extname(path)
-		context.body = body.join('\n')
+
+		context.body = Buffer.isBuffer(body[0])
+			? Buffer.concat(body)
+			: body.join('\n')
 	})
 }
 
@@ -58,18 +74,21 @@ const concatStaticFileFromThemeTreeRecursively = async (path, concatTree, themeT
 	const parsedPath = parse(sanitizedPath)
 	const appendPath = `${parsedPath.dir}/${parsedPath.name}.append${parsedPath.ext}`
 
+	const encoding = textFormats.includes(parsedPath.ext) ? 'utf-8' : null
+
 	if (await fileExists(appendPath)) {
-		concatTree.unshift(
-			concatComment(parsedPath, theme, true),
-			await readFile(appendPath, 'utf-8'),
-		)
+		concatTree.unshift(await readFile(appendPath, encoding))
+
+		const comment = concatComment(parsedPath, theme, true)
+		if (comment) concatTree.unshift(comment)
 	}
 
 	if (await fileExists(sanitizedPath)) {
-		concatTree.unshift(
-			concatComment(parsedPath, theme, false),
-			await readFile(sanitizedPath, 'utf-8'),
-		)
+		concatTree.unshift(await readFile(sanitizedPath, encoding))
+
+		const comment = concatComment(parsedPath, theme, false)
+		if (comment) concatTree.unshift(comment)
+
 		return concatTree
 	}
 
