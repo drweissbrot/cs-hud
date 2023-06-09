@@ -38,6 +38,7 @@
 	--sidebar-width: calc(var(--sidebar-player-width) + var(--sidebar-player-focused-player-highlight-width) + var(--sidebar-player-additional-stats-width));
 
 	--sidebar-team-grenades-width: var(--sidebar-player-width);
+	--sidebar-team-equipment-width: var(--sidebar-player-width);
 
 	--sidebar-player-width: calc(
 		var(--sidebar-deaths-width)

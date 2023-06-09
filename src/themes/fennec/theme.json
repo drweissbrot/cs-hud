@@ -20,6 +20,20 @@
 			"label": "Series Name (right)"
 		},
 
+		"cvars.cash_team_loser_bonus": {
+			"type": "number",
+			"fallback": 1400,
+			"section": "Cvars",
+			"label": "Value of cash_team_loser_bonus, i.e. the initial loss bonus amount"
+		},
+
+		"cvars.cash_team_loser_bonus_consecutive_rounds": {
+			"type": "number",
+			"fallback": 500,
+			"section": "Cvars",
+			"label": "Value of cash_team_loser_bonus_consecutive_rounds, i.e. the additional loss bonus amount per consecutive round lost"
+		},
+
 		"cvars.mp_c4timer": {
 			"type": "number",
 			"fallback": 40,
@@ -41,6 +55,13 @@
 			"label": "Value of mp_overtime_maxrounds, i.e. the maximum number of rounds played per overtime"
 		},
 
+		"cvars.mp_roundtime": {
+			"type": "number",
+			"fallback": 1.92,
+			"section": "Cvars",
+			"label": "Value of mp_roundtime, i.e. the default number of minutes a round can take"
+		},
+
 		"cvars.mp_team_timeout_max": {
 			"type": "number",
 			"fallback": 4,
@@ -60,6 +81,13 @@
 			"fallback": true,
 			"section": "Preferences",
 			"label": "Hide \"Players Alive\" during freezetime"
+		},
+
+		"preferences.sidebar.teamEquipment.activeIntoRoundSec": {
+			"type": "number",
+			"fallback": 5,
+			"section": "Preferences",
+			"label": "Number of seconds into the round the \"Team Money and Equipment\" panel should be visible (0 to disable)"
 		},
 
 		"css.scale-factor": {
