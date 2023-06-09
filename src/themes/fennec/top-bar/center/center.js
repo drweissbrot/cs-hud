@@ -14,4 +14,16 @@ export default {
 		MatchPointRounds,
 		Score,
 	},
+
+	computed: {
+		isMultipleMapSeries() {
+			const mapNumbers = new Set()
+
+			for (const key of Object.keys(this.$opts)) {
+				if (key.startsWith('series.maps.')) mapNumbers.add(key.substring(12).split('.', 2)[0])
+			}
+
+			return mapNumbers.size > 1
+		},
+	},
 }

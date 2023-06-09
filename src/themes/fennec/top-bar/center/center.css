@@ -6,6 +6,13 @@
 	grid-template-rows: 2fr 1fr 1fr;
 	grid-template-areas:
 		'score-left current-round score-right'
+		'match-point-rounds match-point-rounds match-point-rounds'
+		'. . .';
+}
+
+.center.--is-multiple-map-series {
+	grid-template-areas:
+		'score-left current-round score-right'
 		'map-wins-left current-map map-wins-right'
 		'match-point-rounds match-point-rounds match-point-rounds';
 }

@@ -1,4 +1,4 @@
-<div class="center">
+<div :class="['center', { '--is-multiple-map-series': isMultipleMapSeries }]">
 	<Score :team="$teams[0]" position="left" />
 	<MapWins :team="$teams[0]" position="left" />
 
