@@ -1,5 +1,5 @@
 <Transition>
-	<div v-if="$players.focused" class="focused-player">
+	<div v-if="isActive" class="focused-player">
 		<FocusedPlayerHealthAndArmor />
 		<FocusedPlayerNameAndStats />
 		<FocusedPlayerAmmo />

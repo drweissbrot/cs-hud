@@ -1,2 +1,17 @@
 {
+	"options": {
+		"preferences.minimumGoodKdRatio": {
+			"type": "number",
+			"section": "Preferences",
+			"label": "Lowest K/D ratio that counts as \"good\" and can be highlighted in green",
+			"fallback": "1.001"
+		},
+
+		"preferences.maximumBadKdRatio": {
+			"type": "number",
+			"section": "Preferences",
+			"label": "Highest K/D ratio that counts as \"bad\" and can be highlighted in red",
+			"fallback": "0.999"
+		}
+	}
 }

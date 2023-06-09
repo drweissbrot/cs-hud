@@ -1,0 +1,15 @@
+.round-kills {
+	grid-area: round-kills;
+
+	display: flex;
+	align-items: center;
+}
+
+img.label {
+	height: 1.5rem;
+	margin-right: 0.5rem;
+}
+
+.value {
+	font-size: 1.6rem;
+}

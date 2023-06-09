@@ -5,6 +5,8 @@
 	--background-color: green;
 	--text-color: #fff;
 	--red: #f00;
+	--money-color: #9bae81;
+	--round-money-spent-color: var(--red);
 
 	--counter-terrorists-rgb: 29, 158, 222;
 	--counter-terrorists: rgb(var(--counter-terrorists-rgb));
@@ -14,6 +16,9 @@
 	--progress-bar-fill-color-bomb: var(--red);
 
 	--top-bar-maps-color: rgba(255, 255, 255, 0.5);
+
+	--player-sidebar-good-kd-ratio-color: green;
+	--player-sidebar-bad-kd-ratio-color: var(--red);
 
 	/*
 	 * Spacing, Sizes
@@ -28,6 +33,12 @@
 	--top-bar-score-font-size: 3rem;
 	--top-bar-row-height: calc(2 * var(--top-bar-padding-x) + var(--top-bar-score-font-size));
 	--top-bar-half-row-height: calc(var(--top-bar-row-height) / 2);
+
+	--player-sidebar-margin: var(--viewport-margin-x);
+	--player-sidebar-focused-player-highlight-width: 0.5rem;
+	--player-sidebar-additional-stats-width: 14rem;
+	--player-sidebar-width: calc((100% - var(--focused-player-width)) / 2 - var(--player-sidebar-margin) * 2 + var(--player-sidebar-focused-player-highlight-width) + var(--player-sidebar-additional-stats-width));
+	--player-sidebar-row-height: 3rem;
 
 	/* Viewport Margin  */
 	--viewport-margin-x: 2rem;
@@ -52,6 +63,7 @@
 	 */
 	--fade-fast-duration: 0.1s;
 	--fade-default-duration: 0.3s;
+	--fade-slow-duration: 0.5s;
 
 	/*
 	 * Filters

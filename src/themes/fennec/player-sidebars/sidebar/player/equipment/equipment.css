@@ -1,0 +1,15 @@
+.equipment {
+	grid-area: equipment;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 0.5rem;
+}
+
+.equipment.--left {
+	grid-template-areas: 'armor bomb-or-defuser';
+}
+
+.equipment.--right {
+	grid-template-areas: 'bomb-or-defuser armor';
+}

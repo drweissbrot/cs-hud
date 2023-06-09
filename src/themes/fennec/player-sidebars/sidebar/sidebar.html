@@ -1,0 +1,11 @@
+<div :class="['sidebar', positionClass]">
+	<!-- TODO grenades -->
+	<!-- TODO eq value etc -->
+
+	<Player
+		v-for="player of team.players"
+		:key="player.steam64Id"
+		:player="player"
+		:position="position"
+	/>
+</div>

@@ -1,0 +1,12 @@
+.dead-icon {
+	grid-area: start/start/equipment/health;
+	padding: 1rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+img {
+	height: 3.25rem;
+}

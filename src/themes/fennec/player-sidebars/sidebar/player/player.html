@@ -1,0 +1,28 @@
+<div :class="['player-wrapper', positionClass]">
+	<!-- TODO configurable: take up less width for dead players -->
+	<div :class="['player', positionClass]">
+		<HealthBar :player="player" :position="position" />
+
+		<DeadIcon :player="player" :position="position" />
+
+		<Health :player="player" :position="position" />
+		<ObserverSlot :player="player" :position="position" />
+		<Name :player="player" :position="position" />
+		<RoundKills :player="player" :position="position" />
+		<Primary :player="player" :position="position" />
+
+		<Equipment :player="player" :position="position" />
+		<Money :player="player" :position="position" />
+		<RoundMoneySpent :player="player" :position="position" />
+		<Kills :player="player" :position="position" />
+		<Deaths :player="player" :position="position" />
+		<Adr :player="player" :position="position" />
+		<Taser :player="player" :position="position" />
+		<Grenades :player="player" :position="position" />
+		<Secondary :player="player" :position="position" />
+	</div>
+
+	<FocusedPlayerHighlight :player="player" :position="position" />
+
+	<AdditionalStats :player="player" :position="position" />
+</div>

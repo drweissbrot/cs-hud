@@ -1,0 +1,43 @@
+.player-wrapper {
+	display: grid;
+}
+
+.player-wrapper.--left {
+	grid-template-columns: auto var(--player-sidebar-focused-player-highlight-width) var(--player-sidebar-additional-stats-width);
+	grid-template-areas: 'player focused-player-highlight additional-stats';
+}
+
+.player-wrapper.--right {
+	grid-template-columns: var(--player-sidebar-additional-stats-width) var(--player-sidebar-focused-player-highlight-width) auto;
+	grid-template-areas: 'additional-stats focused-player-highlight player';
+}
+
+.player {
+	grid-area: player;
+
+	display: grid;
+	grid-template-rows: repeat(2, var(--player-sidebar-row-height));
+
+	background: rgba(0, 0, 0, 0.4);
+	filter: var(--filter-drop-shadow);
+	font-size: 1.8rem;
+	isolation: isolate;
+}
+
+.player.--left {
+	grid-template-columns: 0.5rem 5rem 1.5rem 7rem 4.5rem 4.5rem 4rem 1fr 0.5fr 1fr 0.5rem;
+	grid-template-areas:
+		'start    health       observer-slot    name     name     name      name     name        round-kills    primary      end'
+		'start    equipment    equipment        money    kills    deaths    taser    grenades    grenades       secondary    end';
+}
+
+.player.--right {
+	grid-template-columns: 0.5rem 1fr 0.5fr 1fr 4rem 4.5rem 4.5rem 7rem 1.5rem 5rem 0.5rem;
+	grid-template-areas:
+		'start primary round-kills name name name name name observer-slot health end'
+		'start secondary grenades grenades taser kills deaths money equipment equipment end';
+}
+
+.player-wrapper:not(:last-child) {
+	margin-bottom: 0.5rem;
+}

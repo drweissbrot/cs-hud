@@ -1,0 +1,25 @@
+.health-bar-background {
+	grid-area: 1/start/1/end;
+	background: rgba(0, 0, 0, 0.15);
+	z-index: -1;
+}
+
+.health {
+	height: 100%;
+}
+
+.health.--left {
+	transform-origin: left;
+}
+
+.health.--right {
+	transform-origin: right;
+}
+
+.health.--ct {
+	background: var(--counter-terrorists);
+}
+
+.health.--t {
+	background: var(--terrorists);
+}

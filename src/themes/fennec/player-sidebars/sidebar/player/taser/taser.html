@@ -1,0 +1,5 @@
+<Transition mode="out-in">
+	<div v-if="player.isAlive && player.taser" :class="['taser', positionClass]">
+		<img src="/hud/img/weapons/taser.svg" alt="" :class="{ '--active': player.taser.isActive }">
+	</div>
+</Transition>

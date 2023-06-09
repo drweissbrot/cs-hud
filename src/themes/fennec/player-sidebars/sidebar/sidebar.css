@@ -1,0 +1,13 @@
+.sidebar {
+	position: absolute;
+	bottom: var(--viewport-margin-bottom);
+	width: var(--player-sidebar-width);
+}
+
+.sidebar.--left {
+	left: var(--viewport-margin-left);
+}
+
+.sidebar.--right {
+	right: var(--viewport-margin-right);
+}

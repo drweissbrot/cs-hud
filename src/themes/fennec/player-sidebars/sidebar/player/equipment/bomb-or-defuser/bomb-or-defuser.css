@@ -1,0 +1,16 @@
+.bomb-or-defuser {
+	grid-area: bomb-or-defuser;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+img {
+	height: 1.5rem;
+	transition: opacity var(--fade-fast-duration) ease;
+}
+
+img.bomb:not(.--active) {
+	opacity: 0.5;
+}

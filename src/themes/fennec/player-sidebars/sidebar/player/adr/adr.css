@@ -1,0 +1,27 @@
+.adr {
+	grid-area: 2/8;
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	padding: 0.5rem;
+	font-size: 1.5rem;
+}
+
+.label {
+	margin-right: 0.25em;
+}
+
+.label.--ct {
+	color: var(--counter-terrorists);
+}
+
+.label.--t {
+	color: var(--terrorists);
+}
+
+.value {
+	min-width: 2ch;
+	text-align: right;
+}

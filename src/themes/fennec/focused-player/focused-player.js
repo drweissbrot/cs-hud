@@ -8,4 +8,10 @@ export default {
 		FocusedPlayerHealthAndArmor,
 		FocusedPlayerNameAndStats,
 	},
+
+	computed: {
+		isActive() {
+			return ! this.$round.isFreezetime && this.$players.focused
+		},
+	},
 }

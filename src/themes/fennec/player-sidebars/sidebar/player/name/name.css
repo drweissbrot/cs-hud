@@ -1,0 +1,14 @@
+.name {
+	grid-area: name;
+
+	display: flex;
+	align-items: center;
+
+	padding: 0 0.5rem;
+	font-weight: 700;
+}
+
+.name.--right {
+	text-align: right;
+	justify-content: flex-end;
+}
