@@ -16,6 +16,7 @@
 .score .inner {
 	padding: var(--top-bar-padding-x) 0;
 	min-width: 2ch;
+	width: 100%;
 
 	isolation: isolate;
 	text-align: center;
@@ -39,7 +40,7 @@
 }
 
 .score.--left::before {
-	transform: skewX(20deg) translateX(-0.825rem);
+	transform: skewX(20deg) scaleX(2) translateX(-0.25rem);
 }
 
 .score.--left .inner {
@@ -53,7 +54,7 @@
 }
 
 .score.--right::after {
-	transform: skewX(-20deg) translateX(0.825rem);
+	transform: skewX(-20deg) scaleX(2) translateX(0.25rem);
 }
 
 .score.--right .inner {
