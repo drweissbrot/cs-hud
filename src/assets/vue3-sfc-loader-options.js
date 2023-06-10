@@ -9,8 +9,11 @@ export const sfcLoaderOptions = {
 		const res = await fetch(url)
 		if (!res.ok) throw Object.assign(new Error(res.statusText + ' ' + url), { res })
 
+		// #65: this enables using query params
+		const pathname = new URL(`${window.location.origin}${url}`).pathname
+
 		return {
-			type: url.endsWith('.js') ? '.mjs' : undefined, // this allows nested imports within modules
+			type: pathname.endsWith('.js') ? '.mjs' : undefined, // this allows nested imports within modules
 			getContentData: (asBinary) => asBinary ? res.arrayBuffer() : res.text(),
 		}
 	},

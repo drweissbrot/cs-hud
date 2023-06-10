@@ -47,3 +47,17 @@ export const getSettings = async () => {
 		settings: merge({}, ...settingsObjects.reverse()),
 	}
 }
+
+export const getThemeTree = async (firstTheme = 'userspace') => {
+	const themeTree = [firstTheme]
+
+	// make sure we don't end up in this loop forever
+	for (let i = 0; i < 16; i++) {
+		let settingsObject = await readJson(`${themesDirectory}/${themeTree[themeTree.length - 1]}/theme.json`)
+		if (! settingsObject?.parent) return themeTree
+
+		themeTree.push(settingsObject.parent)
+	}
+
+	return themeTree
+}

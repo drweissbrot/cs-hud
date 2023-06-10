@@ -4,7 +4,7 @@ import { readFile } from 'fs/promises'
 import resolvePath from 'resolve-path'
 
 import { fileExists } from './helpers/file-exists.js'
-import { getSettings } from './settings.js'
+import { getThemeTree } from './settings.js'
 import { themesDirectory } from './helpers/paths.js'
 
 const textFormats = [
@@ -22,27 +22,25 @@ const textFormats = [
 
 export const registerHudRoutes = (router) => {
 	router.get('/hud/:path*', async (context) => {
-		const { settings, themeTree } = await getSettings()
+		const themeTree = await getThemeTree(context.query.theme)
 
 		const path = decodeURIComponent(
-			context.path.replace(/^\/hud\//, '').trim(),
+			context.params.path?.trim() || 'index.html',
 		)
 
 		// don't serve hidden files
 		const pathBasename = basename(path)
 		if (pathBasename.startsWith('.')) return context.status = 404
 
-		const isIndexHtml = !path || path === '/hud'
-
 		const body = await concatStaticFileFromThemeTreeRecursively(
-			isIndexHtml ? 'index.html' : path,
+			path,
 			[],
 			themeTree,
 		)
 
 		if (! body) return context.status = 404
 
-		context.type = isIndexHtml ? '.html' : extname(path)
+		context.type = extname(path)
 
 		context.body = Buffer.isBuffer(body[0])
 			? Buffer.concat(body)
