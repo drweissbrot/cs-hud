@@ -247,7 +247,7 @@
 			"label": "Show map name and screenshot in the Series Graph, even if there is only a single match in the series"
 		},
 
-		"css.scale-factor": {
+		"css.base-scale-factor": {
 			"type": "text",
 			"section": "Style Overrides",
 			"label": "Base size that everything is sized relative to; e.g. `10px`"

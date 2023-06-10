@@ -17,6 +17,13 @@ export default {
 
 	mounted() {
 		this.applyCssVariableOverrides()
+		this.setScaleFactor()
+
+		window.addEventListener('resize', this.setScaleFactor)
+	},
+
+	beforeUnmount() {
+		window.removeEventListener('resize', this.setScaleFactor)
 	},
 
 	methods: {
@@ -42,6 +49,23 @@ export default {
 			const b = parseInt(hex.substring(4, 6), 16)
 
 			return `${r}, ${g}, ${b}`
+		},
+
+		setScaleFactor() {
+			const calculatedScaleFactor = this.calculateScaleFactor()
+			document.documentElement.style.setProperty('--scale-factor', calculatedScaleFactor)
+		},
+
+		calculateScaleFactor() {
+			const raw = getComputedStyle(document.documentElement).getPropertyValue('--base-scale-factor')
+			const baseValue = parseFloat(raw)
+			const baseUnit = raw.match(/\D+$/)[0]
+
+			switch (baseUnit) {
+				case 'vh': return `${Math.round(window.innerHeight / 100 * baseValue)}px`
+				case 'vw': return `${Math.round(window.innerWidth / 100 * baseValue)}px`
+				default: return raw
+			}
 		},
 	},
 }

@@ -23,7 +23,8 @@
 	/*
 	 * Spacing, Sizes
 	 */
-	--scale-factor: 0.925925926vh; /* approximately 10px on 1080p */
+	--base-scale-factor: 0.925925926vh; /* approximately 10px on 1080p */
+	--scale-factor: var(--base-scale-factor); /* set by JavaScript to the rounded pixel value of --base-scale-factor (because CSS sometimes breaks at weird fractional pixels) */
 
 	--focused-player-width: 50%;
 	--focused-player-icon-height: 2rem;
