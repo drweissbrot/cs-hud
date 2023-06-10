@@ -4,6 +4,7 @@
 	right: var(--viewport-margin-right);
 	bottom: var(--viewport-margin-bottom);
 
+	filter: var(--filter-drop-shadow);
 	overflow: hidden;
 }
 
@@ -11,7 +12,6 @@
 	display: flex;
 	align-items: flex-end;
 
-	filter: var(--filter-drop-shadow);
 	transition: transform var(--fade-slow-duration) ease;
 }
 
