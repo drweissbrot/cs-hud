@@ -1,3 +1,4 @@
+import { positionClass } from '/hud/helpers/position-class.js'
 import { teamColorClass } from '/hud/helpers/team-color-class.js'
 import ProgressBar from '/hud/progress-bar/progress-bar.vue'
 
@@ -12,12 +13,10 @@ export default {
 	},
 
 	computed: {
-		colorClass() {
-			return this.teamColorClass(this.team)
-		},
+		positionClass,
 
-		positionClass() {
-			return `--${this.position}`
+		colorClass() {
+			return teamColorClass(this.team)
 		},
 
 		isTimeoutPanelActive() {
@@ -26,9 +25,5 @@ export default {
 				case 3: return this.$round.phase === 'timeout_ct'
 			}
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

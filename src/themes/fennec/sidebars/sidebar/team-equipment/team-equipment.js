@@ -1,3 +1,4 @@
+import { positionClass } from '/hud/helpers/position-class.js'
 import { teamColorClass } from '/hud/helpers/team-color-class.js'
 
 export default {
@@ -7,12 +8,10 @@ export default {
 	],
 
 	computed: {
-		colorClass() {
-			return this.teamColorClass(this.team)
-		},
+		positionClass,
 
-		positionClass() {
-			return `--${this.position}`
+		colorClass() {
+			return teamColorClass(this.team)
 		},
 
 		isActive() {
@@ -31,9 +30,5 @@ export default {
 		teamEquipmentValue() {
 			return this.team.players.reduce((sum, player) => sum + player.equipmentValue, 0)
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

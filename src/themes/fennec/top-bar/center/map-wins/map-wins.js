@@ -1,3 +1,5 @@
+import { positionClass } from '/hud/helpers/position-class.js'
+import { seriesMapNumbers } from '/hud/helpers/series-map-numbers.js'
 import { teamColorClass } from '/hud/helpers/team-color-class.js'
 
 export default {
@@ -7,21 +9,14 @@ export default {
 	],
 
 	computed: {
-		colorClass() {
-			return this.teamColorClass(this.team)
-		},
+		positionClass,
 
-		positionClass() {
-			return `--${this.position}`
+		colorClass() {
+			return teamColorClass(this.team)
 		},
 
 		pips() {
-			const mapNumbers = new Set()
-
-			for (const key of Object.keys(this.$opts)) {
-				if (key.startsWith('series.maps.')) mapNumbers.add(key.substring(12).split('.', 2)[0])
-			}
-
+			const mapNumbers = this.seriesMapNumbers()
 			const pips = []
 
 			for (const mapNumber of mapNumbers) {
@@ -34,12 +29,12 @@ export default {
 				} else if (scoreB > scoreA) pips.push(true)
 			}
 
-			const maxMapWins = Math.floor(mapNumbers.size / 2) + 1
+			const maxMapWins = Math.floor(mapNumbers.length / 2) + 1
 			return [...pips, ...new Array(maxMapWins - pips.length).fill(false)]
 		},
 	},
 
 	methods: {
-		teamColorClass,
+		seriesMapNumbers,
 	},
 }

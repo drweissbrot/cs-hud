@@ -16,11 +16,6 @@ export class Websocket {
 		this.radarsCache = {}
 
 		this.updateCaches()
-
-		// TODO just completely remove this (probably)
-		setInterval(() => {
-			this.broadcastState()
-		}, 5000)
 	}
 
 	async updateCaches() {

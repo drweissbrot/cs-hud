@@ -1,3 +1,5 @@
+import { positionClass } from '/hud/helpers/position-class.js'
+
 export default {
 	props: [
 		'position',
@@ -5,9 +7,7 @@ export default {
 	],
 
 	computed: {
-		positionClass() {
-			return `--${this.position}`
-		},
+		positionClass,
 
 		grenades() {
 			let foundPerType = {}
@@ -16,7 +16,7 @@ export default {
 				foundPerType[grenade.name] = (foundPerType[grenade.name] || 0) + 1
 
 				return {
-					iconUrl: `/hud/img/weapons/${grenade.name.substring(7)}.svg`,
+					iconUrl: `/hud/img/weapons/${grenade.unprefixedName}.svg`,
 					isActive: grenade.isActive,
 					key: `${grenade.name}${foundPerType[grenade.name]}`,
 				}

@@ -1,3 +1,4 @@
+import { positionClass } from '/hud/helpers/position-class.js'
 import { teamColorClass } from '/hud/helpers/team-color-class.js'
 import ProgressBar from '/hud/progress-bar/progress-bar.vue'
 
@@ -12,12 +13,10 @@ export default {
 	},
 
 	computed: {
-		colorClass() {
-			return this.teamColorClass(this.team)
-		},
+		positionClass,
 
-		positionClass() {
-			return `--${this.position}`
+		colorClass() {
+			return teamColorClass(this.team)
 		},
 
 		isBombTimerPanelActive() {
@@ -43,7 +42,6 @@ export default {
 			switch (this.team.side) {
 				case 2: {
 					if (this.$bomb.state === 'planting') return 3.2
-					// TODO override this after the bomb has been planted
 					return this.$opts['cvars.mp_c4timer']
 				}
 
@@ -53,9 +51,5 @@ export default {
 				}
 			}
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

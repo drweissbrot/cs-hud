@@ -1,3 +1,4 @@
+import { positionClass } from '/hud/helpers/position-class.js'
 import BombTimer from '/hud/top-bar/team/bomb-timer/bomb-timer.vue'
 import MatchPoint from '/hud/top-bar/team/match-point/match-point.vue'
 import Name from '/hud/top-bar/team/name/name.vue'
@@ -19,8 +20,6 @@ export default {
 	},
 
 	computed: {
-		positionClass() {
-			return `--${this.position}`
-		},
+		positionClass,
 	},
 }

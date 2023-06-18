@@ -1,0 +1,28 @@
+section {
+	margin-bottom: 6rem;
+}
+
+section:first-of-type {
+	margin-top: 2rem;
+}
+
+@media (max-width: 1299px) {
+	section:first-of-type {
+		margin-top: 8rem;
+	}
+}
+
+section header {
+	margin: 0 1rem 2rem;
+}
+
+@media (min-width: 600px) {
+	section header {
+		margin-left: 4rem;
+	}
+}
+
+section header p {
+	max-width: 48rem;
+	margin-top: 0.5rem;
+}

@@ -7,9 +7,8 @@ export default {
 
 	computed: {
 		colorClass() {
-			if (this.round.winningTeam) {
-				return this.teamColorClass(this.round.winningTeam)
-			}
+			if (! this.round.winningTeam) return
+			return teamColorClass(this.round.winningTeam)
 		},
 
 		reasonIconUrl() {
@@ -24,9 +23,5 @@ export default {
 		isCurrentRound() {
 			return this.round.roundNumber === this.$round.roundNumber
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

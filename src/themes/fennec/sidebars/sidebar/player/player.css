@@ -56,8 +56,8 @@
 		var(--sidebar-health-width)
 		var(--sidebar-start-and-end-width);
 	grid-template-areas:
-		'start primary round-kills name name name name name observer-slot health end'
-		'start secondary grenades grenades taser kills deaths money equipment equipment end';
+		'start    primary      round-kills    name        name     name     name      name     observer-slot    health       end'
+		'start    secondary    grenades       grenades    taser    kills    deaths    money    equipment        equipment    end';
 }
 
 .player-wrapper:not(:last-child) {

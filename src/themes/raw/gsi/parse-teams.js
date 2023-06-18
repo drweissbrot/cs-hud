@@ -13,6 +13,7 @@ const getGrenadeKey = (weaponName) => {
 	}
 }
 
+// NB! This must be called AFTER parsePlayers!
 export const parseTeams = () => {
 	const makeTeam = (side, fallbackName, gsiTeamObject) => {
 		const teamMembers = players.filter((player) => player.side === side)
@@ -22,7 +23,7 @@ export const parseTeams = () => {
 
 			consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
 			flag: gsiTeamObject.flag,
-			matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO get this from options
+			matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO we may want to have options override this
 			name: gsiTeamObject.name || fallbackName,
 			players: teamMembers,
 			score: gsiTeamObject.score,

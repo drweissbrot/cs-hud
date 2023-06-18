@@ -8,7 +8,6 @@ export default {
 	computed: {
 		isSecondHalf() {
 			if (this.$round.isOvertime) return
-
 			return this.$round.roundNumber > (this.$opts['cvars.mp_maxrounds'] / 2)
 		},
 
@@ -32,7 +31,6 @@ export default {
 
 		currentOvertimeLastRoundNumberOfFirstHalf() {
 			if (! this.$round.isOvertime) return
-
 			return this.firstRoundNumber + this.$opts['cvars.mp_overtime_maxrounds'] / 2 - 1
 		},
 

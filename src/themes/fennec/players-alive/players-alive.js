@@ -4,7 +4,7 @@ export default {
 	computed: {
 		isActive() {
 			if (this.$opts['preferences.playersAlive.hideDuringFreezetime']) {
-				return !this.$round.isFreezetime
+				return ! this.$round.isFreezetime
 			}
 
 			return true
@@ -19,17 +19,15 @@ export default {
 		},
 
 		leftTeamColorClass() {
-			return this.teamColorClass(this.$teams[0])
+			return teamColorClass(this.$teams[0])
 		},
 
 		rightTeamColorClass() {
-			return this.teamColorClass(this.$teams[1])
+			return teamColorClass(this.$teams[1])
 		},
 	},
 
 	methods: {
-		teamColorClass,
-
 		countAlivePlayers(team) {
 			let alive = 0
 

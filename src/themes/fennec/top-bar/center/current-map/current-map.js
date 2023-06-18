@@ -1,19 +1,17 @@
+import { seriesMapNumbers } from '/hud/helpers/series-map-numbers.js'
+
 export default {
 	computed: {
+		seriesMapNumbers,
+
 		currentMapNumber() {
-			const mapNumbers = new Set()
+			if (this.seriesMapNumbers.length < 2) return 1
 
-			for (const key of Object.keys(this.$opts)) {
-				if (key.startsWith('series.maps.')) mapNumbers.add(key.substring(12).split('.', 2)[0])
-			}
-
-			if (mapNumbers.size === 1) return 1
-
-			for (const mapNumber of [...mapNumbers].sort((a, b) => Number(a) - Number(b))) {
+			for (const mapNumber of this.seriesMapNumbers) {
 				const scoreA = this.$opts[`series.maps.${mapNumber}.pickTeamScore`]
 				const scoreB = this.$opts[`series.maps.${mapNumber}.enemyTeamScore`]
 
-				const isFirstMapWithoutScores = !scoreA && !scoreB
+				const isFirstMapWithoutScores = ! scoreA && ! scoreB
 				if (isFirstMapWithoutScores) return mapNumber
 			}
 
@@ -21,13 +19,7 @@ export default {
 		},
 
 		seriesLength() {
-			const mapNumbers = new Set()
-
-			for (const key of Object.keys(this.$opts)) {
-				if (key.startsWith('series.maps.')) mapNumbers.add(key.substring(12).split('.', 2)[0])
-			}
-
-			return mapNumbers.size
+			return this.seriesMapNumbers.length
 		},
 	},
 }

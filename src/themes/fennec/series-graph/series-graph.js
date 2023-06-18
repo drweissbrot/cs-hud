@@ -1,4 +1,5 @@
-import { formatMapName } from '/hud/gsi/helpers/format-map-name.js'
+import { formatMapName } from '/hud/helpers/format-map-name.js'
+import { seriesMapNumbers } from '/hud/helpers/series-map-numbers.js'
 import Match from '/hud/series-graph/match/match.vue'
 
 export default {
@@ -7,22 +8,18 @@ export default {
 	},
 
 	computed: {
+		seriesMapNumbers,
+
 		matches() {
-			const mapNumbers = new Set()
-
-			for (const key of Object.keys(this.$opts)) {
-				if (key.startsWith('series.maps.')) mapNumbers.add(key.substring(12).split('.', 2)[0])
-			}
-
 			const maps = []
 
-			for (const mapNumber of [...mapNumbers].sort((a, b) => Number(a) - Number(b))) {
+			for (const mapNumber of this.seriesMapNumbers) {
 				const mapName = this.$opts[`series.maps.${mapNumber}.name`]
 				const scoreA = this.$opts[`series.maps.${mapNumber}.pickTeamScore`]
 				const scoreB = this.$opts[`series.maps.${mapNumber}.enemyTeamScore`]
 
-				const isOnlyMatch = mapNumbers.size === 1
-				const isFirstMapWithoutScores = !scoreA && !scoreB && (mapNumber === 1 || maps[maps.length - 1]?.scores)
+				const isOnlyMatch = this.seriesMapNumbers.length === 1
+				const isFirstMapWithoutScores = ! scoreA && ! scoreB && (mapNumber === 1 || maps[maps.length - 1]?.scores)
 
 				maps.push({
 					isOnlyMatch,

@@ -5,7 +5,7 @@ export default {
 		},
 
 		isActive() {
-			return this.player?.weapons?.find((weapon) => weapon.isActive)?.isTaser
+			return !! this.player?.taser?.isActive
 		},
 	},
 }

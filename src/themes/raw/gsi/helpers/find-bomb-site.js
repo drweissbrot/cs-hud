@@ -1,6 +1,6 @@
 import { bombsites, gsiState } from '/hud/core/state.js'
-import { insideVector } from '/hud/gsi/helpers/inside-vector.js'
-import { vectorDistance } from '/hud/gsi/helpers/vector-distance.js'
+import { insideVector } from '/hud/helpers/inside-vector.js'
+import { vectorDistance } from '/hud/helpers/vector-distance.js'
 
 export const findBombsite = (position) => {
 	const bombsiteConfig = bombsites[gsiState.map.name] || bombsites[gsiState.map.name.replace(/^.+\//, '')]

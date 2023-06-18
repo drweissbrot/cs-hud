@@ -1,3 +1,4 @@
+import { positionClass } from '/hud/helpers/position-class.js'
 import AdditionalStats from '/hud/sidebars/sidebar/player/additional-stats/additional-stats.vue'
 import Adr from '/hud/sidebars/sidebar/player/adr/adr.vue'
 import DeadIcon from '/hud/sidebars/sidebar/player/dead-icon/dead-icon.vue'
@@ -45,26 +46,10 @@ export default {
 	},
 
 	computed: {
+		positionClass,
+
 		isBombActive() {
-			return this.player?.weapons?.find((weapon) => weapon.isActive)?.isBomb
-		},
-
-		positionClass() {
-			return `--${this.position}`
-		},
-
-		grenades() {
-			let foundPerType = {}
-
-			return this.player.grenades.map((grenade) => {
-				foundPerType[grenade.name] = (foundPerType[grenade.name] || 0) + 1
-
-				return {
-					iconUrl: `/hud/img/weapons/${grenade.name.substring(7)}.svg`,
-					isActive: grenade.isActive,
-					key: `${grenade.name}${foundPerType[grenade.name]}`,
-				}
-			})
+			return !! this.player?.bomb?.isActive
 		},
 	},
 }

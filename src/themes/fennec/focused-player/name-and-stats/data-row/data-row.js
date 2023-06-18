@@ -18,7 +18,7 @@ export default {
 		},
 
 		colorClass() {
-			return this.teamColorClass(this.player.team)
+			return teamColorClass(this.player.team)
 		},
 
 		activeWeapon() {
@@ -27,13 +27,9 @@ export default {
 
 		grenades() {
 			return this.player.grenades.map((grenade) => ({
-				iconUrl: `/hud/img/weapons/${grenade.name.substring(7)}.svg`,
+				iconUrl: `/hud/img/weapons/${grenade.unprefixedName}.svg`,
 				isActive: grenade.isActive,
 			}))
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

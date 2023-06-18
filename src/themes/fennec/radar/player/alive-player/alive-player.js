@@ -1,13 +1,13 @@
-import { getLevel, levels } from '/hud/helpers/radar-levels.js'
-import { offsetX, offsetY } from '/hud/helpers/radar-offset.js'
-import { radarConfig } from '/hud/helpers/radar-config.js'
+import { getLevel, levels } from '/hud/radar/helpers/radar-levels.js'
+import { offsetX, offsetY } from '/hud/radar/helpers/radar-offset.js'
+import { radarConfig } from '/hud/radar/helpers/radar-config.js'
 import { teamColorClass } from '/hud/helpers/team-color-class.js'
-import { vectorDistance } from '/hud/gsi/helpers/vector-distance.js'
+import { vectorDistance } from '/hud/helpers/vector-distance.js'
 
 export default {
 	data() {
 		return {
-			previousPositionsAndAngles: [], // GSI sends out interpolated positions, so we have to average out the last few positions to avoid players spazzing back and forth when moving
+			previousPositionsAndAngles: [],
 		}
 	},
 
@@ -20,7 +20,7 @@ export default {
 		radarConfig,
 
 		colorClass() {
-			return this.teamColorClass(this.player.team)
+			return teamColorClass(this.player.team)
 		},
 
 		coordinates() {
@@ -52,7 +52,6 @@ export default {
 		getLevel,
 		offsetX,
 		offsetY,
-		teamColorClass,
 
 		getAngle() {
 			const [x, y] = this.player.forward
@@ -63,6 +62,7 @@ export default {
 			return (360 + Math.round(degrees)) % 360
 		},
 
+		// see src/themes/fennec/radar/helpers/previous-positions.js for an explanation of this
 		averagePreviousPositionsAndAngles() {
 			let sumX = 0
 			let sumY = 0
