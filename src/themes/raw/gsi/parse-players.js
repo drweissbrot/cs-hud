@@ -71,7 +71,7 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 		taser,
 		weapons,
 
-		adr: 0, // TODO
+		adr: getAdr(steam64Id),
 		armor: player.state?.armor,
 		assists: player.match_stats?.assists,
 		clanTag: player.clan,
@@ -100,7 +100,7 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 		name: player.name,
 		observerSlot: player.observer_slot,
 		position: parsePosition(player.position),
-		roundDamage: player.state?.round_totaldmg, // TODO this is often wrong
+		roundDamage: player.state?.round_totaldmg,
 		roundDamages: additionalState.roundDamages?.[steam64Id] || [],
 		roundHeadshotKills: player.state?.round_killhs,
 		roundKills: player.state?.round_kills,
@@ -114,3 +114,21 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 	const y = b.observerSlot === 0 ? 10 : b.observerSlot
 	return x - y
 })
+
+const getAdr = (steam64Id) => {
+	let totalDamage = 0
+	let rounds = 0
+
+	const roundDamages = Object.entries(additionalState.roundDamages?.[steam64Id] || {})
+	const currentRoundNumber = gsiState.map.round + 1 // this ends up being the following round during the round restart delay (e.g. in the 5 (or 7) seconds after round 1, this will be `2`), but since ADR should already update then, this is actually what we want
+
+	for (const [roundNumber, damage] of roundDamages) {
+		if (roundNumber < 1) continue
+		if (roundNumber >= currentRoundNumber) break
+
+		totalDamage += damage
+		rounds++
+	}
+
+	return Math.floor(totalDamage / (rounds || 1))
+}

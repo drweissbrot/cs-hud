@@ -49,12 +49,12 @@ const updateLastKnownBombPlantedCountdown = (body) => {
 }
 
 const updateRoundDamages = (body) => {
-	const roundNumber = body.map?.round
+	const roundNumber = body.map.round + 1 - Number(body.phase_countdowns.phase === 'over')
 	if (! roundNumber) return
 
-	for (const [steam64Id, player] of Object.entries(body.players || {})) {
+	for (const [steam64Id, player] of Object.entries(body.allplayers || {})) {
 		if (! additionalState.roundDamages[steam64Id]) {
-			additionalState.roundDamages[steam64Id] = []
+			additionalState.roundDamages[steam64Id] = {}
 		}
 
 		additionalState.roundDamages[steam64Id][roundNumber] = player.state.round_totaldmg
