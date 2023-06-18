@@ -247,6 +247,27 @@
 			"label": "Show map name and screenshot in the Series Graph, even if there is only a single match in the series"
 		},
 
+		"preferences.topBar.clock.tenSecondsRedInFreezetime": {
+			"type": "boolean",
+			"fallback": false,
+			"section": "Preferences",
+			"label": "Show clock in red at less than 10 seconds in Freezetime"
+		},
+
+		"preferences.topBar.clock.tenSecondsRedInTacticalTimeout": {
+			"type": "boolean",
+			"fallback": false,
+			"section": "Preferences",
+			"label": "Show clock in red at less than 10 seconds during Tactical Timeouts"
+		},
+
+		"preferences.topBar.clock.tenSecondsRedInRoundRestartDelay": {
+			"type": "boolean",
+			"fallback": false,
+			"section": "Preferences",
+			"label": "Show clock in red at less than 10 seconds after round end"
+		},
+
 		"css.base-scale-factor": {
 			"type": "text",
 			"section": "Style Overrides",

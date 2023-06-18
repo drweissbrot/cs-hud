@@ -7,7 +7,6 @@
 	<img v-else-if="$bomb.bombsite === 'b'" class="bombsite-icon --b" src="/hud/img/icons/bombsite-b.svg" alt="">
 </div>
 
-<!-- TODO configurable: 10 seconds in red -->
-<div v-else class="clock">
+<div v-else :class="['clock', { '--red': isClockRed }]">
 	<Digits :value="clockMinutes" digits="1"></Digits>:<Digits :value="clockSeconds" digits="2" pad="0"></Digits>
 </div>
