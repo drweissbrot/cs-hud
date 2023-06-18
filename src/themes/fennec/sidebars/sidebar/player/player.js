@@ -1,3 +1,4 @@
+import { positionClass } from '/hud/helpers/position-class.js'
 import AdditionalStats from '/hud/sidebars/sidebar/player/additional-stats/additional-stats.vue'
 import Adr from '/hud/sidebars/sidebar/player/adr/adr.vue'
 import DeadIcon from '/hud/sidebars/sidebar/player/dead-icon/dead-icon.vue'
@@ -45,12 +46,10 @@ export default {
 	},
 
 	computed: {
+		positionClass,
+
 		isBombActive() {
 			return !! this.player?.bomb?.isActive
-		},
-
-		positionClass() {
-			return `--${this.position}`
 		},
 	},
 }

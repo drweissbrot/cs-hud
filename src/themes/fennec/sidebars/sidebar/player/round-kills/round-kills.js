@@ -1,3 +1,5 @@
+import { positionClass } from '/hud/helpers/position-class.js'
+
 export default {
 	props: [
 		'position',
@@ -5,8 +7,6 @@ export default {
 	],
 
 	computed: {
-		positionClass() {
-			return `--${this.position}`
-		},
+		positionClass,
 	},
 }
