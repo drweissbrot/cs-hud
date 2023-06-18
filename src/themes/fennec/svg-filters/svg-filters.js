@@ -2,6 +2,10 @@ export default {
 	data() {
 		return {
 			colorVariables: [
+				'bomb-defused',
+				'bomb-defusing',
+				'bomb-exploded',
+				'bomb-planted',
 				'counter-terrorists',
 				'terrorists',
 			],

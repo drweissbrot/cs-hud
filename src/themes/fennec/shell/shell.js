@@ -1,5 +1,6 @@
 import FocusedPlayer from '/hud/focused-player/focused-player.vue'
 import PlayersAlive from '/hud/players-alive/players-alive.vue'
+import Radar from '/hud/radar/radar.vue'
 import SeriesGraph from '/hud/series-graph/series-graph.vue'
 import Sidebars from '/hud/sidebars/sidebars.vue'
 import SvgFilters from '/hud/svg-filters/svg-filters.vue'
@@ -9,6 +10,7 @@ export default {
 	components: {
 		FocusedPlayer,
 		PlayersAlive,
+		Radar,
 		SeriesGraph,
 		Sidebars,
 		SvgFilters,

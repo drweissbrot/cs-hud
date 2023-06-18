@@ -20,6 +20,11 @@
 	--sidebar-good-kd-ratio-color: green;
 	--sidebar-bad-kd-ratio-color: var(--red);
 
+	--bomb-defused-rgb: 0, 255, 0;
+	--bomb-defusing-rgb: 255, 0, 0;
+	--bomb-exploded-rgb: 255, 0, 0;
+	--bomb-planted-rgb: 255, 0, 0;
+
 	/*
 	 * Spacing, Sizes
 	 */
@@ -76,7 +81,10 @@
 	--round-graph-height: 5.56rem; /* NB! This value is purely descriptive, and does not change the height of the series graph */
 	--round-graph-margin-to-sidebars: var(--series-graph-margin-to-sidebars);
 
-	/* Viewport Margin  */
+	/* TODO non-transparent radar images */
+	--radar-width: 25%;
+
+	/* Viewport Margin */
 	--viewport-margin-x: 2rem;
 	--viewport-margin-y: 1.5rem;
 

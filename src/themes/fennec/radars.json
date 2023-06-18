@@ -1,0 +1,1660 @@
+{
+	"ar_baggage": {
+		"pos_x": -2150,
+		"pos_y": 2280,
+		"rotate": 1,
+		"scale": 4,
+		"zoom": 1.3,
+
+		"CTSpawn_x": 0.51,
+		"CTSpawn_y": 0.82,
+		"TSpawn_x": 0.51,
+		"TSpawn_y": 0.29
+	},
+
+	"ar_dizzy": {
+		"pos_x": -2512,
+		"pos_y": 1536,
+		"scale": 3,
+		"zoom": 1,
+
+		"CTSpawn_x": 0.67,
+		"CTSpawn_y": 0.77,
+		"TSpawn_x": 0.31,
+		"TSpawn_y": 0.23
+	},
+
+	"ar_lunacy": {
+		"pos_x": -1536,
+		"pos_y": 1536,
+		"scale": 3,
+		"zoom": 1,
+
+		"CTSpawn_x": 0.5,
+		"CTSpawn_y": 0.86,
+		"TSpawn_x": 0.5,
+		"TSpawn_y": 0.18
+	},
+
+	"ar_monastery": {
+		"pos_x": -1687,
+		"pos_y": 1640,
+		"scale": 3,
+		"zoom": 1,
+
+		"CTSpawn_x": 0.37,
+		"CTSpawn_y": 0.86,
+		"TSpawn_x": 0.57,
+		"TSpawn_y": 0.18
+	},
+
+	"ar_shoots": {
+		"pos_x": -2150,
+		"pos_y": 2582,
+		"scale": 4,
+
+		"CTSpawn_x": 0.52,
+		"CTSpawn_y": 0.27,
+		"TSpawn_x": 0.52,
+		"TSpawn_y": 0.71
+	},
+
+	"coop_autumn": {
+		"pos_x": -5160,
+		"pos_y": 5859,
+		"scale": 12
+	},
+
+	"coop_cementplant": {
+		"pos_x": -5160,
+		"pos_y": 5859,
+		"scale": 12
+	},
+
+	"coop_fall": {
+		"pos_x": -5160,
+		"pos_y": 5859,
+		"scale": 12
+	},
+
+	"coop_kasbah": {
+		"pos_x": -5160,
+		"pos_y": 5859,
+		"scale": 12
+	},
+
+	"cs_agency": {
+		"pos_x": -2947,
+		"pos_y": 2492,
+		"scale": 5,
+
+		"CTSpawn_x": 0.65,
+		"CTSpawn_y": 0.8,
+		"TSpawn_x": 0.42,
+		"TSpawn_y": 0.12,
+
+		"Hostage1_x": 0.3,
+		"Hostage1_y": 0.25,
+		"Hostage2_x": 0.41,
+		"Hostage2_y": 0.28
+	},
+
+	"cs_apollo": {
+		"pos_x": -1998,
+		"pos_y": -1604,
+		"scale": 5.03,
+
+		"CTSpawn_x": 0.48,
+		"CTSpawn_y": 0.94,
+		"TSpawn_x": 0.615,
+		"TSpawn_y": 0.08,
+
+		"Hostage1_x": 0.3,
+		"Hostage1_y": 0.15,
+		"Hostage2_x": 0.8,
+		"Hostage2_y": 0.25
+	},
+
+	"cs_assault": {
+		"pos_x": 4041,
+		"pos_y": 7838,
+		"scale": 4.6,
+
+		"CTSpawn_x": 0.24,
+		"CTSpawn_y": 0.3,
+		"TSpawn_x": 0.35,
+		"TSpawn_y": 0.74,
+
+		"Hostage1_x": 0.56,
+		"Hostage1_y": 0.83,
+		"Hostage2_x": 0.48,
+		"Hostage2_y": 0.64,
+		"Hostage3_x": 0.47,
+		"Hostage3_y": 0.78,
+		"Hostage4_x": 0.3,
+		"Hostage4_y": 0.88,
+		"Hostage5_x": 0.42,
+		"Hostage5_y": 0.86
+	},
+
+	"cs_backalley": {
+		"pos_x": -2485,
+		"pos_y": 3200,
+		"scale": 3.5,
+
+		"CTSpawn_x": 0.72,
+		"CTSpawn_y": 0.85,
+		"TSpawn_x": 0.45,
+		"TSpawn_y": 0.09,
+
+		"Hostage1_x": 0.28,
+		"Hostage1_y": 0.25,
+		"Hostage2_x": 0.49,
+		"Hostage2_y": 0.35,
+		"Hostage3_x": 0.5,
+		"Hostage3_y": 0.52,
+		"Hostage4_x": 0.38,
+		"Hostage4_y": 0.25
+	},
+
+	"cs_climb": {
+		"pos_x": -858.5,
+		"pos_y": 4241,
+		"scale": 4.29,
+
+		"CTSpawn_x": 0.14,
+		"CTSpawn_y": 0.21,
+		"TSpawn_x": -0.12,
+		"TSpawn_y": 0.88,
+
+		"Hostage1_x": 0,
+		"Hostage1_y": 0.84,
+		"Hostage2_x": -0.3,
+		"Hostage2_y": 0.76,
+
+		"verticalsections": {
+			"default": {
+				"AltitudeMax": 10000,
+				"AltitudeMin": 175.957993
+			},
+
+			"layer1": {
+				"AltitudeMax": 175.957993,
+				"AltitudeMin": -10000
+			}
+		}
+	},
+
+	"cs_cruise": {
+		"pos_x": -3507,
+		"pos_y": 2498,
+		"rotate": 0,
+		"scale": 5,
+		"zoom": 0
+	},
+
+	"cs_insertion2": {
+		"pos_x": -5129,
+		"pos_y": 3136,
+		"scale": 9,
+		"zoom": 1.6,
+
+		"TSpawn_x": 0.52,
+		"TSpawn_y": 0.34,
+
+		"Hostage1_x": 0.595,
+		"Hostage1_y": 0.25,
+		"Hostage2_x": 0.44,
+		"Hostage2_y": 0.35,
+		"Hostage3_x": 0.595,
+		"Hostage3_y": 0.355,
+
+		"verticalsections": {
+			"default": {
+				"AltitudeMax": 6000,
+				"AltitudeMin": -700
+			},
+
+			"lower": {
+				"AltitudeMax": -700,
+				"AltitudeMin": -10000
+			}
+		}
+	},
+
+	"cs_insertion": {
+		"pos_x": -4888,
+		"pos_y": 4884,
+		"scale": 10,
+
+		"TSpawn_x": 0.44,
+		"TSpawn_y": 0.5,
+
+		"Hostage1_x": 0.5,
+		"Hostage1_y": 0.29,
+		"Hostage2_x": 0.45,
+		"Hostage2_y": 0.38,
+		"Hostage3_x": 0.49,
+		"Hostage3_y": 0.45,
+		"Hostage4_x": 0.33,
+		"Hostage4_y": 0.45
+	},
+
+	"cs_italy": {
+		"pos_x": -2647,
+		"pos_y": 2592,
+		"rotate": 1,
+		"scale": 4.6,
+		"zoom": 1.5,
+
+		"CTSpawn_x": 0.41,
+		"CTSpawn_y": 0.91,
+		"TSpawn_x": 0.6,
+		"TSpawn_y": 0.1,
+
+		"Hostage1_x": 0.43,
+		"Hostage1_y": 0.29,
+		"Hostage2_x": 0.48,
+		"Hostage2_y": 0.24,
+		"Hostage3_x": 0.64,
+		"Hostage3_y": 0.03,
+		"Hostage4_x": 0.72,
+		"Hostage4_y": 0.05
+	},
+
+	"cs_militia": {
+		"pos_x": -1474,
+		"pos_y": 2296,
+		"scale": 4.5,
+
+		"CTSpawn_x": 0.78,
+		"CTSpawn_y": 0.86,
+		"TSpawn_x": 0.4,
+		"TSpawn_y": 0.22,
+
+		"Hostage1_x": 0.45,
+		"Hostage1_y": 0.28,
+		"Hostage2_x": 0.57,
+		"Hostage2_y": 0.39,
+		"Hostage3_x": 0.45,
+		"Hostage3_y": 0.37,
+		"Hostage4_x": 0.35,
+		"Hostage4_y": 0.3,
+
+		"verticalsections": {
+			"default": {
+				"AltitudeMax": 20000,
+				"AltitudeMin": -25
+			},
+
+			"lower": {
+				"AltitudeMax": -25,
+				"AltitudeMin": -10000
+			}
+		}
+	},
+
+	"cs_office": {
+		"pos_x": -1838,
+		"pos_y": 1858,
+		"scale": 4.1,
+
+		"CTSpawn_x": 0.16,
+		"CTSpawn_y": 0.89,
+		"TSpawn_x": 0.78,
+		"TSpawn_y": 0.3,
+
+		"Hostage1_x": 0.84,
+		"Hostage1_y": 0.27,
+		"Hostage2_x": 0.84,
+		"Hostage2_y": 0.48,
+		"Hostage3_x": 0.91,
+		"Hostage3_y": 0.48,
+		"Hostage4_x": 0.77,
+		"Hostage4_y": 0.48,
+		"Hostage5_x": 0.77,
+		"Hostage5_y": 0.55
+	},
+
+	"cs_rush": {
+		"pos_x": -2950,
+		"pos_y": 3350,
+		"scale": 5.2,
+
+		"CTSpawn_x": 0.91,
+		"CTSpawn_y": 0.38,
+		"TSpawn_x": 0.11,
+		"TSpawn_y": 0.6,
+
+		"Hostage1_x": 0.23,
+		"Hostage1_y": 0.41,
+		"Hostage2_x": 0.35,
+		"Hostage2_y": 0.44,
+		"Hostage3_x": 0.38,
+		"Hostage3_y": 0.58,
+		"Hostage4_x": 0.18,
+		"Hostage4_y": 0.58,
+		"Hostage5_x": 0.28,
+		"Hostage5_y": 0.77
+	},
+
+	"cs_siege": {
+		"pos_x": -1193,
+		"pos_y": 3515,
+		"scale": 6.5,
+		"rotate": 1,
+		"zoom": 2.5
+	},
+
+	"cs_workout": {
+		"pos_x": -2176,
+		"pos_y": 3165,
+		"scale": 6.06,
+
+		"CTSpawn_x": 0.93,
+		"CTSpawn_y": 0.56,
+		"TSpawn_x": 0.08,
+		"TSpawn_y": 0.39,
+
+		"Hostage1_x": 0.29,
+		"Hostage1_y": 0.27,
+		"Hostage2_x": 0.32,
+		"Hostage2_y": 0.39
+	},
+
+	"de_abbey": {
+		"pos_x": -6204,
+		"pos_y": 5111,
+		"scale": 6.5,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.52,
+		"CTSpawn_y": 0.88,
+		"TSpawn_x": 0.54,
+		"TSpawn_y": 0.2,
+
+		"bombA_x": 0.37,
+		"bombA_y": 0.63,
+		"bombB_x": 0.73,
+		"bombB_y": 0.72
+	},
+
+	"de_ali": {
+		"pos_x": -2064,
+		"pos_y": 2920,
+		"scale": 5,
+		"zoom": 1.3
+	},
+
+	"de_ancient": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_ancient.webp",
+
+		"pos_x": -2953,
+		"pos_y": 2164,
+		"scale": 5,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.51,
+		"CTSpawn_y": 0.17,
+		"TSpawn_x": 0.485,
+		"TSpawn_y": 0.87,
+
+		"bombA_x": 0.31,
+		"bombA_y": 0.25,
+		"bombB_x": 0.8,
+		"bombB_y": 0.4
+	},
+
+	"de_anubis": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/ingame-transparent/de_anubis.webp",
+
+		"pos_x": -2796,
+		"pos_y": 3328,
+		"scale": 5.22,
+
+		"CTSpawn_x": 0.61,
+		"CTSpawn_y": 0.22,
+		"TSpawn_x": 0.58,
+		"TSpawn_y": 0.93
+	},
+
+	"de_austria": {
+		"pos_x": -2877,
+		"pos_y": 2930,
+		"scale": 5.8,
+		"zoom": 1,
+
+		"CTSpawn_x": 0.59,
+		"CTSpawn_y": 0.13,
+		"TSpawn_x": 0.35,
+		"TSpawn_y": 0.82,
+
+		"bombA_x": 0.31,
+		"bombA_y": 0.28,
+		"bombB_x": 0.78,
+		"bombB_y": 0.42
+	},
+
+	"de_aztec": {
+		"pos_x": -3200,
+		"pos_y": 2841,
+		"scale": 6,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.06,
+		"CTSpawn_y": 0.43,
+		"TSpawn_x": 0.93,
+		"TSpawn_y": 0.45,
+
+		"bombA_x": 0.21,
+		"bombA_y": 0.28,
+		"bombB_x": 0.45,
+		"bombB_y": 0.7
+	},
+
+	"de_bank": {
+		"pos_x": -2000,
+		"pos_y": 1493,
+		"scale": 4,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.92,
+		"CTSpawn_y": 0.49,
+		"TSpawn_x": 0.16,
+		"TSpawn_y": 0.41,
+
+		"bomb_x": 0.37,
+		"bomb_y": 0.42
+	},
+
+	"de_basalt": {
+		"pos_x": -2345.655273,
+		"pos_y": 2391.837646,
+		"scale": 4.37,
+
+		"CTSpawn_x": 0.86,
+		"CTSpawn_y": 0.67,
+		"TSpawn_x": 0.11,
+		"TSpawn_y": 0.36,
+
+		"bombA_x": 0.62,
+		"bombA_y": 0.79,
+		"bombB_x": 0.75,
+		"bombB_y": 0.26
+	},
+
+	"de_bazaar": {
+		"pos_x": -2434,
+		"pos_y": 2179,
+		"scale": 5,
+		"rotate": 1,
+		"zoom": 2.5,
+
+		"CTSpawn_x": 0.57,
+		"CTSpawn_y": 0.08,
+		"TSpawn_x": 0.61,
+		"TSpawn_y": 0.92,
+
+		"bombA_x": 0.29,
+		"bombA_y": 0.26,
+		"bombB_x": 0.89,
+		"bombB_y": 0.25
+	},
+
+	"de_biome": {
+		"pos_x": -2129,
+		"pos_y": 2368,
+		"scale": 5,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.51,
+		"CTSpawn_y": 0.16,
+		"TSpawn_x": 0.49,
+		"TSpawn_y": 0.89,
+
+		"bombA_x": 0.36,
+		"bombA_y": 0.32,
+		"bombB_x": 0.75,
+		"bombB_y": 0.39
+	},
+
+	"de_blackgold": {
+		"pos_x": -1100,
+		"pos_y": 1425,
+		"scale": 5.3
+	},
+
+	"de_blagai": {
+		"pos_x": -1742,
+		"pos_y": 710,
+		"scale": 3.15,
+
+		"CTSpawn_x": 0.43,
+		"CTSpawn_y": 0.07,
+		"TSpawn_x": 0.75,
+		"TSpawn_y": 0.94
+	},
+
+	"de_boyard": {
+		"pos_x": -2352,
+		"pos_y": -640,
+		"scale": 2.98,
+
+		"CTSpawn_x": 0.2,
+		"CTSpawn_y": 0.91,
+		"TSpawn_x": 0.78,
+		"TSpawn_y": 0.16
+	},
+
+	"de_breach": {
+		"pos_x": -2950,
+		"pos_y": 2886,
+		"scale": 5.5,
+
+		"CTSpawn_x": 0.45,
+		"CTSpawn_y": 0.18,
+		"TSpawn_x": 0.66,
+		"TSpawn_y": 0.89,
+
+		"bombA_x": 0.6,
+		"bombA_y": 0.18,
+		"bombB_x": 0.27,
+		"bombB_y": 0.46
+	},
+
+	"de_cache": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_cache.webp",
+
+		"pos_x": -2000,
+		"pos_y": 3250,
+		"scale": 5.5,
+
+		"CTSpawn_x": 0.09775,
+		"CTSpawn_y": 0.473,
+		"TSpawn_x": 0.887,
+		"TSpawn_y": 0.585,
+
+		"bombA_x": 0.325,
+		"bombA_y": 0.26,
+		"bombB_x": 0.345,
+		"bombB_y": 0.79,
+
+		"inset_left": 0.16,
+		"inset_top": 0.04,
+		"inset_right": 0.2,
+		"inset_bottom": 0.04
+	},
+
+	"de_calavera": {
+		"pos_x": -490.015015,
+		"pos_y": 326,
+		"scale": 2.82
+	},
+
+	"de_canals": {
+		"pos_x": -2496,
+		"pos_y": 1792,
+		"scale": 4,
+
+		"CTSpawn_x": 0.28,
+		"CTSpawn_y": 0.905,
+		"TSpawn_x": 0.691,
+		"TSpawn_y": 0.077,
+
+		"bombA_x": 0.306,
+		"bombA_y": 0.61,
+		"bombB_x": 0.641,
+		"bombB_y": 0.695
+	},
+
+	"de_castle": {
+		"pos_x": -3378,
+		"pos_y": 2756,
+		"scale": 5.5,
+		"zoom": 1.8,
+
+		"CTSpawn_x": 0.69,
+		"CTSpawn_y": 0.7,
+		"TSpawn_x": 0.38,
+		"TSpawn_y": 0.13,
+
+		"bombA_x": 0.25,
+		"bombA_y": 0.69,
+		"bombB_x": 0.86,
+		"bombB_y": 0.58
+	},
+
+	"de_cbble": {
+		"pos_x": -3840,
+		"pos_y": 3072,
+		"scale": 6,
+
+		"CTSpawn_x": 0.264,
+		"CTSpawn_y": 0.778,
+		"TSpawn_x": 0.457,
+		"TSpawn_y": 0.121,
+
+		"bombA_x": 0.25,
+		"bombA_y": 0.67,
+		"bombB_x": 0.66,
+		"bombB_y": 0.65,
+
+		"inset_left": 0.15,
+		"inset_top": 0.01,
+		"inset_right": 0.3,
+		"inset_bottom": 0.15
+	},
+
+	"chalice": {
+		"pos_x": -1501,
+		"pos_y": 1570,
+		"scale": 3,
+		"rotate": 0,
+
+		"CTSpawn_x": 0.89,
+		"CTSpawn_y": 0.46,
+		"TSpawn_x": 0.13,
+		"TSpawn_y": 0.69,
+
+		"bombA_x": 0.67,
+		"bombA_y": 0.4
+	},
+
+	"de_chinatown": {
+		"pos_x": -1735,
+		"pos_y": 3232,
+		"scale": 4,
+		"rotate": 0,
+		"zoom": 0
+	},
+
+	"de_chlorine": {
+		"pos_x": 2076,
+		"pos_y": 1272,
+		"scale": 5.25,
+
+		"CTSpawn_x": -1.19,
+		"CTSpawn_y": 0.88,
+		"TSpawn_x": -1.24,
+		"TSpawn_y": 0.12
+	},
+
+	"de_coast": {
+		"pos_x": -3028,
+		"pos_y": 4122,
+		"scale": 5.5,
+
+		"CTSpawn_x": 0.54,
+		"CTSpawn_y": 0.21,
+		"TSpawn_x": 0.48,
+		"TSpawn_y": 0.83,
+
+		"bombA_x": 0.84,
+		"bombA_y": 0.32,
+		"bombB_x": 0.23,
+		"bombB_y": 0.2
+	},
+
+	"de_crete": {
+		"pos_x": -2240,
+		"pos_y": 1408,
+		"scale": 3.31
+	},
+
+	"de_dust2": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_dust2.webp",
+
+		"pos_x": -2476,
+		"pos_y": 3239,
+		"scale": 4.4,
+		"rotate": 1,
+		"zoom": 1.1,
+
+		"CTSpawn_x": 0.62,
+		"CTSpawn_y": 0.21,
+		"TSpawn_x": 0.39,
+		"TSpawn_y": 0.91,
+
+		"bombA_x": 0.8,
+		"bombA_y": 0.16,
+		"bombB_x": 0.21,
+		"bombB_y": 0.12,
+
+		"inset_left": 0,
+		"inset_top": 0,
+		"inset_right": 0,
+		"inset_bottom": 0
+	},
+
+	"de_dust": {
+		"pos_x": -2850,
+		"pos_y": 4073,
+		"scale": 6,
+		"rotate": 1,
+		"zoom": 1.3,
+
+		"CTSpawn_x": 0.47,
+		"CTSpawn_y": 0.92,
+		"TSpawn_x": 0.47,
+		"TSpawn_y": 0.1,
+
+		"bombA_x": 0.8,
+		"bombA_y": 0.55,
+		"bombB_x": 0.53,
+		"bombB_y": 0.74
+	},
+
+	"de_elysion": {
+		"pos_x": -1192,
+		"pos_y": 1096,
+		"scale": 2.59,
+
+		"CTSpawn_x": 0.35,
+		"CTSpawn_y": 0.085,
+		"TSpawn_x": 0.27,
+		"TSpawn_y": 0.905,
+
+		"bombA_x": 0.595,
+		"bombA_y": 0.345
+	},
+
+	"de_empire": {
+		"pos_x": -2165,
+		"pos_y": 2000,
+		"scale": 4.5,
+		"rotate": 0,
+		"zoom": 1.6,
+
+		"CTSpawn_x": 0.45,
+		"CTSpawn_y": 0.12,
+		"TSpawn_x": 0.86,
+		"TSpawn_y": 0.9,
+
+		"bombA_x": 0.66,
+		"bombA_y": 0.46,
+		"bombB_x": 0.44,
+		"bombB_y": 0.3
+	},
+
+	"de_engage": {
+		"pos_x": -3530,
+		"pos_y": 2976,
+		"scale": 5.77,
+
+		"CTSpawn_x": 0.6,
+		"CTSpawn_y": 0.91,
+		"TSpawn_x": 0.515,
+		"TSpawn_y": 0.07
+	},
+
+	"de_extraction": {
+		"pos_x": -1808,
+		"pos_y": 1888,
+		"scale": 3.56
+	},
+
+	"de_facade": {
+		"pos_x": -90,
+		"pos_y": 5659,
+		"scale": 6,
+
+		"CTSpawn_x": 0.68,
+		"CTSpawn_y": 0.77,
+		"TSpawn_x": 0.3,
+		"TSpawn_y": 0.35,
+
+		"bombA_x": 0.38,
+		"bombA_y": 0.67,
+		"bombB_x": 0.83,
+		"bombB_y": 0.42
+	},
+
+	"de_grind": {
+		"pos_x": -3723,
+		"pos_y": 3026,
+		"scale": 5,
+
+		"CTSpawn_x": 0.625,
+		"CTSpawn_y": 0.14,
+		"TSpawn_x": 0.62,
+		"TSpawn_y": 0.875,
+
+		"bombA_x": 0.825,
+		"bombA_y": 0.325,
+		"bombB_x": 0.18,
+		"bombB_y": 0.425
+	},
+
+	"de_guard": {
+		"pos_x": -1768,
+		"pos_y": 1648,
+		"scale": 4.02,
+
+		"CTSpawn_x": 0.68,
+		"CTSpawn_y": 0.88,
+		"TSpawn_x": 0.58,
+		"TSpawn_y": 0.08
+	},
+
+	"de_gwalior": {
+		"pos_x": -1145,
+		"pos_y": 2688,
+		"scale": 5
+	},
+
+	"de_hive": {
+		"pos_x": -538,
+		"pos_y": 2608,
+		"scale": 4.01,
+
+		"CTSpawn_x": 0.01,
+		"CTSpawn_y": 0.89,
+		"TSpawn_x": -0.31,
+		"TSpawn_y": 0.08
+	},
+
+	"de_inferno": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_inferno.webp",
+
+		"pos_x": -2087,
+		"pos_y": 3870,
+		"scale": 4.9,
+
+		"CTSpawn_x": 0.9,
+		"CTSpawn_y": 0.35,
+		"TSpawn_x": 0.1,
+		"TSpawn_y": 0.67,
+
+		"bombA_x": 0.81,
+		"bombA_y": 0.69,
+		"bombB_x": 0.49,
+		"bombB_y": 0.22
+	},
+
+	"de_iris": {
+		"pos_x": -2288,
+		"pos_y": 2341,
+		"scale": 4.5,
+
+		"CTSpawn_x": 0.65,
+		"CTSpawn_y": 0.09,
+		"TSpawn_x": 0.39,
+		"TSpawn_y": 0.85,
+
+		"bombA_x": 0.26,
+		"bombA_y": 0.39,
+		"bombB_x": 0.9,
+		"bombB_y": 0.45
+	},
+
+	"de_lake": {
+		"pos_x": 1200,
+		"pos_y": -700,
+		"scale": 5.2,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.17,
+		"CTSpawn_y": 0.65,
+		"TSpawn_x": 0.77,
+		"TSpawn_y": 0.5,
+
+		"bomb_x": 0.47,
+		"bomb_y": 0.66
+	},
+
+	"de_lite": {
+		"pos_x": -2012,
+		"pos_y": 2928,
+		"scale": 5,
+
+		"CTSpawn_x": 0.17,
+		"CTSpawn_y": 0.43,
+		"TSpawn_x": 0.85,
+		"TSpawn_y": 0.45,
+
+		"bombA_x": 0.23,
+		"bombA_y": 0.19,
+		"bombB_x": 0.19,
+		"bombB_y": 0.72
+	},
+
+	"de_log": {
+		"pos_x": -411,
+		"pos_y": 759,
+		"scale": 6.5,
+
+		"CTSpawn_x": 0.45,
+		"CTSpawn_y": 0.9,
+		"TSpawn_x": 0.52,
+		"TSpawn_y": 0.08,
+
+		"bombA_x": 0.3,
+		"bombA_y": 0.6,
+		"bombB_x": 0.76,
+		"bombB_y": 0.8
+	},
+
+	"de_marquis": {
+		"pos_x": -1877,
+		"pos_y": 3199,
+		"scale": 5,
+		"rotate": 0,
+		"zoom": 1,
+
+		"CTSpawn_x": 0.96,
+		"CTSpawn_y": 0.41,
+		"TSpawn_x": 0.11,
+		"TSpawn_y": 0.64,
+
+		"bombA_x": 0.72,
+		"bombA_y": 0.64,
+		"bombB_x": 0.62,
+		"bombB_y": 0.24
+	},
+
+	"de_mikla": {
+		"pos_x": 711,
+		"pos_y": 2383,
+		"scale": 4.1,
+		"zoom": 1.3,
+
+		"CTSpawn_x": 0.68,
+		"CTSpawn_y": 0.8,
+		"TSpawn_x": 0.47,
+		"TSpawn_y": 0.15,
+
+		"bombA_x": 0.08,
+		"bombA_y": 0.8,
+		"bombB_x": 0.73,
+		"bombB_y": 0.55
+	},
+
+	"de_mirage": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_mirage.webp",
+
+		"pos_x": -3230,
+		"pos_y": 1713,
+		"scale": 5,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.28,
+		"CTSpawn_y": 0.7,
+		"TSpawn_x": 0.87,
+		"TSpawn_y": 0.36,
+
+		"bombA_x": 0.54,
+		"bombA_y": 0.76,
+		"bombB_x": 0.23,
+		"bombB_y": 0.28,
+
+		"inset_left": 0.135,
+		"inset_top": 0.08,
+		"inset_right": 0.105,
+		"inset_bottom": 0.08
+	},
+
+	"de_mist": {
+		"pos_x": -5150,
+		"pos_y": 2080,
+		"scale": 4.8,
+
+		"CTSpawn_x": 0.61,
+		"CTSpawn_y": 0.91,
+		"TSpawn_x": 0.35,
+		"TSpawn_y": 0.07,
+
+		"bombA_x": 0.57,
+		"bombA_y": 0.73,
+		"bombB_x": 0.35,
+		"bombB_y": 0.41
+	},
+
+	"de_mocha": {
+		"pos_x": -265,
+		"pos_y": 3210,
+		"scale": 4.93
+	},
+
+	"de_mutiny": {
+		"pos_x": -8299,
+		"pos_y": -1312,
+		"scale": 4.93,
+
+		"CTSpawn_x": 0.565,
+		"CTSpawn_y": 0.07,
+		"TSpawn_x": 0.575,
+		"TSpawn_y": 0.935,
+
+		"bombA_x": 0.27,
+		"bombA_y": 0.325,
+		"bombB_x": 0.685,
+		"bombB_y": 0.295
+	},
+
+	"de_nuke": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_nuke.webp",
+
+		"pos_x": -3453,
+		"pos_y": 2887,
+		"scale": 7,
+
+		"CTSpawn_x": 0.82,
+		"CTSpawn_y": 0.45,
+		"TSpawn_x": 0.19,
+		"TSpawn_y": 0.54,
+
+		"bombA_x": 0.58,
+		"bombA_y": 0.48,
+		"bombB_x": 0.58,
+		"bombB_y": 0.58,
+
+		"inset_left": 0.33,
+		"inset_top": 0.2,
+		"inset_right": 0.2,
+		"inset_bottom": 0.2,
+
+		"verticalsections": {
+			"default": {
+				"AltitudeMax": 10000,
+				"AltitudeMin": -495
+			},
+
+			"lower": {
+				"AltitudeMax": -495,
+				"AltitudeMin": -10000
+			}
+		}
+	},
+
+	"de_overgrown": {
+		"pos_x": -3376,
+		"pos_y": 5563,
+		"scale": 7,
+
+		"CTSpawn_x": 0.6,
+		"CTSpawn_y": 0.27,
+		"TSpawn_x": 0.29,
+		"TSpawn_y": 0.86,
+
+		"bombA_x": 0.63,
+		"bombA_y": 0.58,
+		"bombB_x": 0.4,
+		"bombB_y": 0.39
+	},
+
+	"de_overpass": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_overpass.webp",
+
+		"pos_x": -4831,
+		"pos_y": 1781,
+		"scale": 5.2,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.49,
+		"CTSpawn_y": 0.2,
+		"TSpawn_x": 0.66,
+		"TSpawn_y": 0.93,
+
+		"bombA_x": 0.55,
+		"bombA_y": 0.23,
+		"bombB_x": 0.7,
+		"bombB_y": 0.31
+	},
+
+	"de_pitstop": {
+		"pos_x": -1472,
+		"pos_y": 2432,
+		"scale": 3.88,
+
+		"CTSpawn_x": 0.44,
+		"CTSpawn_y": 0.92,
+		"TSpawn_x": 0.33,
+		"TSpawn_y": 0.13,
+
+		"verticalsections": {
+			"default": {
+				"AltitudeMax": 164,
+				"AltitudeMin": -10000
+			},
+
+			"layer1": {
+				"AltitudeMax": 10000,
+				"AltitudeMin": 164
+			}
+		}
+	},
+
+	"de_prime": {
+		"pos_x": -4580,
+		"pos_y": 1553,
+		"scale": 4,
+
+		"CTSpawn_x": 0.52,
+		"CTSpawn_y": 0.87,
+		"TSpawn_x": 0.83,
+		"TSpawn_y": 0.16,
+
+		"bombA_x": 0.265,
+		"bombA_y": 0.63
+	},
+
+	"de_rails": {
+		"pos_x": -2199,
+		"pos_y": 2874,
+		"scale": 4.5,
+
+		"CTSpawn_x": 0.55,
+		"CTSpawn_y": 0.26,
+		"TSpawn_x": 0.55,
+		"TSpawn_y": 0.87,
+
+		"bombA_x": 0.79,
+		"bombA_y": 0.38,
+		"bombB_x": 0.15,
+		"bombB_y": 0.53
+	},
+
+	"de_ravine": {
+		"pos_x": 677.5,
+		"pos_y": 624,
+		"scale": 2.95,
+
+		"CTSpawn_x": 0.33,
+		"CTSpawn_y": 0.1,
+		"TSpawn_x": 0.56,
+		"TSpawn_y": 0.86
+	},
+
+	"de_resort": {
+		"pos_x": -506,
+		"pos_y": 2713,
+		"scale": 5.5,
+
+		"CTSpawn_x": 0.47,
+		"CTSpawn_y": 0.88,
+		"TSpawn_x": 0.48,
+		"TSpawn_y": 0.1,
+
+		"bombA_x": 0.19,
+		"bombA_y": 0.76,
+		"bombB_x": 0.8,
+		"bombB_y": 0.7
+	},
+
+	"de_royal": {
+		"pos_x": -2343,
+		"pos_y": 2644,
+		"scale": 4,
+		"rotate": 0,
+		"zoom": 1.3,
+
+		"CTSpawn_x": 0.63,
+		"CTSpawn_y": 0.07,
+		"TSpawn_x": 0.38,
+		"TSpawn_y": 0.95,
+
+		"bombA_x": 0.23,
+		"bombA_y": 0.2,
+		"bombB_x": 0.81,
+		"bombB_y": 0.32
+	},
+
+	"de_ruby": {
+		"pos_x": -1079,
+		"pos_y": 3093,
+		"scale": 4.5
+	},
+
+	"de_ruins": {
+		"pos_x": -2443,
+		"pos_y": 2485,
+		"scale": 6.25,
+		"rotate": 1,
+		"zoom": 2.5
+	},
+
+	"de_safehouse": {
+		"pos_x": -240,
+		"pos_y": 2650,
+		"scale": 4.52,
+
+		"CTSpawn_x": 0.08,
+		"CTSpawn_y": 0.53,
+		"TSpawn_x": 0.87,
+		"TSpawn_y": 0.53,
+
+		"bomb_x": 0.45,
+		"bomb_y": 0.53
+	},
+
+	"de_santorini": {
+		"pos_x": -2135,
+		"pos_y": 1400,
+		"scale": 4,
+
+		"CTSpawn_x": 0.318,
+		"CTSpawn_y": 0.08,
+		"TSpawn_x": 0.643,
+		"TSpawn_y": 0.92,
+
+		"bombA_x": 0.806,
+		"bombA_y": 0.245,
+		"bombB_x": 0.139,
+		"bombB_y": 0.4
+	},
+
+	"de_seaside": {
+		"pos_x": -4161,
+		"pos_y": 3680,
+		"scale": 7,
+		"rotate": 0,
+		"zoom": 1.5
+	},
+
+	"de_season": {
+		"pos_x": -1003,
+		"pos_y": 2521,
+		"scale": 5,
+		"zoom": 1,
+
+		"CTSpawn_x": 0.36,
+		"CTSpawn_y": 0.13,
+		"TSpawn_x": 0.63,
+		"TSpawn_y": 0.91,
+
+		"bombA_x": 0.15,
+		"bombA_y": 0.44,
+		"bombB_x": 0.75,
+		"bombB_y": 0.28
+	},
+
+	"de_shipped": {
+		"pos_x": -2432,
+		"pos_y": 2663,
+		"scale": 5.8,
+		"rotate": 0
+	},
+
+	"de_shortdust": {
+		"pos_x": -2318,
+		"pos_y": 2337,
+		"scale": 3.6,
+
+		"CTSpawn_x": 0.7,
+		"CTSpawn_y": 0.81,
+		"TSpawn_x": 0.31,
+		"TSpawn_y": 0.13,
+
+		"bomb_x": 0.63,
+		"bomb_y": 0.28
+	},
+
+	"de_shortnuke": {
+		"pos_x": -3453,
+		"pos_y": 2887,
+		"scale": 7,
+
+		"CTSpawn_x": 0.6,
+		"CTSpawn_y": 0.4,
+		"TSpawn_x": 0.7,
+		"TSpawn_y": 0.7,
+
+		"bombB_x": 0.56,
+		"bombB_y": 0.54,
+
+		"inset_left": 0.4,
+		"inset_top": 0.24,
+		"inset_right": 0.2,
+		"inset_bottom": 0.25
+	},
+
+	"de_shorttrain": {
+		"pos_x": -2477,
+		"pos_y": 2392,
+		"scale": 4.7,
+
+		"CTSpawn_x": 0.86,
+		"CTSpawn_y": 0.77,
+		"TSpawn_x": 0.12,
+		"TSpawn_y": 0.25,
+
+		"bombA_x": 0.63,
+		"bombA_y": 0.49
+	},
+
+	"de_stmarc": {
+		"pos_x": -9383,
+		"pos_y": 9099,
+		"scale": 4,
+
+		"CTSpawn_x": 0.15,
+		"CTSpawn_y": 0.54,
+		"TSpawn_x": 0.83,
+		"TSpawn_y": 0.78,
+
+		"bomb_x": 0.6,
+		"bomb_y": 0.52
+	},
+
+	"de_studio": {
+		"pos_x": -3248,
+		"pos_y": 2968,
+		"scale": 6.17,
+
+		"CTSpawn_x": 0.78,
+		"CTSpawn_y": 0.5,
+		"TSpawn_x": 0.2,
+		"TSpawn_y": 0.32
+	},
+
+	"de_subzero": {
+		"pos_x": -2438,
+		"pos_y": 3690,
+		"scale": 5,
+		"zoom": 1.3,
+
+		"CTSpawn_x": 0.0915,
+		"CTSpawn_y": 0.515,
+		"TSpawn_x": 0.956,
+		"TSpawn_y": 0.545,
+
+		"bombA_x": 0.415,
+		"bombA_y": 0.2147,
+		"bombB_x": 0.352,
+		"bombB_y": 0.767
+	},
+
+	"de_sugarcane": {
+		"pos_x": -4015,
+		"pos_y": 2000,
+		"scale": 4.25,
+
+		"CTSpawn_x": 0.19,
+		"CTSpawn_y": 0.74,
+		"TSpawn_x": 0.86,
+		"TSpawn_y": 0.39,
+
+		"bomb_x": 0.5,
+		"bomb_y": 0.41
+	},
+
+	"de_swamp": {
+		"pos_x": -2600,
+		"pos_y": 3906,
+		"scale": 6,
+
+		"CTSpawn_x": 0.57,
+		"CTSpawn_y": 0.81,
+		"TSpawn_x": 0.44,
+		"TSpawn_y": 0.25,
+
+		"bombA_x": 0.408,
+		"bombA_y": 0.626,
+		"bombB_x": 0.688,
+		"bombB_y": 0.545
+	},
+
+	"de_thrill": {
+		"pos_x": -3276,
+		"pos_y": 2973,
+		"scale": 5.5,
+
+		"CTSpawn_x": 0.5,
+		"CTSpawn_y": 0.88,
+		"TSpawn_x": 0.5,
+		"TSpawn_y": 0.11,
+
+		"bombA_x": 0.69,
+		"bombA_y": 0.6,
+		"bombB_x": 0.28,
+		"bombB_y": 0.56
+	},
+
+	"de_train": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_train.webp",
+
+		"pos_x": -2477,
+		"pos_y": 2392,
+		"scale": 4.7,
+
+		"CTSpawn_x": 0.86,
+		"CTSpawn_y": 0.77,
+		"TSpawn_x": 0.12,
+		"TSpawn_y": 0.25,
+
+		"bombA_x": 0.63,
+		"bombA_y": 0.49,
+		"bombB_x": 0.52,
+		"bombB_y": 0.76
+	},
+
+	"de_tulip": {
+		"pos_x": 3402,
+		"pos_y": 5583,
+		"scale": 5.5
+	},
+
+	"de_tuscan": {
+		"pos_x": -5141,
+		"pos_y": 1088,
+		"scale": 4.85,
+
+		"CTSpawn_x": 1.57,
+		"CTSpawn_y": 0.9,
+		"TSpawn_x": 1.58,
+		"TSpawn_y": 0.09,
+
+		"verticalsections": {
+			"default": {
+				"AltitudeMax": 10000,
+				"AltitudeMin": -248
+			},
+
+			"layer1": {
+				"AltitudeMax": -248,
+				"AltitudeMin": -10000
+			}
+		}
+	},
+
+	"de_vertigo": {
+		"radarImageTransparentBackgrond": true,
+		"radarImageUrl": "/hud/img/radars/simpleradar/de_vertigo.webp",
+
+		"pos_x": -3168,
+		"pos_y": 1762,
+		"scale": 4,
+
+		"CTSpawn_x": 0.54,
+		"CTSpawn_y": 0.25,
+		"TSpawn_x": 0.2,
+		"TSpawn_y": 0.75,
+
+		"bombA_x": 0.705,
+		"bombA_y": 0.585,
+		"bombB_x": 0.222,
+		"bombB_y": 0.223,
+
+		"inset_left": 0.1,
+		"inset_top": 0.1,
+		"inset_right": 0.2,
+		"inset_bottom": 0.15,
+
+		"verticalsections": {
+			"default": {
+				"AltitudeMax": 20000,
+				"AltitudeMin": 11700
+			},
+
+			"lower": {
+				"AltitudeMax": 11700,
+				"AltitudeMin": -10000
+			}
+		}
+	},
+
+	"de_zoo": {
+		"pos_x": -2435,
+		"pos_y": 6116,
+		"scale": 7,
+
+		"CTSpawn_x": 0.9,
+		"CTSpawn_y": 0.55,
+		"TSpawn_x": 0.07,
+		"TSpawn_y": 0.5,
+
+		"bombA_x": 0.62,
+		"bombA_y": 0.34,
+		"bombB_x": 0.53,
+		"bombB_y": 0.75
+	},
+
+	"dz_blacksite": {
+		"pos_x": -8604,
+		"pos_y": 8804,
+		"scale": 17
+	},
+
+	"dz_county": {
+		"pos_x": -10240,
+		"pos_y": 10240,
+		"scale": 20
+	},
+
+	"dz_frostbite": {
+		"pos_x": -8574,
+		"pos_y": 8787,
+		"scale": 17
+	},
+
+	"dz_junglety": {
+		"pos_x": -8504,
+		"pos_y": 8741,
+		"scale": 17
+	},
+
+	"dz_sirocco": {
+		"pos_x": -8604,
+		"pos_y": 8804,
+		"scale": 17
+	},
+
+	"dz_vineyard": {
+		"pos_x": -8192,
+		"pos_y": 8192,
+		"scale": 16
+	},
+
+	"gd_bank": {
+		"pos_x": -2000,
+		"pos_y": 1493,
+		"scale": 4,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.92,
+		"CTSpawn_y": 0.49,
+		"TSpawn_x": 0.42,
+		"TSpawn_y": 0.5,
+
+		"Hostage1_x": 0.37,
+		"Hostage1_y": 0.42
+	},
+
+	"gd_cbble": {
+		"pos_x": -3840,
+		"pos_y": 3072,
+		"scale": 6,
+
+		"CTSpawn_x": 0.42,
+		"CTSpawn_y": 0.065,
+
+		"bombA_x": 0.28,
+		"bombA_y": 0.17
+	},
+
+	"gd_crashsite": {
+		"pos_x": -2212,
+		"pos_y": 1437,
+		"scale": 3.5,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.4,
+		"CTSpawn_y": 0.7,
+		"TSpawn_x": 0.44,
+		"TSpawn_y": 0.22,
+
+		"bombA_x": 0.4,
+		"bombA_y": 0.63
+	},
+
+	"gd_lake": {
+		"pos_x": 1200,
+		"pos_y": -700,
+		"scale": 5.2,
+		"rotate": 0,
+		"zoom": 0,
+
+		"CTSpawn_x": 0.77,
+		"CTSpawn_y": 0.5,
+		"TSpawn_x": 0.48,
+		"TSpawn_y": 0.66,
+
+		"Hostage1_x": 0.45,
+		"Hostage1_y": 0.7
+	},
+
+	"gd_lunacy": {
+		"pos_x": -1536,
+		"pos_y": 1536,
+		"scale": 3,
+		"zoom": 1,
+
+		"CTSpawn_x": 0.46,
+		"CTSpawn_y": 0.77,
+		"TSpawn_x": 0.5,
+
+		"bombA_y": 0.67
+	},
+
+	"gd_rialto": {
+		"pos_x": -1260,
+		"pos_y": 1836,
+		"scale": 3,
+
+		"CTSpawn_x": 0.41,
+		"CTSpawn_y": 0.66,
+		"TSpawn_x": 0.5,
+		"TSpawn_y": 0.16,
+
+		"bombA_x": 0.41,
+		"bombA_y": 0.62
+	},
+
+	"training1": {
+		"pos_x": -2510,
+		"pos_y": 2000,
+		"scale": 5,
+
+		"CTSpawn_x": 0.48,
+		"CTSpawn_y": 0.38
+	}
+}

@@ -1,0 +1,5 @@
+<div v-if="radarConfig" class="radar">
+	<img ref="image" :src="radarImageUrl" alt="" :class="['radar-image', { '--transparent-background': radarConfig.radarImageTransparentBackgrond }]">
+
+	<Bomb />
+</div>

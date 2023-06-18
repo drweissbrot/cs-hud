@@ -1,0 +1,16 @@
+.dropped-bomb {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	transform: translate(-50%, -50%);
+}
+
+.dropped-bomb:not(.--default-level) {
+	opacity: 0.75;
+}
+
+img {
+	display: block;
+	height: 1.25rem;
+}
