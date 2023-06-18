@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    hud:
+        image: node:18-alpine
+        command: sh -c "yarn && yarn watch"
+        user: node
+        working_dir: /home/node/app
+
+        environment:
+            HOST: ${HOST:-0.0.0.0}
+
+        ports:
+            - ${EXPOSE_PORT:-31982}:${PORT:-31982}
+
+        volumes:
+            - .:/home/node/app
