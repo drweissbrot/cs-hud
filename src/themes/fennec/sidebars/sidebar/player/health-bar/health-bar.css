@@ -1,17 +1,27 @@
 .health-bar-background {
 	grid-area: 1/start/1/end;
+
+	display: grid;
 	background: rgba(0, 0, 0, 0.15);
 	z-index: -1;
 }
 
+.damage-taken,
 .health {
+	grid-area: 1/1;
 	height: 100%;
 }
 
+.health {
+	z-index: 1;
+}
+
+.damage-taken.--left,
 .health.--left {
 	transform-origin: left;
 }
 
+.damage-taken.--right,
 .health.--right {
 	transform-origin: right;
 }
@@ -22,4 +32,9 @@
 
 .health.--t {
 	background: var(--terrorists);
+}
+
+.damage-taken {
+	background: var(--red);
+	transition: transform var(--fade-default-duration) ease;
 }
