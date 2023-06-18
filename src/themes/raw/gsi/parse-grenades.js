@@ -21,15 +21,19 @@ const additionalGrenadeData = (grenade) => {
 	}
 }
 
-export const parseGrenades = () => Object.entries(gsiState.grenades).map(([id, grenade]) => ({
-	id,
+export const parseGrenades = () => Object.entries(gsiState.grenades).map(([id, grenade]) => {
+	const velocity = parsePosition(grenade.velocity)
 
-	isDetonated: grenade.velocity !== '[0, 0, 0]',
-	lifeTimeSec: Number(grenade.lifetime),
-	owner: players.find((player) => player.steam64Id === grenade.owner),
-	position: parsePosition(grenade.position),
-	type: grenade.type,
-	velocity: parsePosition(grenade.velocity),
+	return {
+		id,
+		velocity,
 
-	...additionalGrenadeData(grenade),
-}))
+		isDetonated: velocity && velocity[0] === 0 && velocity[1] === 0 && velocity[2] === 0,
+		lifeTimeSec: Number(grenade.lifetime),
+		owner: players.find((player) => player.steam64Id === grenade.owner),
+		position: parsePosition(grenade.position),
+		type: grenade.type,
+
+		...additionalGrenadeData(grenade),
+	}
+})

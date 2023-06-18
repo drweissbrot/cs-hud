@@ -1,7 +1,7 @@
 import { gsiState, options } from '/hud/core/state.js'
 
 const getWinningSide = () => {
-	switch (gsiState.round.win_team) {
+	switch (gsiState.round?.win_team) {
 		case 'T': return 2
 		case 'CT': return 3
 		default: return undefined
@@ -25,7 +25,7 @@ export const parseRound = () => {
 		overtimeNumber,
 		roundNumber,
 
-		isFreezetime: gsiState.round.phase === 'freezetime',
+		isFreezetime: gsiState.round?.phase === 'freezetime',
 		phase: gsiState.phase_countdowns.phase,
 		phaseEndsInSec: Number(gsiState.phase_countdowns.phase_ends_in),
 		roundNumberInCurrentOvertime: isOvertime ? roundNumber - maxrounds - (overtimeNumber - 1) * overtimeMaxrounds - Number(gsiState.phase_countdowns.phase === 'over') : 0,

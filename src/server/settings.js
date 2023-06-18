@@ -24,18 +24,19 @@ export const getSettings = async () => {
 	const settingsObjects = [await readJson(userspaceSettingsPath)]
 
 	while (settingsObjects[settingsObjects.length - 1].parent) {
-		themeTree.push(settingsObjects[settingsObjects.length - 1].parent)
+		const parent = settingsObjects[settingsObjects.length - 1].parent
+		themeTree.push(parent)
 
 		settingsObjects.push(
-			await readJson(`${themesDirectory}/${settingsObjects[settingsObjects.length - 1].parent}/theme.json`),
+			await readJson(`${themesDirectory}/${parent}/theme.json`),
 		)
 
 		bombsiteObjects.push(
-			await readJsonIfExists(`${themesDirectory}/${settingsObjects[settingsObjects.length - 1].parent}/bombsites.json`),
+			await readJsonIfExists(`${themesDirectory}/${parent}/bombsites.json`),
 		)
 
 		radarObjects.push(
-			await readJsonIfExists(`${themesDirectory}/${settingsObjects[settingsObjects.length - 1].parent}/radars.json`),
+			await readJsonIfExists(`${themesDirectory}/${parent}/radars.json`),
 		)
 	}
 
