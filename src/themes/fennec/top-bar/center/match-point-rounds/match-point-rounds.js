@@ -1,3 +1,5 @@
+import { seriesMapNumbers } from '/hud/helpers/series-map-numbers.js'
+
 export default {
 	computed: {
 		isMatchPointRoundsActive() {
@@ -6,13 +8,11 @@ export default {
 		},
 
 		isMultipleMapSeries() {
-			const mapNumbers = new Set()
-
-			for (const key of Object.keys(this.$opts)) {
-				if (key.startsWith('series.maps.')) mapNumbers.add(key.substring(12).split('.', 2)[0])
-			}
-
-			return mapNumbers.size > 1
+			return this.seriesMapNumbers().length > 1
 		},
+	},
+
+	methods: {
+		seriesMapNumbers,
 	},
 }

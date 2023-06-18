@@ -1,3 +1,4 @@
+import { seriesMapNumbers } from '/hud/helpers/series-map-numbers.js'
 import CurrentMap from '/hud/top-bar/center/current-map/current-map.vue'
 import CurrentRound from '/hud/top-bar/center/current-round/current-round.vue'
 import Digits from '/hud/digits/digits.vue'
@@ -17,13 +18,11 @@ export default {
 
 	computed: {
 		isMultipleMapSeries() {
-			const mapNumbers = new Set()
-
-			for (const key of Object.keys(this.$opts)) {
-				if (key.startsWith('series.maps.')) mapNumbers.add(key.substring(12).split('.', 2)[0])
-			}
-
-			return mapNumbers.size > 1
+			return this.seriesMapNumbers().length > 1
 		},
+	},
+
+	methods: {
+		seriesMapNumbers,
 	},
 }
