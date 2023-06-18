@@ -212,6 +212,13 @@
 			"label": "Value of mp_team_timeout_time, i.e. the duration in seconds of each tactical timeout"
 		},
 
+		"cvars.mp_freezetime": {
+			"type": "number",
+			"fallback": 20,
+			"section": "Cvars",
+			"label": "Value of mp_freezetime, i.e. the duration in seconds of each freezetime"
+		},
+
 		"preferences.playersAlive.showDuringFreezetime": {
 			"type": "boolean",
 			"section": "Preferences",
@@ -266,6 +273,13 @@
 			"type": "boolean",
 			"section": "Preferences",
 			"label": "Show \"First to X Rounds\" panel (visible during Overtime) during round (otherwise only in Freezetime)"
+		},
+
+		"preferences.topBar.team.roundWinnerPanel.showIntoFreezetimeSec": {
+			"type": "number",
+			"fallback": 0,
+			"section": "Preferences",
+			"label": "Number of seconds into the following round's freezetime the \"Wins the Round\" panel should be visible (0 to disable; 1000 to show during entire freezetime)"
 		},
 
 		"css.base-scale-factor": {
