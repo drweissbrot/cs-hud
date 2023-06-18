@@ -83,6 +83,8 @@
 
 	/* TODO non-transparent radar images */
 	--radar-width: 25%;
+	--radar-inferno-flame-diameter: calc(14 / 1024 * 100%);
+	--radar-smoke-diameter: calc(57.6 / 1024 * 100%);
 
 	/* Viewport Margin */
 	--viewport-margin-x: 2rem;

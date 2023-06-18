@@ -1,9 +1,11 @@
 import Bomb from '/hud/radar/bomb/bomb.vue'
+import Grenade from '/hud/radar/grenade/grenade.vue'
 import Player from '/hud/radar/player/player.vue'
 
 export default {
 	components: {
 		Bomb,
+		Grenade,
 		Player,
 	},
 
