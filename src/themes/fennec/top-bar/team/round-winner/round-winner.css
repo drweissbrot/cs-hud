@@ -1,5 +1,3 @@
-@import '/hud/top-bar/team/panel-shared.css';
-
 .round-winner-wrapper {
 	max-height: var(--top-bar-row-height);
 }
