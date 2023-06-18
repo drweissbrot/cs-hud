@@ -15,9 +15,9 @@
 }
 
 .name-row.--ct {
-	background: var(--counter-terrorists-fill-50);
+	background: var(--counter-terrorists-fill-60);
 }
 
 .name-row.--t {
-	background: var(--terrorists-fill-50);
+	background: var(--terrorists-fill-60);
 }

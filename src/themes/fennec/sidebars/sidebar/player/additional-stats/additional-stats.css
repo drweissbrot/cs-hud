@@ -10,7 +10,7 @@
 
 	padding: 0 0.5rem;
 
-	background: var(--black-40);
+	background: var(--black-75);
 	transition: transform var(--fade-slow-duration) ease;
 }
 

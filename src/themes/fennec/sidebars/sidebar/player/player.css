@@ -18,7 +18,7 @@
 	display: grid;
 	grid-template-rows: repeat(2, var(--sidebar-player-row-height));
 
-	background: var(--black-40);
+	background: var(--black-60);
 	filter: var(--filter-drop-shadow);
 	font-size: 1.8rem;
 	isolation: isolate;

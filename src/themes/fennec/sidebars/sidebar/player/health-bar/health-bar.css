@@ -2,7 +2,7 @@
 	grid-area: 1/start/1/end;
 
 	display: grid;
-	background: var(--black-20);
+	background: var(--black-30);
 	z-index: -1;
 }
 

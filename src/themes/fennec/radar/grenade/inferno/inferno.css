@@ -13,11 +13,11 @@
 }
 
 .flame.--ct {
-	background: var(--counter-terrorists-fill-75);
+	background: var(--radar-inferno-flame-ct-fill);
 }
 
 .flame.--t {
-	background: var(--terrorists-fill-75);
+	background: var(--radar-inferno-flame-t-fill);
 }
 
 .flame:not(.--default-level) {

@@ -13,13 +13,11 @@
 }
 
 .smoke.--ct {
-	/* TODO should be blue-tinted gray */
-	background: var(--counter-terrorists-fill-75);
+	background: var(--radar-smoke-ct-fill);
 }
 
 .smoke.--t {
-	/* TODO should be yellow-tinted gray */
-	background: var(--terrorists-fill-75);
+	background: var(--radar-smoke-t-fill);
 }
 
 .smoke:not(.--default-level) {

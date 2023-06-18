@@ -33,11 +33,11 @@
 }
 
 .team-equipment.--ct {
-	background: var(--counter-terrorists-fill-50);
+	background: var(--counter-terrorists-fill-60);
 }
 
 .team-equipment.--t {
-	background: var(--terrorists-fill-50);
+	background: var(--terrorists-fill-60);
 }
 
 .loss-bonus .label,
