@@ -4,7 +4,7 @@ export default {
 	computed: {
 		isActive() {
 			if (this.$opts['preferences.playersAlive.hideDuringFreezetime']) {
-				return !this.$round.isFreezetime
+				return ! this.$round.isFreezetime
 			}
 
 			return true

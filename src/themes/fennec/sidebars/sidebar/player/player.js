@@ -46,7 +46,7 @@ export default {
 
 	computed: {
 		isBombActive() {
-			return this.player?.weapons?.find((weapon) => weapon.isActive)?.isBomb
+			return !! this.player?.bomb?.isActive
 		},
 
 		positionClass() {

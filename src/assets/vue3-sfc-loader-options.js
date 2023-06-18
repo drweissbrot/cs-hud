@@ -7,7 +7,7 @@ export const sfcLoaderOptions = {
 
 	getFile: async (url) => {
 		const res = await fetch(url)
-		if (!res.ok) throw Object.assign(new Error(res.statusText + ' ' + url), { res })
+		if (! res.ok) throw Object.assign(new Error(res.statusText + ' ' + url), { res })
 
 		// #65: this enables using query params
 		const pathname = new URL(`${window.location.origin}${url}`).pathname

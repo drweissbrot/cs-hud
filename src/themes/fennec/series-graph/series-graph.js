@@ -22,7 +22,7 @@ export default {
 				const scoreB = this.$opts[`series.maps.${mapNumber}.enemyTeamScore`]
 
 				const isOnlyMatch = mapNumbers.size === 1
-				const isFirstMapWithoutScores = !scoreA && !scoreB && (mapNumber === 1 || maps[maps.length - 1]?.scores)
+				const isFirstMapWithoutScores = ! scoreA && ! scoreB && (mapNumber === 1 || maps[maps.length - 1]?.scores)
 
 				maps.push({
 					isOnlyMatch,

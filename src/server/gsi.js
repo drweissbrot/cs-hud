@@ -3,7 +3,7 @@ import { additionalState, gsiState } from './state.js'
 export const registerGsiRoutes = (router, websocket) => {
 	router.post('/gsi', (context) => {
 		const userAgent = context.request.headers['user-agent']
-		if (!userAgent.startsWith('Valve/Steam HTTP Client')) return context.status = 400
+		if (! userAgent.startsWith('Valve/Steam HTTP Client')) return context.status = 400
 
 		const body = context.request.body
 		const authToken = body.auth.token

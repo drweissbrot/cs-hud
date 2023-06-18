@@ -80,19 +80,19 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 		forward: parsePosition(player.forward),
 		hasArmor: player.state?.armor > 0,
 		hasBadKdRatio: kdRatio <= options['preferences.maximumBadKdRatio'],
-		hasBomb: !!bomb,
-		hasDefuser: !!player.state?.defusekit,
+		hasBomb: !! bomb,
+		hasDefuser: !! player.state?.defusekit,
 		hasGoodKdRatio: kdRatio >= options['preferences.minimumGoodKdRatio'],
 		hasGrenades: grenades.length > 0,
-		hasHelmet: !!player.state?.helmet,
-		hasKnife: !!knife,
-		hasPrimary: !!primary,
-		hasSecondary: !!secondary,
-		hasTaser: !!taser,
+		hasHelmet: !! player.state?.helmet,
+		hasKnife: !! knife,
+		hasPrimary: !! primary,
+		hasSecondary: !! secondary,
+		hasTaser: !! taser,
 		health: player.state?.health,
 		isAlive: player.state?.health > 0,
-		isBurning: !!player.state?.burning, // TODO why is this a number instead of a boolean?
-		isFlashed: !!player.state?.flashed, // TODO why is this a number instead of a boolean?
+		isBurning: !! player.state?.burning, // TODO why is this a number instead of a boolean?
+		isFlashed: !! player.state?.flashed, // TODO why is this a number instead of a boolean?
 		isFocused: gsiState.player?.steamid === steam64Id,
 		kills: player.match_stats?.kills,
 		money: player.state?.money,
