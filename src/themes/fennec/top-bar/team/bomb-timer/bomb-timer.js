@@ -43,7 +43,6 @@ export default {
 			switch (this.team.side) {
 				case 2: {
 					if (this.$bomb.state === 'planting') return 3.2
-					// TODO override this after the bomb has been planted
 					return this.$opts['cvars.mp_c4timer']
 				}
 

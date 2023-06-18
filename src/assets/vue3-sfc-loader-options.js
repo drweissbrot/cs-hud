@@ -1,5 +1,6 @@
 import * as Vue from '/dependencies/vue.js'
 
+// These options are used for vue3-sfc-loader, which enables the entire "inherit and override" model for extensibility in this project.
 export const sfcLoaderOptions = {
 	moduleCache: {
 		vue: Vue,

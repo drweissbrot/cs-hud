@@ -3,6 +3,7 @@ import { parsePosition } from '/hud/gsi/parse-position.js'
 
 const cachedFirebombTypes = {}
 
+// in-flight molotovs and incgrenades are both called `firebomb`, so we need to guess which one it is, based on the weapon the player had active when the grenade first appeared
 const getFirebombType = (grenadeId, owner) => {
 	const ownerActiveGrenade = owner?.grenades?.find((nade) => nade.isActive)
 
@@ -71,10 +72,10 @@ export const parseGrenades = () => {
 		}
 	})
 
+	// we need to make sure we clear this, as Source likes to reuse ids
 	for (const id in cachedFirebombTypes) {
 		if (! firebombGrenadeIds.has(id)) {
 			delete cachedFirebombTypes[id]
-			console.log('deleting', id)
 		}
 	}
 

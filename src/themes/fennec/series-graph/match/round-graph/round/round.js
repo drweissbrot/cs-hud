@@ -7,9 +7,8 @@ export default {
 
 	computed: {
 		colorClass() {
-			if (this.round.winningTeam) {
-				return teamColorClass(this.round.winningTeam)
-			}
+			if (! this.round.winningTeam) return
+			return teamColorClass(this.round.winningTeam)
 		},
 
 		reasonIconUrl() {

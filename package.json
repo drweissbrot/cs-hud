@@ -3,6 +3,7 @@
 	"type": "module",
 	"main": "src/server/index.js",
 	"scripts": {
+		"start": "node .",
 		"watch": "nodemon ."
 	},
 	"dependencies": {

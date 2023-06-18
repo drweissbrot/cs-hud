@@ -14,11 +14,11 @@ export const registerDependencyRoutes = (router) => {
 }
 
 // NB! Do _not_ use this with user-supplied values for localFile!
-export const sendStaticFile = (localFile) => async (context) => {
+const sendStaticFile = (localFile) => async (context) => {
 	await send(context, localFile)
 }
 
-export const serveFontsourceFont = (router, fontName) => {
+const serveFontsourceFont = (router, fontName) => {
 	const prefix = `/dependencies/${fontName}/`
 
 	router.get(`${prefix}:path*`, async (context) => {

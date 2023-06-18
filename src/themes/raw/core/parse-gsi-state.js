@@ -22,8 +22,4 @@ export const parseGsiState = () => {
 	Object.assign(misc, parseMisc())
 	Object.assign(map, parseMap())
 	Object.assign(round, parseRound())
-
-	// TODO
-	// series: SeriesMap[]
-	// themeData: Record<string, any> // TODO this contains series name etc. for default theme, but could also contain casters, observers, etc. for other themes
 }

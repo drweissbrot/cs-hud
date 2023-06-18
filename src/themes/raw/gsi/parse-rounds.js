@@ -13,6 +13,7 @@ const getPlainReason = (reason) => {
 	}
 }
 
+// NB! This must be called AFTER parseTeams!
 export const parseRounds = () => {
 	// GSI's map.round_wins resets every overtime, work around that
 	// TODO this may not be based on static 30 and 6, but instead of mp_maxrounds and mp_overtime_maxrounds, need to investigate
