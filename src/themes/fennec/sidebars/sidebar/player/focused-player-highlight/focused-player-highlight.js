@@ -3,10 +3,4 @@ export default {
 		'position',
 		'player',
 	],
-
-	computed: {
-		isActive() {
-			return this.player === this.$players.focused
-		},
-	},
 }
