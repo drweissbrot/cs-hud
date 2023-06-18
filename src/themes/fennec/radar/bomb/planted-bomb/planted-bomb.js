@@ -1,6 +1,6 @@
-import { getLevel, levels } from '/hud/helpers/radar-levels.js'
-import { offsetX, offsetY } from '/hud/helpers/radar-offset.js'
-import { radarConfig } from '/hud/helpers/radar-config.js'
+import { getLevel, levels } from '/hud/radar/helpers/radar-levels.js'
+import { offsetX, offsetY } from '/hud/radar/helpers/radar-offset.js'
+import { radarConfig } from '/hud/radar/helpers/radar-config.js'
 
 export default {
 	props: [
