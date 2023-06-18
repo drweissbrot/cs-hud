@@ -16,7 +16,7 @@ export default {
 		filters() {
 			return this.colorVariables.map((variable) => {
 				const rgb = getComputedStyle(document.documentElement).getPropertyValue(`--${variable}-rgb`)
-				const [r, g, b] = rgb.split(/\D+/).map((n) => Number(n))
+				const [r, g, b] = rgb.trim().split(/\D+/).map((n) => Number(n))
 
 				return {
 					id: `${variable}-from-white-filter`,
