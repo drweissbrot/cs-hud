@@ -34,12 +34,12 @@ export default {
 				}
 
 				optionValues[option.key] = option.value
+
 				sections[option.section].options.push({
 					...option,
 					inputType: this.getInputType(option.type),
 					keySegments: option.key.split('.'),
 				})
-
 
 				if (sections[option.section].description) {
 					sections[option.section].description = option.sectionDescription

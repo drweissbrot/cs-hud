@@ -212,16 +212,14 @@
 			"label": "Value of mp_team_timeout_time, i.e. the duration in seconds of each tactical timeout"
 		},
 
-		"preferences.playersAlive.hideDuringFreezetime": {
+		"preferences.playersAlive.showDuringFreezetime": {
 			"type": "boolean",
-			"fallback": true,
 			"section": "Preferences",
-			"label": "Hide \"Players Alive\" during freezetime"
+			"label": "Show \"Players Alive\" during freezetime"
 		},
 
 		"preferences.sidebar.teamGrenades.hideDuringRound": {
 			"type": "boolean",
-			"fallback": false,
 			"section": "Preferences",
 			"label": "Hode Team Grenades panels in sidebars during the round (if no, will only show during freezetimes, and the first few seconds of the round (defined in preferences.sidebar.teamGrenades.activeIntoRoundSec))"
 		},
@@ -242,28 +240,24 @@
 
 		"preferences.seriesGraph.showMapForOnlyMatch": {
 			"type": "boolean",
-			"fallback": false,
 			"section": "Preferences",
 			"label": "Show map name and screenshot in the Series Graph, even if there is only a single match in the series"
 		},
 
 		"preferences.topBar.clock.tenSecondsRedInFreezetime": {
 			"type": "boolean",
-			"fallback": false,
 			"section": "Preferences",
 			"label": "Show clock in red at less than 10 seconds in Freezetime"
 		},
 
 		"preferences.topBar.clock.tenSecondsRedInTacticalTimeout": {
 			"type": "boolean",
-			"fallback": false,
 			"section": "Preferences",
 			"label": "Show clock in red at less than 10 seconds during Tactical Timeouts"
 		},
 
 		"preferences.topBar.clock.tenSecondsRedInRoundRestartDelay": {
 			"type": "boolean",
-			"fallback": false,
 			"section": "Preferences",
 			"label": "Show clock in red at less than 10 seconds after round end"
 		},
