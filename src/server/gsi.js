@@ -10,8 +10,14 @@ export const registerGsiRoutes = (router, websocket) => {
 
 		if (authToken !== '7ATvXUzTfBYyMLrA') return context.status = 401
 
+		const wasRoundFreezetime = gsiState.round?.phase === 'freezetime'
+
 		updateGsiState(body)
 		updateAdditionalState(body)
+
+		if (! wasRoundFreezetime && gsiState.round?.phase === 'freezetime') {
+			updateMoneyAtStartOfRound(body)
+		}
 
 		// console.debug(JSON.stringify(gsiState, null, '\t'))
 
@@ -48,8 +54,16 @@ const updateLastKnownBombPlantedCountdown = (body) => {
 	}
 }
 
+const updateMoneyAtStartOfRound = (body) => {
+	additionalState.moneyAtStartOfRound = {}
+
+	for (const [steam64Id, player] of Object.entries(body.allplayers || {})) {
+		additionalState.moneyAtStartOfRound[steam64Id] = player.state.money
+	}
+}
+
 const updateRoundDamages = (body) => {
-	const roundNumber = body.map.round + 1 - Number(body.phase_countdowns.phase === 'over')
+	const roundNumber = body.map?.round + 1 - Number(body.phase_countdowns?.phase === 'over')
 	if (! roundNumber) return
 
 	for (const [steam64Id, player] of Object.entries(body.allplayers || {})) {

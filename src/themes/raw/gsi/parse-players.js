@@ -104,7 +104,7 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 		roundDamages: additionalState.roundDamages?.[steam64Id] || [],
 		roundHeadshotKills: player.state?.round_killhs,
 		roundKills: player.state?.round_kills,
-		roundMoneySpent: 0, // TODO
+		roundMoneySpent: getRoundMoneySpent(steam64Id, player),
 		score: player.match_stats?.score,
 		side: player.team === 'CT' ? 3 : 2,
 		team: undefined,
@@ -131,4 +131,13 @@ const getAdr = (steam64Id) => {
 	}
 
 	return Math.floor(totalDamage / (rounds || 1))
+}
+
+const getRoundMoneySpent = (steam64Id, player) => {
+	if (! additionalState.moneyAtStartOfRound?.[steam64Id]) return 0
+
+	const spent = additionalState.moneyAtStartOfRound?.[steam64Id] - player.state.money
+	if (Number.isNaN(spent) || spent < 0) return 0
+
+	return spent
 }
