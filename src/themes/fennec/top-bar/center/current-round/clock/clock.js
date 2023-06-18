@@ -6,12 +6,16 @@ export default {
 	},
 
 	computed: {
+		roundEndsInSec() {
+			return Math.max(0, Math.ceil(this.$round.phaseEndsInSec))
+		},
+
 		clockMinutes() {
-			return Math.floor(this.$round.phaseEndsInSec / 60)
+			return Math.floor(this.roundEndsInSec / 60)
 		},
 
 		clockSeconds() {
-			return Math.ceil(this.$round.phaseEndsInSec % 60)
+			return Math.floor(this.roundEndsInSec % 60)
 		},
 
 		isClockRed() {
