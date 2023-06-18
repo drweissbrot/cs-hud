@@ -6,7 +6,7 @@ export default {
 
 	computed: {
 		iconUrl() {
-			return `/hud/img/weapons/${this.player.secondary.name.substring(7)}.svg`
+			return `/hud/img/weapons/${this.player.secondary.unprefixedName}.svg`
 		},
 
 		positionClass() {

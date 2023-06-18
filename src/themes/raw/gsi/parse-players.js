@@ -20,6 +20,7 @@ export const parsePlayers = () => Object.entries(gsiState.allplayers).map(([stea
 			paintkit: weapon.paintkit,
 			state: weapon.state,
 			type: weapon.type,
+			unprefixedName: weapon.name.replace(/^weapon_/, ''),
 		}
 
 		if (parsed.name === 'weapon_flashbang' && parsed.ammoReserve >= 2) return [parsed, { ...parsed, isActive: false }]
