@@ -262,6 +262,12 @@
 			"label": "Show clock in red at less than 10 seconds after round end"
 		},
 
+		"preferences.topBar.matchPointRounds.showDuringRound": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Show \"First to X Rounds\" panel (visible during Overtime) during round (otherwise only in Freezetime)"
+		},
+
 		"css.base-scale-factor": {
 			"type": "text",
 			"section": "Style Overrides",

@@ -3,7 +3,10 @@ import { seriesMapNumbers } from '/hud/helpers/series-map-numbers.js'
 export default {
 	computed: {
 		isMatchPointRoundsActive() {
-			// TODO configurable: only show in freezetime
+			if (this.$opts['preferences.topBar.matchPointRounds.showDuringRound']) {
+				return this.$round.isOvertime
+			}
+
 			return this.$round.isFreezetime && this.$round.isOvertime
 		},
 
