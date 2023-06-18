@@ -10,7 +10,7 @@
 	align-items: center;
 	justify-content: center;
 
-	background: rgba(0, 0, 0, 0.5);
+	background: var(--black-50);
 	clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0.85rem 100%);
 	font-size: 1.35rem;
 	font-weight: 700;

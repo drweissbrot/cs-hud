@@ -33,11 +33,11 @@
 }
 
 .team-equipment.--ct {
-	background: rgba(var(--counter-terrorists-rgb), 0.5);
+	background: var(--counter-terrorists-fill-50);
 }
 
 .team-equipment.--t {
-	background: rgba(var(--terrorists-rgb), 0.5);
+	background: var(--terrorists-fill-50);
 }
 
 .loss-bonus .label,
@@ -72,10 +72,10 @@
 	width: 0.6rem;
 	height: 0.6rem;
 	aspect-ratio: 1;
-	border: 0.2rem solid #fff;
+	border: 0.2rem solid var(--white);
 	margin: 0.3rem;
 }
 
 .loss-bonus .pips .pip.--filled {
-	background: #fff;
+	background: var(--white);
 }

@@ -1,0 +1,7 @@
+:root {
+	--polygon-left: polygon(0 0, 100% 0, 100% 100%);
+	--polygon-right: polygon(0 0, 0 100%, 100% 100%);
+	--polygon-left-inversed: polygon(100% 0, 100% 100%, 0 100%);
+	--polygon-right-inversed: polygon(0 0, 0 100%, 100% 0);
+	--polygon-bordered-by-diagonals: polygon(0 0, 100% 0, calc(100% - 1.5rem) 100%, 1.5rem 100%);
+}

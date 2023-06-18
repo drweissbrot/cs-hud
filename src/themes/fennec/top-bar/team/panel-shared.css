@@ -14,11 +14,11 @@
 }
 
 .top-bar-team-panel-wrapper.--ct::before {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .top-bar-team-panel-wrapper.--t::before {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }
 
 .top-bar-team-panel-wrapper.--left {
@@ -43,7 +43,7 @@
 .top-bar-team-panel {
 	display: flex;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
+	background: var(--black-50);
 }
 
 .top-bar-team-panel.--left .inner {

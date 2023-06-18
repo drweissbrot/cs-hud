@@ -10,11 +10,11 @@
 
 .observer-slot.--left {
 	padding-right: 0.25rem;
-	border-right: 1px solid #fff;
+	border-right: 1px solid var(--white);
 	text-align: right;
 }
 
 .observer-slot.--right {
 	padding-left: 0.25rem;
-	border-left: 1px solid #fff;
+	border-left: 1px solid var(--white);
 }

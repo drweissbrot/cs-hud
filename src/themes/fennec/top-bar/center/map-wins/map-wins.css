@@ -3,7 +3,7 @@
 	align-items: center;
 	justify-content: center;
 
-	background: var(--top-bar-maps-color);
+	background: var(--top-bar-maps-fill);
 }
 
 .map-wins.--left {
@@ -29,17 +29,17 @@
 }
 
 .map-wins.--ct .pip {
-	border-color: var(--counter-terrorists);
+	border-color: var(--counter-terrorists-border);
 }
 
 .map-wins.--ct .pip.--filled {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .map-wins.--t .pip {
-	border-color: var(--terrorists);
+	border-color: var(--terrorists-border);
 }
 
 .map-wins.--t .pip.--filled {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }

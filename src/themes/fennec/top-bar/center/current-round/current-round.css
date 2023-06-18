@@ -6,7 +6,7 @@
 	justify-content: space-around;
 
 	padding: 0.25rem;
-	background: rgba(0, 0, 0, 0.5);
+	background: var(--black-50);
 }
 
 .current-round.--warmup {

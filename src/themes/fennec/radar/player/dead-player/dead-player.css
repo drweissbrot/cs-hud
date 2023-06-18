@@ -16,9 +16,9 @@ img {
 }
 
 img.--ct {
-	filter: url(#counter-terrorists-from-white-filter);
+	filter: url(#counter-terrorists-fill-from-white-filter);
 }
 
 img.--t {
-	filter: url(#terrorists-from-white-filter);
+	filter: url(#terrorists-fill-from-white-filter);
 }

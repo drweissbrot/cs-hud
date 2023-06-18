@@ -9,7 +9,7 @@ img.planted-bomb-icon {
 }
 
 .clock.--red {
-	color: var(--red);
+	color: var(--top-bar-clock-red-text);
 }
 
 img.bombsite-icon {

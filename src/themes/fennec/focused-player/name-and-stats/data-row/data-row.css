@@ -5,6 +5,6 @@
 	grid-template-columns: max-content 6rem 6rem 1fr;
 	padding: 0.5rem 2rem;
 
-	background: rgba(0, 0, 0, 0.5);
+	background: var(--black-50);
 	clip-path: var(--polygon-bordered-by-diagonals);
 }

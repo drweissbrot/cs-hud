@@ -8,9 +8,9 @@
 }
 
 .name.--ct {
-	background: rgba(var(--counter-terrorists-rgb), 0.5);
+	background: var(--counter-terrorists-fill-50);
 }
 
 .name.--t {
-	background: rgba(var(--terrorists-rgb), 0.5);
+	background: var(--terrorists-fill-50);
 }

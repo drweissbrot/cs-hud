@@ -1,6 +1,6 @@
 .round-graph {
 	display: flex;
 
-	background: rgba(0, 0, 0, 0.4);
+	background: var(--black-40);
 	text-align: center;
 }

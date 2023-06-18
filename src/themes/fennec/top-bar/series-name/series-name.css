@@ -13,13 +13,13 @@
 .right {
 	padding: 0.475rem;
 
-	color: #000;
+	color: var(--black);
 	font-size: 1.35rem;
 }
 
 .left,
 .right {
-	background: rgba(255, 255, 255, 0.5);
+	background: var(--white-50);
 }
 
 .left {
@@ -34,7 +34,7 @@
 .center {
 	grid-area: center;
 
-	background: rgba(255, 255, 255, 0.75);
+	background: var(--white-75);
 	clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0.85rem 100%);
 	font-weight: 700;
 	letter-spacing: 0.2em;

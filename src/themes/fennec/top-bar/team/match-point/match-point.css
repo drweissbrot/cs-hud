@@ -12,9 +12,9 @@
 }
 
 .match-point.--ct {
-	background: rgba(var(--counter-terrorists-rgb), 0.85);
+	background: var(--counter-terrorists-fill-85);
 }
 
 .match-point.--t {
-	background: rgba(var(--terrorists-rgb), 0.85);
+	background: var(--terrorists-fill-85);
 }

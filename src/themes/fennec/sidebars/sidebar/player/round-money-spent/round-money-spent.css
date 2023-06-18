@@ -4,7 +4,7 @@
 	padding: 0.5rem;
 	align-self: center;
 	font-size: 1.5rem;
-	color: var(--round-money-spent-color);
+	color: var(--sidebar-round-money-spent-text);
 }
 
 .round-money-spent.--right {

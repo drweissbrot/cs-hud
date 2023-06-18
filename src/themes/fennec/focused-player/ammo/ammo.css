@@ -47,11 +47,11 @@
 .inner.--ct,
 .ammo.--ct::before,
 .ammo.--ct::after {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .inner.--t,
 .ammo.--t::before,
 .ammo.--t::after {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }

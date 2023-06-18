@@ -5,8 +5,8 @@
 	align-items: center;
 	justify-content: center;
 
-	background: var(--top-bar-maps-color);
-	color: #000;
+	background: var(--top-bar-maps-fill);
+	color: var(--black);
 	font-size: 1.35rem;
 	font-weight: 700;
 	letter-spacing: 0.2em;

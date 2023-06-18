@@ -7,5 +7,5 @@
 }
 
 .focused-player-highlight.--active {
-	background: rgba(255, 255, 255, 0.75);
+	background: var(--white-75);
 }

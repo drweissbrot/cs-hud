@@ -44,11 +44,11 @@ img {
 .inner.--ct,
 .health-and-armor.--ct::before,
 .health-and-armor.--ct::after {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .inner.--t,
 .health-and-armor.--t::before,
 .health-and-armor.--t::after {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }

@@ -2,7 +2,7 @@
 	grid-area: 1/start/1/end;
 
 	display: grid;
-	background: rgba(0, 0, 0, 0.15);
+	background: var(--black-20);
 	z-index: -1;
 }
 
@@ -27,14 +27,14 @@
 }
 
 .health.--ct {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .health.--t {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }
 
 .damage-taken {
-	background: var(--red);
+	background: var(--sidebar-damage-taken-fill);
 	transition: transform var(--fade-default-duration) ease;
 }

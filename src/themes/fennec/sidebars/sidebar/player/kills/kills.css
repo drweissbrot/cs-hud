@@ -13,11 +13,11 @@
 }
 
 .label.--ct {
-	color: var(--counter-terrorists);
+	color: var(--counter-terrorists-text);
 }
 
 .label.--t {
-	color: var(--terrorists);
+	color: var(--terrorists-text);
 }
 
 .value {

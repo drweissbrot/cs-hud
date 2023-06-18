@@ -7,7 +7,7 @@
 	display: flex;
 	align-items: center;
 
-	background: rgba(0, 0, 0, 0.5);
+	background: var(--black-50);
 	clip-path: var(--polygon-bordered-by-diagonals);
 	font-size: 2.5rem;
 	font-weight: 700;
@@ -15,9 +15,9 @@
 }
 
 .name-row.--ct {
-	background: rgba(var(--counter-terrorists-rgb), 0.5);
+	background: var(--counter-terrorists-fill-50);
 }
 
 .name-row.--t {
-	background: rgba(var(--terrorists-rgb), 0.5);
+	background: var(--terrorists-fill-50);
 }

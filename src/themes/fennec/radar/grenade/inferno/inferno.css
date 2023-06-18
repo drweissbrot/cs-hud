@@ -13,11 +13,11 @@
 }
 
 .flame.--ct {
-	background: rgba(var(--counter-terrorists-rgb), 0.75);
+	background: var(--counter-terrorists-fill-75);
 }
 
 .flame.--t {
-	background: rgba(var(--terrorists-rgb), 0.75);
+	background: var(--terrorists-fill-75);
 }
 
 .flame:not(.--default-level) {

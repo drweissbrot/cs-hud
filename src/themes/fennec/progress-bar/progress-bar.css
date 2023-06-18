@@ -1,7 +1,7 @@
 .progress-bar-background {
 	width: 100%;
 	height: 0.6rem;
-	background: rgba(255, 255, 255, 0.5);
+	background: var(--white-50);
 	overflow: hidden;
 }
 
@@ -28,13 +28,13 @@
 }
 
 .progress-bar-fill.--ct {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .progress-bar-fill.--t {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }
 
 .progress-bar-fill.--bomb {
-	background: var(--progress-bar-fill-color-bomb);
+	background: var(--bomb-planted-fill);
 }

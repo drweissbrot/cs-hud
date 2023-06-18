@@ -9,8 +9,8 @@
 		'title title title'
 		'left vs right';
 
-	background: rgba(0, 0, 0, 0.5);
-	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+	background: var(--black-50);
+	box-shadow: var(--box-shadow);
 	font-weight: 700;
 	text-transform: uppercase;
 }
@@ -38,11 +38,11 @@
 }
 
 .team.--ct {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .team.--t {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }
 
 .vs {

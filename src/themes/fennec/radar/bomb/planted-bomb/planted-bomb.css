@@ -17,17 +17,17 @@ img {
 }
 
 img.--planted {
-	filter: url(#bomb-planted-from-white-filter);
+	filter: url(#bomb-planted-fill-from-white-filter);
 }
 
 img.--defusing {
-	filter: url(#bomb-defusing-from-white-filter);
+	filter: url(#bomb-defusing-fill-from-white-filter);
 }
 
 img.--defused {
-	filter: url(#bomb-defused-from-white-filter);
+	filter: url(#bomb-defused-fill-from-white-filter);
 }
 
 img.--exploded {
-	filter: url(#bomb-exploded-from-white-filter);
+	filter: url(#bomb-exploded-fill-from-white-filter);
 }

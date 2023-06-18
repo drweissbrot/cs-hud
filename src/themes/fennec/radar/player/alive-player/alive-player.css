@@ -13,7 +13,7 @@
 }
 
 .alive-player.--focused {
-	filter: drop-shadow(0 0 0.3rem rgba(255, 255, 255, 0.4))
+	filter: drop-shadow(0 0 0.3rem var(--white-40));
 }
 
 .alive-player:not(.--default-level) {
@@ -49,22 +49,22 @@
 	height: 100%;
 
 	border-radius: 50%;
-	border: 0.1rem solid #fff;
+	border: 0.1rem solid var(--white);
 	box-sizing: border-box;
 	isolation: isolate;
 	z-index: 1;
 }
 
 .circle-and-arrow .circle.--ct {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .circle-and-arrow .circle.--t {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }
 
 .circle-and-arrow .circle.--has-bomb {
-	background: red;
+	background: var(--radar-player-carrying-bomb-fill);
 }
 
 .circle-and-arrow .arrow {
@@ -77,7 +77,7 @@
 	height: 0;
 	margin: 0 auto;
 
-	border-bottom: 0.6rem solid #fff;
+	border-bottom: 0.6rem solid var(--white);
 	border-left: 0.5rem solid transparent;
 	border-right: 0.5rem solid transparent;
 	transform: translateY(-70%);

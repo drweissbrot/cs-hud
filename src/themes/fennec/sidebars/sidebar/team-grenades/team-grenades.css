@@ -19,7 +19,7 @@
 	display: flex;
 	margin-bottom: 0.5rem;
 
-	background: rgba(0, 0, 0, 0.4);
+	background: var(--black-40);
 	transition: transform var(--fade-slow-duration) ease;
 }
 
@@ -52,11 +52,11 @@
 }
 
 .total.--ct {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .total.--t {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }
 
 .total {

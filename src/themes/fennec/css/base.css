@@ -6,7 +6,7 @@
 }
 
 html {
-	background: var(--background-color);
+	background: var(--viewport-fill);
 	color: var(--text-color);
 	font-size: var(--scale-factor);
 }

@@ -1,0 +1,5 @@
+:root {
+	--fade-fast-duration: 0.1s;
+	--fade-default-duration: 0.3s;
+	--fade-slow-duration: 0.5s;
+}

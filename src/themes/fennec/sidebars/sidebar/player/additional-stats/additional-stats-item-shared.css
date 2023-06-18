@@ -24,12 +24,12 @@
 .sidebar .player-wrapper .additional-stats .assists .label.--ct,
 .sidebar .player-wrapper .additional-stats .deaths .label.--ct,
 .sidebar .player-wrapper .additional-stats .adr .label.--ct {
-	color: var(--counter-terrorists);
+	color: var(--counter-terrorists-text);
 }
 
 .sidebar .player-wrapper .additional-stats .kills .label.--t,
 .sidebar .player-wrapper .additional-stats .assists .label.--t,
 .sidebar .player-wrapper .additional-stats .deaths .label.--t,
 .sidebar .player-wrapper .additional-stats .adr .label.--t {
-	color: var(--terrorists);
+	color: var(--terrorists-text);
 }

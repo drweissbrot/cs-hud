@@ -26,13 +26,13 @@
 .score.--ct.--left::before,
 .score.--ct.--right::after,
 .score.--ct .inner {
-	background: var(--counter-terrorists);
+	background: var(--counter-terrorists-fill);
 }
 
 .score.--t.--left::before,
 .score.--t.--right::after,
 .score.--t .inner {
-	background: var(--terrorists);
+	background: var(--terrorists-fill);
 }
 
 .score.--left {

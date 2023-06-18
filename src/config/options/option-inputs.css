@@ -62,7 +62,7 @@
 }
 
 .input-group .default-and-label .default code {
-	background: #000;
+	background: var(--black);
 	padding: 0.25rem 0.5rem;
 }
 

@@ -9,9 +9,9 @@
 }
 
 .round-winner.--ct {
-	background: rgba(var(--counter-terrorists-rgb), 0.7);
+	background: var(--counter-terrorists-70);
 }
 
 .round-winner.--t {
-	background: rgba(var(--terrorists-rgb), 0.7);
+	background: var(--terrorists-70);
 }

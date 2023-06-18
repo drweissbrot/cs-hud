@@ -13,11 +13,13 @@
 }
 
 .smoke.--ct {
-	background: rgba(var(--counter-terrorists-rgb), 0.75);
+	/* TODO should be blue-tinted gray */
+	background: var(--counter-terrorists-fill-75);
 }
 
 .smoke.--t {
-	background: rgba(var(--terrorists-rgb), 0.75);
+	/* TODO should be yellow-tinted gray */
+	background: var(--terrorists-fill-75);
 }
 
 .smoke:not(.--default-level) {

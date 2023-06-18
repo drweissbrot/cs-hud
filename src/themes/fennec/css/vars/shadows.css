@@ -1,0 +1,4 @@
+:root {
+	--box-shadow: 0 0 0.6rem var(--black-40);
+	--filter-drop-shadow: drop-shadow(var(--box-shadow));
+}

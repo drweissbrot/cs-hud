@@ -4,7 +4,7 @@
 // The way around this is to remember the last couple position vectors, average them out, and just display that average.
 //
 // Why not just disable interpolation in the game? Because that'd break a lot of the animations (even ones you'd not
-// expect, like  planting the bomb).
+// expect, like planting the bomb).
 
 // needs to be a `function` so `this` is the Vue component
 export function averagePreviousPositions() {
