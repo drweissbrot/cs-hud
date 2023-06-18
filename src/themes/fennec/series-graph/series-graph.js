@@ -1,4 +1,4 @@
-import { formatMapName } from '/hud/gsi/helpers/format-map-name.js'
+import { formatMapName } from '/hud/helpers/format-map-name.js'
 import Match from '/hud/series-graph/match/match.vue'
 
 export default {
