@@ -13,7 +13,7 @@ export default {
 
 	computed: {
 		colorClass() {
-			return this.teamColorClass(this.team)
+			return teamColorClass(this.team)
 		},
 
 		positionClass() {
@@ -53,9 +53,5 @@ export default {
 				}
 			}
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

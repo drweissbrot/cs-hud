@@ -18,7 +18,7 @@ export default {
 		},
 
 		colorClass() {
-			return this.teamColorClass(this.player.team)
+			return teamColorClass(this.player.team)
 		},
 
 		activeWeapon() {
@@ -31,9 +31,5 @@ export default {
 				isActive: grenade.isActive,
 			}))
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

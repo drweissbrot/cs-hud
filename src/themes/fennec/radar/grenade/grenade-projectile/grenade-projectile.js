@@ -19,7 +19,7 @@ export default {
 		radarConfig,
 
 		colorClass() {
-			return this.teamColorClass(this.grenade.owner.team)
+			return teamColorClass(this.grenade.owner.team)
 		},
 
 		coordinates() {
@@ -56,7 +56,6 @@ export default {
 		getLevel,
 		offsetX,
 		offsetY,
-		teamColorClass,
 
 		averagePreviousPositions() {
 			let sumX = 0

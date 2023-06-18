@@ -13,7 +13,7 @@ export default {
 
 	computed: {
 		colorClass() {
-			return this.teamColorClass(this.team)
+			return teamColorClass(this.team)
 		},
 
 		positionClass() {
@@ -26,9 +26,5 @@ export default {
 				case 3: return this.$round.phase === 'timeout_ct'
 			}
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

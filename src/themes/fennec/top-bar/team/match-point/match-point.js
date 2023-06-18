@@ -8,7 +8,7 @@ export default {
 
 	computed: {
 		colorClass() {
-			return this.teamColorClass(this.team)
+			return teamColorClass(this.team)
 		},
 
 		positionClass() {
@@ -18,9 +18,5 @@ export default {
 		isMatchPointPanelActive() {
 			return this.$round.isFreezetime && this.team.score === this.$round.matchPointAtScore
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

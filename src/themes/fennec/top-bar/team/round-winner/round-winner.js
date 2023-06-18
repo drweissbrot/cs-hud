@@ -8,7 +8,7 @@ export default {
 
 	computed: {
 		colorClass() {
-			return this.teamColorClass(this.team)
+			return teamColorClass(this.team)
 		},
 
 		positionClass() {
@@ -20,9 +20,5 @@ export default {
 			// TODO configurable
 			// || (this.$round.isFreezetime && this.$rounds[this.$rounds.length - 1].winningSide === this.team.side)
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

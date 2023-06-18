@@ -8,7 +8,7 @@ export default {
 
 	computed: {
 		colorClass() {
-			return this.teamColorClass(this.team)
+			return teamColorClass(this.team)
 		},
 
 		positionClass() {
@@ -37,9 +37,5 @@ export default {
 			const maxMapWins = Math.floor(mapNumbers.size / 2) + 1
 			return [...pips, ...new Array(maxMapWins - pips.length).fill(false)]
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

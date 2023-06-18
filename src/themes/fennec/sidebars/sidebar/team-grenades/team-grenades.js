@@ -8,7 +8,7 @@ export default {
 
 	computed: {
 		colorClass() {
-			return this.teamColorClass(this.team)
+			return teamColorClass(this.team)
 		},
 
 		positionClass() {
@@ -57,8 +57,6 @@ export default {
 	},
 
 	methods: {
-		teamColorClass,
-
 		getGrenadeName(grenade) {
 			switch (grenade.name) {
 				case 'weapon_decoy': return 'decoy'

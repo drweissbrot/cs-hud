@@ -14,11 +14,7 @@ export default {
 		},
 
 		colorClass() {
-			return this.teamColorClass(this.player.team)
+			return teamColorClass(this.player.team)
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

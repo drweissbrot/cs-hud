@@ -8,7 +8,7 @@ export default {
 
 	computed: {
 		colorClass() {
-			return this.teamColorClass(this.team)
+			return teamColorClass(this.team)
 		},
 
 		positionClass() {
@@ -31,9 +31,5 @@ export default {
 		teamEquipmentValue() {
 			return this.team.players.reduce((sum, player) => sum + player.equipmentValue, 0)
 		},
-	},
-
-	methods: {
-		teamColorClass,
 	},
 }

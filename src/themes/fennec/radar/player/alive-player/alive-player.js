@@ -20,7 +20,7 @@ export default {
 		radarConfig,
 
 		colorClass() {
-			return this.teamColorClass(this.player.team)
+			return teamColorClass(this.player.team)
 		},
 
 		coordinates() {
@@ -52,7 +52,6 @@ export default {
 		getLevel,
 		offsetX,
 		offsetY,
-		teamColorClass,
 
 		getAngle() {
 			const [x, y] = this.player.forward
