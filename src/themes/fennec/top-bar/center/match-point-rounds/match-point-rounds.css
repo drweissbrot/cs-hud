@@ -11,7 +11,7 @@
 	justify-content: center;
 
 	background: var(--black-50);
-	clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0.85rem 100%);
+	clip-path: polygon(0 -1%, 100% -1%, calc(101% - 0.85rem) 101%, 0.85rem 101%);
 	font-size: 1.35rem;
 	font-weight: 700;
 	letter-spacing: 0.2em;
@@ -22,14 +22,13 @@
 }
 
 .match-point-rounds:not(.--active) {
-	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	transform: translateY(-100%);
 }
 
 .match-point-rounds.--is-multiple-map-series {
-	clip-path: polygon(0.85rem 0, calc(100% - 0.85rem) 0, calc(100% - 1.7rem) 100%, 1.7rem 100%);
+	clip-path: polygon(0.85rem -1%, calc(100.5% - 0.85rem) -1%, calc(101% - 1.7rem) 101%, 1.7rem 101%);
 }
 
 .match-point-rounds.--is-multiple-map-series:not(.--active) {
-	clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0.85rem 100%);
+	clip-path: polygon(-1% -1%, 101% -1%, calc(101% - 0.85rem) 101%, 0.85rem 101%);
 }

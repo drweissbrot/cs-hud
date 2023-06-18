@@ -13,7 +13,6 @@
 
 .team-equipment-wrapper.--right {
 	margin-left: auto;
-	flex-direction: row-reverse;
 }
 
 .team-equipment {
@@ -38,6 +37,10 @@
 
 .team-equipment.--t {
 	background: var(--terrorists-fill-60);
+}
+
+.team-equipment.--right {
+	flex-direction: row-reverse;
 }
 
 .loss-bonus .label,
