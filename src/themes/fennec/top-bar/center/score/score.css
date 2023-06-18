@@ -40,13 +40,13 @@
 }
 
 .score.--left::before {
-	transform: skewX(20deg) scaleX(2) translateX(-0.25rem);
+	transform: skewX(20deg) scaleX(2) translateX(-0.05rem);
 }
 
 .score.--left .inner {
 	padding-left: 0.5rem;
 	padding-right: 1rem;
-	margin-left: -1.75rem;
+	margin-left: -1.5rem;
 }
 
 .score.--right {
@@ -54,11 +54,11 @@
 }
 
 .score.--right::after {
-	transform: skewX(-20deg) scaleX(2) translateX(0.25rem);
+	transform: skewX(-20deg) scaleX(2) translateX(0.05rem);
 }
 
 .score.--right .inner {
 	padding-right: 0.5rem;
 	padding-left: 1rem;
-	margin-right: -1.75rem;
+	margin-right: -1.5rem;
 }
