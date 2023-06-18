@@ -4,10 +4,10 @@
 
 .team.--left {
 	grid-area: team-left;
-	transform: skewX(20deg);
+	transform: skewX(20deg) translateX(-2.1rem);
 }
 
 .team.--right {
 	grid-area: team-right;
-	transform: skewX(-20deg);
+	transform: skewX(-20deg) translateX(2.1rem);
 }
