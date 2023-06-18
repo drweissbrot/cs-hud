@@ -1,0 +1,11 @@
+<div
+	:class="['alive-player', { '--focused': player.isFocused, '--default-level': level === 'default' }]"
+	:style="{ left: `${coordinates.x}%`, top: `${coordinates.y}%`, zIndex }"
+>
+	<div class="slot">{{ player.observerSlot }}</div>
+
+	<div class="circle-and-arrow" :style="{ transform: `rotateZ(${coordinates.angle}deg)` }">
+		<div class="arrow"></div>
+		<div :class="['circle', colorClass, { '--has-bomb': player.hasBomb }]"></div>
+	</div>
+</div>

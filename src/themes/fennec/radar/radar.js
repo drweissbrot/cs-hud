@@ -1,8 +1,10 @@
 import Bomb from '/hud/radar/bomb/bomb.vue'
+import Player from '/hud/radar/player/player.vue'
 
 export default {
 	components: {
 		Bomb,
+		Player,
 	},
 
 	computed: {
