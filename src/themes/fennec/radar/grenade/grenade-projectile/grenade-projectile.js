@@ -40,7 +40,7 @@ export default {
 		grenadeIconName() {
 			switch (this.grenade.type) {
 				case 'decoy': return 'decoy'
-				case 'firebomb': return 'molotov' // TODO need to find out when this is incgrenade
+				case 'firebomb': return this.grenade.firebombType || 'molotov'
 				case 'flashbang': return 'flashbang'
 				case 'frag': return 'hegrenade'
 				case 'smoke': return 'smokegrenade'
