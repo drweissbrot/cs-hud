@@ -41,13 +41,11 @@
 	transform: scale(0.95);
 }
 
-.buttons a.open-hud,
-.buttons a.open-radar {
+.buttons a {
 	border-color: #aeaeae;
 }
 
-.buttons a.open-hud:hover,
-.buttons a.open-radar:hover {
+.buttons a:hover {
 	background: #aeaeae;
 	color: #212121;
 }

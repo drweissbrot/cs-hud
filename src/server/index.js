@@ -10,6 +10,7 @@ import { registerConfigRoutes } from './config.js'
 import { registerDependencyRoutes } from './dependencies.js'
 import { registerGsiRoutes } from './gsi.js'
 import { registerHudRoutes } from './hud.js'
+import { registerLicensesRoutes } from './licenses.js'
 import { registerRadarRoutes } from './radar.js'
 import { Websocket } from './websocket.js'
 
@@ -38,6 +39,7 @@ const run = async () => {
 	registerDependencyRoutes(router)
 	registerGsiRoutes(router, websocket)
 	registerHudRoutes(router)
+	registerLicensesRoutes(router)
 	registerRadarRoutes(router)
 
 	// start server
