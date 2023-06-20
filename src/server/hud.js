@@ -3,9 +3,9 @@ import { readFile } from 'fs/promises'
 
 import resolvePath from 'resolve-path'
 
+import { builtinThemesDirectory, customThemesDirectory } from './helpers/paths.js'
 import { fileExists } from './helpers/file-exists.js'
 import { getThemeTree } from './settings.js'
-import { themesDirectory } from './helpers/paths.js'
 
 const textFormats = [
 	'.css',
@@ -66,25 +66,47 @@ const concatStaticFileFromThemeTreeRecursively = async (path, concatTree, themeT
 	themeTree = themeTree.slice()
 	const theme = themeTree.shift()
 
-	const sanitizedPath = sanitizePath(`${themesDirectory}/${theme}`, path)
-	if (! sanitizedPath) return
+	const sanitizedBuiltinPath = sanitizePath(`${builtinThemesDirectory}/${theme}`, path)
+	if (! sanitizedBuiltinPath) return
 
-	const parsedPath = parse(sanitizedPath)
-	const appendPath = `${parsedPath.dir}/${parsedPath.name}.append${parsedPath.ext}`
+	const parsedBuiltinPath = parse(sanitizedBuiltinPath)
+	const builtinAppendPath = `${parsedBuiltinPath.dir}/${parsedBuiltinPath.name}.append${parsedBuiltinPath.ext}`
 
-	const encoding = textFormats.includes(parsedPath.ext) ? 'utf-8' : null
+	const sanitizedCustomPath = sanitizePath(`${customThemesDirectory}/${theme}`, path)
+	if (! sanitizedCustomPath) return
 
-	if (await fileExists(appendPath)) {
-		concatTree.unshift(await readFile(appendPath, encoding))
+	const parsedCustomPath = parse(sanitizedCustomPath)
+	const customAppendPath = `${parsedCustomPath.dir}/${parsedCustomPath.name}.append${parsedCustomPath.ext}`
 
-		const comment = concatComment(parsedPath, theme, true)
+	const encoding = textFormats.includes(parsedBuiltinPath.ext) ? 'utf-8' : null
+
+	if (await fileExists(customAppendPath)) {
+		concatTree.unshift(await readFile(customAppendPath, encoding))
+
+		const comment = concatComment(parsedCustomPath, theme, true)
 		if (comment) concatTree.unshift(comment)
 	}
 
-	if (await fileExists(sanitizedPath)) {
-		concatTree.unshift(await readFile(sanitizedPath, encoding))
+	if (await fileExists(builtinAppendPath)) {
+		concatTree.unshift(await readFile(builtinAppendPath, encoding))
 
-		const comment = concatComment(parsedPath, theme, false)
+		const comment = concatComment(parsedBuiltinPath, theme, true)
+		if (comment) concatTree.unshift(comment)
+	}
+
+	if (await fileExists(sanitizedCustomPath)) {
+		concatTree.unshift(await readFile(sanitizedCustomPath, encoding))
+
+		const comment = concatComment(parsedCustomPath, theme, false)
+		if (comment) concatTree.unshift(comment)
+
+		return concatTree
+	}
+
+	if (await fileExists(sanitizedBuiltinPath)) {
+		concatTree.unshift(await readFile(sanitizedBuiltinPath, encoding))
+
+		const comment = concatComment(parsedBuiltinPath, theme, false)
 		if (comment) concatTree.unshift(comment)
 
 		return concatTree

@@ -1,4 +1,5 @@
 import send from 'koa-send'
+import { builtinRootDirectory } from './helpers/paths.js'
 
 export const registerDependencyRoutes = (router) => {
 	router.get('/dependencies/vue.js', sendStaticFile('node_modules/vue/dist/vue.esm-browser.js'))
@@ -15,13 +16,13 @@ export const registerDependencyRoutes = (router) => {
 
 // NB! Do _not_ use this with user-supplied values for localFile!
 const sendStaticFile = (localFile) => async (context) => {
-	await send(context, localFile)
+	await send(context, localFile, { root: builtinRootDirectory })
 }
 
 const serveFontsourceFont = (router, fontName) => {
 	const prefix = `/dependencies/${fontName}/`
 
 	router.get(`${prefix}:path*`, async (context) => {
-		await send(context, context.path.substring(prefix.length), { root: `node_modules/@fontsource/${fontName}` })
+		await send(context, context.path.substring(prefix.length), { root: `${builtinRootDirectory}/node_modules/@fontsource/${fontName}` })
 	})
 }
