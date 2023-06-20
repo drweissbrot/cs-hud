@@ -1,5 +1,6 @@
 {
 	"private": true,
+	"license": "ISC",
 	"type": "module",
 	"main": "src/server/index.js",
 	"scripts": {
