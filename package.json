@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "node .",
 		"watch": "nodemon .",
-		"build": "./build/build.sh"
+		"build": "./build/build.sh",
+		"postinstall": "yarn licenses generate-disclaimer > assets/licenses.txt"
 	},
 	"dependencies": {
 		"@fontsource/noto-sans": "^5.0.2",
