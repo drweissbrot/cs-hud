@@ -1,10 +1,13 @@
 {
 	"private": true,
+	"license": "ISC",
 	"type": "module",
 	"main": "src/server/index.js",
 	"scripts": {
 		"start": "node .",
-		"watch": "nodemon ."
+		"watch": "nodemon .",
+		"build": "./build/build.sh",
+		"postinstall": "yarn licenses generate-disclaimer > assets/licenses.txt"
 	},
 	"dependencies": {
 		"@fontsource/noto-sans": "^5.0.2",
@@ -22,7 +25,9 @@
 		"ws": "^8.12.1"
 	},
 	"devDependencies": {
-		"nodemon": "^2.0.22"
+		"esbuild": "^0.18.4",
+		"nodemon": "^2.0.22",
+		"pkg": "^5.8.1"
 	},
 	"nodemonConfig": {
 		"ignore": [

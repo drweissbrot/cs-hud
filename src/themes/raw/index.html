@@ -9,5 +9,11 @@
 <body>
 	<div id="app"></div>
 	<script type="module" src="/hud/core/app.js"></script>
+
+	<script>
+		if (new URL(window.location).searchParams.has('transparent')) {
+			document.documentElement.style.background = 'none'
+		}
+	</script>
 </body>
 </html>

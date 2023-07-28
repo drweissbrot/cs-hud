@@ -1,0 +1,7 @@
+{
+	"private": true,
+	"devDependencies": {
+		"@electron-forge/cli": "^6.2.1",
+		"electron": "^25.1.1"
+	}
+}

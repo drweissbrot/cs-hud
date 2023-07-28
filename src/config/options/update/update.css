@@ -1,0 +1,50 @@
+.inner {
+	display: flex;
+	align-items: center;
+	margin: 2rem 4rem;
+}
+
+.inner > *:not(:last-child) {
+	margin-right: 2rem;
+}
+
+button.check-for-updates {
+	padding: 0.5rem 1rem;
+	display: block;
+
+	background: none;
+	border: 1px solid;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
+	text-align: center;
+	text-decoration: none;
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease,
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+
+button.check-for-updates:not(:disabled):active {
+	transform: scale(0.95);
+}
+
+button.check-for-updates:not(:disabled):hover {
+	background: #aeaeae;
+	color: #212121;
+}
+
+button.check-for-updates:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+a {
+	color: #fff;
+}
+
+a:active,
+a:hover {
+	text-decoration: none;
+}
