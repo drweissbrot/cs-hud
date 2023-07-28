@@ -1,4 +1,10 @@
+import Update from '/config/options/update/update.vue'
+
 export default {
+	components: {
+		Update,
+	},
+
 	data() {
 		return {
 			initialTheme: null,

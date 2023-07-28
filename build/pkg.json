@@ -20,7 +20,8 @@
 			"../src/assets",
 			"../src/config",
 			"../src/radar",
-			"../src/themes"
+			"../src/themes",
+			"../src/version.txt"
 		]
 	}
 }
