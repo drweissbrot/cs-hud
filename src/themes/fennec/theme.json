@@ -288,16 +288,40 @@
 			"label": "Base size that everything is sized relative to; e.g. `10px`"
 		},
 
-		"css.counter-terrorists-rgb": {
+		"css.counter-terrorists-fill-rgb": {
 			"type": "color",
 			"section": "Style Overrides",
-			"label": "CT color"
+			"label": "CT fill color (used for most CT-colored surfaces)"
 		},
 
-		"css.terrorists-rgb": {
+		"css.counter-terrorists-border-rgb": {
 			"type": "color",
 			"section": "Style Overrides",
-			"label": "T color"
+			"label": "CT border color (used for small or thing CT-colored surfaces)"
+		},
+
+		"css.counter-terrorists-text-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "CT text color (used for CT-colored text)"
+		},
+
+		"css.terrorists-fill-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "T fill color (used for most T-colored surfaces)"
+		},
+
+		"css.terrorists-border-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "T border color (used for small or thing T-colored surfaces)"
+		},
+
+		"css.terrorists-text-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "T text color (used for T-colored text)"
 		},
 
 		"css.primary-font-family": {
