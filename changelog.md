@@ -7,6 +7,7 @@ This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
 * Complete rewrite; expect everything to work differently than before.
+* The previous version will likely continue to work (even with CS2), but will not receive updates or support.
 
 ## Earlier releases
 Before the [v2 Rewrite](https://github.com/drweissbrot/csgo-hud/issues/52), this project did not use versioning, nor did it keep a changelog.
