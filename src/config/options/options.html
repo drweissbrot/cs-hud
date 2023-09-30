@@ -39,7 +39,20 @@
 		</label>
 
 		<div class="input">
-			<input :type="option.inputType" :id="option.key" v-model="optionValues[option.key]" :placeholder="option.fallback">
+			<textarea
+				v-if="option.inputType === 'textarea'"
+				:id="option.key"
+				:placeholder="option.fallback"
+				v-model="optionValues[option.key]"
+			></textarea>
+
+			<input
+				v-else
+				:type="option.inputType"
+				:id="option.key"
+				:placeholder="option.fallback"
+				v-model="optionValues[option.key]"
+			>
 
 			<button v-if="option.type === 'color'" class="reset" @click.prevent="resetValue(option.key)">
 				Reset to default

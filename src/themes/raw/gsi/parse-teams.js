@@ -1,4 +1,5 @@
 import { gsiState, players } from '/hud/core/state.js'
+import { getOverriddenTeamName, getTeamNameOverrides } from '/hud/gsi/helpers/team-name-overrides.js'
 
 const getGrenadeKey = (weaponName) => {
 	switch (weaponName) {
@@ -13,46 +14,57 @@ const getGrenadeKey = (weaponName) => {
 	}
 }
 
-// NB! This must be called AFTER parsePlayers!
-export const parseTeams = () => {
-	const makeTeam = (side, fallbackName, gsiTeamObject) => {
-		const teamMembers = players.filter((player) => player.side === side)
+const getFallbackNameFromSide = (side) => {
+	switch (side) {
+		case 2: return 'Terrorists'
+		case 3: return 'Counter-Terrorists'
+	}
+}
 
-		const team = {
-			side,
+const makeTeam = (side, gsiTeamObject, teamNameOverrides) => {
+	const teamMembers = players.filter((player) => player.side === side)
 
-			consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
-			flag: gsiTeamObject.flag,
-			matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO we may want to have options override this
-			name: gsiTeamObject.name || fallbackName,
-			players: teamMembers,
-			score: gsiTeamObject.score,
-			timeoutsRemaining: gsiTeamObject.timeouts_remaining,
+	const overriddenTeamName = getOverriddenTeamName(teamNameOverrides, teamMembers)
 
-			grenades: {
-				decoy: 0,
-				flashbang: 0,
-				hegrenade: 0,
-				molotov: 0,
-				smokegrenade: 0,
-				total: 0,
-			},
-		}
+	const team = {
+		side,
 
-		for (const player of teamMembers) {
-			player.team = team
+		consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
+		flag: gsiTeamObject.flag,
+		matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO we may want to have options override this
+		name: overriddenTeamName || gsiTeamObject.name || getFallbackNameFromSide(side),
+		players: teamMembers,
+		score: gsiTeamObject.score,
+		timeoutsRemaining: gsiTeamObject.timeouts_remaining,
 
-			for (const grenade of player.grenades) {
-				team.grenades.total++
-				team.grenades[getGrenadeKey(grenade.name)]++
-			}
-		}
-
-		return team
+		grenades: {
+			decoy: 0,
+			flashbang: 0,
+			hegrenade: 0,
+			molotov: 0,
+			smokegrenade: 0,
+			total: 0,
+		},
 	}
 
+	for (const player of teamMembers) {
+		player.team = team
+
+		for (const grenade of player.grenades) {
+			team.grenades.total++
+			team.grenades[getGrenadeKey(grenade.name)]++
+		}
+	}
+
+	return team
+}
+
+// NB! This must be called AFTER parsePlayers!
+export const parseTeams = () => {
+	const teamNameOverrides = getTeamNameOverrides()
+
 	return [
-		makeTeam(2, 'Terrorists', gsiState.map.team_t),
-		makeTeam(3, 'Counter-Terrorists', gsiState.map.team_ct),
+		makeTeam(2, gsiState.map.team_t, teamNameOverrides),
+		makeTeam(3, gsiState.map.team_ct, teamNameOverrides),
 	].sort((a, b) => a.players[0]?.observerSlot - b.players[0]?.observerSlot)
 }
