@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 // and __dirname is only defined in commonjs -- so, assuming that none of these assumptions change, this works for now
 const runningInBinary = typeof __dirname !== 'undefined'
 
-// paths to project root, /path/to/csgo-hud, the directory that contains `src`, `package.json`, `node_modules`, etc.
+// paths to project root, /path/to/cs-hud, the directory that contains `src`, `package.json`, `node_modules`, etc.
 // builtinRootDirectory should be used for files that are part of this repository, i.e. "built in to the application"
 export const builtinRootDirectory = runningInBinary
 	? __dirname
@@ -19,7 +19,7 @@ export const customRootDirectory = runningInBinary
 // directories
 export const builtinThemesDirectory = `${builtinRootDirectory}/src/themes`
 export const customThemesDirectory = runningInBinary
-	? `${customRootDirectory}/csgo-hud`
+	? `${customRootDirectory}/cs-hud`
 	: `${customRootDirectory}/src/themes`
 
 export const userspaceDirectory = `${customThemesDirectory}/userspace`

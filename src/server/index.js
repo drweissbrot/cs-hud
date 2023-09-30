@@ -49,7 +49,7 @@ const run = async () => {
 	app.use(router.allowedMethods())
 
 	server.listen(port, host)
-	console.info(`CS:GO HUD active at http://${host}:${port}. Press Ctrl+C to quit.`)
+	console.info(`CS HUD active at http://${host}:${port}. Press Ctrl+C to quit.`)
 }
 
 run().then(() => {})

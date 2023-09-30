@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script...
-#     duplicates the csgo-hud repository (by git clone-ing it from the file system),
+#     duplicates the cs-hud repository (by git clone-ing it from the file system),
 #     builds a Docker image with dependencies for electron-forge,
 #     runs an ephemeral Docker container,
 #     builds pre-packaged executables for Windows and Linux (see package.sh for details),
@@ -26,7 +26,7 @@ fi
 mkdir -p tmp/bin
 git clone --no-hardlinks .. tmp/clone
 
-docker build -t drweissbrot/csgo-hud-build .
+docker build -t drweissbrot/cs-hud-build .
 
 # build the main executable
 docker run \
@@ -35,31 +35,31 @@ docker run \
 	-v ./tmp/bin:/home/node/bin \
 	-v ./tmp/clone:/home/node/app \
 	-w /home/node/app \
-	drweissbrot/csgo-hud-build \
+	drweissbrot/cs-hud-build \
 	sh /home/node/app/build/package.sh
 
-docker image rm drweissbrot/csgo-hud-build
+docker image rm drweissbrot/cs-hud-build
 
 cd tmp/bin
 
 # zip browser wrappers for Windows
-zip -r csgo-hud-config-win32-x64.zip csgo-hud-config-win32-x64
-zip -r csgo-hud-radar-win32-x64.zip csgo-hud-radar-win32-x64
-zip -r csgo-hud-win32-x64.zip csgo-hud-win32-x64
+zip -r cs-hud-config-win32-x64.zip cs-hud-config-win32-x64
+zip -r cs-hud-radar-win32-x64.zip cs-hud-radar-win32-x64
+zip -r cs-hud-win32-x64.zip cs-hud-win32-x64
 
 # tar and gzip browser wrappers for Linux
-tar -czf csgo-hud-config-linux-x64.tar.gz csgo-hud-config-linux-x64
-tar -czf csgo-hud-linux-x64.tar.gz csgo-hud-linux-x64
-tar -czf csgo-hud-radar-linux-x64.tar.gz csgo-hud-radar-linux-x64
+tar -czf cs-hud-config-linux-x64.tar.gz cs-hud-config-linux-x64
+tar -czf cs-hud-linux-x64.tar.gz cs-hud-linux-x64
+tar -czf cs-hud-radar-linux-x64.tar.gz cs-hud-radar-linux-x64
 
 cd ../..
 
 # clean up
 rm -r \
-	tmp/bin/csgo-hud-config-linux-x64 \
-	tmp/bin/csgo-hud-config-win32-x64 \
-	tmp/bin/csgo-hud-linux-x64 \
-	tmp/bin/csgo-hud-radar-linux-x64 \
-	tmp/bin/csgo-hud-radar-win32-x64 \
-	tmp/bin/csgo-hud-win32-x64 \
+	tmp/bin/cs-hud-config-linux-x64 \
+	tmp/bin/cs-hud-config-win32-x64 \
+	tmp/bin/cs-hud-linux-x64 \
+	tmp/bin/cs-hud-radar-linux-x64 \
+	tmp/bin/cs-hud-radar-win32-x64 \
+	tmp/bin/cs-hud-win32-x64 \
 	tmp/clone

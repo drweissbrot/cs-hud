@@ -28,7 +28,7 @@ Themes can append to, and override any file in their parent theme, and can add a
 Have a look at the `src/themes/fennec` directory; you can append to and override every file in there.
 
 To create a theme, find the themes directory:
-If you're using a pre-packaged executable for running the HUD, it'll be a `csgo-hud` directory in the same folder as the `csgo-hud-win.exe`/`csgo-hud-linux`.
+If you're using a pre-packaged executable for running the HUD, it'll be a `cs-hud` directory in the same folder as the `cs-hud-win.exe`/`cs-hud-linux`.
 <!-- TODO other ways of running -->
 
 Create a new folder in the themes directory; the name of that directory will be the name of your theme.  

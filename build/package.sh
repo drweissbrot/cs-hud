@@ -6,22 +6,22 @@
 # build the main executables
 yarn --frozen-lockfile
 yarn licenses generate-disclaimer > assets/licenses.txt
-npx esbuild src/server/index.js --bundle --platform=node --outfile=csgo-hud.js
-npx pkg --config build/pkg.json csgo-hud.js # --debug
+npx esbuild src/server/index.js --bundle --platform=node --outfile=cs-hud.js
+npx pkg --config build/pkg.json cs-hud.js # --debug
 
 # build Electron-based wrappers
 cd src/electron
 yarn --frozen-lockfile
 
-node write-package-json.mjs csgo-hud hud.js
+node write-package-json.mjs cs-hud hud.js
 yarn electron-forge package -p linux
 yarn electron-forge package -p win32
 
-node write-package-json.mjs csgo-hud-config config.js
+node write-package-json.mjs cs-hud-config config.js
 yarn electron-forge package -p linux
 yarn electron-forge package -p win32
 
-node write-package-json.mjs csgo-hud-radar radar.js
+node write-package-json.mjs cs-hud-radar radar.js
 yarn electron-forge package -p linux
 yarn electron-forge package -p win32
 
