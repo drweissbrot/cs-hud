@@ -1,7 +1,7 @@
 # csgo-hud
 A Free and Customizable Spectator HUD for Your Counter-Strike: Global Offensive Streams.
 
-<!-- TODO screenshot -->
+![](assets/cs2-hud-screenshot-1080.png)
 
 ## Getting Started
 The easiest way is to use the pre-packaged binaries, but other options will be available in the future.
