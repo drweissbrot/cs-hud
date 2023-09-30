@@ -20,7 +20,7 @@ export default {
 		radarConfig,
 
 		colorClass() {
-			return teamColorClass(this.grenade.owner.team)
+			return teamColorClass(this.grenade.owner?.team)
 		},
 
 		coordinates() {

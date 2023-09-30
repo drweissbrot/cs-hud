@@ -13,7 +13,7 @@ export default {
 		radarConfig,
 
 		flames() {
-			const colorClass = teamColorClass(this.grenade.owner.team)
+			const colorClass = teamColorClass(this.grenade.owner?.team)
 
 			return this.grenade.flames.map((flame) => ({
 				colorClass,
