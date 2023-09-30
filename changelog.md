@@ -8,6 +8,7 @@ This project does not adhere to Semantic Versioning.
 ## [Unreleased]
 ### Added
 * Add Team Name Overrides
+* Add Team Logos
 
 ## [2.0.0] - 2023-09-30
 * Complete rewrite; expect everything to work differently than before.

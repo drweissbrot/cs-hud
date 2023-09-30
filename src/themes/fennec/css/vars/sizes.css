@@ -20,6 +20,8 @@
 	--top-bar-width: 50%;
 	--top-bar-padding-x: 0.8rem;
 	--top-bar-score-font-size: 3rem;
+	--top-bar-team-logo-vertical-spacing: 0.5rem;
+	--top-bar-team-logo-horizontal-spacing: 1.5rem;
 	--top-bar-row-height: calc(2 * var(--top-bar-padding-x) + var(--top-bar-score-font-size));
 	--top-bar-half-row-height: calc(var(--top-bar-row-height) / 2);
 
