@@ -26,6 +26,12 @@
 			"fallback": 6,
 			"section": "Cvars",
 			"label": "Value of mp_overtime_maxrounds, i.e. the maximum number of rounds played per overtime"
+		},
+
+		"teams.team_name_overrides": {
+			"type": "text",
+			"section": "Teams",
+			"label": "List of SteamID64s and team names for overrides"
 		}
 	}
 }

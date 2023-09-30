@@ -1,4 +1,5 @@
 import { gsiState, players } from '/hud/core/state.js'
+import { getOverriddenTeamName, getTeamNameOverrides } from '/hud/gsi/helpers/team-name-overrides.js'
 
 const getGrenadeKey = (weaponName) => {
 	switch (weaponName) {
@@ -20,8 +21,10 @@ const getFallbackNameFromSide = (side) => {
 	}
 }
 
-const makeTeam = (side, gsiTeamObject) => {
+const makeTeam = (side, gsiTeamObject, teamNameOverrides) => {
 	const teamMembers = players.filter((player) => player.side === side)
+
+	const overriddenTeamName = getOverriddenTeamName(teamNameOverrides, teamMembers)
 
 	const team = {
 		side,
@@ -29,7 +32,7 @@ const makeTeam = (side, gsiTeamObject) => {
 		consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
 		flag: gsiTeamObject.flag,
 		matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO we may want to have options override this
-		name: gsiTeamObject.name || getFallbackNameFromSide(side),
+		name: overriddenTeamName || gsiTeamObject.name || getFallbackNameFromSide(side),
 		players: teamMembers,
 		score: gsiTeamObject.score,
 		timeoutsRemaining: gsiTeamObject.timeouts_remaining,
@@ -58,8 +61,10 @@ const makeTeam = (side, gsiTeamObject) => {
 
 // NB! This must be called AFTER parsePlayers!
 export const parseTeams = () => {
+	const teamNameOverrides = getTeamNameOverrides()
+
 	return [
-		makeTeam(2, gsiState.map.team_t),
-		makeTeam(3, gsiState.map.team_ct),
+		makeTeam(2, gsiState.map.team_t, teamNameOverrides),
+		makeTeam(3, gsiState.map.team_ct, teamNameOverrides),
 	].sort((a, b) => a.players[0]?.observerSlot - b.players[0]?.observerSlot)
 }
