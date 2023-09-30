@@ -4084,7 +4084,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: ws. A copy of the source code may be downloaded from https://github.com/websockets/ws.git. This software contains the following license and notice below:
+The following software may be included in this product: ws. A copy of the source code may be downloaded from git+https://github.com/websockets/ws.git. This software contains the following license and notice below:
 
 Copyright (c) 2011 Einar Otto Stangvik <einaros@gmail.com>
 Copyright (c) 2013 Arnout Kazemier and contributors
