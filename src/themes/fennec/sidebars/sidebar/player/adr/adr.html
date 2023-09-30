@@ -1,0 +1,4 @@
+<div v-if="! player.isAlive" :class="['adr', positionClass]">
+	<div :class="['label', colorClass]">ADR</div>
+	<Digits digits="3" :value="player.adr" />
+</div>

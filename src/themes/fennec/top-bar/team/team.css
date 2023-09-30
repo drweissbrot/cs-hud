@@ -1,0 +1,13 @@
+.team {
+	transform-origin: top;
+}
+
+.team.--left {
+	grid-area: team-left;
+	transform: skewX(20deg) translateX(-1.65rem);
+}
+
+.team.--right {
+	grid-area: team-right;
+	transform: skewX(-20deg) translateX(1.65rem);
+}

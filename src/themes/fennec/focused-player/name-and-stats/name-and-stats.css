@@ -1,0 +1,38 @@
+.name-and-stats {
+	display: grid;
+	grid-template-columns: max-content 1fr max-content;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+		'before name-row after'
+		'before data-row after';
+}
+
+.name-and-stats::before,
+.name-and-stats::after {
+	content: '';
+	display: block;
+	width: 1.5rem;
+
+	transition: background-color var(--fade-fast-duration) ease;
+	z-index: 1;
+}
+
+.name-and-stats::before {
+	grid-area: before;
+	transform: skewX(20deg);
+}
+
+.name-and-stats::after {
+	grid-area: after;
+	transform: skewX(-20deg);
+}
+
+.name-and-stats.--ct::before,
+.name-and-stats.--ct::after {
+	background: var(--counter-terrorists-fill);
+}
+
+.name-and-stats.--t::before,
+.name-and-stats.--t::after {
+	background: var(--terrorists-fill);
+}

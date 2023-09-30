@@ -1,0 +1,50 @@
+.series-name {
+	grid-area: series-name;
+
+	display: grid;
+	grid-template-columns: 4fr 5fr 4fr;
+	grid-template-areas: 'left center right';
+	width: 90%;
+	margin: 0 auto;
+}
+
+.left,
+.center,
+.right {
+	padding: 0.475rem;
+
+	color: var(--black);
+	font-size: 1.35rem;
+}
+
+.left,
+.right {
+	background: var(--white-50);
+}
+
+.left {
+	grid-area: left;
+	transform: skewX(20deg) translateX(0.425rem);
+}
+
+.left .inner {
+	transform: skewX(-20deg);
+}
+
+.center {
+	grid-area: center;
+
+	background: var(--white-75);
+	clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0.85rem 100%);
+	font-weight: 700;
+	letter-spacing: 0.2em;
+}
+
+.right {
+	grid-area: right;
+	transform: skewX(-20deg) translateX(-0.425rem);
+}
+
+.right .inner {
+	transform: skewX(20deg);
+}

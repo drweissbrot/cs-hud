@@ -1,0 +1,9 @@
+<Transition mode="out-in">
+	<div v-if="isActive" class="focused-player">
+		<FocusedPlayerHealthAndArmor />
+		<FocusedPlayerNameAndStats />
+		<FocusedPlayerAmmo />
+	</div>
+
+	<div v-else-if="$round.isFreezetime" class="freezetime-placeholder"></div>
+</Transition>

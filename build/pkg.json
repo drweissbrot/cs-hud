@@ -1,0 +1,27 @@
+{
+	"pkg": {
+		"outputPath": "/home/node/bin",
+
+		"targets": [
+			"node18-linux",
+			"node18-windows"
+		],
+
+		"assets": [
+			"../assets/licenses.txt",
+			"../license.txt",
+			"../node_modules/@fontsource/**/*.css",
+			"../node_modules/@fontsource/**/*.woff",
+			"../node_modules/@fontsource/**/*.woff2",
+			"../node_modules/normalize.css/normalize.css",
+			"../node_modules/vue/dist/vue.esm-browser.js",
+			"../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.esm.js.map",
+			"../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.esm.js",
+			"../src/assets",
+			"../src/config",
+			"../src/radar",
+			"../src/themes",
+			"../src/version.txt"
+		]
+	}
+}

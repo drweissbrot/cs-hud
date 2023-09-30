@@ -1,0 +1,16 @@
+.current-round {
+	grid-area: current-round;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	padding: 0.25rem;
+	background: var(--black-50);
+}
+
+.current-round.--warmup {
+	font-size: 1.5rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}

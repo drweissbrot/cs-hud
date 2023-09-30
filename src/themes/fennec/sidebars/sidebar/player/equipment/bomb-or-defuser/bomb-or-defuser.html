@@ -1,0 +1,6 @@
+<div class="bomb-or-defuser">
+	<Transition name="fast" mode="out-in">
+		<img v-if="player.hasDefuser" src="/hud/img/weapons/defuser.svg" alt="" class="defuser">
+		<img v-else-if="player.hasBomb" src="/hud/img/weapons/c4.svg" alt="" :class="['bomb', { '--active': isBombActive }]">
+	</Transition>
+</div>

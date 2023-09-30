@@ -1,0 +1,16 @@
+.name-wrapper {
+	font-size: 2.5rem;
+	max-height: var(--top-bar-row-height);
+}
+
+.name {
+	height: var(--top-bar-row-height);
+}
+
+.name.--ct {
+	background: var(--counter-terrorists-fill-50);
+}
+
+.name.--t {
+	background: var(--terrorists-fill-50);
+}

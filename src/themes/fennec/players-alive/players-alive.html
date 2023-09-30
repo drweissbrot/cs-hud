@@ -1,0 +1,19 @@
+<Transition>
+	<div v-if="isActive" class="players-alive">
+		<div class="title">
+			Players Alive
+		</div>
+
+		<div :class="['team', '--left', leftTeamColorClass]">
+			{{ leftTeamAlive }}
+		</div>
+
+		<div class="vs">
+			vs
+		</div>
+
+		<div :class="['team', '--right', rightTeamColorClass]">
+			{{ rightTeamAlive }}
+		</div>
+	</div>
+</Transition>

@@ -1,0 +1,86 @@
+/* avoid editing or overriding these directly -- change the underlying variables instead */
+:root {
+	--ct-border-0: var(--counter-terrorists-border-0);
+	--ct-border-10: var(--counter-terrorists-border-10);
+	--ct-border-20: var(--counter-terrorists-border-20);
+	--ct-border-30: var(--counter-terrorists-border-30);
+	--ct-border-40: var(--counter-terrorists-border-40);
+	--ct-border-50: var(--counter-terrorists-border-50);
+	--ct-border-60: var(--counter-terrorists-border-60);
+	--ct-border-70: var(--counter-terrorists-border-70);
+	--ct-border-75: var(--counter-terrorists-border-75);
+	--ct-border-80: var(--counter-terrorists-border-80);
+	--ct-border-85: var(--counter-terrorists-border-85);
+	--ct-border-90: var(--counter-terrorists-border-90);
+	--ct-border-100: var(--counter-terrorists-border-100);
+
+	--ct-fill-0: var(--counter-terrorists-fill-0);
+	--ct-fill-10: var(--counter-terrorists-fill-10);
+	--ct-fill-20: var(--counter-terrorists-fill-20);
+	--ct-fill-30: var(--counter-terrorists-fill-30);
+	--ct-fill-40: var(--counter-terrorists-fill-40);
+	--ct-fill-50: var(--counter-terrorists-fill-50);
+	--ct-fill-60: var(--counter-terrorists-fill-60);
+	--ct-fill-70: var(--counter-terrorists-fill-70);
+	--ct-fill-75: var(--counter-terrorists-fill-75);
+	--ct-fill-80: var(--counter-terrorists-fill-80);
+	--ct-fill-85: var(--counter-terrorists-fill-85);
+	--ct-fill-90: var(--counter-terrorists-fill-90);
+	--ct-fill-100: var(--counter-terrorists-fill-100);
+
+	--ct-text-0: var(--counter-terrorists-text-0);
+	--ct-text-10: var(--counter-terrorists-text-10);
+	--ct-text-20: var(--counter-terrorists-text-20);
+	--ct-text-30: var(--counter-terrorists-text-30);
+	--ct-text-40: var(--counter-terrorists-text-40);
+	--ct-text-50: var(--counter-terrorists-text-50);
+	--ct-text-60: var(--counter-terrorists-text-60);
+	--ct-text-70: var(--counter-terrorists-text-70);
+	--ct-text-75: var(--counter-terrorists-text-75);
+	--ct-text-80: var(--counter-terrorists-text-80);
+	--ct-text-85: var(--counter-terrorists-text-85);
+	--ct-text-90: var(--counter-terrorists-text-90);
+	--ct-text-100: var(--counter-terrorists-text-100);
+
+	--t-border-0: var(--terrorists-border-0);
+	--t-border-10: var(--terrorists-border-10);
+	--t-border-20: var(--terrorists-border-20);
+	--t-border-30: var(--terrorists-border-30);
+	--t-border-40: var(--terrorists-border-40);
+	--t-border-50: var(--terrorists-border-50);
+	--t-border-60: var(--terrorists-border-60);
+	--t-border-70: var(--terrorists-border-70);
+	--t-border-75: var(--terrorists-border-75);
+	--t-border-80: var(--terrorists-border-80);
+	--t-border-85: var(--terrorists-border-85);
+	--t-border-90: var(--terrorists-border-90);
+	--t-border-100: var(--terrorists-border-100);
+
+	--t-fill-0: var(--terrorists-fill-0);
+	--t-fill-10: var(--terrorists-fill-10);
+	--t-fill-20: var(--terrorists-fill-20);
+	--t-fill-30: var(--terrorists-fill-30);
+	--t-fill-40: var(--terrorists-fill-40);
+	--t-fill-50: var(--terrorists-fill-50);
+	--t-fill-60: var(--terrorists-fill-60);
+	--t-fill-70: var(--terrorists-fill-70);
+	--t-fill-75: var(--terrorists-fill-75);
+	--t-fill-80: var(--terrorists-fill-80);
+	--t-fill-85: var(--terrorists-fill-85);
+	--t-fill-90: var(--terrorists-fill-90);
+	--t-fill-100: var(--terrorists-fill-100);
+
+	--t-text-0: var(--terrorists-text-0);
+	--t-text-10: var(--terrorists-text-10);
+	--t-text-20: var(--terrorists-text-20);
+	--t-text-30: var(--terrorists-text-30);
+	--t-text-40: var(--terrorists-text-40);
+	--t-text-50: var(--terrorists-text-50);
+	--t-text-60: var(--terrorists-text-60);
+	--t-text-70: var(--terrorists-text-70);
+	--t-text-75: var(--terrorists-text-75);
+	--t-text-80: var(--terrorists-text-80);
+	--t-text-85: var(--terrorists-text-85);
+	--t-text-90: var(--terrorists-text-90);
+	--t-text-100: var(--terrorists-text-100);
+}

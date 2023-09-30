@@ -1,0 +1,29 @@
+.primary {
+	grid-area: primary;
+
+	display: flex;
+	align-items: center;
+}
+
+.primary img {
+	height: 2rem;
+	transition: opacity var(--fade-fast-duration) ease;
+}
+
+.primary img:not(.--active) {
+	opacity: 0.5;
+}
+
+.primary.--left {
+	justify-content: flex-end;
+	padding-right: var(--sidebar-player-weapon-padding);
+}
+
+.primary.--right {
+	justify-content: flex-start;
+	padding-left: var(--sidebar-player-weapon-padding);
+}
+
+.primary.--right img {
+	transform: rotateY(180deg);
+}

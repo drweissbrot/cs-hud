@@ -1,0 +1,10 @@
+.data-row {
+	grid-area: data-row;
+
+	display: grid;
+	grid-template-columns: max-content 6rem 6rem 1fr;
+	padding: 0.5rem 2rem;
+
+	background: var(--black-50);
+	clip-path: var(--polygon-bordered-by-diagonals);
+}

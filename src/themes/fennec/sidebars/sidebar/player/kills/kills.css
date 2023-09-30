@@ -1,0 +1,30 @@
+.kills {
+	grid-area: kills;
+
+	display: flex;
+	align-items: center;
+
+	padding: 0.5rem;
+	font-size: 1.5rem;
+}
+
+.label {
+	margin-right: 0.25em;
+}
+
+.label.--ct {
+	color: var(--counter-terrorists-text);
+}
+
+.label.--t {
+	color: var(--terrorists-text);
+}
+
+.value {
+	min-width: 2ch;
+	text-align: right;
+}
+
+.v-enter-active {
+	transition-delay: var(--fade-fast-duration);
+}

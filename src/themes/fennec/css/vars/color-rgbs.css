@@ -1,0 +1,20 @@
+/* avoid editing or overriding these directly -- change the underlying variables instead */
+:root {
+	--black: rgb(var(--black-rgb));
+	--white: rgb(var(--white-rgb));
+	--red: rgb(var(--red-rgb));
+	--green: rgb(var(--green-rgb));
+
+	--counter-terrorists-fill: rgb(var(--counter-terrorists-fill-rgb));
+	--counter-terrorists-border: rgb(var(--counter-terrorists-border-rgb));
+	--counter-terrorists-text: rgb(var(--counter-terrorists-text-rgb));
+
+	--terrorists-fill: rgb(var(--terrorists-fill-rgb));
+	--terrorists-border: rgb(var(--terrorists-border-rgb));
+	--terrorists-text: rgb(var(--terrorists-text-rgb));
+
+	--bomb-defused-fill: rgb(var(--bomb-defused-fill-rgb));
+	--bomb-defusing-fill: rgb(var(--bomb-defusing-fill-rgb));
+	--bomb-exploded-fill: rgb(var(--bomb-exploded-fill-rgb));
+	--bomb-planted-fill: rgb(var(--bomb-planted-fill-rgb));
+}

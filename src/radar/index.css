@@ -1,0 +1,76 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background: #212121;
+	color: #aeaeae;
+	font-family: 'Source Sans Pro', 'Ubuntu', 'Segoe UI Variable', 'Segoe UI', system-ui, ui-sans-serif, 'Calibri', sans-serif;
+	line-height: 1.25;
+}
+
+.buttons {
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 1rem 2rem;
+
+	background: #212121;
+}
+
+@media (max-width: 599px) {
+	.buttons {
+		left: 0;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.buttons a {
+	margin: 0.5rem;
+	padding: 0.5rem 1rem;
+	display: block;
+
+	border: 1px solid;
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease,
+		transform 0.3s ease;
+}
+
+.buttons a:active {
+	transform: scale(0.95);
+}
+
+.buttons a.open-config {
+	border-color: #aeaeae;
+}
+
+.buttons a.open-config:hover {
+	background: #aeaeae;
+	color: #212121;
+}
+
+.radar {
+	--radar-width: 100%;
+
+	max-width: 100vmin;
+	max-height: 100vmin;
+
+	margin: 0 auto;
+	aspect-ratio: 1;
+	color: #fff;
+}
+
+img.radar-image {
+	height: 100%;
+	width: unset !important;
+}

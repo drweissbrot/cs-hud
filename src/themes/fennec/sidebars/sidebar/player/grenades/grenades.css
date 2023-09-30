@@ -1,0 +1,20 @@
+.grenades {
+	grid-area: grenades;
+
+	display: flex;
+	align-items: center;
+	padding-right: 0.5rem;
+}
+
+.grenades .grenade {
+	margin: 0 0.6rem;
+}
+
+.grenades .grenade img {
+	height: 1.5rem;
+	transition: opacity var(--fade-fast-duration) ease;
+}
+
+.grenades .grenade img:not(.--active) {
+	opacity: 0.5;
+}

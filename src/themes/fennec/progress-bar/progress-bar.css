@@ -1,0 +1,40 @@
+.progress-bar-background {
+	width: 100%;
+	height: 0.6rem;
+	background: var(--white-50);
+	overflow: hidden;
+}
+
+.progress-bar-background.--skewed-left {
+	transform: skewX(20deg);
+}
+
+.progress-bar-background.--skewed-right {
+	transform: skewX(-20deg);
+}
+
+.progress-bar-fill {
+	height: 100%;
+}
+
+.progress-bar-fill.--to-left,
+.progress-bar-fill.--left {
+	transform-origin: left;
+}
+
+.progress-bar-fill.--to-right,
+.progress-bar-fill.--right {
+	transform-origin: right;
+}
+
+.progress-bar-fill.--ct {
+	background: var(--counter-terrorists-fill);
+}
+
+.progress-bar-fill.--t {
+	background: var(--terrorists-fill);
+}
+
+.progress-bar-fill.--bomb {
+	background: var(--bomb-planted-fill);
+}

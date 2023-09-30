@@ -1,0 +1,69 @@
+.buttons {
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 1rem 2rem;
+
+	background: #212121;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (max-width: 599px) {
+	.buttons {
+		left: 0;
+	}
+}
+
+.buttons a,
+.buttons button {
+	margin: 0.5rem;
+	padding: 0.5rem 1rem;
+	display: block;
+
+	background: none;
+	border: 1px solid;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
+	text-align: center;
+	text-decoration: none;
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease,
+		transform 0.3s ease;
+}
+
+.buttons a:active,
+.buttons button:active {
+	transform: scale(0.95);
+}
+
+.buttons a {
+	border-color: #aeaeae;
+}
+
+.buttons a:hover {
+	background: #aeaeae;
+	color: #212121;
+}
+
+.buttons button.save {
+	border-color: green;
+}
+
+.buttons button.save:hover {
+	background: green;
+	color: #fff;
+}
+
+.buttons button.force-hud-refresh {
+	border-color: yellow;
+}
+
+.buttons button.force-hud-refresh:hover {
+	background: yellow;
+	color: #212121;
+}

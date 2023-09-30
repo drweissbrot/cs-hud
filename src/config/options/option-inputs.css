@@ -1,0 +1,88 @@
+.input-group {
+	margin-bottom: 2.5rem;
+	padding: 0 1rem;
+
+	display: grid;
+	grid-template-areas: 'key' 'input' 'default-and-label';
+	grid-gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+	.input-group {
+		grid-template-columns: minmax(0, 24rem) repeat(2, minmax(0, 48rem));
+		grid-template-rows: max-content auto;
+		grid-template-areas: 'key input default-and-label 0' '1 1 default-and-label 2';
+		grid-gap: 0 1rem;
+		align-items: start;
+	}
+}
+
+.input-group label {
+	grid-area: key;
+	display: block;
+	align-self: center;
+}
+
+@media (min-width: 600px) {
+	.input-group label {
+		text-align: right;
+	}
+}
+
+.input-group > input,
+.input-group .input {
+	grid-area: input;
+}
+
+.input-group .input {
+	display: flex;
+	align-items: center;
+}
+
+.input-group .input button.reset {
+	margin-left: 2rem;
+	background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font-family: inherit;
+}
+
+.input-group .input button.reset:not(:active):not(:hover) {
+	text-decoration: underline;
+}
+
+.input-group .default-and-label {
+	grid-area: default-and-label;
+	align-self: center;
+}
+
+.input-group .default-and-label p {
+	margin: 0 0 0.25rem;
+}
+
+.input-group .default-and-label .default code {
+	background: var(--black);
+	padding: 0.25rem 0.5rem;
+}
+
+input[type='number'],
+input[type='text'] {
+	width: 100%;
+	padding: 0.4rem 1rem;
+
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid #aeaeae;
+	color: #dedede;
+	font: inherit;
+}
+
+input[type='number']::placeholder,
+input[type='text']::placeholder {
+	color: #939393;
+}
+
+input[type='checkbox'] {
+	width: fit-content;
+	align-self: center;
+}

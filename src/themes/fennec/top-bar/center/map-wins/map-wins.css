@@ -1,0 +1,45 @@
+.map-wins {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: var(--top-bar-maps-fill);
+}
+
+.map-wins.--left {
+	grid-area: map-wins-left;
+	padding-left: 0.5rem;
+
+	clip-path: polygon(-1% -1%, 101% -1%, 101% 101%, 0.85rem 101%);
+	flex-direction: row-reverse;
+}
+
+.map-wins.--right {
+	grid-area: map-wins-right;
+	padding-right: 0.5rem;
+
+	clip-path: polygon(-1% -1%, 101% 0, calc(101% - 0.85rem) 101%, -1% 101%);
+}
+
+.map-wins .pip {
+	width: 0.6rem;
+	aspect-ratio: 1;
+	border: 0.2rem solid;
+	margin: 0.3rem;
+}
+
+.map-wins.--ct .pip {
+	border-color: var(--counter-terrorists-border);
+}
+
+.map-wins.--ct .pip.--filled {
+	background: var(--counter-terrorists-fill);
+}
+
+.map-wins.--t .pip {
+	border-color: var(--terrorists-border);
+}
+
+.map-wins.--t .pip.--filled {
+	background: var(--terrorists-fill);
+}

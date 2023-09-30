@@ -1,0 +1,26 @@
+img.paused-icon,
+img.planted-bomb-icon {
+	height: 2rem;
+	margin: 0.125rem 0;
+}
+
+.clock {
+	font-size: 2.25rem;
+}
+
+.clock.--red {
+	color: var(--top-bar-clock-red-text);
+}
+
+img.bombsite-icon {
+	height: 1.75rem;
+	margin-left: 0.75rem;
+}
+
+.bomb {
+	height: 2.25rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

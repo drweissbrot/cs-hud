@@ -1,0 +1,42 @@
+/* these variables are the "root" color values -- if you want to change anything, change it here */
+:root {
+	/* Base Colors */
+	--black-rgb: 0, 0, 0;
+	--white-rgb: 255, 255, 255;
+	--red-rgb: 255, 51, 51;
+	--green-rgb: 51, 204, 77;
+
+	--counter-terrorists-fill-rgb: 29, 158, 222;
+	--counter-terrorists-border-rgb: var(--counter-terrorists-fill-rgb);
+	--counter-terrorists-text-rgb: var(--counter-terrorists-fill-rgb);
+
+	--terrorists-fill-rgb: 193, 136, 3;
+	--terrorists-border-rgb: var(--terrorists-fill-rgb);
+	--terrorists-text-rgb: var(--terrorists-fill-rgb);
+
+	--bomb-defused-fill-rgb: var(--green-rgb);
+	--bomb-defusing-fill-rgb: var(--red-rgb);
+	--bomb-exploded-fill-rgb: var(--red-rgb);
+	--bomb-planted-fill-rgb: var(--red-rgb);
+
+	/* Use-Case Specific Colors */
+	--viewport-fill: #070;
+	--text-color: var(--white);
+
+	--progress-bar-fill-color-bomb: var(--red);
+
+	--radar-inferno-flame-ct-fill: rgba(142, 79, 111, 0.75);
+	--radar-inferno-flame-t-fill: rgba(193, 68, 2, 0.75);
+	--radar-player-carrying-bomb-fill: var(--red);
+	--radar-smoke-ct-fill: rgba(99, 134, 150, 0.75);
+	--radar-smoke-t-fill: rgba(119, 115, 78, 0.75);
+
+	--sidebar-bad-kd-ratio-text: var(--red);
+	--sidebar-damage-taken-fill: var(--red);
+	--sidebar-good-kd-ratio-text: var(--green);
+	--sidebar-round-money-spent-text: var(--red);
+	--sidebar-player-money-text: var(--green);
+
+	--top-bar-clock-red-text: var(--red);
+	--top-bar-maps-fill: var(--white-75);
+}

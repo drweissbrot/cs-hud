@@ -1,0 +1,5 @@
+<div class="series-graph-wrapper">
+	<div :class="['series-graph', { '--active': $round.isFreezetime }]">
+		<Match v-for="match of matches" :match="match" />
+	</div>
+</div>

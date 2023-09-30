@@ -1,0 +1,8 @@
+<div v-if="$map.phase === 'warmup'" class="current-round --warmup">
+	Warmup
+</div>
+
+<div v-else class="current-round">
+	<Clock />
+	<RoundNumber />
+</div>

@@ -1,0 +1,3 @@
+<div v-if="pips.length > 1" :class="['map-wins', positionClass, colorClass]">
+	<div v-for="pip of pips" :class="['pip', { '--filled': pip }]"></div>
+</div>

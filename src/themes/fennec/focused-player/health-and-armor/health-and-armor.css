@@ -1,0 +1,54 @@
+.wrapper {
+	display: flex;
+	align-items: flex-end;
+}
+
+.health-and-armor {
+	display: flex;
+	flex: 1;
+	font-size: 3rem;
+}
+
+.inner {
+	flex: 1;
+	padding: 0.75rem 0.5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	transition: background-color var(--fade-fast-duration) ease;
+}
+
+img {
+	height: 2rem;
+}
+
+.health-and-armor::before,
+.health-and-armor::after {
+	content: '';
+	width: 2rem;
+
+	transition: background-color var(--fade-fast-duration) ease;
+	z-index: -1;
+}
+
+.health-and-armor::before {
+	transform: skewX(20deg) translateX(50%);
+}
+
+.health-and-armor::after {
+	transform: skewX(20deg) translateX(-50%);
+}
+
+.inner.--ct,
+.health-and-armor.--ct::before,
+.health-and-armor.--ct::after {
+	background: var(--counter-terrorists-fill);
+}
+
+.inner.--t,
+.health-and-armor.--t::before,
+.health-and-armor.--t::after {
+	background: var(--terrorists-fill);
+}

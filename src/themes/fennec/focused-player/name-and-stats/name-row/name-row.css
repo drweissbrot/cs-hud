@@ -1,0 +1,23 @@
+.name-row {
+	grid-area: name-row;
+
+	margin: 0 -1.75rem;
+	padding: 0 2.5rem;
+
+	display: flex;
+	align-items: center;
+
+	background: var(--black-50);
+	clip-path: var(--polygon-bordered-by-diagonals);
+	font-size: 2.5rem;
+	font-weight: 700;
+	transition: background-color var(--fade-fast-duration) ease;
+}
+
+.name-row.--ct {
+	background: var(--counter-terrorists-fill-60);
+}
+
+.name-row.--t {
+	background: var(--terrorists-fill-60);
+}

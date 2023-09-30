@@ -1,0 +1,50 @@
+.players-alive {
+	position: fixed;
+	top: var(--viewport-margin-top);
+	right: var(--viewport-margin-right);
+
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas:
+		'title title title'
+		'left vs right';
+
+	background: var(--black-50);
+	box-shadow: var(--box-shadow);
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.title {
+	grid-area: title;
+	padding: 0.25rem 0.5rem;
+
+	font-size: 1.25rem;
+	letter-spacing: 0.125em;
+}
+
+.team,
+.vs {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1;
+	padding: 0.5rem;
+	min-width: calc(1rem + 1ch);
+}
+
+.team {
+	font-size: 3rem;
+}
+
+.team.--ct {
+	background: var(--counter-terrorists-fill);
+}
+
+.team.--t {
+	background: var(--terrorists-fill);
+}
+
+.vs {
+	font-size: 1.5rem;
+}

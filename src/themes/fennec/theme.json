@@ -1,0 +1,337 @@
+{
+	"parent": "raw",
+
+	"options": {
+		"series.name.left": {
+			"type": "string",
+			"section": "Series",
+			"label": "Series Name (left)"
+		},
+
+		"series.name.center": {
+			"type": "string",
+			"section": "Series",
+			"label": "Series Name (center)"
+		},
+
+		"series.name.right": {
+			"type": "string",
+			"section": "Series",
+			"label": "Series Name (right)"
+		},
+
+		"series.maps.1.name": {
+			"type": "string",
+			"section": "Series: Map 1",
+			"label": "Map 1 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.1.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 1",
+			"label": "Team that picked Map 1"
+		},
+
+		"series.maps.1.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 1",
+			"label": "If Map 1 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.1.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 1",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.1.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 1",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"series.maps.2.name": {
+			"type": "string",
+			"section": "Series: Map 2",
+			"label": "Map 2 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.2.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 2",
+			"label": "Team that picked Map 2"
+		},
+
+		"series.maps.2.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 2",
+			"label": "If Map 2 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.2.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 2",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.2.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 2",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"series.maps.3.name": {
+			"type": "string",
+			"section": "Series: Map 3",
+			"label": "Map 3 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.3.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 3",
+			"label": "Team that picked Map 3"
+		},
+
+		"series.maps.3.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 3",
+			"label": "If Map 3 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.3.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 3",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.3.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 3",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"series.maps.4.name": {
+			"type": "string",
+			"section": "Series: Map 4",
+			"label": "Map 4 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.4.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 4",
+			"label": "Team that picked Map 4"
+		},
+
+		"series.maps.4.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 4",
+			"label": "If Map 4 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.4.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 4",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.4.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 4",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"series.maps.5.name": {
+			"type": "string",
+			"section": "Series: Map 5",
+			"label": "Map 5 Name (including prefix, e.g. `de_cache`)"
+		},
+
+		"series.maps.5.pickTeam": {
+			"type": "string",
+			"section": "Series: Map 5",
+			"label": "Team that picked Map 5"
+		},
+
+		"series.maps.5.isDecider": {
+			"type": "boolean",
+			"section": "Series: Map 5",
+			"label": "If Map 5 is the Decider (for Best of 1s, set this to false)"
+		},
+
+		"series.maps.5.pickTeamScore": {
+			"type": "number",
+			"section": "Series: Map 5",
+			"label": "Final Score of the team that picked this map"
+		},
+
+		"series.maps.5.enemyTeamScore": {
+			"type": "number",
+			"section": "Series: Map 5",
+			"label": "Final Score of the team that did not pick this map"
+		},
+
+		"cvars.cash_team_loser_bonus": {
+			"type": "number",
+			"fallback": 1400,
+			"section": "Cvars",
+			"label": "Value of cash_team_loser_bonus, i.e. the initial loss bonus amount"
+		},
+
+		"cvars.cash_team_loser_bonus_consecutive_rounds": {
+			"type": "number",
+			"fallback": 500,
+			"section": "Cvars",
+			"label": "Value of cash_team_loser_bonus_consecutive_rounds, i.e. the additional loss bonus amount per consecutive round lost"
+		},
+
+		"cvars.mp_c4timer": {
+			"type": "number",
+			"fallback": 40,
+			"section": "Cvars",
+			"label": "Value of mp_c4timer, i.e. the number of seconds from when the bomb is planted until it explodes"
+		},
+
+		"cvars.mp_roundtime": {
+			"type": "number",
+			"fallback": 1.92,
+			"section": "Cvars",
+			"label": "Value of mp_roundtime, i.e. the default number of minutes a round can take"
+		},
+
+		"cvars.mp_team_timeout_max": {
+			"type": "number",
+			"fallback": 4,
+			"section": "Cvars",
+			"label": "Value of mp_team_timeout_max, i.e. the number of tactical timeouts available per team"
+		},
+
+		"cvars.mp_team_timeout_time": {
+			"type": "number",
+			"fallback": 30,
+			"section": "Cvars",
+			"label": "Value of mp_team_timeout_time, i.e. the duration in seconds of each tactical timeout"
+		},
+
+		"cvars.mp_freezetime": {
+			"type": "number",
+			"fallback": 20,
+			"section": "Cvars",
+			"label": "Value of mp_freezetime, i.e. the duration in seconds of each freezetime"
+		},
+
+		"preferences.playersAlive.showDuringFreezetime": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Show \"Players Alive\" during freezetime"
+		},
+
+		"preferences.sidebar.teamGrenades.hideDuringRound": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Hode Team Grenades panels in sidebars during the round (if no, will only show during freezetimes, and the first few seconds of the round (defined in preferences.sidebar.teamGrenades.activeIntoRoundSec))"
+		},
+
+		"preferences.sidebar.teamGrenades.activeIntoRoundSec": {
+			"type": "number",
+			"fallback": 5,
+			"section": "Preferences",
+			"label": "Number of seconds into the round the Team Grenades panel should be visible (0 to disable; ignored when preferences.sidebar.teamGrenades.hideDuringRound is set to no)"
+		},
+
+		"preferences.sidebar.teamEquipment.activeIntoRoundSec": {
+			"type": "number",
+			"fallback": 5,
+			"section": "Preferences",
+			"label": "Number of seconds into the round the Team Money and Equipment panel should be visible (0 to disable)"
+		},
+
+		"preferences.seriesGraph.showMapForOnlyMatch": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Show map name and screenshot in the Series Graph, even if there is only a single match in the series"
+		},
+
+		"preferences.topBar.clock.tenSecondsRedInFreezetime": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Show clock in red at less than 10 seconds in Freezetime"
+		},
+
+		"preferences.topBar.clock.tenSecondsRedInTacticalTimeout": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Show clock in red at less than 10 seconds during Tactical Timeouts"
+		},
+
+		"preferences.topBar.clock.tenSecondsRedInRoundRestartDelay": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Show clock in red at less than 10 seconds after round end"
+		},
+
+		"preferences.topBar.matchPointRounds.showDuringRound": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Show \"First to X Rounds\" panel (visible during Overtime) during round (otherwise only in Freezetime)"
+		},
+
+		"preferences.topBar.team.roundWinnerPanel.showIntoFreezetimeSec": {
+			"type": "number",
+			"fallback": 0,
+			"section": "Preferences",
+			"label": "Number of seconds into the following round's freezetime the \"Wins the Round\" panel should be visible (0 to disable; 1000 to show during entire freezetime)"
+		},
+
+		"css.base-scale-factor": {
+			"type": "text",
+			"section": "Style Overrides",
+			"label": "Base size that everything is sized relative to; e.g. `10px`"
+		},
+
+		"css.counter-terrorists-fill-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "CT fill color (used for most CT-colored surfaces)"
+		},
+
+		"css.counter-terrorists-border-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "CT border color (used for small or thing CT-colored surfaces)"
+		},
+
+		"css.counter-terrorists-text-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "CT text color (used for CT-colored text)"
+		},
+
+		"css.terrorists-fill-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "T fill color (used for most T-colored surfaces)"
+		},
+
+		"css.terrorists-border-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "T border color (used for small or thing T-colored surfaces)"
+		},
+
+		"css.terrorists-text-rgb": {
+			"type": "color",
+			"section": "Style Overrides",
+			"label": "T text color (used for T-colored text)"
+		},
+
+		"css.primary-font-family": {
+			"type": "string",
+			"section": "Style Overrides",
+			"label": "Font"
+		}
+	},
+
+	"optionSectionDescriptions": {
+		"Style Overrides": "NB: To apply changes, click Save, then Force HUD Refresh."
+	}
+}

@@ -1,0 +1,65 @@
+.player-wrapper {
+	display: grid;
+}
+
+.player-wrapper.--left {
+	grid-template-columns: var(--sidebar-player-width) var(--sidebar-player-focused-player-highlight-width) var(--sidebar-player-additional-stats-width);
+	grid-template-areas: 'player focused-player-highlight additional-stats';
+}
+
+.player-wrapper.--right {
+	grid-template-columns: var(--sidebar-player-additional-stats-width) var(--sidebar-player-focused-player-highlight-width) var(--sidebar-player-width);
+	grid-template-areas: 'additional-stats focused-player-highlight player';
+}
+
+.player {
+	grid-area: player;
+
+	display: grid;
+	grid-template-rows: repeat(2, var(--sidebar-player-row-height));
+
+	background: var(--black-60);
+	filter: var(--filter-drop-shadow);
+	font-size: 1.8rem;
+	isolation: isolate;
+}
+
+.player.--left {
+	grid-template-columns:
+		var(--sidebar-start-and-end-width)
+		var(--sidebar-health-width)
+		var(--sidebar-observer-slot-width)
+		var(--sidebar-money-width)
+		var(--sidebar-kills-width)
+		var(--sidebar-deaths-width)
+		var(--sidebar-taser-width)
+		var(--sidebar-grenades-half-width)
+		var(--sidebar-round-kills-width)
+		var(--sidebar-primary-and-secondary-width)
+		var(--sidebar-start-and-end-width);
+	grid-template-areas:
+		'start    health       observer-slot    name     name     name      name     name        round-kills    primary      end'
+		'start    equipment    equipment        money    kills    deaths    taser    grenades    grenades       secondary    end';
+}
+
+.player.--right {
+	grid-template-columns:
+		var(--sidebar-start-and-end-width)
+		var(--sidebar-primary-and-secondary-width)
+		var(--sidebar-round-kills-width)
+		var(--sidebar-grenades-half-width)
+		var(--sidebar-taser-width)
+		var(--sidebar-kills-width)
+		var(--sidebar-deaths-width)
+		var(--sidebar-money-width)
+		var(--sidebar-observer-slot-width)
+		var(--sidebar-health-width)
+		var(--sidebar-start-and-end-width);
+	grid-template-areas:
+		'start    primary      round-kills    name        name     name     name      name     observer-slot    health       end'
+		'start    secondary    grenades       grenades    taser    kills    deaths    money    equipment        equipment    end';
+}
+
+.player-wrapper:not(:last-child) {
+	margin-bottom: 0.5rem;
+}

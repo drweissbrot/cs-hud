@@ -1,0 +1,5 @@
+<div class="grenades">
+	<div v-for="grenade of grenades" :key="grenade.key" class="grenade">
+		<img :src="grenade.iconUrl" alt="" :class="{ '--active': grenade.isActive }">
+	</div>
+</div>

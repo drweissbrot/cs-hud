@@ -1,0 +1,33 @@
+.planted-bomb {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	transform: translate(-50%, -50%);
+}
+
+.planted-bomb:not(.--default-level) {
+	opacity: 0.75;
+}
+
+img {
+	display: block;
+	height: 1.25rem;
+	transition: filter var(--fade-fast-duration) ease;
+}
+
+img.--planted {
+	filter: url(#bomb-planted-fill-from-white-filter);
+}
+
+img.--defusing {
+	filter: url(#bomb-defusing-fill-from-white-filter);
+}
+
+img.--defused {
+	filter: url(#bomb-defused-fill-from-white-filter);
+}
+
+img.--exploded {
+	filter: url(#bomb-exploded-fill-from-white-filter);
+}

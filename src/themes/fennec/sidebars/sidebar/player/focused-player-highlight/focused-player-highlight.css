@@ -1,0 +1,11 @@
+.focused-player-highlight {
+	grid-area: focused-player-highlight;
+
+	width: 100%;
+	height: 100%;
+	transition: background-color var(--fade-fast-duration) ease;
+}
+
+.focused-player-highlight.--active {
+	background: var(--white-75);
+}

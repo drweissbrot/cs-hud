@@ -1,0 +1,25 @@
+.flame {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: var(--radar-inferno-flame-diameter);
+	height: var(--radar-inferno-flame-diameter);
+
+	aspect-ratio: 1;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	transition: opacity var(--fade-fast-duration) ease;
+}
+
+.flame.--ct {
+	background: var(--radar-inferno-flame-ct-fill);
+}
+
+.flame.--t {
+	background: var(--radar-inferno-flame-t-fill);
+}
+
+.flame:not(.--default-level) {
+	opacity: 0.75;
+}

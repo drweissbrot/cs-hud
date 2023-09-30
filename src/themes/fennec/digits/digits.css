@@ -1,0 +1,5 @@
+.digit {
+	display: inline-block;
+	min-width: 1ch;
+	text-align: center;
+}

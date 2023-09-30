@@ -1,0 +1,6 @@
+.score {
+	padding: 0.75rem;
+
+	background: var(--black-40);
+	text-align: center;
+}

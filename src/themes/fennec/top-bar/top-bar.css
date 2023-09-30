@@ -1,0 +1,16 @@
+.top-bar {
+	position: fixed;
+	top: var(--viewport-margin-top);
+	left: calc((100% - var(--top-bar-width)) / 2);
+	right: calc((100% - var(--top-bar-width)) / 2);
+
+	display: grid;
+	grid-template-columns: 20fr 13fr 20fr;
+	grid-template-areas:
+		'series-name series-name series-name'
+		'team-left center team-right';
+	align-items: start;
+
+	filter: var(--filter-drop-shadow);
+	text-align: center;
+}

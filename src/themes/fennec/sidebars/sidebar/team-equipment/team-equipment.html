@@ -1,0 +1,28 @@
+<div :class="['team-equipment-wrapper', positionClass, { '--active': isActive }]">
+	<div :class="['team-equipment', colorClass, positionClass, { '--active': isActive }]">
+		<div class="loss-bonus">
+			<div class="label">Loss Bonus</div>
+
+			<div class="pips-and-value">
+				<div :class="['pips', positionClass]">
+					<div :class="['pip', colorClass, { '--filled': team.consecutiveRoundLosses >= 1 }]"></div>
+					<div :class="['pip', colorClass, { '--filled': team.consecutiveRoundLosses >= 2 }]"></div>
+					<div :class="['pip', colorClass, { '--filled': team.consecutiveRoundLosses >= 3 }]"></div>
+					<div :class="['pip', colorClass, { '--filled': team.consecutiveRoundLosses >= 4 }]"></div>
+				</div>
+
+				<div class="value">${{ lossBonusValue }}</div>
+			</div>
+		</div>
+
+		<div class="team-money">
+			<div class="label">Team Money</div>
+			<div class="value">${{ teamMoney }}</div>
+		</div>
+
+		<div class="equipment-value">
+			<div class="label">Equipment Value</div>
+			<div class="value">${{ teamEquipmentValue }}</div>
+		</div>
+	</div>
+</div>

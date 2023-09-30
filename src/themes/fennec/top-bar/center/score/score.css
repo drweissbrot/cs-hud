@@ -1,0 +1,64 @@
+.score {
+	display: flex;
+
+	font-size: var(--top-bar-score-font-size);
+	font-weight: 700;
+}
+
+.score.--left::before,
+.score.--right::after {
+	content: '';
+	display: block;
+	width: 2rem;
+	height: 100%;
+}
+
+.score .inner {
+	padding: var(--top-bar-padding-x) 0;
+	min-width: 2ch;
+	width: 100%;
+
+	isolation: isolate;
+	text-align: center;
+	z-index: 1;
+}
+
+.score.--ct.--left::before,
+.score.--ct.--right::after,
+.score.--ct .inner {
+	background: var(--counter-terrorists-fill);
+}
+
+.score.--t.--left::before,
+.score.--t.--right::after,
+.score.--t .inner {
+	background: var(--terrorists-fill);
+}
+
+.score.--left {
+	grid-area: score-left;
+}
+
+.score.--left::before {
+	transform: skewX(20deg) scaleX(2) translateX(-0.05rem);
+}
+
+.score.--left .inner {
+	padding-left: 0.5rem;
+	padding-right: 1rem;
+	margin-left: -1.5rem;
+}
+
+.score.--right {
+	grid-area: score-right;
+}
+
+.score.--right::after {
+	transform: skewX(-20deg) scaleX(2) translateX(0.05rem);
+}
+
+.score.--right .inner {
+	padding-right: 0.5rem;
+	padding-left: 1rem;
+	margin-right: -1.5rem;
+}

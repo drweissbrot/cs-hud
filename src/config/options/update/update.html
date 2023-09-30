@@ -1,0 +1,47 @@
+<section>
+	<header>
+		<h2>Updates</h2>
+	</header>
+
+	<div v-if="isCheckingForInstalledVersion" class="inner">
+		Fetching installed version...
+	</div>
+
+	<div v-else-if="! installedVersionString" class="inner">
+		Something went wrong while fetching the installed version.
+	</div>
+
+	<div v-else class="inner">
+		<div>
+			Installed version:
+			{{ installedVersionString }}
+			<br>
+			Latest version:
+			{{ latestVersionString || 'unknown, please check for updates' }}
+		</div>
+
+		<button @click.prevent="checkForUpdates()" :disabled="isCheckingForUpdates" class="check-for-updates">
+			Check for updates
+		</button>
+
+		<div v-if="isCheckingForUpdates">
+			Checking for updates...
+		</div>
+
+		<template v-else-if="latestVersionString">
+			<div v-if="isInstalledVersionOutdated && latestVersionReleaseUrl">
+				Your installed version is out of date.
+				<a :href="latestVersionReleaseUrl" target="_blank">Please update to the latest version.</a>
+			</div>
+
+			<div v-else>
+				You're up to date.
+			</div>
+		</template>
+
+		<div v-else-if="errorOccuredWhileCheckingForUpdates">
+			Something went wrong while checking for updates.
+			Please try again.
+		</div>
+	</div>
+</section>

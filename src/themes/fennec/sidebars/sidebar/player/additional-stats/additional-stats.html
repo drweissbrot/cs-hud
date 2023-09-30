@@ -1,0 +1,8 @@
+<div class="additional-stats-wrapper">
+	<div :class="['additional-stats', positionClass, { '--active': isActive }]">
+		<Kills :player="player" />
+		<Assists :player="player" />
+		<Deaths :player="player" />
+		<Adr :player="player" />
+	</div>
+</div>

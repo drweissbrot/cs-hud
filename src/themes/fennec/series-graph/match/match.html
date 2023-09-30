@@ -1,0 +1,6 @@
+<div :class="['match', { '--is-current': match.isCurrentMatch }]">
+	<RoundGraph v-if="match.isCurrentMatch" />
+	<Score v-else :match="match" />
+
+	<Map v-if="! match.isOnlyMatch || $opts['preferences.seriesGraph.showMapForOnlyMatch']" :match="match" />
+</div>

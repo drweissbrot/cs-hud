@@ -1,0 +1,8 @@
+<div :class="['team', positionClass]">
+	<Name :position="position" :team="team" />
+
+	<BombTimer key="bomb-timer" :position="position" :team="team" />
+	<RoundWinner key="round-winner" :position="position" :team="team" />
+	<MatchPoint key="match-point" :position="position" :team="team" />
+	<Timeout key="timeout" :position="position" :team="team" />
+</div>

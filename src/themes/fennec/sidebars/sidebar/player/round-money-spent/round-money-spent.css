@@ -1,0 +1,16 @@
+.round-money-spent {
+	grid-area: kills/kills/deaths/deaths;
+
+	padding: 0.5rem;
+	align-self: center;
+	font-size: 1.5rem;
+	color: var(--sidebar-round-money-spent-text);
+}
+
+.round-money-spent.--right {
+	text-align: right;
+}
+
+.v-enter-active {
+	transition-delay: var(--fade-fast-duration);
+}

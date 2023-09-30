@@ -1,0 +1,6 @@
+<div
+	v-for="flame of flames"
+	:class="['flame', flame.colorClass, { '--default-level': flame.level === 'default' }]"
+	:key="flame.id"
+	:style="{ left: `${flame.x}%`, top: `${flame.y}%` }"
+></div>

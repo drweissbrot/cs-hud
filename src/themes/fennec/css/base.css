@@ -1,0 +1,16 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background: var(--viewport-fill);
+	color: var(--text-color);
+	font-size: var(--scale-factor);
+}
+
+body {
+	font: 2rem/1 var(--font-family);
+}

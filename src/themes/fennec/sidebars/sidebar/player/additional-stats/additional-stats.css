@@ -1,0 +1,23 @@
+.additional-stats-wrapper {
+	grid-area: additional-stats;
+	overflow: hidden;
+}
+
+.additional-stats {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 2fr;
+	grid-gap: 0 0.5rem;
+
+	padding: 0 0.5rem;
+
+	background: var(--black-75);
+	transition: transform var(--fade-slow-duration) ease;
+}
+
+.additional-stats.--left:not(.--active) {
+	transform: translateX(-101%);
+}
+
+.additional-stats.--right:not(.--active) {
+	transform: translateX(101%);
+}

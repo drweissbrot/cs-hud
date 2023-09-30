@@ -1,0 +1,3 @@
+<DroppedBomb v-if="$bomb.state === 'dropped'" />
+<PlantedBomb v-else-if="$bomb.state !== 'carried'" />
+<!-- carried bombs are displayed by changing the appearance of the AlivePlayer carrying the bomb -->

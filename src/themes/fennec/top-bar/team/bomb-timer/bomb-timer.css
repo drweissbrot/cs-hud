@@ -1,0 +1,8 @@
+.bomb-timer-wrapper {
+	max-height: var(--top-bar-half-row-height);
+}
+
+.bomb-timer {
+	height: var(--top-bar-half-row-height);
+	padding: 0 1.75rem;
+}

@@ -1,0 +1,35 @@
+.sidebar .player-wrapper .additional-stats .kills .label,
+.sidebar .player-wrapper .additional-stats .assists .label,
+.sidebar .player-wrapper .additional-stats .deaths .label,
+.sidebar .player-wrapper .additional-stats .adr .label,
+.sidebar .player-wrapper .additional-stats .kills .value,
+.sidebar .player-wrapper .additional-stats .assists .value,
+.sidebar .player-wrapper .additional-stats .deaths .value,
+.sidebar .player-wrapper .additional-stats .adr .value {
+	height: var(--sidebar-player-row-height);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.sidebar .player-wrapper .additional-stats .kills .label,
+.sidebar .player-wrapper .additional-stats .assists .label,
+.sidebar .player-wrapper .additional-stats .deaths .label,
+.sidebar .player-wrapper .additional-stats .adr .label {
+	font-size: 1.6rem;
+}
+
+.sidebar .player-wrapper .additional-stats .kills .label.--ct,
+.sidebar .player-wrapper .additional-stats .assists .label.--ct,
+.sidebar .player-wrapper .additional-stats .deaths .label.--ct,
+.sidebar .player-wrapper .additional-stats .adr .label.--ct {
+	color: var(--counter-terrorists-text);
+}
+
+.sidebar .player-wrapper .additional-stats .kills .label.--t,
+.sidebar .player-wrapper .additional-stats .assists .label.--t,
+.sidebar .player-wrapper .additional-stats .deaths .label.--t,
+.sidebar .player-wrapper .additional-stats .adr .label.--t {
+	color: var(--terrorists-text);
+}

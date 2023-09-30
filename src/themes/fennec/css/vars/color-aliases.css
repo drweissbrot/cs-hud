@@ -1,0 +1,8 @@
+/* avoid editing or overriding these directly -- change the underlying variables instead */
+:root {
+	--ct-fill: var(--counter-terrorists-fill);
+	--ct-text: var(--counter-terrorists-text);
+
+	--t-fill: var(--terrorists-fill);
+	--t-text: var(--terrorists-text);
+}

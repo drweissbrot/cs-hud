@@ -1,0 +1,84 @@
+.team-equipment-wrapper {
+	width: var(--sidebar-team-equipment-width);
+	max-height: calc(4.4rem + 0.5rem);
+
+	filter: var(--filter-drop-shadow);
+	overflow: hidden;
+	transition: max-height var(--fade-slow-duration) ease;
+}
+
+.team-equipment-wrapper:not(.--active) {
+	max-height: 0;
+}
+
+.team-equipment-wrapper.--right {
+	margin-left: auto;
+}
+
+.team-equipment {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	margin-bottom: 0.5rem;
+	padding: 0.5rem 1rem;
+
+	text-align: center;
+	transition: transform var(--fade-slow-duration) ease;
+}
+
+.team-equipment:not(.--active) {
+	transform: translateY(101%);
+}
+
+.team-equipment.--ct {
+	background: var(--counter-terrorists-fill-60);
+}
+
+.team-equipment.--t {
+	background: var(--terrorists-fill-60);
+}
+
+.team-equipment.--right {
+	flex-direction: row-reverse;
+}
+
+.loss-bonus .label,
+.team-money .label,
+.equipment-value .label {
+	margin-bottom: 0.4rem;
+
+	font-size: 1.25rem;
+	font-weight: 700;
+	letter-spacing: 0.125em;
+	text-transform: uppercase;
+}
+
+.loss-bonus .value,
+.team-money .value,
+.equipment-value .value {
+	font-size: 1.75rem;
+}
+
+.loss-bonus .pips-and-value {
+	display: grid;
+	grid-template-columns: repeat(2, 6rem);
+	grid-gap: 0.5rem;
+}
+
+.loss-bonus .pips {
+	display: flex;
+	align-items: center;
+}
+
+.loss-bonus .pips .pip {
+	width: 0.6rem;
+	height: 0.6rem;
+	aspect-ratio: 1;
+	border: 0.2rem solid var(--white);
+	margin: 0.3rem;
+}
+
+.loss-bonus .pips .pip.--filled {
+	background: var(--white);
+}

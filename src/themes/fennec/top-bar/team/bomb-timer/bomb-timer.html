@@ -1,0 +1,15 @@
+<Transition name="top-bar-team-panel-slide">
+	<div v-if="isBombTimerPanelActive" :class="['top-bar-team-panel-wrapper', 'bomb-timer-wrapper', positionClass, colorClass]" pad="2">
+		<div :class="['top-bar-team-panel', 'bomb-timer', positionClass]">
+			<div class="inner">
+				<ProgressBar
+					:colorClass="bombTimerColorClass"
+					:direction="position"
+					:max="bombTimerMaxValue"
+					:skew="position"
+					:value="bombTimerValue"
+				/>
+			</div>
+		</div>
+	</div>
+</Transition>

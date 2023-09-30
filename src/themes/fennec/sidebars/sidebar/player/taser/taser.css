@@ -1,0 +1,20 @@
+.taser {
+	grid-area: taser;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.taser img {
+	height: 1.5rem;
+	transition: opacity var(--fade-fast-duration) ease;
+}
+
+.taser img:not(.--active) {
+	opacity: 0.5;
+}
+
+.taser.--right img {
+	transform: rotateY(180deg);
+}

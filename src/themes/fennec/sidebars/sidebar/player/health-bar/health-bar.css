@@ -1,0 +1,40 @@
+.health-bar-background {
+	grid-area: 1/start/1/end;
+
+	display: grid;
+	background: var(--black-30);
+	z-index: -1;
+}
+
+.damage-taken,
+.health {
+	grid-area: 1/1;
+	height: 100%;
+}
+
+.health {
+	z-index: 1;
+}
+
+.damage-taken.--left,
+.health.--left {
+	transform-origin: left;
+}
+
+.damage-taken.--right,
+.health.--right {
+	transform-origin: right;
+}
+
+.health.--ct {
+	background: var(--counter-terrorists-fill);
+}
+
+.health.--t {
+	background: var(--terrorists-fill);
+}
+
+.damage-taken {
+	background: var(--sidebar-damage-taken-fill);
+	transition: transform var(--fade-default-duration) ease;
+}

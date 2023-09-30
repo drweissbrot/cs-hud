@@ -1,0 +1,24 @@
+.dead-player {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	transform: translate(-50%, -50%);
+}
+
+.dead-player:not(.--default-level) {
+	opacity: 0.75;
+}
+
+img {
+	display: block;
+	height: 0.8rem;
+}
+
+img.--ct {
+	filter: url(#counter-terrorists-fill-from-white-filter);
+}
+
+img.--t {
+	filter: url(#terrorists-fill-from-white-filter);
+}

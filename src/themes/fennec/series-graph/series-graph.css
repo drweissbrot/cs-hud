@@ -1,0 +1,20 @@
+.series-graph-wrapper {
+	position: absolute;
+	left: var(--viewport-margin-left);
+	right: var(--viewport-margin-right);
+	bottom: var(--viewport-margin-bottom);
+
+	filter: var(--filter-drop-shadow);
+	overflow: hidden;
+}
+
+.series-graph {
+	display: flex;
+	align-items: flex-end;
+
+	transition: transform var(--fade-slow-duration) ease;
+}
+
+.series-graph:not(.--active) {
+	transform: translateY(101%);
+}

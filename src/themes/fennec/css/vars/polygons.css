@@ -1,0 +1,3 @@
+:root {
+	--polygon-bordered-by-diagonals: polygon(-1% -1%, 101% -1%, calc(101% - 1.5rem) 101%, 1.5rem 101%);
+}

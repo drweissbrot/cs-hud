@@ -1,0 +1,19 @@
+.round-kills {
+	grid-area: round-kills;
+
+	display: flex;
+	align-items: center;
+}
+
+.round-kills.--right {
+	justify-content: flex-end;
+}
+
+img.label {
+	height: 1.5rem;
+	margin-right: 0.5rem;
+}
+
+.value {
+	font-size: 1.6rem;
+}

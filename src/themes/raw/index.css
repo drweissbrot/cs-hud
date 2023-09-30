@@ -1,0 +1,9 @@
+@import '/dependencies/normalize.css';
+
+body {
+	--background: #212121;
+	--color: #aeaeae;
+
+	background: var(--background);
+	color: var(--color);
+}

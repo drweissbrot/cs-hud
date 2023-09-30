@@ -1,0 +1,17 @@
+.round-winner-wrapper {
+	max-height: var(--top-bar-row-height);
+}
+
+.round-winner {
+	height: var(--top-bar-row-height);
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+}
+
+.round-winner.--ct {
+	background: var(--counter-terrorists-fill-70);
+}
+
+.round-winner.--t {
+	background: var(--terrorists-fill-70);
+}

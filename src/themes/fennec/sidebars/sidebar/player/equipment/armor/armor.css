@@ -1,0 +1,11 @@
+.armor {
+	grid-area: armor;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+img {
+	height: 1.5rem;
+}

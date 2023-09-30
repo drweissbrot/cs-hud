@@ -1,0 +1,10 @@
+.grenades {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 0.5rem;
+}
+
+.grenades .grenade {
+	margin: 0 0.75rem;
+}

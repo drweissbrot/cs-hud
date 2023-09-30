@@ -1,0 +1,6 @@
+.round-graph {
+	display: flex;
+
+	background: var(--black-40);
+	text-align: center;
+}

@@ -1,0 +1,33 @@
+.timeout-wrapper {
+	max-height: calc(2 * var(--top-bar-row-height));
+}
+
+.timeout {
+	height: calc(2 * var(--top-bar-row-height));
+}
+
+.timeout .inner {
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.timeout .label {
+	font-size: 2.25rem;
+	font-weight: 700;
+}
+
+.timeout .remaining {
+	font-size: 1.75rem;
+}
+
+.timeout .progress-bar-background {
+	margin-top: 0.5rem;
+}
+
+.timeout.--left .inner {
+	padding: 0.5rem 1rem 0.5rem 2.5rem;
+}
+
+.timeout.--right .inner {
+	padding: 0.5rem 2.5rem 0.5rem 1rem;
+}

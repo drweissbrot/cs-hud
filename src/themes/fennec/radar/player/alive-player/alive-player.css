@@ -1,0 +1,85 @@
+.alive-player {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: grid;
+	grid-template-columns: minmax(0, max-content);
+	grid-template-rows: minmax(0, max-content);
+
+	aspect-ratio: 1;
+	transform: translate(-50%, -50%);
+	transition: opacity var(--fade-fast-duration) ease;
+}
+
+.alive-player.--focused {
+	filter: drop-shadow(0 0 0.3rem var(--white-40));
+}
+
+.alive-player:not(.--default-level) {
+	opacity: 0.75;
+}
+
+.slot,
+.circle-and-arrow {
+	grid-area: 1/1;
+	width: 100%;
+	height: 100%;
+}
+
+.slot {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 1.6rem;
+	aspect-ratio: 1;
+
+	font-size: 1.25rem;
+	z-index: 1;
+}
+
+.circle-and-arrow {
+	position: relative;
+	transform-origin: center;
+}
+
+.circle-and-arrow .circle {
+	width: 100%;
+	height: 100%;
+
+	border-radius: 50%;
+	border: 0.1rem solid var(--white);
+	box-sizing: border-box;
+	isolation: isolate;
+	z-index: 1;
+}
+
+.circle-and-arrow .circle.--ct {
+	background: var(--counter-terrorists-fill);
+}
+
+.circle-and-arrow .circle.--t {
+	background: var(--terrorists-fill);
+}
+
+.circle-and-arrow .circle.--has-bomb {
+	background: var(--radar-player-carrying-bomb-fill);
+}
+
+.circle-and-arrow .arrow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	width: 0;
+	height: 0;
+	margin: 0 auto;
+
+	border-bottom: 0.6rem solid var(--white);
+	border-left: 0.5rem solid transparent;
+	border-right: 0.5rem solid transparent;
+	transform: translateY(-70%);
+	z-index: -1;
+}

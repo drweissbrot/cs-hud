@@ -1,0 +1,34 @@
+.match-point-rounds-overflow-container {
+	grid-area: match-point-rounds;
+	overflow: hidden;
+}
+
+.match-point-rounds {
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: var(--black-50);
+	clip-path: polygon(0 -1%, 100% -1%, calc(101% - 0.85rem) 101%, 0.85rem 101%);
+	font-size: 1.35rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	transition:
+		clip-path var(--fade-default-duration) ease,
+		transform var(--fade-default-duration) ease;
+}
+
+.match-point-rounds:not(.--active) {
+	transform: translateY(-100%);
+}
+
+.match-point-rounds.--is-multiple-map-series {
+	clip-path: polygon(0.85rem -1%, calc(100.5% - 0.85rem) -1%, calc(101% - 1.7rem) 101%, 1.7rem 101%);
+}
+
+.match-point-rounds.--is-multiple-map-series:not(.--active) {
+	clip-path: polygon(-1% -1%, 101% -1%, calc(101% - 0.85rem) 101%, 0.85rem 101%);
+}

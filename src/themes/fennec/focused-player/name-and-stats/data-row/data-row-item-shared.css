@@ -1,0 +1,25 @@
+.focused-player .data-row .taser img,
+.focused-player .data-row .bomb-or-defuser img,
+.focused-player .data-row .grenades .grenade img {
+	height: 2.5rem;
+	transition: opacity var(--fade-fast-duration) ease;
+}
+
+.focused-player .data-row .taser img:not(.--active),
+.focused-player .data-row .bomb-or-defuser img:not(.--active),
+.focused-player .data-row .grenades .grenade img:not(.--active) {
+	opacity: 0.5;
+}
+
+.focused-player .data-row .taser,
+.focused-player .data-row .bomb-or-defuser,
+.focused-player .data-row .grenades .grenade {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.focused-player .data-row .taser,
+.focused-player .data-row .bomb-or-defuser {
+	margin: 0 1rem;
+}

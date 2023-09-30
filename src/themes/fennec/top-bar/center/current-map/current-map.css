@@ -1,0 +1,14 @@
+.current-map {
+	grid-area: current-map;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: var(--top-bar-maps-fill);
+	color: var(--black);
+	font-size: 1.35rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}

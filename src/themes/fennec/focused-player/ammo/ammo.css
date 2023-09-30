@@ -1,0 +1,57 @@
+.wrapper {
+	display: flex;
+	align-items: flex-end;
+}
+
+.ammo {
+	display: flex;
+	flex: 1;
+	font-size: 3rem;
+	min-width: fit-content;
+	max-width: 8.25ch;
+}
+
+.inner {
+	flex: 1;
+	padding: 0.75rem 0.5rem;
+
+	display: flex;
+	align-items: flex-end;
+
+	transition: background-color var(--fade-fast-duration) ease;
+}
+
+.reserve {
+	font-size: 2rem;
+	transform: translateY(-2px);
+	margin-left: 0.5rem;
+}
+
+.ammo::before,
+.ammo::after {
+	content: '';
+	width: 2rem;
+
+	transition: background-color var(--fade-fast-duration) ease;
+	z-index: -1;
+}
+
+.ammo::before {
+	transform: skewX(160deg) translateX(50%);
+}
+
+.ammo::after {
+	transform: skewX(160deg) translateX(-50%);
+}
+
+.inner.--ct,
+.ammo.--ct::before,
+.ammo.--ct::after {
+	background: var(--counter-terrorists-fill);
+}
+
+.inner.--t,
+.ammo.--t::before,
+.ammo.--t::after {
+	background: var(--terrorists-fill);
+}

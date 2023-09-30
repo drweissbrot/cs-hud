@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<filter v-for="filter in filters" :id="filter.id" color-interpolation-filters="sRGB">
+			<feColorMatrix type="matrix" :values="filter.values" />
+		</filter>
+	</defs>
+</svg>

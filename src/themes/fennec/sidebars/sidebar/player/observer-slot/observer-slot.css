@@ -1,0 +1,20 @@
+.observer-slot {
+	grid-area: observer-slot;
+
+	height: max-content;
+	align-self: center;
+
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.observer-slot.--left {
+	padding-right: 0.25rem;
+	border-right: 1px solid var(--white);
+	text-align: right;
+}
+
+.observer-slot.--right {
+	padding-left: 0.25rem;
+	border-left: 1px solid var(--white);
+}

@@ -1,0 +1,7 @@
+<div class="map">
+	<img :class="['screenshot', { '--is-current-match': match.isCurrentMatch }]" :src="match.mapImageUrl" alt="">
+
+	<MapName :match="match" />
+	<Pick :match="match" />
+	<PickTeam :match="match" />
+</div>

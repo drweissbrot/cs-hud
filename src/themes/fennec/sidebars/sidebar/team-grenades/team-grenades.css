@@ -1,0 +1,86 @@
+.team-grenades-wrapper {
+	width: var(--sidebar-team-grenades-width);
+	max-height: calc(2.8rem + 0.5rem);
+
+	filter: var(--filter-drop-shadow);
+	overflow: hidden;
+	transition: max-height var(--fade-slow-duration) ease;
+}
+
+.team-grenades-wrapper:not(.--active) {
+	max-height: 0;
+}
+
+.team-grenades-wrapper.--right {
+	margin-left: auto;
+}
+
+.team-grenades {
+	display: flex;
+	margin-bottom: 0.5rem;
+
+	background: var(--black-40);
+	transition: transform var(--fade-slow-duration) ease;
+}
+
+.team-grenades.--right {
+	flex-direction: row-reverse;
+}
+
+.team-grenades:not(.--active) {
+	transform: translateY(101%);
+}
+
+.types {
+	flex: 1;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.total,
+.smokegrenade,
+.molotov,
+.flashbang,
+.hegrenade {
+	display: flex;
+	align-items: center;
+
+	padding: 0.65rem 1rem;
+	font-size: 1.5rem;
+}
+
+.total.--ct {
+	background: var(--counter-terrorists-fill);
+}
+
+.total.--t {
+	background: var(--terrorists-fill);
+}
+
+.total {
+	display: grid;
+	grid-template-columns: max-content 0fr;
+	transition: grid-template-columns var(--fade-slow-duration) ease;
+}
+
+.total.--label-active {
+	grid-template-columns: max-content 1fr;
+}
+
+.total .label-wrapper {
+	overflow: hidden;
+}
+
+.total .label {
+	padding-left: 0.25em;
+}
+
+.smokegrenade img.label,
+.molotov img.label,
+.flashbang img.label,
+.hegrenade img.label {
+	height: 1.5rem;
+	margin-right: 0.75rem;
+}

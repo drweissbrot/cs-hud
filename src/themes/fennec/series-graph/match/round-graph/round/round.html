@@ -1,0 +1,9 @@
+<div :class="['round', { '--current': isCurrentRound, '--last-of-half': round.isLastRoundOfHalf }]">
+	<div :class="['round-number', colorClass]">
+		{{ round.roundNumber }}
+	</div>
+
+	<div :class="['reason', colorClass]">
+		<img :src="reasonIconUrl" alt="">
+	</div>
+</div>

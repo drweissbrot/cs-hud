@@ -1,0 +1,5 @@
+<div v-if="player.isAlive" :class="['grenades', positionClass]">
+	<div v-for="grenade of grenades" :key="grenade.key" class="grenade">
+		<img :src="grenade.iconUrl" alt="" :class="{ '--active': grenade.isActive }">
+	</div>
+</div>
