@@ -11,4 +11,4 @@ Name each file with the team name followed by the `.png` file extension, for exa
 
 Only PNG files are supported.  
 File names must exactly match the name that will be displayed in the top bar, including uppercase/lowercase.
-If you're using [Team Name Overrides](docs/team-name-overrides.md), use tne team name you've provided in the `teams.team_name_overrides` option.
+If you're using [Team Name Overrides](/docs/team-name-overrides.md), use tne team name you've provided in the `teams.team_name_overrides` option.
