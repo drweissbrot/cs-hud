@@ -1,6 +1,15 @@
 <div :class="['top-bar-team-panel-wrapper', 'name-wrapper', positionClass, colorClass]">
 	<div :class="['top-bar-team-panel', 'name', positionClass, colorClass]">
 		<div class="inner">
+			<img
+				:class="['logo', positionClass, { '--active': logoImageLoaded }]"
+				:src="`/hud/team-logos/${team.name}.png`"
+				alt=""
+				@error="logoImageLoaded = false"
+				@loaded="logoImageLoaded = true"
+				@loading="logoImageLoaded = false"
+			>
+
 			{{ team.name }}
 		</div>
 	</div>

@@ -7,6 +7,12 @@ export default {
 		'team',
 	],
 
+	data() {
+		return {
+			logoImageLoaded: false,
+		}
+	},
+
 	computed: {
 		positionClass,
 

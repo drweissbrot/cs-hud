@@ -14,3 +14,17 @@
 .name.--t {
 	background: var(--terrorists-fill-50);
 }
+
+img.logo {
+	display: block;
+	max-height: calc(100% - var(--top-bar-team-logo-vertical-spacing) * 2);
+}
+
+img.logo.--left {
+	padding-right: var(--top-bar-team-logo-horizontal-spacing);
+}
+
+img.logo.--right {
+	order: 1;
+	padding-left: var(--top-bar-team-logo-horizontal-spacing);
+}
