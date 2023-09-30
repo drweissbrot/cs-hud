@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+
+## [2.0.0] - 2023-09-30
 * Complete rewrite; expect everything to work differently than before.
 * The previous version will likely continue to work (even with CS2), but will not receive updates or support.
 
