@@ -20,44 +20,44 @@ const getFallbackNameFromSide = (side) => {
 	}
 }
 
-// NB! This must be called AFTER parsePlayers!
-export const parseTeams = () => {
-	const makeTeam = (side, gsiTeamObject) => {
-		const teamMembers = players.filter((player) => player.side === side)
+const makeTeam = (side, gsiTeamObject) => {
+	const teamMembers = players.filter((player) => player.side === side)
 
-		const team = {
-			side,
+	const team = {
+		side,
 
-			consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
-			flag: gsiTeamObject.flag,
-			matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO we may want to have options override this
-			name: gsiTeamObject.name || getFallbackNameFromSide(side),
-			players: teamMembers,
-			score: gsiTeamObject.score,
-			timeoutsRemaining: gsiTeamObject.timeouts_remaining,
+		consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
+		flag: gsiTeamObject.flag,
+		matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO we may want to have options override this
+		name: gsiTeamObject.name || getFallbackNameFromSide(side),
+		players: teamMembers,
+		score: gsiTeamObject.score,
+		timeoutsRemaining: gsiTeamObject.timeouts_remaining,
 
-			grenades: {
-				decoy: 0,
-				flashbang: 0,
-				hegrenade: 0,
-				molotov: 0,
-				smokegrenade: 0,
-				total: 0,
-			},
-		}
-
-		for (const player of teamMembers) {
-			player.team = team
-
-			for (const grenade of player.grenades) {
-				team.grenades.total++
-				team.grenades[getGrenadeKey(grenade.name)]++
-			}
-		}
-
-		return team
+		grenades: {
+			decoy: 0,
+			flashbang: 0,
+			hegrenade: 0,
+			molotov: 0,
+			smokegrenade: 0,
+			total: 0,
+		},
 	}
 
+	for (const player of teamMembers) {
+		player.team = team
+
+		for (const grenade of player.grenades) {
+			team.grenades.total++
+			team.grenades[getGrenadeKey(grenade.name)]++
+		}
+	}
+
+	return team
+}
+
+// NB! This must be called AFTER parsePlayers!
+export const parseTeams = () => {
 	return [
 		makeTeam(2, gsiState.map.team_t),
 		makeTeam(3, gsiState.map.team_ct),
