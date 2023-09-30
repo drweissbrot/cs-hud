@@ -13,9 +13,16 @@ const getGrenadeKey = (weaponName) => {
 	}
 }
 
+const getFallbackNameFromSide = (side) => {
+	switch (side) {
+		case 2: return 'Terrorists'
+		case 3: return 'Counter-Terrorists'
+	}
+}
+
 // NB! This must be called AFTER parsePlayers!
 export const parseTeams = () => {
-	const makeTeam = (side, fallbackName, gsiTeamObject) => {
+	const makeTeam = (side, gsiTeamObject) => {
 		const teamMembers = players.filter((player) => player.side === side)
 
 		const team = {
@@ -24,7 +31,7 @@ export const parseTeams = () => {
 			consecutiveRoundLosses: gsiTeamObject.consecutive_round_losses,
 			flag: gsiTeamObject.flag,
 			matchesWonThisSeries: gsiTeamObject.matches_won_this_series, // TODO we may want to have options override this
-			name: gsiTeamObject.name || fallbackName,
+			name: gsiTeamObject.name || getFallbackNameFromSide(side),
 			players: teamMembers,
 			score: gsiTeamObject.score,
 			timeoutsRemaining: gsiTeamObject.timeouts_remaining,
@@ -52,7 +59,7 @@ export const parseTeams = () => {
 	}
 
 	return [
-		makeTeam(2, 'Terrorists', gsiState.map.team_t),
-		makeTeam(3, 'Counter-Terrorists', gsiState.map.team_ct),
+		makeTeam(2, gsiState.map.team_t),
+		makeTeam(3, gsiState.map.team_ct),
 	].sort((a, b) => a.players[0]?.observerSlot - b.players[0]?.observerSlot)
 }
