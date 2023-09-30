@@ -62,6 +62,7 @@ export default {
 				case 'boolean': return 'checkbox'
 				case 'color': return 'color'
 				case 'number': return 'number'
+				case 'text': return 'textarea'
 				default: return 'text'
 			}
 		},
