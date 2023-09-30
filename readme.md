@@ -15,9 +15,8 @@ The easiest way is to use the pre-packaged binaries, but other options will be a
 1. Now run `csgo-hud-win.exe` or `csgo-hud-linux`.
 1. Open http://localhost:31982/hud in your favorite browser, and you should see the HUD.
 
-There's also the config page available at http://localhost:31982/config, and a separate radar for observing at http://localhost:31982/radar.
-
-<!-- TODO cs:go config (safezones, cl_draw_only_deathnotices) -->
+There's also the config page available at http://localhost:31982/config, and a separate radar for observing at http://localhost:31982/radar.  
+There are also [some console commands you may want to use](docs/cvars.md).
 
 Depending on how you actually want to use the HUD, you've now got two options:
 
