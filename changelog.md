@@ -13,6 +13,9 @@ This project does not adhere to Semantic Versioning.
 * Add CSS variable `--sidebar-vertical-spacing` (default: `0.5rem`) to control margin between all elements
 * Add Player Name Overrides
 
+### Changed
+* Grenade counts in team grenades panels will not be grayed out if the team has no grenades of the type
+
 ## [2.0.0] - 2023-09-30
 * Complete rewrite; expect everything to work differently than before.
 * The previous version will likely continue to work (even with CS2), but will not receive updates or support.

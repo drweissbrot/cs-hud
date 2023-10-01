@@ -9,22 +9,22 @@
 		</div>
 
 		<div class="types">
-			<div class="smokegrenade">
+			<div :class="['smokegrenade', { '--active': grenades.smokegrenade }]">
 				<img src="/hud/img/weapons/smokegrenade.svg" alt="" class="label">
 				<div class="value">{{ grenades.smokegrenade }}</div>
 			</div>
 
-			<div class="molotov">
+			<div :class="['molotov', { '--active': grenades.molotov }]">
 				<img :src="molotovIconUrl" alt="" class="label">
 				<div class="value">{{ grenades.molotov }}</div>
 			</div>
 
-			<div class="flashbang">
+			<div :class="['flashbang', { '--active': grenades.flashbang }]">
 				<img src="/hud/img/weapons/flashbang.svg" alt="" class="label">
 				<div class="value">{{ grenades.flashbang }}</div>
 			</div>
 
-			<div class="hegrenade">
+			<div :class="['hegrenade', { '--active': grenades.hegrenade }]">
 				<img src="/hud/img/weapons/hegrenade.svg" alt="" class="label">
 				<div class="value">{{ grenades.hegrenade }}</div>
 			</div>

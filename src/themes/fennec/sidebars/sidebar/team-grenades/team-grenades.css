@@ -49,6 +49,14 @@
 
 	padding: 0.65rem 1rem;
 	font-size: 1.5rem;
+	transition: opacity var(--fade-default-duration) ease;
+}
+
+.smokegrenade:not(.--active),
+.molotov:not(.--active),
+.flashbang:not(.--active),
+.hegrenade:not(.--active) {
+	opacity: 0.5;
 }
 
 .total.--ct {
