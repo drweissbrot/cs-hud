@@ -32,6 +32,12 @@
 			"type": "text",
 			"section": "Teams",
 			"label": "List of SteamID64s and team names for overrides; see https://github.com/drweissbrot/cs-hud/blob/master/docs/team-name-overrides.md"
+		},
+
+		"teams.player_name_overrides": {
+			"type": "text",
+			"section": "Teams",
+			"label": "List of SteamID64s and their player name for overrides; see https://github.com/drweissbrot/cs-hud/blob/master/docs/player-name-overrides.md"
 		}
 	}
 }

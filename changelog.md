@@ -11,6 +11,7 @@ This project does not adhere to Semantic Versioning.
 * Add Team Logos
 * Add overlay images (e.g. for sponsors)
 * Add CSS variable `--sidebar-vertical-spacing` (default: `0.5rem`) to control margin between all elements
+* Add Player Name Overrides
 
 ## [2.0.0] - 2023-09-30
 * Complete rewrite; expect everything to work differently than before.
