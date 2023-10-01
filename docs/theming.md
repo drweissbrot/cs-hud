@@ -185,7 +185,8 @@ The HUD should still show a skull after refreshing, but the skull will now be la
 
 
 ## Import files from a parent theme (JavaScript)
-You can override parts of a JS file by importing the original file from your parent theme, and re-exporting the imported object. To import a file from the parent theme (or any other available theme, for that matter), append `?theme=PARENT_THEME_NAME_HERE` to its address.
+You can override parts of a JS file by importing the original file from your parent theme, and re-exporting the imported object.
+To import a file from the parent theme (or any other available theme, for that matter), append `?theme=PARENT_THEME_NAME_HERE` to its address.
 
 For example, if you want everyone to always have 100 kills, create `my-theme/focused-player/name-and-stats/data-row/stats/stat/stat.js`, with these contents:
 ```js

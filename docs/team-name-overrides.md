@@ -4,7 +4,8 @@ You can force the HUD to use manually specified team names.
 This may be useful if you don't have control over the `mp_teamname_1` etc. cvars of the game server, and/or if not all players use a clan tag.
 
 To use team name overrides, use the `teams.team_name_overrides` option on the HUD config page at http://127.0.0.1:31982/config.  
-Provide a list of space-separated SteamID64s of the players in a team, followed by the team name. You can specify as many teams as you want, and as many players per team as you want (at least one per team), separated by line breaks.
+Provide a list of space-separated SteamID64s of the players in a team, followed by the team name.
+You can specify as many teams as you want, and as many players per team as you want (at least one per team), separated by line breaks.
 
 For example:
 ```

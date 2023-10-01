@@ -8,7 +8,8 @@ Alternatively, you can add overlay images to a theme instead.
 
 Create an `overlay-images` directory in your `userspace` or theme folder, and save your overlay images in this directory.
 Name each overlay file with the filename mentioned below, followed by the file extension, e.g. `focused-player-bottom.webp`.
-WebP, PNG, and GIF are supported. Note that animations (for transitions between multiple sponsors, for instance) are possible using all three of these formats.
+WebP, PNG, and GIF are supported.
+Note that animations (for transitions between multiple sponsors, for instance) are possible using all three of these formats.
 
 All overlays will use the entire width they have available, and their height will scale accordingly.
 Add some transparent space if you don't want them to take up the entire width.
