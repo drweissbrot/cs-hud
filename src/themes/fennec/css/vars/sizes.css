@@ -15,6 +15,8 @@
 	/* Focused Player */
 	--focused-player-width: 50%;
 	--focused-player-icon-height: 2rem;
+	--focused-player-overlay-bottom-horizontal-spacing: 1.7rem;
+	--focused-player-margin-bottom-with-overlay-bottom: 0;
 
 	/* Top Bar */
 	--top-bar-width: 50%;
@@ -41,6 +43,11 @@
 	/* Sidebars */
 	--sidebar-width: calc(var(--sidebar-player-width) + var(--sidebar-player-focused-player-highlight-width) + var(--sidebar-player-additional-stats-width));
 	--sidebar-margin-to-focused-player: var(--viewport-margin-x);
+
+	--sidebar-vertical-spacing: 0.5rem;
+	--sidebar-overlay-vertical-spacing: var(--sidebar-vertical-spacing);
+	--sidebar-left-overlay-vertical-spacing: var(--sidebar-overlay-vertical-spacing);
+	--sidebar-right-overlay-vertical-spacing: var(--sidebar-overlay-vertical-spacing);
 
 	--sidebar-team-grenades-width: var(--sidebar-player-width);
 	--sidebar-team-equipment-width: var(--sidebar-player-width);

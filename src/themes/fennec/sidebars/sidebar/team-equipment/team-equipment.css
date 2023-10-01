@@ -1,6 +1,6 @@
 .team-equipment-wrapper {
 	width: var(--sidebar-team-equipment-width);
-	max-height: calc(4.4rem + 0.5rem);
+	max-height: calc(4.4rem + var(--sidebar-vertical-spacing));
 
 	filter: var(--filter-drop-shadow);
 	overflow: hidden;
@@ -20,7 +20,7 @@
 	align-items: center;
 	justify-content: space-between;
 
-	margin-bottom: 0.5rem;
+	margin-bottom: var(--sidebar-vertical-spacing);
 	padding: 0.5rem 1rem;
 
 	text-align: center;
