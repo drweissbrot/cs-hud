@@ -9,5 +9,14 @@ export default {
 		player() {
 			return this.$players.focused
 		},
+
+		red() {
+			if (! this.player) return false
+
+			const maxHp = Number(this.$opts['preferences.focusedPlayer.maximumRedHealthPoints'] || 0)
+			if (! maxHp) return false
+
+			return this.player.health <= maxHp
+		}
 	},
 }

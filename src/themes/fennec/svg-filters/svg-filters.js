@@ -7,6 +7,7 @@ export default {
 				'bomb-exploded-fill',
 				'bomb-planted-fill',
 				'counter-terrorists-fill',
+				'focused-player-health-red',
 				'terrorists-fill',
 			],
 		}

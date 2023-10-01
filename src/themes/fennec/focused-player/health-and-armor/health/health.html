@@ -1,4 +1,4 @@
-<div class="health">
+<div :class="['health', { '--red': red }]">
 	<img src="/hud/img/icons/health.svg" alt="">
 	<Digits :value="player.health" digits="3">
 </div>

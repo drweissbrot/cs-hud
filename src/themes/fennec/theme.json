@@ -282,6 +282,12 @@
 			"label": "Number of seconds into the following round's freezetime the \"Wins the Round\" panel should be visible (0 to disable; 1000 to show during entire freezetime)"
 		},
 
+		"preferences.focusedPlayer.maximumRedHealthPoints": {
+			"type": "number",
+			"section": "Preferences",
+			"label": "Maximum HP that will be highlighted in red (e.g. 20)"
+		},
+
 		"css.base-scale-factor": {
 			"type": "text",
 			"section": "Style Overrides",

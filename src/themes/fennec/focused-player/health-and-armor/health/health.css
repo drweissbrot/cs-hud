@@ -1,3 +1,11 @@
+.health.--red {
+	color: var(--focused-player-health-red);
+}
+
+.health.--red img {
+	filter: url(#focused-player-health-red-from-white-filter);
+}
+
 img {
 	height: var(--focused-player-icon-height);
 }

@@ -12,6 +12,7 @@ This project does not adhere to Semantic Versioning.
 * Add overlay images (e.g. for sponsors)
 * Add CSS variable `--sidebar-vertical-spacing` (default: `0.5rem`) to control margin between all elements
 * Add Player Name Overrides
+* Add option to highlight focused player's HP in red if it's less than a configured value
 
 ### Changed
 * Grenade counts in team grenades panels will not be grayed out if the team has no grenades of the type

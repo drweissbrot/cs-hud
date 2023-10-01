@@ -39,4 +39,7 @@
 
 	--top-bar-clock-red-text: var(--red);
 	--top-bar-maps-fill: var(--white-75);
+
+	--focused-player-health-red-rgb: 150, 0, 0;
+	--focused-player-health-red: rgb(var(--focused-player-health-red-rgb));
 }
