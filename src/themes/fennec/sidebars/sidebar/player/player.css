@@ -61,5 +61,5 @@
 }
 
 .player-wrapper:not(:last-child) {
-	margin-bottom: 0.5rem;
+	margin-bottom: var(--sidebar-vertical-spacing);
 }

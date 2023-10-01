@@ -9,6 +9,7 @@ This project does not adhere to Semantic Versioning.
 ### Added
 * Add Team Name Overrides
 * Add Team Logos
+* Add CSS variable `--sidebar-vertical-spacing` (default: `0.5rem`) to control margin between all elements
 
 ## [2.0.0] - 2023-09-30
 * Complete rewrite; expect everything to work differently than before.

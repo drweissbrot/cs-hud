@@ -44,6 +44,8 @@
 	--sidebar-width: calc(var(--sidebar-player-width) + var(--sidebar-player-focused-player-highlight-width) + var(--sidebar-player-additional-stats-width));
 	--sidebar-margin-to-focused-player: var(--viewport-margin-x);
 
+	--sidebar-vertical-spacing: 0.5rem;
+
 	--sidebar-team-grenades-width: var(--sidebar-player-width);
 	--sidebar-team-equipment-width: var(--sidebar-player-width);
 
