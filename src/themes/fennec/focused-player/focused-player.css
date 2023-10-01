@@ -9,3 +9,13 @@
 
 	filter: var(--filter-drop-shadow);
 }
+
+.focused-player.--has-overlay-bottom {
+	bottom: var(--focused-player-margin-bottom-with-overlay-bottom);
+}
+
+img.overlay-bottom {
+	grid-area: 2/2;
+	width: calc(100% - var(--focused-player-overlay-bottom-horizontal-spacing) * 2);
+	margin: 0 var(--focused-player-overlay-bottom-horizontal-spacing);
+}
