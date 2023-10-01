@@ -33,6 +33,10 @@ export default {
 				fetchResponse = await fetch('/hud/overlay-images/focused-player-bottom.png').catch(() => null)
 			}
 
+			if (! fetchResponse?.ok) {
+				fetchResponse = await fetch('/hud/overlay-images/focused-player-bottom.gif').catch(() => null)
+			}
+
 			if (! fetchResponse?.ok) return
 
 			const blob = await fetchResponse.blob()

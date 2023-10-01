@@ -45,6 +45,10 @@ export default {
 				fetchResponse = await fetch(`/hud/overlay-images/sidebar-${this.position}.png`).catch(() => null)
 			}
 
+			if (! fetchResponse?.ok) {
+				fetchResponse = await fetch(`/hud/overlay-images/sidebar-${this.position}.gif`).catch(() => null)
+			}
+
 			if (! fetchResponse?.ok) return
 
 			const blob = await fetchResponse.blob()
