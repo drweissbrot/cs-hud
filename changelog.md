@@ -7,7 +7,8 @@ This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
 ### Fixed
-* Fixed round damage sometimes not being counted for ADR when player died
+* Fix round damage sometimes not being counted for ADR when player died
+* Fix console errors caused by missing bomb during warmup
 
 
 ## [2.1.0] - 2023-10-01
