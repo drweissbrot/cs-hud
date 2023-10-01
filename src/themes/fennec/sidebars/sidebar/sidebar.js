@@ -16,6 +16,16 @@ export default {
 		TeamGrenades,
 	},
 
+	data() {
+		return {
+			overlayImageUrl: null,
+		}
+	},
+
+	mounted() {
+		this.setOverlayImageUrl()
+	},
+
 	computed: {
 		positionClass,
 
@@ -27,5 +37,18 @@ export default {
 
 	methods: {
 		seriesMapNumbers,
+
+		async setOverlayImageUrl() {
+			let fetchResponse = await fetch(`/hud/overlay-images/sidebar-${this.position}.webp`).catch(() => null)
+
+			if (! fetchResponse?.ok) {
+				fetchResponse = await fetch(`/hud/overlay-images/sidebar-${this.position}.png`).catch(() => null)
+			}
+
+			if (! fetchResponse?.ok) return
+
+			const blob = await fetchResponse.blob()
+			this.overlayImageUrl = URL.createObjectURL(blob)
+		},
 	},
 }

@@ -21,3 +21,17 @@
 .sidebar.--moved-upwards-by-round-graph {
 	transform: translateY(calc(-1 * var(--round-graph-height) - var(--round-graph-margin-to-sidebars)));
 }
+
+img.overlay {
+	display: block;
+	width: var(--sidebar-player-width);
+}
+
+img.overlay.--left {
+	margin-bottom: var(--sidebar-left-overlay-vertical-spacing);
+}
+
+img.overlay.--right {
+	margin-left: auto;
+	margin-bottom: var(--sidebar-right-overlay-vertical-spacing);
+}

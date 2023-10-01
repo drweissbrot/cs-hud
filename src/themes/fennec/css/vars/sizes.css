@@ -45,6 +45,9 @@
 	--sidebar-margin-to-focused-player: var(--viewport-margin-x);
 
 	--sidebar-vertical-spacing: 0.5rem;
+	--sidebar-overlay-vertical-spacing: var(--sidebar-vertical-spacing);
+	--sidebar-left-overlay-vertical-spacing: var(--sidebar-overlay-vertical-spacing);
+	--sidebar-right-overlay-vertical-spacing: var(--sidebar-overlay-vertical-spacing);
 
 	--sidebar-team-grenades-width: var(--sidebar-player-width);
 	--sidebar-team-equipment-width: var(--sidebar-player-width);
