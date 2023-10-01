@@ -35,8 +35,19 @@ const updateGsiState = (body) => {
 }
 
 const updateAdditionalState = (body) => {
+	const { mapChanged } = updateLastKnownMapName(body)
 	updateLastKnownBombPlantedCountdown(body)
-	updateRoundDamages(body)
+	updateRoundDamages(body, mapChanged)
+}
+
+const updateLastKnownMapName = (body) => {
+	const previousMapName = additionalState.lastKnownMapName
+
+	additionalState.lastKnownMapName = body.map?.name
+
+	return {
+		mapChanged: additionalState.lastKnownMapName !== previousMapName,
+	}
 }
 
 const updateLastKnownBombPlantedCountdown = (body) => {
@@ -62,7 +73,12 @@ const updateMoneyAtStartOfRound = (body) => {
 	}
 }
 
-const updateRoundDamages = (body) => {
+const updateRoundDamages = (body, mapChanged) => {
+	if (mapChanged || body.player.activity === 'menu') {
+		additionalState.roundDamages = {}
+		return
+	}
+
 	const roundNumber = body.map?.round + 1 - Number(body.phase_countdowns?.phase === 'over')
 	if (! roundNumber) return
 
@@ -71,6 +87,12 @@ const updateRoundDamages = (body) => {
 			additionalState.roundDamages[steam64Id] = {}
 		}
 
-		additionalState.roundDamages[steam64Id][roundNumber] = player.state.round_totaldmg
+		// CS2 (CS:GO maybe too) sometimes overwrites round_totaldmg with a zero once the player dies; work around that by ignoring zero if we already have a value set
+		if (
+			player.state.round_totaldmg !== 0
+			|| ! additionalState.roundDamages[steam64Id].hasOwnProperty(roundNumber)
+		) {
+			additionalState.roundDamages[steam64Id][roundNumber] = player.state.round_totaldmg
+		}
 	}
 }
