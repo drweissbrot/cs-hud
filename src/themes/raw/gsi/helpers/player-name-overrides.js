@@ -3,7 +3,7 @@ import { options } from '/hud/core/state.js'
 export const getPlayerNameOverrides = () => {
 	const playerNameOverrides = new Map()
 
-	const opt = options['teams.player_name_overrides']
+	const opt = options['teams.playerNameOverrides']
 	if (! opt?.trim()?.length) return playerNameOverrides
 
 	const lines = opt.trim().split('\n')

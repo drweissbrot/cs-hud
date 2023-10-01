@@ -28,13 +28,13 @@
 			"label": "Value of mp_overtime_maxrounds, i.e. the maximum number of rounds played per overtime"
 		},
 
-		"teams.team_name_overrides": {
+		"teams.teamNameOverrides": {
 			"type": "text",
 			"section": "Teams",
 			"label": "List of SteamID64s and team names for overrides; see https://github.com/drweissbrot/cs-hud/blob/master/docs/team-name-overrides.md"
 		},
 
-		"teams.player_name_overrides": {
+		"teams.playerNameOverrides": {
 			"type": "text",
 			"section": "Teams",
 			"label": "List of SteamID64s and their player name for overrides; see https://github.com/drweissbrot/cs-hud/blob/master/docs/player-name-overrides.md"
