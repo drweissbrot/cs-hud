@@ -10,7 +10,10 @@ export const registerConfigRoutes = (router, websocket) => {
 	})
 
 	router.get('/config/options', async (context) => {
-		const { settings } = await getSettings()
+		const { settings } = await getSettings().catch((err) => {
+			console.error('Error getting settings', err)
+			return { settings: { options: {} } }
+		})
 
 		context.body = [
 			{
