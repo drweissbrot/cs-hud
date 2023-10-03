@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Fixed
+* Fix invalid theme completely breaking config page
 
 
 ## [2.1.1] - 2023-10-02

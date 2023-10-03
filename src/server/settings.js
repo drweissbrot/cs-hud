@@ -36,7 +36,7 @@ export const getSettings = async () => {
 				await readJson(`${builtinThemesDirectory}/${parent}/theme.json`),
 			)
 		} else {
-			throw new Error(`Theme "${parent}" not found`)
+			throw new Error(`Theme "${parent}" not found. Please change the "theme" value in cs-hud/userspace/theme.json.`)
 		}
 
 		if (await fileExists(`${customThemesDirectory}/${parent}/bombsites.json`)) {
