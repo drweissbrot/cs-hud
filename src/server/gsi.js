@@ -74,7 +74,7 @@ const updateMoneyAtStartOfRound = (body) => {
 }
 
 const updateRoundDamages = (body, mapChanged) => {
-	if (mapChanged || body.player.activity === 'menu') {
+	if (mapChanged || body?.player?.activity === 'menu') {
 		additionalState.roundDamages = {}
 		return
 	}
