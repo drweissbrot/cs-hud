@@ -8,6 +8,7 @@ This project does not adhere to Semantic Versioning.
 ## [Unreleased]
 ### Fixed
 * Fix invalid theme completely breaking config page
+* Fix missing `player` in GSI payload breaking everything (potentially; could not reproduce issue)
 
 
 ## [2.1.1] - 2023-10-02
