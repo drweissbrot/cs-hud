@@ -102,7 +102,7 @@ export const parsePlayers = () => {
 			money: player.state?.money,
 			mvps: player.match_stats?.mvps,
 			name: playerNameOverrides.get(steam64Id) || player.name,
-			observerSlot: player.observer_slot,
+			observerSlot:player.observer_slot == 9 ? 0 : player.observer_slot + 1,
 			position: parsePosition(player.position),
 			roundDamage: player.state?.round_totaldmg,
 			roundDamages: additionalState.roundDamages?.[steam64Id] || [],
