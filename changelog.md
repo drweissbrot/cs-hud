@@ -9,6 +9,7 @@ This project does not adhere to Semantic Versioning.
 ### Fixed
 * Fix invalid theme completely breaking config page
 * Fix missing `player` in GSI payload breaking everything (potentially; could not reproduce issue)
+* Fix dead players following the player they're spectating on the minimap
 
 
 ## [2.1.1] - 2023-10-02

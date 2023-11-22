@@ -6,7 +6,7 @@ import { teamColorClass } from '/hud/helpers/team-color-class.js'
 export default {
 	data() {
 		return {
-			initialPosition: [],
+			position: this.player.position,
 		}
 	},
 
@@ -23,19 +23,14 @@ export default {
 		},
 
 		coordinates() {
-			if (this.initialPosition.length == 0) {
-				this.initialPosition = this.player.position
-			}
-
-
 			return {
-				x: this.offsetX(this.initialPosition[0]),
-				y: this.offsetY(this.initialPosition[1]),
+				x: this.offsetX(this.position[0]),
+				y: this.offsetY(this.position[1]),
 			}
 		},
 
 		level() {
-			return this.getLevel(this.initialPosition[2])
+			return this.getLevel(this.position[2])
 		},
 	},
 
