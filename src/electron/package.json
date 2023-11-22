@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"devDependencies": {
-		"@electron-forge/cli": "^6.4.2",
-		"electron": "^26.2.4"
+		"@electron-forge/cli": "^7.1.0",
+		"electron": "^27.1.0"
 	}
 }

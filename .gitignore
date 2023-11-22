@@ -1,3 +1,4 @@
 build/tmp
 node_modules
 src/server/example-state.json
+yarn-error.log
