@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+
+
+# [2.2.0] - 2023-11-22
 ### Added
 * Added optional overlay corners to show that the HUD is active (enabled by default in the Electron overlay binary; can be enabled by appending `?corners`/`?transparent&corners` to the URL)
 * Added `preferences.isCsgo` option on the config page (theme `raw`) for backwards-incompatible changes to CS:GO
