@@ -1,5 +1,11 @@
 {
 	"options": {
+		"preferences.isCsgo": {
+			"type": "boolean",
+			"section": "Preferences",
+			"label": "Set this to true if you're using CS:GO instead of CS2"
+		},
+
 		"preferences.minimumGoodKdRatio": {
 			"type": "number",
 			"section": "Preferences",

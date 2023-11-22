@@ -6,9 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Added
+* Added `preferences.isCsgo` option on the config page (theme `raw`) for backwards-incompatible changes to CS:GO
+
 ### Fixed
 * Fix invalid theme completely breaking config page
 * Fix missing `player` in GSI payload breaking everything (potentially; could not reproduce issue)
+* Fix observer slots being offset by -1 in CS2
 
 
 ## [2.1.1] - 2023-10-02
