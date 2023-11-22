@@ -8,10 +8,13 @@ This project does not adhere to Semantic Versioning.
 ## [Unreleased]
 ### Added
 * Added optional overlay corners to show that the HUD is active (enabled by default in the Electron overlay binary; can be enabled by appending `?corners`/`?transparent&corners` to the URL)
+* Added `preferences.isCsgo` option on the config page (theme `raw`) for backwards-incompatible changes to CS:GO
 
 ### Fixed
 * Fix invalid theme completely breaking config page
 * Fix missing `player` in GSI payload breaking everything (potentially; could not reproduce issue)
+* Fix observer slots being offset by -1 in CS2
+* Fix dead players following the player they're spectating on the minimap
 
 
 ## [2.1.1] - 2023-10-02
