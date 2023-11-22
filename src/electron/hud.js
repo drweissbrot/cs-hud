@@ -9,7 +9,7 @@ app.on('ready', () => {
 	})
 
 	browserWindow.setIgnoreMouseEvents(true)
-	browserWindow.loadURL(`http://${process.env.HOST || 'localhost'}:${process.env.PORT || 31982}/hud?transparent`)
+	browserWindow.loadURL(`http://${process.env.HOST || 'localhost'}:${process.env.PORT || 31982}/hud?transparent&corners`)
 	browserWindow.on('closed', () => app.quit())
 })
 
