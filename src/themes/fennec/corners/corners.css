@@ -1,0 +1,25 @@
+.corner {
+	position: absolute;
+	width: 8rem;
+	height: 8rem;
+}
+
+.corner.--top {
+	top: 0;
+	border-top: 1rem solid var(--corner-color);
+}
+
+.corner.--bottom {
+	bottom: 0;
+	border-bottom: 1rem solid var(--corner-color);
+}
+
+.corner.--left {
+	left: 0;
+	border-left: 1rem solid var(--corner-color);
+}
+
+.corner.--right {
+	right: 0;
+	border-right: 1rem solid var(--corner-color);
+}

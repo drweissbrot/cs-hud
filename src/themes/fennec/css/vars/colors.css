@@ -22,6 +22,7 @@
 	/* Use-Case Specific Colors */
 	--viewport-fill: #070;
 	--text-color: var(--white);
+	--corner-color: rgba(0, 0, 0, 0.75);
 
 	--progress-bar-fill-color-bomb: var(--red);
 
