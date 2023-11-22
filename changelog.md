@@ -13,6 +13,7 @@ This project does not adhere to Semantic Versioning.
 * Fix invalid theme completely breaking config page
 * Fix missing `player` in GSI payload breaking everything (potentially; could not reproduce issue)
 * Fix observer slots being offset by -1 in CS2
+* Fix dead players following the player they're spectating on the minimap
 
 
 ## [2.1.1] - 2023-10-02
