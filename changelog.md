@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Changed
+* `cvars.mp_maxrounds` now defaults to `24`, which is the default value in CS2
 
 
 # [2.2.0] - 2023-11-22
