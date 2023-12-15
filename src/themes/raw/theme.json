@@ -22,7 +22,7 @@
 
 		"cvars.mp_maxrounds": {
 			"type": "number",
-			"fallback": 30,
+			"fallback": 24,
 			"section": "Cvars",
 			"label": "Value of mp_maxrounds, i.e. the maximum number of rounds played in regulation"
 		},
