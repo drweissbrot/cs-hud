@@ -11,6 +11,7 @@ This project does not adhere to Semantic Versioning.
 
 ### Changed
 * `cvars.mp_maxrounds` now defaults to `24`, which is the default value in CS2
+* Focused player section (bottom center) will now be hidden when in third person/freecam
 
 
 # [2.2.0] - 2023-11-22

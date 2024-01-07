@@ -28,9 +28,26 @@ export const registerGsiRoutes = (router, websocket) => {
 }
 
 const updateGsiState = (body) => {
+	let hasPlayer = false
+
 	for (const [key, value] of Object.entries(body)) {
-		if (key === 'added' || key === 'auth' || key === 'previously') continue
-		gsiState[key] = value
+		switch (key) {
+			case 'added':
+			case 'auth':
+			case 'previously':
+				continue
+
+			case 'player':
+				hasPlayer = true
+				// intentional fallthrough!
+
+			default:
+				gsiState[key] = value
+		}
+	}
+
+	if (! hasPlayer) {
+		gsiState.player = null
 	}
 }
 
