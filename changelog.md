@@ -14,7 +14,7 @@ This project does not adhere to Semantic Versioning.
 * Focused player section (bottom center) will now be hidden when in third person/freecam
 
 
-# [2.2.0] - 2023-11-22
+## [2.2.0] - 2023-11-22
 ### Added
 * Added optional overlay corners to show that the HUD is active (enabled by default in the Electron overlay binary; can be enabled by appending `?corners`/`?transparent&corners` to the URL)
 * Added `preferences.isCsgo` option on the config page (theme `raw`) for backwards-incompatible changes to CS:GO

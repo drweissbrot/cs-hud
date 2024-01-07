@@ -46,7 +46,7 @@ Everything should work with both CS:GO and CS2. If you spot anything weird, [ple
 
 ### Can I use this for my event?
 Yes.  
-Attribution is not required, but appreciated.
+Attribution is not required, but if possible, please include a link to this GitHub project somewhere.
 I'd also appreciate if you let me know that you're using it by sending me [a quick email](mailto:cs-hud@drweissbrot.net) (or in whatever way you can get ahold of me).
 
 ### Why would I use this?
