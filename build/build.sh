@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script...
 #     duplicates the cs-hud repository (by git clone-ing it from the file system),
