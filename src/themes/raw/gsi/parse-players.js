@@ -4,11 +4,12 @@ import { grenadeOrderIndices } from '/hud/gsi/helpers/grenade-order-indices.js'
 import { getPlayerNameOverrides } from '/hud/gsi/helpers/player-name-overrides.js'
 
 // a CS2 update mid-November 2023 changed observer slots to be `0` for the player with the hotkey `1`, `1` for hotkey `2`, ..., `9` for hotkey `0`
-const getObserverSlot = (player) => {
-	if (options['preferences.isCsgo']) return player.observer_slot
+const getObserverSlot = (player, steam64Id) => {
+	const rawSlot = player.observer_slot ?? additionalState.lastKnownPlayerObserverSlot?.[steam64Id]
+	if (options['preferences.isCsgo']) return rawSlot
 
-	if (player.observer_slot === 9) return 0
-	return player.observer_slot + 1
+	if (rawSlot === 9) return 0
+	return rawSlot + 1
 }
 
 // TODO if we want an `isBot` or similar: bots appear to use steam ids, starting at 76561197960265729 and counting up from there (these are real steam64Ids though, belonging to real Steam users)
@@ -110,7 +111,7 @@ export const parsePlayers = () => {
 			money: player.state?.money,
 			mvps: player.match_stats?.mvps,
 			name: playerNameOverrides.get(steam64Id) || player.name,
-			observerSlot: getObserverSlot(player),
+			observerSlot: getObserverSlot(player, steam64Id),
 			position: parsePosition(player.position),
 			roundDamage: player.state?.round_totaldmg,
 			roundDamages: additionalState.roundDamages?.[steam64Id] || [],

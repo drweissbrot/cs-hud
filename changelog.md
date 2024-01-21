@@ -8,6 +8,7 @@ This project does not adhere to Semantic Versioning.
 ## [Unreleased]
 ### Fixed
 * Fix loss bonus increasing past $3400
+* Fix disconnected players being displayed with observer slot `NaN`
 
 
 ## [2.3.0] - 2024-01-07

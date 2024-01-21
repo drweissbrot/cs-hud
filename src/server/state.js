@@ -15,6 +15,7 @@ export const gsiState = getInitialState()
 export const additionalState = {
 	lastKnownBombPlantedCountdown: {},
 	lastKnownMapName: null,
+	lastKnownPlayerObserverSlot: {},
 	moneyAtStartOfRound: {},
 	roundDamages: {},
 }

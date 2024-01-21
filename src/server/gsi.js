@@ -54,6 +54,7 @@ const updateGsiState = (body) => {
 const updateAdditionalState = (body) => {
 	const { mapChanged } = updateLastKnownMapName(body)
 	updateLastKnownBombPlantedCountdown(body)
+	updateLastKnownPlayerObserverSlot(body)
 	updateRoundDamages(body, mapChanged)
 }
 
@@ -79,6 +80,15 @@ const updateLastKnownBombPlantedCountdown = (body) => {
 	additionalState.lastKnownBombPlantedCountdown = {
 		unixTimestamp: +new Date(),
 		value: bomb.countdown,
+	}
+}
+
+const updateLastKnownPlayerObserverSlot = (body) => {
+	if (! body.allplayers) return
+
+	for (const [steam64Id, player] of Object.entries(body.allplayers)) {
+		if (player.observer_slot === null || player.observer_slot === undefined) continue
+		additionalState.lastKnownPlayerObserverSlot[steam64Id] = player.observer_slot
 	}
 }
 
