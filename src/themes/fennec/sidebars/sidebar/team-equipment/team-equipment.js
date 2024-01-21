@@ -20,7 +20,7 @@ export default {
 		},
 
 		lossBonusValue() {
-			return this.$opts['cvars.cash_team_loser_bonus'] + this.team.consecutiveRoundLosses * this.$opts['cvars.cash_team_loser_bonus_consecutive_rounds']
+			return this.$opts['cvars.cash_team_loser_bonus'] + Math.min(4, this.team.consecutiveRoundLosses) * this.$opts['cvars.cash_team_loser_bonus_consecutive_rounds']
 		},
 
 		teamMoney() {
