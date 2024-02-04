@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Added
+* Added `teams.hiddenPlayers` (theme `raw`) to hide autokilled coaches in Faceit matches
 
 
 ## [2.3.1] - 2024-01-21

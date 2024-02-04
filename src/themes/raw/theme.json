@@ -44,6 +44,12 @@
 			"type": "text",
 			"section": "Teams",
 			"label": "List of SteamID64s and their player name for overrides; see https://github.com/drweissbrot/cs-hud/blob/master/docs/player-name-overrides.md"
+		},
+
+		"teams.hiddenPlayers": {
+			"type": "text",
+			"section": "Teams",
+			"label": "List of names or SteamID64s of players that should not be shown in the HUD (e.g. coaches); see https://github.com/drweissbrot/cs-hud/blob/master/docs/hiding-players.md"
 		}
 	}
 }
