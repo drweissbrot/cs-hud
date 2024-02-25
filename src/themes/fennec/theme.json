@@ -200,7 +200,7 @@
 
 		"cvars.mp_team_timeout_max": {
 			"type": "number",
-			"fallback": 4,
+			"fallback": 3,
 			"section": "Cvars",
 			"label": "Value of mp_team_timeout_max, i.e. the number of tactical timeouts available per team"
 		},
