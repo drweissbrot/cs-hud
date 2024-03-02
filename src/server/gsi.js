@@ -53,9 +53,16 @@ const updateGsiState = (body) => {
 
 const updateAdditionalState = (body) => {
 	const { mapChanged } = updateLastKnownMapName(body)
+
 	updateLastKnownBombPlantedCountdown(body)
 	updateLastKnownPlayerObserverSlot(body)
-	updateRoundDamages(body, mapChanged)
+
+	// clear some data on map change instead of updating
+	if (mapChanged || body?.player?.activity === 'menu') {
+		additionalState.roundDamages = {}
+	} else {
+		updateRoundDamages(body, mapChanged)
+	}
 }
 
 const updateLastKnownMapName = (body) => {
@@ -101,11 +108,6 @@ const updateMoneyAtStartOfRound = (body) => {
 }
 
 const updateRoundDamages = (body, mapChanged) => {
-	if (mapChanged || body?.player?.activity === 'menu') {
-		additionalState.roundDamages = {}
-		return
-	}
-
 	const roundNumber = body.map?.round + 1 - Number(body.phase_countdowns?.phase === 'over')
 	if (! roundNumber) return
 
