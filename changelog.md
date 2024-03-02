@@ -9,6 +9,9 @@ This project does not adhere to Semantic Versioning.
 ### Added
 * Added fallback for wrong GSI-reported inferno flame positions
 
+### Changed
+* Players who disconnected before match start are now hidden
+
 
 ## [2.4.0] - 2024-02-04
 ### Added

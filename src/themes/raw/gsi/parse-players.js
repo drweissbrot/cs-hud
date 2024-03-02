@@ -9,6 +9,7 @@ const getObserverSlot = (player, steam64Id) => {
 	const rawSlot = player.observer_slot ?? additionalState.lastKnownPlayerObserverSlot?.[steam64Id]
 	if (options['preferences.isCsgo']) return rawSlot
 
+	if (rawSlot === undefined) return
 	if (rawSlot === 9) return 0
 	return rawSlot + 1
 }
@@ -64,6 +65,9 @@ export const parsePlayers = () => {
 		const name = playerNameOverrides.get(steam64Id) || player.name
 		if (hiddenPlayerNames.has(name)) continue
 
+		const observerSlot = getObserverSlot(player, steam64Id)
+		if (observerSlot === undefined) continue
+
 		const weapons = parsePlayerWeapons(player)
 		const grenades = []
 
@@ -90,6 +94,7 @@ export const parsePlayers = () => {
 			kdRatio,
 			knife,
 			name,
+			observerSlot,
 			primary,
 			secondary,
 			steam64Id,
@@ -122,7 +127,6 @@ export const parsePlayers = () => {
 			kills: player.match_stats?.kills,
 			money: player.state?.money,
 			mvps: player.match_stats?.mvps,
-			observerSlot: getObserverSlot(player, steam64Id),
 			position: parsePosition(player.position),
 			roundDamage: player.state?.round_totaldmg,
 			roundDamages: additionalState.roundDamages?.[steam64Id] || [],
