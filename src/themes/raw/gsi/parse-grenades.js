@@ -1,5 +1,6 @@
 import { gsiState, players } from '/hud/core/state.js'
 import { parsePosition } from '/hud/gsi/parse-position.js'
+import { vectorDistance } from '/hud/helpers/vector-distance.js'
 
 const cachedFirebombTypes = {}
 
@@ -22,15 +23,29 @@ const getFirebombType = (grenadeId, owner) => {
 	}
 }
 
+const parseInfernoFlameIdToPosition = (flameId) => flameId.replace(/^flame_/i, '').replace(/p/gi, '').replace(/n/gi, '-').split('_').map((n) => Number(n))
+
 const additionalGrenadeData = (grenade, grenadeId, owner) => {
 	switch (grenade.type) {
-		case 'inferno':
+		case 'inferno': {
+			// GSI sometimes reports inferno flames at wildly inaccurate positions; their IDs include
+			// position data with less precision, but they seem to always at least be at least close
+			// to where they should be
+			const roughPositionFromFlameId = parseInfernoFlameIdToPosition(Object.keys(grenade.flames)[0])
+			const firstFlamePosition = parsePosition(Object.values(grenade.flames)[0])
+			const distanceBetweenLastProjectileAndFirstFlame = vectorDistance(roughPositionFromFlameId, firstFlamePosition)
+
+			const positionCallback = distanceBetweenLastProjectileAndFirstFlame > 512
+				? (id, position) => parseInfernoFlameIdToPosition(id)
+				: (id, position) => parsePosition(position)
+
 			return {
 				flames: Object.entries(grenade.flames).map(([id, position]) => ({
 					id,
-					position: parsePosition(position),
+					position: positionCallback(id, position),
 				}))
 			}
+		}
 
 		case 'firebomb':
 			return {
