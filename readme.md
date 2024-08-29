@@ -26,6 +26,12 @@ It'll likely work similarly in alternatives to OBS.
 
 1. In OBS, add a Game Capture or Window Capture, and select Counter-Strike.
 1. Add a Browser source. Set the `URL` to `http://localhost:31982/hud?transparent`, the `Width`, `Height`, and `FPS` to the values you want, and make sure that `Custom CSS` is empty.
+1. Put in `Custom CSS` the following code :
+   
+   ```css
+   html {
+     background-color: transparent;
+   }
 1. Find a match to spectate in CS, and the Browser source should show the HUD. (The Browser source will not show anything when you're not spectating a match.)
 
 ### Fullscreen Windowed
