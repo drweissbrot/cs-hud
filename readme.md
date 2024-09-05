@@ -47,7 +47,6 @@ Everything should work with both CS:GO and CS2. If you spot anything weird, [ple
 ### Can I use this for my event?
 Yes.  
 Attribution is not required, but if possible, please include a link to this GitHub project somewhere.
-I'd also appreciate if you let me know that you're using it by sending me [a quick email](mailto:cs-hud@drweissbrot.net) (or in whatever way you can get ahold of me).
 
 ### Why would I use this?
 Counter-Strike's in-game spectator HUD isn't designed for video.
@@ -79,6 +78,7 @@ If you want to change something else, [have a look at the docs](docs/theming.md)
 ### I need help!
 Please [have a look at the docs folder](https://github.com/drweissbrot/cs-hud/tree/master/docs) first.
 If nothing in there helps you, [please open an issue.](https://github.com/drweissbrot/cs-hud/issues)
+Please don't send me emails asking for help (emails about other things are fine).
 
 
 ## Credits
