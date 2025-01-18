@@ -20,7 +20,7 @@ const sendStaticFile = (localFile) => async (context) => {
 }
 
 const serveFontsourceFont = (router, fontName) => {
-	const prefix = `/dependencies/${fontName}/`
+	const prefix = `/dependencies/${fontName}`
 
 	router.get(`${prefix}{/*path}`, async (context) => {
 		await send(context, context.path.substring(prefix.length), { root: `${builtinRootDirectory}/node_modules/@fontsource/${fontName}` })
