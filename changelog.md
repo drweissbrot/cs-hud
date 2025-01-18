@@ -9,6 +9,9 @@ This project does not adhere to Semantic Versioning.
 ### Added
 * When a map screenshot is not found or fails to load, series graph will now show a fallback image
 
+### Fixed
+* Null-ish values (e.g. the number `0` for 16-0 matches) will now be saved when entered on the config page
+
 ### Changed
 * Updated various dependencies (node to v22, electron to v34)
 * Switched to @yao-pkg/pkg

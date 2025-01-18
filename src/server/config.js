@@ -51,7 +51,7 @@ export const registerConfigRoutes = (router, websocket) => {
 			if (key === 'theme') {
 				wasThemeChanged = settings.parent !== (value || 'fennec')
 				settings.parent = (value || 'fennec')
-			} else if (value) {
+			} else if (value != null) { // this SHOULD be a double-equal instead of triple-equal (similar to lodash's isNil)
 				if (! settings.options[key]) settings.options[key] = {}
 				settings.options[key].value = value
 			} else if (settings.options[key]) {
