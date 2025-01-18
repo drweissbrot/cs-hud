@@ -160,12 +160,12 @@
 		"scale": 4.082077,
 
 		"verticalsections": {
-			"default": {
+			"upper": {
 				"AltitudeMax": 20000,
 				"AltitudeMin": -50
 			},
 
-			"lower": {
+			"default": {
 				"AltitudeMax": -50,
 				"AltitudeMin": -5000
 			}
