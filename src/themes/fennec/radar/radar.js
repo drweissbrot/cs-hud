@@ -15,7 +15,7 @@ export default {
 		},
 
 		radarImageUrl() {
-			return this.radarConfig?.radarImageUrl || `/hud/img/radars/ingame/${this.$map.sanitizedName}.webp`
+			return this.radarConfig?.radarImageUrl || `/hud/img/radars/ingame/${this.$map.sanitizedName}.png`
 		},
 	},
 }
