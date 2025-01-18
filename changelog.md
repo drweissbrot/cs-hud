@@ -12,6 +12,11 @@ This project does not adhere to Semantic Versioning.
 ### Changed
 * Updated various dependencies (node to v22, electron to v34)
 * Switched to @yao-pkg/pkg
+* Map screenshots are now saved in PNG format instead of WebP
+* Updated map screenshots to CS2
+
+### Removed
+* Removed map screenshots from CS:GO; now included by default are only map screenshots for maps that were officially included in the game as of 2025-01-18
 
 
 ## [2.5.0] - 2024-03-02

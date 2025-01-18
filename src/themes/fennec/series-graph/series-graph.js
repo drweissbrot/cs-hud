@@ -26,7 +26,7 @@ export default {
 
 					isCurrentMatch: isOnlyMatch || isFirstMapWithoutScores,
 					isDecider: this.$opts[`series.maps.${mapNumber}.isDecider`],
-					mapImageUrl: `/hud/img/maps/${mapName}.webp`,
+					mapImageUrl: `/hud/img/maps/${mapName}.png`,
 					mapName: this.formatMapName(mapName),
 					pickedByTeamName: this.$opts[`series.maps.${mapNumber}.pickTeam`],
 					scores: scoreA || scoreB ? [scoreA, scoreB] : undefined,
@@ -37,7 +37,7 @@ export default {
 				isCurrentMatch: true,
 				isDecider: false,
 				isOnlyMatch: true,
-				mapImageUrl: `/hud/img/maps/${this.$map.sanitizedName}.webp`,
+				mapImageUrl: `/hud/img/maps/${this.$map.sanitizedName}.png`,
 				mapName: this.$map.formattedName,
 				pickedByTeamName: undefined,
 				scores: undefined,
