@@ -7,7 +7,11 @@
 yarn --frozen-lockfile
 yarn licenses generate-disclaimer > assets/licenses.txt
 npx esbuild src/server/index.js --bundle --platform=node --outfile=cs-hud.js
-npx pkg --config build/pkg.json cs-hud.js # --debug
+npx pkg \
+	--compress Brotli \
+	--config build/pkg.json \
+	cs-hud.js \
+	# --debug
 
 # build Electron-based wrappers
 cd src/electron

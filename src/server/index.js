@@ -15,6 +15,8 @@ import { registerRadarRoutes } from './radar.js'
 import { registerVersionRoutes } from './version.js'
 import { Websocket } from './websocket.js'
 
+Error.stackTraceLimit = 64
+
 const run = async () => {
 	await initSettings()
 	const { settings } = await getSettings()

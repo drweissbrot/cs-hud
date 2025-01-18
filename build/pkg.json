@@ -3,8 +3,8 @@
 		"outputPath": "/home/node/bin",
 
 		"targets": [
-			"node18-linux",
-			"node18-windows"
+			"node22-linux",
+			"node22-windows"
 		],
 
 		"assets": [
