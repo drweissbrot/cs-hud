@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Added
+* When a map screenshot is not found or fails to load, series graph will now show a fallback image
+
 ### Changed
 * Updated various dependencies (node to v22, electron to v34)
 * Switched to @yao-pkg/pkg

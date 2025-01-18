@@ -1,5 +1,5 @@
 <div class="map">
-	<img :class="['screenshot', { '--is-current-match': match.isCurrentMatch }]" :src="match.mapImageUrl" alt="">
+	<img :class="['screenshot', { '--is-current-match': match.isCurrentMatch }]" :src="match.mapImageUrl" alt="" @error="onError">
 
 	<MapName :match="match" />
 	<Pick :match="match" />
