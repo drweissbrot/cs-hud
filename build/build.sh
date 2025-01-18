@@ -46,22 +46,25 @@ cd tmp/bin
 
 # zip browser wrappers for Windows
 zip -r cs-hud-config-win32-x64.zip cs-hud-config-win32-x64
+zip -r cs-hud-overlay-win32-x64.zip cs-hud-overlay-win32-x64
 zip -r cs-hud-radar-win32-x64.zip cs-hud-radar-win32-x64
-zip -r cs-hud-win32-x64.zip cs-hud-win32-x64
 
 # tar and gzip browser wrappers for Linux
 tar -czf cs-hud-config-linux-x64.tar.gz cs-hud-config-linux-x64
-tar -czf cs-hud-linux-x64.tar.gz cs-hud-linux-x64
+tar -czf cs-hud-overlay-linux-x64.tar.gz cs-hud-overlay-linux-x64
 tar -czf cs-hud-radar-linux-x64.tar.gz cs-hud-radar-linux-x64
 
 cd ../..
 
 # clean up
+mv tmp/bin/cs-hud-linux tmp/bin/cs-hud-server-linux
+mv tmp/bin/cs-hud-win.exe tmp/bin/cs-hud-server-win.exe
+
 rm -r \
 	tmp/bin/cs-hud-config-linux-x64 \
 	tmp/bin/cs-hud-config-win32-x64 \
-	tmp/bin/cs-hud-linux-x64 \
+	tmp/bin/cs-hud-overlay-linux-x64 \
 	tmp/bin/cs-hud-radar-linux-x64 \
 	tmp/bin/cs-hud-radar-win32-x64 \
-	tmp/bin/cs-hud-win32-x64 \
+	tmp/bin/cs-hud-overlay-win32-x64 \
 	tmp/clone

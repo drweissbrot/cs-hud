@@ -17,6 +17,7 @@ This project does not adhere to Semantic Versioning.
 * Switched to @yao-pkg/pkg for building pre-packaged binaries
 * Map screenshots and radars are now saved in PNG format instead of WebP
 * Updated map screenshots and radars to CS2
+* Changed filenames for server and overlay binaries; server is now `cs-hud-server-linux`/`cs-hud-server-win.exe` (previously `cs-hud-linux`/`cs-hud-win.exe`), overlay is now in `cs-hud-overlay-linux-x64.tar.gz`/`cs-hud-overlay-win32-x64.zip` (previously `cs-hud-linux-x64.tar.gz`/`cs-hud-win32-x64.zip`)
 
 ### Removed
 * Removed map screenshots from CS:GO; now included by default are only map screenshots for maps that were officially included in the game as of 2025-01-18

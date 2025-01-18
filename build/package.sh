@@ -17,7 +17,7 @@ npx pkg \
 cd src/electron
 yarn --frozen-lockfile
 
-node write-package-json.mjs cs-hud hud.js
+node write-package-json.mjs cs-hud-overlay hud.js
 yarn electron-forge package -p linux
 yarn electron-forge package -p win32
 
