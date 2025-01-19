@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Fixed
+* Fixed pre-built Windows binary immediately crashing on startup
 
 
 ## [2.6.0] - 2025-01-18
