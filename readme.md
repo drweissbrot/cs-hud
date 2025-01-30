@@ -7,7 +7,7 @@ A Free and Customizable Spectator HUD for Your Counter-Strike 2 (and CS:GO) Stre
 The easiest way is to use the pre-packaged binaries, but other options will be available in the future.
 <!-- TODO write, then link to more in-depth guides for running via yarn, docker -->
 
-1. Download [`cs-hud-win.exe`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-win.exe) if you're on Windows, or [`cs-hud-linux`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-linux) if you're on Linux. You can find more details on the [Releases tab](https://github.com/drweissbrot/cs-hud/releases/latest).
+1. Download [`cs-hud-server-win.exe`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-server-win.exe) if you're on Windows, or [`cs-hud-server-linux`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-server-linux) if you're on Linux. You can find more details on the [Releases tab](https://github.com/drweissbrot/cs-hud/releases/latest).
 1. Also download [`gamestate_integration_drweissbrot_hud.cfg`](https://github.com/drweissbrot/cs-hud/releases/latest/download/gamestate_integration_drweissbrot_hud.cfg).
 1. Head to your CS2 folder and the `game/csgo/cfg` subdirectory, by default on Windows that is `C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo\cfg`. You can also find it by opening your Steam library, right-clicking CS2, `Properties...`, `Installed Files`, `Browse...`, and then heading into the `game` directory, then into `csgo`, then `cfg`.
 1. Save `gamestate_integration_drweissbrot_hud.cfg` there.
