@@ -11,6 +11,7 @@ This project does not adhere to Semantic Versioning.
 
 ### Changed
 * Updated several dependencies
+* Disabled compression for server binaries
 
 
 ## [2.6.1] - 2025-01-19
