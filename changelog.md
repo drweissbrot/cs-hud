@@ -8,6 +8,7 @@ This project does not adhere to Semantic Versioning.
 ## [Unreleased]
 ### Fixed
 * Fixed series graph sometimes not disappearing when only one map is set
+* Fixed long nicknames sometimes wrapping into multiple lines
 
 ### Changed
 * Updated several dependencies
