@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Fixed
+* Fixed series graph sometimes not disappearing when only one map is set
 
 
 ## [2.6.1] - 2025-01-19
