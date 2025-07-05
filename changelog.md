@@ -9,6 +9,9 @@ This project does not adhere to Semantic Versioning.
 ### Fixed
 * Fixed series graph sometimes not disappearing when only one map is set
 
+### Changed
+* Updated several dependencies
+
 
 ## [2.6.1] - 2025-01-19
 ### Fixed
