@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+
+
+## [2.6.2] - 2025-07-05
 ### Fixed
 * Fixed series graph sometimes not disappearing when only one map is set
 * Fixed long nicknames sometimes wrapping into multiple lines
