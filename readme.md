@@ -24,7 +24,7 @@ Depending on how you actually want to use the HUD, you've now got two options:
 This is a good choice if you're fine with not seeing the HUD on top of the game yourself, or you can't or don't want to run the game in Fullscreen Windowed.
 It'll likely work similarly in alternatives to OBS.
 
-1. Make sure you've followed the instructions above. You should see a console window saying `CS HUD is active`.
+1. Make sure you've followed the instructions above. You should see a console window saying `cs-hud is active`.
 1. In OBS, add a Game Capture or Window Capture, and select Counter-Strike.
 1. Add a Browser source. Set the `URL` to `http://localhost:31982/hud?transparent`, the `Width`, `Height`, and `FPS` to the values you want, and make sure that `Custom CSS` is empty.
 1. Find a match to spectate in CS, and the Browser source should show the HUD. (The Browser source will not show anything when you're not spectating a match.)
@@ -32,7 +32,7 @@ It'll likely work similarly in alternatives to OBS.
 ### Fullscreen Windowed
 Alternatively, you can use a separate executable to overlay the HUD on top of CS.
 
-1. Make sure you've followed the instructions above. You should see a console window saying `CS HUD is active`.
+1. Make sure you've followed the instructions above. You should see a console window saying `cs-hud is active`.
 1. Download [`cs-hud-overlay-win32-x64.zip`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-overlay-win32-x64.zip) on Windows, or [`cs-hud-overlay-linux-x64.tar.gz`](https://github.com/drweissbrot/cs-hud/releases/latest/download/cs-hud-overlay-linux-x64.tar.gz) on Linux. Extract all files.
 1. Run `cs-hud-overlay.exe` on Windows, or `cs-hud-overlay` on Linux.
 1. Open Counter-Strike, go to the Settings, `Video`, and set the `Display Mode` to `Fullscreen Windowed`.
