@@ -52,10 +52,10 @@
 			"label": "List of names or SteamID64s of players that should not be shown in the HUD (e.g. coaches); see https://github.com/drweissbrot/cs-hud/blob/master/docs/hiding-players.md"
 		},
 
-		"teams.autoHideCoaches": {
+		"teams.hideCoachesByName": {
 			"type": "boolean",
 			"section": "Teams",
-			"label": "Hides all playes who has \"coach\" in their nickname (in any form); see https://github.com/drweissbrot/cs-hud/blob/master/docs/hiding-players.md"
+			"label": "Hide all playes who have the word \"coach\" in their nickname; see https://github.com/drweissbrot/cs-hud/blob/master/docs/hiding-players.md"
 		}
 	}
 }

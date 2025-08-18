@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project does not adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Added
+* Added `teams.hideCoachesByName` option (disabled by default), which hides any player that has the word `coach` in their name
 
 
 ## [2.6.2] - 2025-07-05

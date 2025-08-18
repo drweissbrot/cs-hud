@@ -11,4 +11,6 @@ Provide one player per line.
 If you use a player's name, you'll need to exactly match the name that would otherwise be displayed by the HUD.
 If you've changed their name using [Player Name Overrides](https://github.com/drweissbrot/cs-hud/blob/master/docs/player-name-overrides.md), use the name that you used for the override.
 
-You can also enable the `teams.autoHideCoaches` option to automatically hide any player whose nickname contains "coach" (case-insensitive). This will hide coaches without the need to add them manually to the list above. Use carefully - will hide real players if they have "coach" in their name.
+You can also enable the `teams.hideCoachesByName` option to automatically hide any player whose nickname contains the word `coach` (case-insensitive).
+This will hide coaches without the need to add them manually to the list above.
+Use carefully, as it will also hide real players if they have `coach` in their name.
