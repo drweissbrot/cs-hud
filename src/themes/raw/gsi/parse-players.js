@@ -56,6 +56,7 @@ const parsePlayerWeapons = (player) => Object.values(player.weapons).flatMap((we
 export const parsePlayers = () => {
 	const playerNameOverrides = getPlayerNameOverrides()
 	const { hiddenPlayerNames, hiddenPlayerSteam64Ids } = getHiddenPlayers()
+	const hideCoachesByName = options['teams.hideCoachesByName']
 
 	const players = []
 
@@ -64,6 +65,7 @@ export const parsePlayers = () => {
 
 		const name = playerNameOverrides.get(steam64Id) || player.name
 		if (hiddenPlayerNames.has(name)) continue
+		if (hideCoachesByName && /\bcoach\b/i.test(name)) continue
 
 		const observerSlot = getObserverSlot(player, steam64Id)
 		if (observerSlot === undefined) continue
