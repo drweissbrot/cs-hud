@@ -21,7 +21,7 @@ const textFormats = [
 ]
 
 export const registerHudRoutes = (router) => {
-	router.get('/hud/:path*', async (context) => {
+	router.get('/hud{/*path}', async (context) => {
 		const themeTree = await getThemeTree(context.query.theme)
 
 		const path = decodeURIComponent(

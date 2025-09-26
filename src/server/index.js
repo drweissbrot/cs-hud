@@ -2,7 +2,7 @@ import http from 'http'
 
 import bodyParser from 'koa-bodyparser'
 import Koa from 'koa'
-import KoaRouter from 'koa-router'
+import KoaRouter from '@koa/router'
 import KoaCompress from 'koa-compress'
 
 import { initSettings, getSettings } from './settings.js'

@@ -32,7 +32,7 @@ export const registerConfigRoutes = (router, websocket) => {
 		]
 	})
 
-	router.get('/config/:path*', async (context) => {
+	router.get('/config{/*path}', async (context) => {
 		await send(
 			context,
 			context.params.path?.trim() || 'index.html',

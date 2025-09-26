@@ -10,23 +10,23 @@
 		"postinstall": "yarn licenses generate-disclaimer > assets/licenses.txt"
 	},
 	"dependencies": {
-		"@fontsource/noto-sans": "^5.2.7",
-		"@fontsource/quantico": "^5.2.6",
-		"koa": "^3.0.0",
+		"@fontsource/noto-sans": "^5.2.10",
+		"@fontsource/quantico": "^5.2.7",
+		"@koa/router": "^14.0.0",
+		"koa": "^3.0.1",
 		"koa-bodyparser": "^4.4.1",
 		"koa-compress": "^5.1.1",
-		"koa-router": "^13.1.1",
 		"koa-send": "^5.0.1",
 		"lodash-es": "^4.17.21",
 		"normalize.css": "^8.0.1",
 		"resolve-path": "^1.4.0",
-		"vue": "^3.5.17",
+		"vue": "^3.5.22",
 		"vue3-sfc-loader": "^0.9.5",
 		"ws": "^8.18.3"
 	},
 	"devDependencies": {
-		"@yao-pkg/pkg": "^6.5.1",
-		"esbuild": "^0.25.5",
+		"@yao-pkg/pkg": "^6.7.0",
+		"esbuild": "^0.25.10",
 		"nodemon": "^3.1.10"
 	},
 	"nodemonConfig": {
