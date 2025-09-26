@@ -228,7 +228,7 @@
 		"preferences.sidebar.teamGrenades.hideDuringRound": {
 			"type": "boolean",
 			"section": "Preferences",
-			"label": "Hode Team Grenades panels in sidebars during the round (if no, will only show during freezetimes, and the first few seconds of the round (defined in preferences.sidebar.teamGrenades.activeIntoRoundSec))"
+			"label": "Hide Team Grenades panels in sidebars during the round (if no, will only show during freezetimes, and the first few seconds of the round (defined in preferences.sidebar.teamGrenades.activeIntoRoundSec))"
 		},
 
 		"preferences.sidebar.teamGrenades.activeIntoRoundSec": {
